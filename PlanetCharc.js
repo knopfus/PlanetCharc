@@ -83,9 +83,5 @@ window.Spielstand = {
 
     aktuelle_Aktion_Name: "",
 
-    Gegenstände_in_Besitz: [],
-
-    aktueller_IQ: 130,
-
-    aktuelle_Ideen: 0
+    Gegenstände_in_Besitz: []
 }

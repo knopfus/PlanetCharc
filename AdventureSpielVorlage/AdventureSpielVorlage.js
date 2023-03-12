@@ -132,7 +132,7 @@ function bereite_Spiel_vor() {
             Gegenstand_div.style.transform = "rotate(" + Gegenstand.wo.gedreht + "deg)";
         }
 
-        Gegenstand_img.setAttribute("src", "Gegenstaende/" + Gegenstand_Name + ".png");
+        Gegenstand_img.setAttribute("src", "Gegenstaende/" + Gegenstand_Name + ".png?nocache=" + Date.now());
 
         Ort_div.appendChild(Gegenstand_div);
 
@@ -145,7 +145,7 @@ function bereite_Spiel_vor() {
             var Gegenstand_in_Besitz_img = Gegenstand_in_Besitz_div.getElementsByTagName("img")[0];
 
             Gegenstand_in_Besitz_div.setAttribute("id", "Gegenstand_in_Besitz_" + Gegenstand_Name);
-            Gegenstand_in_Besitz_img.setAttribute("src", "Gegenstaende/" + Gegenstand_Name + ".png");
+            Gegenstand_in_Besitz_img.setAttribute("src", "Gegenstaende/" + Gegenstand_Name + ".png?nocache=" + Date.now());
             Besitz_div.appendChild(Gegenstand_in_Besitz_div);
         }
 
@@ -160,11 +160,7 @@ function zeige_Spiel_an() {
     document.getElementById("Status-Ort").innerText = Spiel.Spielstand.aktueller_Ort_Name;
     document.getElementById("Status-Aktion").innerText = Spiel.Spielstand.aktuelle_Aktion_Name;
 
-    document.getElementById("IQ").innerText = "IQ: " + Spiel.Spielstand.aktueller_IQ;
-
-    document.getElementById("Ideen").innerText = "Ideen: " + Spiel.Spielstand.aktuelle_Ideen;
-
-    document.getElementById("Ort-Bild").src = "Orte/" + Spiel.Spielstand.aktueller_Ort_Name + ".png";
+    document.getElementById("Ort-Bild").src = "Orte/" + Spiel.Spielstand.aktueller_Ort_Name + ".png?nocache=" + Date.now();
 
     var Skyly_10 = Spiel.Spielstand.Skyly_10,
         Skyly_10_div = document.getElementById("Skyly_10");

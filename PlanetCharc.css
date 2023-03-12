@@ -1,47 +1,90 @@
+#Spiel {
+    width: 1400px;
+    height: 800px;
+    position: absolute;
+}
 
-  #Spiel { display: grid; grid-template-columns: 700px 300px; }
-  #Erste-Spalte, #Zweite-Spalte { border: 1px solid black; display: inline-grid; }
+h1 {
+    position: inherit;
+    top: 0;
+    width: 100%;
+    text-align: center;
+    z-index: 100000;
+}
 
-  #Ort, #Ort-Bild { position: relative; width: 100%; overflow: hidden; }
-  #Konsole, #Besitz, #Aktionen { width: 100%; }
-  #Ort, #Ort-Bild { height: 600px; }
+#Ort {
+    position: inherit;
+    top: 0;
+    width: 1400px;
+    height: 800px;
+    overflow: hidden;
+}
 
+#Ort-Bild {
+    position: inherit;
+    top: 0;
+    max-width: 1400px;
+    max-height: 800px;
+    overflow: hidden;
+}
 
-  #Konsole { height: 200px; }
+.Gegenstand {
+    position: absolute;
+    border: 0px solid black;
+    visibility: hidden;
+}
+.Gegenstand > img {
+    max-width: 100%;
+    max-height: 100%;
+}
 
-  #Besitz { height: 70px; padding: 10px; background-color: none; }
+.Tier { position: absolute; }
 
+#Skyly_10 { height: 75px; width: 75px; font-size: 75px; }
+#Skyly_12 { height: 75px; width: 75px; font-size: 75px; }
 
-  .Tier { position: absolute; }
+#Konsole {
+    background-color: #00000050;
+    position: inherit;
+    top: 600px;
+    height: 200px;
+    display: grid;
+    grid-template-columns: 50% 50%;
+    width: 100%;
+}
 
-  .Gegenstand { position: absolute; border: 0px solid black; visibility: hidden; }
-  .Gegenstand > img { max-width: 100%; max-height: 100% }
-  .Gegenstand_in_Besitz { display: inline-block; height: 75px; }
-  .Gegenstand_in_Besitz img { max-width: 100%; max-height: 100% }
+#Aktionen {
+    width: 100%; 
+    box-sizing: border-box;
+    padding: 10px;
+}
 
-  #Gegenstand_in_Besitz_Vorlage { display: none; }
+.Aktion {
+    background-color: #00000050;
+    display: inline-block;
+    width: 85px;
+    height: 85px;
+    font-size: 67px;
+    text-align: center;
+    border: 1px outset;
+}
+.Aktion.aktiv {
+    border-style: inset;
+}
 
-  #Aktionen { padding: 10px; }
+#Besitz {
+    box-sizing: border-box;
+    width: 100%; 
+    padding: 10px;
+}
 
-  .Aktion {
-      display: inline-block;
-      width: 48px;
-      height: 48px;
-      font-size: 38px;
-      text-align: center;
-      border: 1px outset;
-  }
-  .Aktion.aktiv { border-style: inset; }
+.Gegenstand_in_Besitz {
+    display: inline-block;
+    height: 75px;
+}
+.Gegenstand_in_Besitz img {
+    max-width: 100%;
+    max-height: 100%
+}
 
-  #IQ {
-      padding: 10px;
-      font: bold 1.5em fantasy;
-  }
-
-  #Ideen {
-      padding: 10px;
-      font: bold 1.5em fantasy;
-  }
-
-  #Skyly_10 { height: 75px; width: 75px; font-size: 75px; }
-  #Skyly_12 { height: 75px; width: 75px; font-size: 75px; }
+#Gegenstand_in_Besitz_Vorlage { display: none; }
