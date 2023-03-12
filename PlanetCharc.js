@@ -1,10 +1,10 @@
 
-window.Räume = {
+window.Orte = {
 
     Silberne_Lichtung: {
 
         mögliche_Aktionen: {
-            gehe_zu: { Ziel_Raum_Name: "Dschungel_1", Luan_10: { links: 310, oben: 445, kommt_von: { links: 0, oben: 300 } } }
+            gehe_zu: { Ziel_Ort_Name: "Dschungel_1", Luan_10: { links: 310, oben: 445, kommt_von: { links: 0, oben: 300 } } }
         }
 
     },
@@ -23,10 +23,10 @@ window.Gegenstände = {
 
 window.Aktionen = {
 
-    gehe_zu: function( Gegenstand, Raum, Spielstand, Aktion ) {
+    gehe_zu: function( Gegenstand, Ort, Spielstand, Aktion ) {
 
-        Spielstand.vorheriger_Raum_Name = Spielstand.aktueller_Raum_Name;
-        Spielstand.aktueller_Raum_Name = Aktion.Ziel_Raum_Name;
+        Spielstand.vorheriger_Ort_Name = Spielstand.aktueller_Ort_Name;
+        Spielstand.aktueller_Ort_Name = Aktion.Ziel_Ort_Name;
 
         Spielstand.Luan_10.links = Aktion.Luan_10.links;
         Spielstand.Luan_10.oben = Aktion.Luan_10.oben;
@@ -39,14 +39,14 @@ window.Aktionen = {
         }
     },
 
-    nehmen: function( Gegenstand, Raum, Spielstand, Aktion ) {
+    nehmen: function( Gegenstand, Ort, Spielstand, Aktion ) {
 
-        Raum.Gegenstände.entfernen( Gegenstand );
+        Ort.Gegenstände.entfernen( Gegenstand );
         Spielstand.Gegenstände_in_Besitz.hinzufügen( Gegenstand );
 
     },
 
-    einfallen: function( Gegenstand, Raum, Spielstand, Aktion ) {
+    einfallen: function( Gegenstand, Ort, Spielstand, Aktion ) {
 
         if (Aktion.eingefallen == false) {
             Spielstand.aktuelle_Ideen += Aktion.zusätzliche_Ideen;
@@ -56,7 +56,7 @@ window.Aktionen = {
 
     },
 
-    lernen: function( Gegenstand, Raum, Spielstand, Aktion ) {
+    lernen: function( Gegenstand, Ort, Spielstand, Aktion ) {
 
         if (Aktion.gelernt == false) {
             Spielstand.aktueller_IQ += Aktion.zusätzlicher_IQ;
@@ -71,8 +71,8 @@ window.Aktionen = {
 
 window.Spielstand = {
 
-    aktueller_Raum_Name: "Silberne_Lichtung",
-    vorheriger_Raum_Name: "",
+    aktueller_Ort_Name: "Silberne_Lichtung",
+    vorheriger_Ort_Name: "",
 
     Luan_10: { links: 200, oben: 490 },
 

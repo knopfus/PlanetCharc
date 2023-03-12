@@ -8,30 +8,30 @@ Array.prototype.hinzufügen = function( element ) {
     this.push( element );
 };
 
-window.Spiel = (function(Räume, Gegenstände, Aktionen, Spielstand) {
+window.Spiel = (function(Orte, Gegenstände, Aktionen, Spielstand) {
 
-    // Räume mit "ihren" Gegenständen füllen
-    for (var Raum_Name in Räume) {
-        var Raum = Räume[Raum_Name];
-        Räume[Raum_Name].Gegenstände = [];
+    // Orte mit "ihren" Gegenständen füllen
+    for (var Ort_Name in Orte) {
+        var Ort = Orte[Ort_Name];
+        Orte[Ort_Name].Gegenstände = [];
     }
     for (var Gegenstand_Name in Gegenstände) {
         var Gegenstand = Gegenstände[Gegenstand_Name];
         if ( Gegenstand.wo ) {
-            Räume[ Gegenstand.wo.Raum_Name ].Gegenstände.hinzufügen( Gegenstand );
+            Orte[ Gegenstand.wo.Ort_Name ].Gegenstände.hinzufügen( Gegenstand );
         }
     }
 
-    // mögliche_Aktionen im Raum mit Magie versehen
-    for (var Raum_Name in Räume) {
-        var Raum = Räume[Raum_Name];
-        for (var Aktion_Name in Raum.mögliche_Aktionen) {
-            var Aktion = Raum.mögliche_Aktionen[Aktion_Name];
-            Aktion.ausführen = (function(Aktion_Name, Raum, Spielstand, Aktion) {
+    // mögliche_Aktionen im Ort mit Magie versehen
+    for (var Ort_Name in Orte) {
+        var Ort = Orte[Ort_Name];
+        for (var Aktion_Name in Ort.mögliche_Aktionen) {
+            var Aktion = Ort.mögliche_Aktionen[Aktion_Name];
+            Aktion.ausführen = (function(Aktion_Name, Ort, Spielstand, Aktion) {
                 return function() {
-                    Aktionen[Aktion_Name]( "keiner", Raum, Spielstand, Aktion );
+                    Aktionen[Aktion_Name]( "keiner", Ort, Spielstand, Aktion );
                 };
-            }( Aktion_Name, Raum, Spielstand, Aktion ));
+            }( Aktion_Name, Ort, Spielstand, Aktion ));
         }        
     }
 
@@ -40,22 +40,22 @@ window.Spiel = (function(Räume, Gegenstände, Aktionen, Spielstand) {
         var Gegenstand = Gegenstände[Gegenstand_Name];
         for (var Aktion_Name in Gegenstand.mögliche_Aktionen) {
             var Aktion = Gegenstand.mögliche_Aktionen[Aktion_Name];
-            Aktion.ausführen = (function( Aktion_Name, Gegenstand, Räume, Spielstand, Aktion ) {
+            Aktion.ausführen = (function( Aktion_Name, Gegenstand, Orte, Spielstand, Aktion ) {
                 return function() {
-                    Aktionen[Aktion_Name]( Gegenstand, Räume[Spielstand.aktueller_Raum_Name], Spielstand, Aktion );
+                    Aktionen[Aktion_Name]( Gegenstand, Orte[Spielstand.aktueller_Ort_Name], Spielstand, Aktion );
                 };
-            }( Aktion_Name, Gegenstand, Räume, Spielstand, Aktion ));
+            }( Aktion_Name, Gegenstand, Orte, Spielstand, Aktion ));
         }
     }
 
     return {
-        Räume: Räume,
+        Orte: Orte,
         Gegenstände: Gegenstände,
         Aktionen: Aktionen,
         Spielstand: Spielstand
     };
 
-} (window.Räume, window.Gegenstände, window.Aktionen, window.Spielstand));
+} (window.Orte, window.Gegenstände, window.Aktionen, window.Spielstand));
 
 
 
@@ -79,13 +79,13 @@ function Gegenstände_in_Besitz_anzeigen() {
     }
 }
 
-function Gegenstände_im_Raum_anzeigen() {
-    var Raum = Spiel.Räume[Spiel.Spielstand.aktueller_Raum_Name];
+function Gegenstände_im_Ort_anzeigen() {
+    var Ort = Spiel.Orte[Spiel.Spielstand.aktueller_Ort_Name];
 
     for (var Gegenstand_Name in Spiel.Gegenstände) {
         var Gegenstand = Spiel.Gegenstände[Gegenstand_Name];
         var visibility;
-        if (Raum.Gegenstände.includes(Gegenstand)) {
+        if (Ort.Gegenstände.includes(Gegenstand)) {
             visibility = "visible";
         } else {
             visibility = "hidden";
@@ -119,7 +119,7 @@ function bereite_Spiel_vor() {
         // es dann hinzu. So entstehen automatisch weitere Elemente für jeden Gegenstand.
 
         var Gegenstand_Vorlage = document.getElementById("Gegenstand_Vorlage");
-        var Raum_div = document.getElementById("Raum");
+        var Ort_div = document.getElementById("Ort");
         var Gegenstand_div = Gegenstand_Vorlage.cloneNode(true);
         var Gegenstand_img = Gegenstand_div.getElementsByTagName("img")[0];
 
@@ -134,7 +134,7 @@ function bereite_Spiel_vor() {
 
         Gegenstand_img.setAttribute("src", "Gegenstaende/" + Gegenstand_Name + ".png");
 
-        Raum_div.appendChild(Gegenstand_div);
+        Ort_div.appendChild(Gegenstand_div);
 
 
         // ... und nun nochmal das gleiche Prinzip im Besitz
@@ -157,14 +157,14 @@ bereite_Spiel_vor();
 
 function zeige_Spiel_an() {
 
-    document.getElementById("Status-Raum").innerText = Spiel.Spielstand.aktueller_Raum_Name;
+    document.getElementById("Status-Ort").innerText = Spiel.Spielstand.aktueller_Ort_Name;
     document.getElementById("Status-Aktion").innerText = Spiel.Spielstand.aktuelle_Aktion_Name;
 
     document.getElementById("IQ").innerText = "IQ: " + Spiel.Spielstand.aktueller_IQ;
 
     document.getElementById("Ideen").innerText = "Ideen: " + Spiel.Spielstand.aktuelle_Ideen;
 
-    document.getElementById("Raum-Bild").src = "Orte/" + Spiel.Spielstand.aktueller_Raum_Name + ".png";
+    document.getElementById("Ort-Bild").src = "Orte/" + Spiel.Spielstand.aktueller_Ort_Name + ".png";
 
     var Luan_10 = Spiel.Spielstand.Luan_10,
         Luan_10_div = document.getElementById("Luan_10");
@@ -206,7 +206,7 @@ if (Luan_12.kommt_von) {
 
 
     Gegenstände_in_Besitz_anzeigen();
-    Gegenstände_im_Raum_anzeigen();
+    Gegenstände_im_Ort_anzeigen();
     ausgewählte_Aktion_anzeigen();
 
 }
@@ -233,7 +233,7 @@ for (var Gegenstand_Name in Spiel.Gegenstände) {
         return function() {
 
             var Aktion = Gegenstand.mögliche_Aktionen[Spiel.Spielstand.aktuelle_Aktion_Name];
-            if ( Aktion && (Aktion.wo == "im_Raum" || Array.isArray(Aktion.wo) && Aktion.wo.includes("im_Raum") )) {
+            if ( Aktion && (Aktion.wo == "im_Ort" || Array.isArray(Aktion.wo) && Aktion.wo.includes("im_Ort") )) {
                 Aktion.ausführen();
                 Spiel.Spielstand.aktuelle_Aktion_Name = "";
                 zeige_Spiel_an();
@@ -259,9 +259,9 @@ for (var Gegenstand_Name in Spiel.Gegenstände) {
 
 
 // --- Und man muss die Aktion auch ausführen können, indem man aufs Bild klickt
-document.getElementById("Raum-Bild").onclick = function() {
-    var Raum = Spiel.Räume[Spiel.Spielstand.aktueller_Raum_Name];
-    var mögliche_Aktion = Raum.mögliche_Aktionen[Spiel.Spielstand.aktuelle_Aktion_Name];
+document.getElementById("Ort-Bild").onclick = function() {
+    var Ort = Spiel.Orte[Spiel.Spielstand.aktueller_Ort_Name];
+    var mögliche_Aktion = Ort.mögliche_Aktionen[Spiel.Spielstand.aktuelle_Aktion_Name];
     if ( mögliche_Aktion ) {
         mögliche_Aktion.ausführen();
         Spiel.Spielstand.aktuelle_Aktion_Name = "";
