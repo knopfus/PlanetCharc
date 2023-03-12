@@ -166,42 +166,42 @@ function zeige_Spiel_an() {
 
     document.getElementById("Ort-Bild").src = "Orte/" + Spiel.Spielstand.aktueller_Ort_Name + ".png";
 
-    var Luan_10 = Spiel.Spielstand.Luan_10,
-        Luan_10_div = document.getElementById("Luan_10");
+    var Skyly_10 = Spiel.Spielstand.Skyly_10,
+        Skyly_10_div = document.getElementById("Skyly_10");
 
-    Luan_10_div.style.transition = "";
+    Skyly_10_div.style.transition = "";
 
-    if (Luan_10.kommt_von) {
-        Luan_10_div.style.left = Luan_10.kommt_von.links + "px";
-        Luan_10_div.style.top = Luan_10.kommt_von.oben + "px";
-        Luan_10.kommt_von = null;
+    if (Skyly_10.kommt_von) {
+        Skyly_10_div.style.left = Skyly_10.kommt_von.links + "px";
+        Skyly_10_div.style.top = Skyly_10.kommt_von.oben + "px";
+        Skyly_10.kommt_von = null;
         window.setTimeout(function() {
-            Luan_10_div.style.transition = "left 1s, top 1s";
-            Luan_10_div.style.left = Luan_10.links + "px";
-            Luan_10_div.style.top = Luan_10.oben + "px";
+            Skyly_10_div.style.transition = "left 1s, top 1s";
+            Skyly_10_div.style.left = Skyly_10.links + "px";
+            Skyly_10_div.style.top = Skyly_10.oben + "px";
         }, 0);
     } else {
-        Luan_10_div.style.left = Luan_10.links + "px";
-        Luan_10_div.style.top = Luan_10.oben + "px";
+        Skyly_10_div.style.left = Skyly_10.links + "px";
+        Skyly_10_div.style.top = Skyly_10.oben + "px";
     }
 
-    var Luan_12 = Spiel.Spielstand.Luan_12,
-    Luan_12_div = document.getElementById("Luan_12");
+    var Skyly_12 = Spiel.Spielstand.Skyly_12,
+    Skyly_12_div = document.getElementById("Skyly_12");
 
-Luan_12_div.style.transition = "";
+Skyly_12_div.style.transition = "";
 
-if (Luan_12.kommt_von) {
-    Luan_12_div.style.left = Luan_12.kommt_von.links + "px";
-    Luan_12_div.style.top = Luan_12.kommt_von.oben + "px";
-    Luan_12.kommt_von = null;
+if (Skyly_12.kommt_von) {
+    Skyly_12_div.style.left = Skyly_12.kommt_von.links + "px";
+    Skyly_12_div.style.top = Skyly_12.kommt_von.oben + "px";
+    Skyly_12.kommt_von = null;
     window.setTimeout(function() {
-        Luan_12_div.style.transition = "left 1s, top 1s";
-        Luan_12_div.style.left = Luan_12.links + "px";
-        Luan_12_div.style.top = Luan_12.oben + "px";
+        Skyly_12_div.style.transition = "left 1s, top 1s";
+        Skyly_12_div.style.left = Skyly_12.links + "px";
+        Skyly_12_div.style.top = Skyly_12.oben + "px";
     }, 0);
 } else {
-    Luan_12_div.style.left = Luan_12.links + "px";
-    Luan_12_div.style.top = Luan_12.oben + "px";
+    Skyly_12_div.style.left = Skyly_12.links + "px";
+    Skyly_12_div.style.top = Skyly_12.oben + "px";
 }
 
 

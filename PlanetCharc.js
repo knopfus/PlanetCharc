@@ -4,14 +4,17 @@ window.Orte = {
     Silberne_Lichtung: {
 
         mögliche_Aktionen: {
-            gehe_zu: { Ziel_Ort_Name: "Dschungel_1", Luan_10: { links: 310, oben: 445, kommt_von: { links: 0, oben: 300 } } }
+            gehe_zu: { Ziel_Ort_Name: "Dschungel_1", Skyly_10: { links: 420, oben: 255, kommt_von: { links: 110, oben: 410 } }, Skyly_12: { links: 310, oben: 445, kommt_von: { links: 0, oben: 300 } } },
+        
         }
 
     },
 
     Dschungel_1: {
 
-        mögliche_Aktionen: {}
+        mögliche_Aktionen: { 
+            gehe_zu: { Ziel_Ort_Name: "Silberne_Lichtung", Skyly_10: { links: 420, oben: 255, kommt_von: { links: 110, oben: 410 } }, Skyly_12: { links: 310, oben: 445, kommt_von: { links: 0, oben: 300 } } }
+        }
 
     }
 };
@@ -28,14 +31,14 @@ window.Aktionen = {
         Spielstand.vorheriger_Ort_Name = Spielstand.aktueller_Ort_Name;
         Spielstand.aktueller_Ort_Name = Aktion.Ziel_Ort_Name;
 
-        Spielstand.Luan_10.links = Aktion.Luan_10.links;
-        Spielstand.Luan_10.oben = Aktion.Luan_10.oben;
-        Spielstand.Luan_10.kommt_von = Aktion.Luan_10.kommt_von;
+        Spielstand.Skyly_10.links = Aktion.Skyly_10.links;
+        Spielstand.Skyly_10.oben = Aktion.Skyly_10.oben;
+        Spielstand.Skyly_10.kommt_von = Aktion.Skyly_10.kommt_von;
 
-        if (Aktion.Luan_12) {
-            Spielstand.Luan_12.links = Aktion.Luan_12.links;
-            Spielstand.Luan_12.oben = Aktion.Luan_12.oben;
-            Spielstand.Luan_12.kommt_von = Aktion.Luan_12.kommt_von;
+        if (Aktion.Skyly_12) {
+            Spielstand.Skyly_12.links = Aktion.Skyly_12.links;
+            Spielstand.Skyly_12.oben = Aktion.Skyly_12.oben;
+            Spielstand.Skyly_12.kommt_von = Aktion.Skyly_12.kommt_von;
         }
     },
 
@@ -74,9 +77,9 @@ window.Spielstand = {
     aktueller_Ort_Name: "Silberne_Lichtung",
     vorheriger_Ort_Name: "",
 
-    Luan_10: { links: 200, oben: 490 },
+    Skyly_10: { links: 200, oben: 490 },
 
-    Luan_12: { links: -500, oben: -500 },
+    Skyly_12: { links: -500, oben: -500 },
 
     aktuelle_Aktion_Name: "",
 
