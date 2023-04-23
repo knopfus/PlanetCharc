@@ -227,12 +227,35 @@ for (var Gegenstand_Name in Spiel.Gegenstände) {
 
     document.getElementById( "Gegenstand_" + Gegenstand_Name ).onclick = (function(Gegenstand) {
         return function() {
-
-            var Aktion = Gegenstand.mögliche_Aktionen[Spiel.Spielstand.aktuelle_Aktion_Name];
+            var Aktion_Name = Spiel.Spielstand.aktuelle_Aktion_Name;
+            var Aktion = Gegenstand.mögliche_Aktionen[Aktion_Name];
             if ( Aktion && (Aktion.wo == "im_Ort" || Array.isArray(Aktion.wo) && Aktion.wo.includes("im_Ort") )) {
-                Aktion.ausführen();
-                Spiel.Spielstand.aktuelle_Aktion_Name = "";
-                zeige_Spiel_an();
+                if (Aktion_Name == "gehe_zu") {
+                    var max_translate_x = 514,
+                        max_translate_y = 293,
+                        transition = "1s ease",
+                        transform = " scale(3.5) translateX("
+                            + Math.max( Math.min(720 - Gegenstand.wo.links, max_translate_x), -max_translate_x)
+                            + "px) translateY("
+                            + Math.max( Math.min(410 - Gegenstand.wo.oben, max_translate_y), -max_translate_y)
+                            + "px)",
+                        ortElement = document.getElementById("Ort");
+                    window.setTimeout(function() {
+                        ortElement.style.transition = transition;
+                        ortElement.style.transform = transform;
+                        window.setTimeout(function() {
+                            ortElement.style.transition = "";
+                            ortElement.style.transform = "";
+                            Aktion.ausführen();
+                            Spiel.Spielstand.aktuelle_Aktion_Name = "";
+                            zeige_Spiel_an();
+                        }, 1000);
+                    }, 0);
+                } else {
+                    Aktion.ausführen();
+                    Spiel.Spielstand.aktuelle_Aktion_Name = "";
+                    zeige_Spiel_an();
+                }
             }
         };
     }( Gegenstand ));

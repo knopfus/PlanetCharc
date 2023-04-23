@@ -69,7 +69,7 @@ window.Gegenstände = {
     
     "Portal_von_Dschungel_1_zu_Lavawelt": {    
        
-        wo: { Ort_Name: "Dschungel_1", links: 1, oben: 1, breit: 100, hoch: 170 },
+        wo: { Ort_Name: "Dschungel_1", links: 120, oben: 580, breit: 100, hoch: 170 },
 
         mögliche_Aktionen: {
             
@@ -85,7 +85,7 @@ window.Gegenstände = {
 
     "Portal_von_Dschungel_1_zu_Grosse_Wiese": {    
        
-        wo: { Ort_Name: "Dschungel_1", links: 100, oben: 1, breit: 100, hoch: 170 },
+        wo: { Ort_Name: "Dschungel_1", links: 1340, oben: 440, breit: 100, hoch: 170 },
 
         mögliche_Aktionen: {
             
