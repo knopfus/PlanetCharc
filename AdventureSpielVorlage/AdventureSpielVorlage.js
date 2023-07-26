@@ -11,7 +11,7 @@ Array.prototype.hinzufügen = function( element ) {
 window.Spiel = (function(Orte, Gegenstände, Aktionen, Spielstand) {
 
     // Musik abspielen beim ersten Klick
-    document.onclick = function(e) {
+    document.onclick = function() {
         document.getElementById("musik").play();
     } 
 
