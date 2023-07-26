@@ -189,22 +189,33 @@ function zeige_Spiel_an() {
     var Skyly_12 = Spiel.Spielstand.Skyly_12,
     Skyly_12_div = document.getElementById("Skyly_12");
 
-Skyly_12_div.style.transition = "";
+    Skyly_12_div.style.transition = "";
 
-if (Skyly_12.kommt_von) {
-    Skyly_12_div.style.left = Skyly_12.kommt_von.links + "px";
-    Skyly_12_div.style.top = Skyly_12.kommt_von.oben + "px";
-    Skyly_12.kommt_von = null;
-    window.setTimeout(function() {
-        Skyly_12_div.style.transition = "left 1s, top 1s";
+    if (Skyly_12.kommt_von) {
+        Skyly_12_div.style.left = Skyly_12.kommt_von.links + "px";
+        Skyly_12_div.style.top = Skyly_12.kommt_von.oben + "px";
+        Skyly_12.kommt_von = null;
+        window.setTimeout(function() {
+            Skyly_12_div.style.transition = "left 1s, top 1s";
+            Skyly_12_div.style.left = Skyly_12.links + "px";
+            Skyly_12_div.style.top = Skyly_12.oben + "px";
+        }, 0);
+    } else {
         Skyly_12_div.style.left = Skyly_12.links + "px";
         Skyly_12_div.style.top = Skyly_12.oben + "px";
-    }, 0);
-} else {
-    Skyly_12_div.style.left = Skyly_12.links + "px";
-    Skyly_12_div.style.top = Skyly_12.oben + "px";
-}
+    }
 
+    var Klauenspringer = Spiel.Spielstand.Klauenspringer;
+    var Klauenspringer_div = document.getElementById("Klauenspringer");
+
+    Klauenspringer_div.style.left = Klauenspringer.links + "px";
+    Klauenspringer_div.style.top = Klauenspringer.oben + "px";
+
+    if (Klauenspringer.Ort_Name == Spiel.Spielstand.aktueller_Ort_Name) {
+        Klauenspringer_div.style.visibility = "visible";
+    } else {
+        Klauenspringer_div.style.visibility = "hidden";
+    }
 
     Gegenstände_in_Besitz_anzeigen();
     Gegenstände_im_Ort_anzeigen();

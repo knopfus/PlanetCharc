@@ -32,6 +32,19 @@ window.Orte = {
             gehe_zu: { Ziel_Ort_Name: "Dschungel_1", Skyly_10: { links: 420, oben: 255, kommt_von: { links: 110, oben: 410 } }, Skyly_12: { links: 310, oben: 445, kommt_von: { links: 0, oben: 300 } } }
         }
 
+    },
+
+    Unerreichbarer_Ort: {
+        
+    }
+};
+
+window.Monster = {
+    "Klauenspringer": {
+        mögliche_Orte: [
+            { Ort_Name: "Lavawelt", links: 420, oben: 255 },
+            { Ort_Name: "Unerreichbarer_Ort", links: 420, oben: 255 }
+        ]
     }
 };
 
@@ -66,36 +79,36 @@ window.Gegenstände = {
 
     }
     */
-    
+
     "Portal_von_Dschungel_1_zu_Lavawelt": {    
-       
+
         wo: { Ort_Name: "Dschungel_1", links: 120, oben: 580, breit: 100, hoch: 170 },
 
         mögliche_Aktionen: {
-            
+
             gehe_zu: {
                 wo: "im_Ort",
                 Ziel_Ort_Name: "Lavawelt",
                 Skyly_10: { links: 420, oben: 255, kommt_von: { links: 110, oben: 410 } }, 
                 Skyly_12: { links: 310, oben: 445, kommt_von: { links: 0, oben: 300 } }
             }
-        
+
         }
     },
 
     "Portal_von_Dschungel_1_zu_Grosse_Wiese": {    
-       
+
         wo: { Ort_Name: "Dschungel_1", links: 1340, oben: 440, breit: 100, hoch: 170 },
 
         mögliche_Aktionen: {
-            
+
             gehe_zu: {
                 wo: "im_Ort",
                 Ziel_Ort_Name: "Grosse_Wiese",
                 Skyly_10: { links: 420, oben: 255, kommt_von: { links: 110, oben: 410 } }, 
                 Skyly_12: { links: 310, oben: 445, kommt_von: { links: 0, oben: 300 } }
             }
-        
+
         }
     }
 
@@ -108,6 +121,15 @@ window.Aktionen = {
 
         Spielstand.vorheriger_Ort_Name = Spielstand.aktueller_Ort_Name;
         Spielstand.aktueller_Ort_Name = Aktion.Ziel_Ort_Name;
+
+        var mögliche_Orte = window.Monster.Klauenspringer.mögliche_Orte;
+        var anzahl = mögliche_Orte.length;
+        var index = Math.floor(Math.random() * anzahl);
+        var ort = mögliche_Orte[index];
+
+        Spielstand.Klauenspringer.Ort_Name = ort.Ort_Name;
+        Spielstand.Klauenspringer.links = ort.links;
+        Spielstand.Klauenspringer.oben = ort.oben;
 
         Spielstand.Skyly_10.links = Aktion.Skyly_10.links;
         Spielstand.Skyly_10.oben = Aktion.Skyly_10.oben;
@@ -158,6 +180,8 @@ window.Spielstand = {
     Skyly_10: { links: 200, oben: 490 },
 
     Skyly_12: { links: -500, oben: -500 },
+
+    Klauenspringer: { Ort_Name: "Lavawelt", links: 420, oben: 255 },
 
     aktuelle_Aktion_Name: "",
 
