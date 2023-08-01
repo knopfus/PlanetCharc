@@ -10,11 +10,6 @@ Array.prototype.hinzufügen = function( element ) {
 
 window.Spiel = (function(Orte, Gegenstände, Aktionen, Spielstand) {
 
-    // Musik abspielen beim ersten Klick
-    document.onclick = function() {
-        document.getElementById("musik").play();
-    } 
-
     // Orte mit "ihren" Gegenständen füllen
     for (var Ort_Name in Orte) {
         var Ort = Orte[Ort_Name];
@@ -157,6 +152,12 @@ function bereite_Spiel_vor() {
     }
 
     Spieluhr = setInterval(Spieluhr_tickt, 10);
+
+    // Musik abspielen beim ersten Klick
+    document.onclick = function() {
+        document.getElementById("musik").play();
+    } 
+
 }
 
 function Spieluhr_tickt() {
