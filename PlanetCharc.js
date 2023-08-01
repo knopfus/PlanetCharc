@@ -183,6 +183,8 @@ window.Spielstand = {
 
     Klauenspringer: { Ort_Name: "Lavawelt", links: 420, oben: 255 },
 
+    Lebenspunkte: 100,
+
     aktuelle_Aktion_Name: "",
 
     Gegenstände_in_Besitz: []

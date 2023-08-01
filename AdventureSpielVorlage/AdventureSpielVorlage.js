@@ -165,6 +165,8 @@ function zeige_Spiel_an() {
     document.getElementById("Status-Ort").innerText = Spiel.Spielstand.aktueller_Ort_Name;
     document.getElementById("Status-Aktion").innerText = Spiel.Spielstand.aktuelle_Aktion_Name;
 
+    zeige_Lebenspunkte_an();
+
     document.getElementById("Ort-Bild").src = "Orte/" + Spiel.Spielstand.aktueller_Ort_Name + ".png?nocache=" + Date.now();
 
     var Skyly_10 = Spiel.Spielstand.Skyly_10,
@@ -223,6 +225,22 @@ function zeige_Spiel_an() {
 
 }
 
+function zeige_Lebenspunkte_an() {
+    var Lebenspunkte_div = document.getElementById("Lebenspunkte");
+    var Lebenspunkte = Spiel.Spielstand.Lebenspunkte;
+    Lebenspunkte_div.innerText = Lebenspunkte;
+    Lebenspunkte_div.style.width = Lebenspunkte + "%";
+
+    var max_color = 200;
+    var g = Lebenspunkte / 100 * (2 * max_color);
+    var r = 2 * max_color - g;
+    var b = 0;
+    if (g > max_color) { g = max_color; }
+    if (r > max_color) { r = max_color; }
+    var rgb = "rgb(" + r + ", " + g + ", " + b + ")";
+
+    Lebenspunkte_div.style.backgroundColor = rgb;
+}
 
 
 // --- Nun versehen wir die Aktionsknöpfe mit Magie:
