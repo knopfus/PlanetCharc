@@ -8,7 +8,7 @@
   <h1>&gt;CHARC&lt;</h1>
 
   <div class="Lebenspunkte_Anzeige">
-    <div id="Lebenspunkte">100</div>
+    <div id="Lebenspunkte"></div>
   </div>
 
   <div id="Ort">
@@ -34,7 +34,8 @@
   </div>
 
   <div id="Konsole">
-    <audio id="musik" src="./Planet_Charc_Theme.wav"></audio>
+    <audio autoplay id="musik" src="./Planet_Charc_Theme.wav"></audio>
+    <audio id="Sound_Effects"></audio>
 
     <div id="Aktionen">
  
@@ -71,6 +72,10 @@
     Ausgewählte Aktion: <span id="Status-Aktion">(lade...)</span>
   </div>
 
+  <div id="Game_Over">
+    <b>Game Over</b><br/>
+    <button id="Neustarten">Neustarten</button>
+  </div>
 </div> <!-- Spiel -->
 
 <link rel="stylesheet" href="PlanetCharc.css"/>

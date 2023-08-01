@@ -19,6 +19,20 @@ h1 {
     pointer-events: none;
 }
 
+#Game_Over {
+    position: inherit;
+    top: 0;
+    width: 100%;
+    text-align: center;
+    z-index: 200001;
+    padding: 350px 0px;
+    font-size: 100px;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: red;
+    margin: 0;
+    visibility: hidden;
+}
+
 .Lebenspunkte_Anzeige {
     background-color: rgb(192, 192, 192);
     width: 20em;
@@ -31,7 +45,8 @@ h1 {
 #Lebenspunkte {
     background-color: rgb(0, 200, 0);
     color: white;
-    padding: 0.2em 1em 0.2em 0.2em;
+    height: 1em;
+    padding: 0.2em 0.2em 0.2em 0.2em;
     text-align: right;
     font-size: 20px;
     border-radius: 15px;

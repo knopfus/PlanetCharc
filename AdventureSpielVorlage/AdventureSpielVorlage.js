@@ -156,6 +156,33 @@ function bereite_Spiel_vor() {
 
     }
 
+    Spieluhr = setInterval(Spieluhr_tickt, 10);
+}
+
+function Spieluhr_tickt() {
+    // Monsterbegegnung
+    if (Spielstand.Klauenspringer.Ort_Name == Spielstand.aktueller_Ort_Name) {
+        Lebenspunkte_reduzieren(0.07);
+    }
+    zeige_Spiel_an();
+}
+
+function Lebenspunkte_reduzieren(wieviel) {
+    Spielstand.Lebenspunkte = Spielstand.Lebenspunkte - wieviel;
+    if (Spielstand.Lebenspunkte <= 0) {
+        Game_Over(); 
+    }
+}
+
+function Game_Over() {
+    clearInterval(Spieluhr);
+    document.getElementById("Game_Over").style.visibility = "visible";
+}
+
+function spiele_Sound_Effect(welcher_Sound) {
+    var player = document.getElementById("Sound_Effects");
+    player.src = "./Sound_Effects/" + welcher_Sound + ".wav";
+    player.play();
 }
 
 bereite_Spiel_vor();
@@ -228,7 +255,7 @@ function zeige_Spiel_an() {
 function zeige_Lebenspunkte_an() {
     var Lebenspunkte_div = document.getElementById("Lebenspunkte");
     var Lebenspunkte = Spiel.Spielstand.Lebenspunkte;
-    Lebenspunkte_div.innerText = Lebenspunkte;
+
     Lebenspunkte_div.style.width = Lebenspunkte + "%";
 
     var max_color = 200;
@@ -321,6 +348,10 @@ document.getElementById("Ort-Bild").onclick = function() {
         zeige_Spiel_an();
     }
 };
+
+document.getElementById("Neustarten").onclick = function() {
+    window.location.reload();
+}
 
 
 zeige_Spiel_an();

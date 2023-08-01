@@ -119,9 +119,11 @@ window.Aktionen = {
 
     gehe_zu: function( Gegenstand, Ort, Spielstand, Aktion ) {
 
+        // Ort wechseln
         Spielstand.vorheriger_Ort_Name = Spielstand.aktueller_Ort_Name;
         Spielstand.aktueller_Ort_Name = Aktion.Ziel_Ort_Name;
 
+        // Klauenspringer bewegt sich
         var mögliche_Orte = window.Monster.Klauenspringer.mögliche_Orte;
         var anzahl = mögliche_Orte.length;
         var index = Math.floor(Math.random() * anzahl);
@@ -131,6 +133,11 @@ window.Aktionen = {
         Spielstand.Klauenspringer.links = ort.links;
         Spielstand.Klauenspringer.oben = ort.oben;
 
+        if (Spielstand.Klauenspringer.Ort_Name == Spielstand.aktueller_Ort_Name) {
+            spiele_Sound_Effect("Klauenspringer");
+        }
+
+        // Skylys bewegen sich
         Spielstand.Skyly_10.links = Aktion.Skyly_10.links;
         Spielstand.Skyly_10.oben = Aktion.Skyly_10.oben;
         Spielstand.Skyly_10.kommt_von = Aktion.Skyly_10.kommt_von;
