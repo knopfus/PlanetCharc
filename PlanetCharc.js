@@ -39,12 +39,22 @@ window.Orte = {
     }
 };
 
-window.Monster = {
+window.AlleMonster = {
     "Klauenspringer": {
         mögliche_Orte: [
             { Ort_Name: "Lavawelt", links: 420, oben: 255 },
             { Ort_Name: "Unerreichbarer_Ort", links: 420, oben: 255 }
-        ]
+        ],
+
+        Ort_Name: "Lavawelt", links: 420, oben: 255,
+        
+        mögliche_Aktionen: {
+            kaempfen: {}
+        },
+
+        Lebenspunkte: 100,
+
+        lebendig: true
     }
 };
 
@@ -124,7 +134,7 @@ window.Aktionen = {
         Spielstand.aktueller_Ort_Name = Aktion.Ziel_Ort_Name;
 
         // Klauenspringer bewegt sich
-        var mögliche_Orte = window.Monster.Klauenspringer.mögliche_Orte;
+        var mögliche_Orte = window.AlleMonster.Klauenspringer.mögliche_Orte;
         var anzahl = mögliche_Orte.length;
         var index = Math.floor(Math.random() * anzahl);
         var ort = mögliche_Orte[index];
@@ -156,26 +166,19 @@ window.Aktionen = {
 
     },
 
-    einfallen: function( Gegenstand, Ort, Spielstand, Aktion ) {
+    kaempfen: function( Gegenstand, Ort, Spielstand, Aktion, Monster ) {
+        var wieviel = 20;
 
-        if (Aktion.eingefallen == false) {
-            Spielstand.aktuelle_Ideen += Aktion.zusätzliche_Ideen;
+        Monster.Lebenspunkte = Monster.Lebenspunkte - wieviel;
+        if (Monster.Lebenspunkte <= 0) {
+            spiele_Sound_Effect("aargh");
+            Monster.lebendig = false;
+        } else {
+            spiele_Sound_Effect("autsch");
         }
-
-        Aktion.eingefallen = true;
-
-    },
-
-    lernen: function( Gegenstand, Ort, Spielstand, Aktion ) {
-
-        if (Aktion.gelernt == false) {
-            Spielstand.aktueller_IQ += Aktion.zusätzlicher_IQ;
-        }
-
-        Aktion.gelernt = true;
-
     }
 
+  
 }
 
 
@@ -188,7 +191,7 @@ window.Spielstand = {
 
     Skyly_12: { links: -500, oben: -500 },
 
-    Klauenspringer: { Ort_Name: "Lavawelt", links: 420, oben: 255 },
+    Klauenspringer: window.AlleMonster.Klauenspringer,
 
     Lebenspunkte: 100,
 

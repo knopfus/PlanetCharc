@@ -8,7 +8,7 @@ Array.prototype.hinzufügen = function( element ) {
     this.push( element );
 };
 
-window.Spiel = (function(Orte, Gegenstände, Aktionen, Spielstand) {
+window.Spiel = (function(Orte, Gegenstände, Aktionen, AlleMonster, Spielstand) {
 
     // Orte mit "ihren" Gegenständen füllen
     for (var Ort_Name in Orte) {
@@ -48,14 +48,28 @@ window.Spiel = (function(Orte, Gegenstände, Aktionen, Spielstand) {
         }
     }
 
+    // mögliche_Aktionen im Monster mit Magie versehen
+    for (var Monster_Name in AlleMonster) {
+        var Monster = AlleMonster[Monster_Name];
+        for (var Aktion_Name in Monster.mögliche_Aktionen) {
+            var Aktion = Monster.mögliche_Aktionen[Aktion_Name];
+            Aktion.ausführen = (function( Aktion_Name, Gegenstand, Orte, Spielstand, Aktion, Monster ) {
+                return function() {
+                    Aktionen[Aktion_Name]( Gegenstand, Orte[Spielstand.aktueller_Ort_Name], Spielstand, Aktion, Monster );
+                };
+            }( Aktion_Name, Gegenstand, Orte, Spielstand, Aktion, Monster ));
+        }
+    }
+
     return {
         Orte: Orte,
         Gegenstände: Gegenstände,
         Aktionen: Aktionen,
+        AlleMonster: AlleMonster,
         Spielstand: Spielstand
     };
 
-} (window.Orte, window.Gegenstände, window.Aktionen, window.Spielstand));
+} (window.Orte, window.Gegenstände, window.Aktionen, window.AlleMonster, window.Spielstand));
 
 
 
@@ -162,7 +176,8 @@ function bereite_Spiel_vor() {
 
 function Spieluhr_tickt() {
     // Monsterbegegnung
-    if (Spielstand.Klauenspringer.Ort_Name == Spielstand.aktueller_Ort_Name) {
+    if (Spielstand.Klauenspringer.lebendig &&
+        Spielstand.Klauenspringer.Ort_Name == Spielstand.aktueller_Ort_Name) {
         Lebenspunkte_reduzieren(0.07);
     }
     zeige_Spiel_an();
@@ -241,7 +256,7 @@ function zeige_Spiel_an() {
     Klauenspringer_div.style.left = Klauenspringer.links + "px";
     Klauenspringer_div.style.top = Klauenspringer.oben + "px";
 
-    if (Klauenspringer.Ort_Name == Spiel.Spielstand.aktueller_Ort_Name) {
+    if (Klauenspringer.lebendig && Klauenspringer.Ort_Name == Spiel.Spielstand.aktueller_Ort_Name) {
         Klauenspringer_div.style.visibility = "visible";
     } else {
         Klauenspringer_div.style.visibility = "hidden";
@@ -336,6 +351,25 @@ for (var Gegenstand_Name in Spiel.Gegenstände) {
             };
         }( Gegenstand ));
     }
+}
+
+
+
+// --- Nun versehen wir die Monster mit Magie:
+for (var Monster_Name in Spiel.AlleMonster) {
+    var Monster = Spiel.AlleMonster[Monster_Name];
+
+    document.getElementById( Monster_Name ).onclick = (function(Monster) {
+        return function() {
+            var Aktion_Name = Spiel.Spielstand.aktuelle_Aktion_Name;
+            var Aktion = Monster.mögliche_Aktionen[Aktion_Name];
+            if ( Aktion ) {
+                Aktion.ausführen();
+                Spiel.Spielstand.aktuelle_Aktion_Name = "";
+                zeige_Spiel_an();
+            }
+        };
+    }( Monster ));
 }
 
 
