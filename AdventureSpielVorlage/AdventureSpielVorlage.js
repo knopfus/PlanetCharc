@@ -180,6 +180,12 @@ function Spieluhr_tickt() {
         Spielstand.Klauenspringer.Ort_Name == Spielstand.aktueller_Ort_Name) {
         Lebenspunkte_reduzieren(0.07);
     }
+
+    if (Spielstand.Zwerggreif.lebendig &&
+        Spielstand.Zwerggreif.Ort_Name == Spielstand.aktueller_Ort_Name) {
+        Lebenspunkte_reduzieren(0.07);
+    }
+
     zeige_Spiel_an();
 }
 
@@ -260,6 +266,18 @@ function zeige_Spiel_an() {
         Klauenspringer_div.style.visibility = "visible";
     } else {
         Klauenspringer_div.style.visibility = "hidden";
+    }
+
+    var Zwerggreif = Spiel.Spielstand.Zwerggreif;
+    var Zwerggreif_div = document.getElementById("Zwerggreif");
+
+    Zwerggreif_div.style.left = Zwerggreif.links + "px";
+    Zwerggreif_div.style.top = Zwerggreif.oben + "px";
+
+    if (Zwerggreif.lebendig && Zwerggreif.Ort_Name == Spiel.Spielstand.aktueller_Ort_Name) {
+        Zwerggreif_div.style.visibility = "visible";
+    } else {
+        Zwerggreif_div.style.visibility = "hidden";
     }
 
     Gegenstände_in_Besitz_anzeigen();

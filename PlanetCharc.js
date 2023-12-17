@@ -55,6 +55,23 @@ window.AlleMonster = {
         Lebenspunkte: 100,
 
         lebendig: true
+    },
+
+    "Zwerggreif": {
+        mögliche_Orte: [
+            { Ort_Name: "Dschungel_1", links: 350, oben: 25 },
+            { Ort_Name: "Unerreichbarer_Ort", links: 420, oben: 255 }
+        ],
+
+        Ort_Name: "Dschungel_1", links: 420, oben: 255,
+        
+        mögliche_Aktionen: {
+            kaempfen: {}
+        },
+
+        Lebenspunkte: 80,
+
+        lebendig: true
     }
 };
 
@@ -73,22 +90,16 @@ window.Gegenstände = {
         }
 
     },
+    */
+    "Klauenspringer-Zahn": {
 
-    "Zeitmaschine_Höhle_Vergangenheit": {
-
-        wo: { Ort_Name: "Höhle_Vergangenheit", links: 619, oben: -9, breit: 100, hoch: 170, gedreht: 263 },
+        wo: { Ort_Name: "Lavawelt", links: 619, oben: -9, breit: 100, hoch: 170, gedreht: 263 },
 
         mögliche_Aktionen: {
-            gehe_zu: {
-                wo: "im_Ort",
-                Ziel_Ort_Name: "Zimmer_Gegenwart",
-                Luan_10: { links: 520, oben: 72, kommt_von: { links: 550, oben: 71 } },
-                Luan_12: { links: 400, oben: 72, kommt_von: { links: 300, oben: 72 } }
-            }
+            nehmen: { wo: "im_Ort"}
         }
 
-    }
-    */
+    },
 
     "Portal_von_Dschungel_1_zu_Lavawelt": {    
 
@@ -147,6 +158,21 @@ window.Aktionen = {
             spiele_Sound_Effect("Klauenspringer");
         }
 
+        // Zwerggreif bewegt sich
+        var mögliche_Orte = window.AlleMonster.Zwerggreif.mögliche_Orte;
+        var anzahl = mögliche_Orte.length;
+        var index = Math.floor(Math.random() * anzahl);
+        var ort = mögliche_Orte[index];
+
+        Spielstand.Zwerggreif.Ort_Name = ort.Ort_Name;
+        Spielstand.Zwerggreif.links = ort.links;
+        Spielstand.Zwerggreif.oben = ort.oben;
+
+        if (Spielstand.Zwerggreif.Ort_Name == Spielstand.aktueller_Ort_Name) {
+            spiele_Sound_Effect("Zwerggreif");
+        }
+
+
         // Skylys bewegen sich
         Spielstand.Skyly_10.links = Aktion.Skyly_10.links;
         Spielstand.Skyly_10.oben = Aktion.Skyly_10.oben;
@@ -192,6 +218,8 @@ window.Spielstand = {
     Skyly_12: { links: -500, oben: -500 },
 
     Klauenspringer: window.AlleMonster.Klauenspringer,
+
+    Zwerggreif: window.AlleMonster.Zwerggreif,
 
     Lebenspunkte: 100,
 
