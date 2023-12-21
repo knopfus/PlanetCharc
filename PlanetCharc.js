@@ -94,7 +94,7 @@ window.Gegenstände = {
 
     "Klauenspringer-Zahn": {
 
-        wo: { Ort_Name: "Unerreichbarer_Ort", links: 619, oben: -9, breit: 100, hoch: 170, gedreht: 263 },
+        wo: { Ort_Name: "Unerreichbarer_Ort", links: 470, oben: 287.5, breit: 50, hoch: 85, gedreht: 263 },
 
         mögliche_Aktionen: {
             nehmen: { wo: "im_Ort"}
