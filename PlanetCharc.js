@@ -91,9 +91,10 @@ window.Gegenstände = {
 
     },
     */
+
     "Klauenspringer-Zahn": {
 
-        wo: { Ort_Name: "Lavawelt", links: 619, oben: -9, breit: 100, hoch: 170, gedreht: 263 },
+        wo: { Ort_Name: "Unerreichbarer_Ort", links: 619, oben: -9, breit: 100, hoch: 170, gedreht: 263 },
 
         mögliche_Aktionen: {
             nehmen: { wo: "im_Ort"}
@@ -189,7 +190,6 @@ window.Aktionen = {
 
         Ort.Gegenstände.entfernen( Gegenstand );
         Spielstand.Gegenstände_in_Besitz.hinzufügen( Gegenstand );
-
     },
 
     kaempfen: function( Gegenstand, Ort, Spielstand, Aktion, Monster ) {
@@ -199,6 +199,12 @@ window.Aktionen = {
         if (Monster.Lebenspunkte <= 0) {
             spiele_Sound_Effect("aargh");
             Monster.lebendig = false;
+            
+
+            if ( window.AlleMonster["Klauenspringer"].Ort_Name == Spielstand.aktueller_Ort_Name && window.AlleMonster["Klauenspringer"].lebendig == false) {
+                Ort.Gegenstände.hinzufügen( window.Gegenstände["Klauenspringer-Zahn"] );
+            }
+        
         } else {
             spiele_Sound_Effect("autsch");
         }

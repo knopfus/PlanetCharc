@@ -10,7 +10,7 @@ Array.prototype.hinzufügen = function( element ) {
 
 window.Spiel = (function(Orte, Gegenstände, Aktionen, AlleMonster, Spielstand) {
 
-    // Orte mit "ihren" Gegenständen füllen
+    // Orte mit ihren Gegenständen füllen
     for (var Ort_Name in Orte) {
         var Ort = Orte[Ort_Name];
         Orte[Ort_Name].Gegenstände = [];
