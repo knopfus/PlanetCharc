@@ -18,10 +18,50 @@ window.Orte = {
 
     },
 
+    Dschungel_2: {
+
+        mögliche_Aktionen: { 
+            gehe_zu: { Ziel_Ort_Name: "Fluss", Skyly_10: { links: 420, oben: 255, kommt_von: { links: 110, oben: 410 } }, Skyly_12: { links: 310, oben: 445, kommt_von: { links: 0, oben: 300 } } }
+        }
+
+    },
+
+    Fluss: {
+
+        mögliche_Aktionen: { 
+            gehe_zu: { Ziel_Ort_Name: "Quelle_des_Lichts", Skyly_10: { links: 420, oben: 255, kommt_von: { links: 110, oben: 410 } }, Skyly_12: { links: 310, oben: 445, kommt_von: { links: 0, oben: 300 } } }
+        }
+
+    },
+
+    Quelle_des_Lichts: {
+
+        mögliche_Aktionen: { 
+            gehe_zu: { Ziel_Ort_Name: "Lavawelt", Skyly_10: { links: 420, oben: 255, kommt_von: { links: 110, oben: 410 } }, Skyly_12: { links: 310, oben: 445, kommt_von: { links: 0, oben: 300 } } }
+        }
+
+    },
+
     Lavawelt: {
 
         mögliche_Aktionen: { 
-            gehe_zu: { Ziel_Ort_Name: "Dschungel_1", Skyly_10: { links: 420, oben: 255, kommt_von: { links: 110, oben: 410 } }, Skyly_12: { links: 310, oben: 445, kommt_von: { links: 0, oben: 300 } } }
+            gehe_zu: { Ziel_Ort_Name: "Berge_der_Angst", Skyly_10: { links: 420, oben: 255, kommt_von: { links: 110, oben: 410 } }, Skyly_12: { links: 310, oben: 445, kommt_von: { links: 0, oben: 300 } } }
+        }
+
+    },
+
+    Berge_der_Angst: {
+
+        mögliche_Aktionen: { 
+            gehe_zu: { Ziel_Ort_Name: "Gipfel", Skyly_10: { links: 420, oben: 255, kommt_von: { links: 110, oben: 410 } }, Skyly_12: { links: 310, oben: 445, kommt_von: { links: 0, oben: 300 } } }
+        }
+
+    },
+
+    Gipfel: {
+
+        mögliche_Aktionen: { 
+            gehe_zu: { Ziel_Ort_Name: "Berge_der_Angst", Skyly_10: { links: 420, oben: 255, kommt_von: { links: 110, oben: 410 } }, Skyly_12: { links: 310, oben: 445, kommt_von: { links: 0, oben: 300 } } }
         }
 
     },
@@ -29,7 +69,23 @@ window.Orte = {
     Grosse_Wiese: {
 
         mögliche_Aktionen: { 
-            gehe_zu: { Ziel_Ort_Name: "Dschungel_1", Skyly_10: { links: 420, oben: 255, kommt_von: { links: 110, oben: 410 } }, Skyly_12: { links: 310, oben: 445, kommt_von: { links: 0, oben: 300 } } }
+            gehe_zu: { Ziel_Ort_Name: "Ewiges_Eis", Skyly_10: { links: 420, oben: 255, kommt_von: { links: 110, oben: 410 } }, Skyly_12: { links: 310, oben: 445, kommt_von: { links: 0, oben: 300 } } }
+        }
+
+    },
+
+    Ewiges_Eis: {
+
+        mögliche_Aktionen: { 
+            gehe_zu: { Ziel_Ort_Name: "Höhle_Yeti", Skyly_10: { links: 420, oben: 255, kommt_von: { links: 110, oben: 410 } }, Skyly_12: { links: 310, oben: 445, kommt_von: { links: 0, oben: 300 } } }
+        }
+
+    },
+
+    Höhle_Yeti: {
+
+        mögliche_Aktionen: { 
+            gehe_zu: { Ziel_Ort_Name: "Ewiges_Eis", Skyly_10: { links: 420, oben: 255, kommt_von: { links: 110, oben: 410 } }, Skyly_12: { links: 310, oben: 445, kommt_von: { links: 0, oben: 300 } } }
         }
 
     },
@@ -127,6 +183,38 @@ window.Gegenstände = {
             gehe_zu: {
                 wo: "im_Ort",
                 Ziel_Ort_Name: "Grosse_Wiese",
+                Skyly_10: { links: 420, oben: 255, kommt_von: { links: 110, oben: 410 } }, 
+                Skyly_12: { links: 310, oben: 445, kommt_von: { links: 0, oben: 300 } }
+            }
+
+        }
+    },
+
+    "Portal_von_Silberne_Lichtung_zu_Dschungel_1": {    
+
+        wo: { Ort_Name: "Silberne_Lichtung", links: 120, oben: 580, breit: 100, hoch: 170 },
+
+        mögliche_Aktionen: {
+
+            gehe_zu: {
+                wo: "im_Ort",
+                Ziel_Ort_Name: "Dschungel_1",
+                Skyly_10: { links: 420, oben: 255, kommt_von: { links: 110, oben: 410 } }, 
+                Skyly_12: { links: 310, oben: 445, kommt_von: { links: 0, oben: 300 } }
+            }
+
+        }
+    },
+
+    "Portal_von_Silberne_Lichtung_zu_Dschungel_2": {    
+
+        wo: { Ort_Name: "Silberne_Lichtung", links: 1340, oben: 440, breit: 100, hoch: 170 },
+
+        mögliche_Aktionen: {
+
+            gehe_zu: {
+                wo: "im_Ort",
+                Ziel_Ort_Name: "Dschungel_2",
                 Skyly_10: { links: 420, oben: 255, kommt_von: { links: 110, oben: 410 } }, 
                 Skyly_12: { links: 310, oben: 445, kommt_von: { links: 0, oben: 300 } }
             }
