@@ -1,5 +1,10 @@
 class Ein_Spiel {
     constructor(Spielaufbau) {
+        this.Portale = {};
+        for (let Portal_Name of Spielaufbau.Portale) {
+            let Portal = new Ein_Portal(Portal_Name, this);
+            this.Portale[Portal_Name] = Portal;
+        }
 
         this.Orte = {};
         for (let Ort_Name in Spielaufbau.Orte) {
@@ -10,8 +15,11 @@ class Ein_Spiel {
             let Eigenschaften = Spielaufbau.Orte[Ort_Name];
 
             let Ort = this.Orte[Ort_Name];
-            let Ziel_Ort = this.Orte[Eigenschaften.zu];
-            Ort.zu(Ziel_Ort);
+            for (let Portal_Name in Eigenschaften.Portale) {
+                let Portal_Eigenschaften = Eigenschaften.Portale[Portal_Name];
+                let zu = this.Orte[Portal_Eigenschaften.zu];
+                Ort.portal(Portal_Name, { zu: zu, links: Portal_Eigenschaften.links, oben: Portal_Eigenschaften.oben, breit: Portal_Eigenschaften.breit, hoch: Portal_Eigenschaften.hoch });
+            }
         }
 
         this.Gegenstände = {};
@@ -36,7 +44,9 @@ class Ein_Spiel {
 
         let self = this;
         document.getElementById("Ort-Bild").onclick = function() {
-            self.aktive_Aktion.ausführen_auf_Ort();
+            if (self.aktive_Aktion) {
+                self.aktive_Aktion.ausführen_auf_Ort();
+            }
         };
 
         this.Ort = null;
@@ -63,9 +73,10 @@ class Ein_Spiel {
         for (let Gegenstand of Ort.Gegenstände) {
             Gegenstand.anzeigen();
         }
-    }
-
-    gehe_weiter() {
-        this.gehe_zu_Ort(this.Ort.Ziel_Ort);
+    
+        for (let Portal_Name in this.Portale) {
+            let Portal = this.Portale[Portal_Name];
+            Portal.wechsle_zu(Ort);
+        }
     }
 }

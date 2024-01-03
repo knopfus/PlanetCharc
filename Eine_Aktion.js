@@ -43,4 +43,12 @@ class Eine_Aktion {
 
         this.deaktivieren();
     }
+
+    ausführen_auf_Portal(Portal) {
+        if (this.Eigenschaften.auf_Portal) {
+            this.Eigenschaften.auf_Portal(Portal, this.Spiel);
+        }
+
+        this.deaktivieren();
+    }
 }

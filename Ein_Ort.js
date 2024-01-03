@@ -2,6 +2,7 @@ class Ein_Ort {
     constructor(Name) {
         this.Name = Name;
         this.Gegenstände = [];
+        this.Portale = {};
     }
 
     hinzufügen(Gegenstand) {
@@ -12,7 +13,7 @@ class Ein_Ort {
         this.Gegenstände.entfernen(Gegenstand);
     }
 
-    zu(Ziel_Ort) {
-        this.Ziel_Ort = Ziel_Ort;
+    portal(Portal_Name, Eigenschaften) {
+        this.Portale[Portal_Name] = Eigenschaften;
     }
 }
