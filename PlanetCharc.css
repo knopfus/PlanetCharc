@@ -81,8 +81,8 @@ h1 {
 
 .Tier { position: absolute; }
 
-#Skyly_10 { height: 75px; width: 75px; font-size: 75px; }
-#Skyly_12 { height: 75px; width: 75px; font-size: 75px; }
+#Skyly_10 { height: 75px; width: 75px; font-size: 75px; display: none }
+#Skyly_12 { height: 75px; width: 75px; font-size: 75px; display: none }
 
 .Monster { position: absolute; }
 .Monster > img {
