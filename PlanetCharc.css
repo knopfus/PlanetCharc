@@ -73,6 +73,9 @@ h1 {
     position: absolute;
     border: 1px solid red;
 }
+#Portal_Vorlage {
+    display: none;
+}
 
 .Gegenstand {
     position: absolute;
