@@ -16,7 +16,9 @@ class Ein_Gegenstand {
 
         let self = this;
         Gegenstand_div.onclick = function() {
-            self.Spiel.aktive_Aktion.ausführen_auf_Gegenstand(self);
+            if (self.Spiel.aktive_Aktion) {
+                self.Spiel.aktive_Aktion.ausführen_auf_Gegenstand(self);
+            }
         };
 
         let Gegenstand_img = Gegenstand_div.getElementsByTagName("img")[0];

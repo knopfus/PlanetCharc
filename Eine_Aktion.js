@@ -51,4 +51,12 @@ class Eine_Aktion {
 
         this.deaktivieren();
     }
+
+    ausführen_auf_Monster(Monster) {
+        if (this.Eigenschaften.auf_Monster) {
+            this.Eigenschaften.auf_Monster(Monster, this.Spiel);
+        }
+
+        this.deaktivieren();
+    }
 }

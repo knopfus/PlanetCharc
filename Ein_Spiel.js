@@ -8,9 +8,10 @@ class Ein_Spiel {
 
         this.Orte = {};
         for (let Ort_Name in Spielaufbau.Orte) {
-            let Ort = new Ein_Ort(Ort_Name);
+            let Ort = new Ein_Ort(Ort_Name, this);
             this.Orte[Ort_Name] = Ort;
         }
+
         for (let Ort_Name in Spielaufbau.Orte) {
             let Eigenschaften = Spielaufbau.Orte[Ort_Name];
 
@@ -34,6 +35,14 @@ class Ein_Spiel {
             }
         }
 
+        this.Monster = {};
+        for (let Monster_Name in Spielaufbau.Monster) {
+            let Eigenschaften = Spielaufbau.Monster[Monster_Name];
+
+            let Monster = new Ein_Monster(Monster_Name, Eigenschaften, this);
+            this.Monster[Monster_Name] = Monster;
+        }
+
         this.Aktionen = {};
         for (let Aktion_Name in Spielaufbau.Aktionen) {
             let Eigenschaften = Spielaufbau.Aktionen[Aktion_Name];
@@ -49,34 +58,25 @@ class Ein_Spiel {
             }
         };
 
+        this.Kraft = 20;
+
         this.Ort = null;
         this.gehe_zu_Ort(this.Orte[Spielaufbau.Ich.in]);
 
         this.aktive_Aktion = null;
     }
 
-    verlasse_Ort(Ort) {
-        for (let Gegenstand of Ort.Gegenstände) {
-            Gegenstand.verstecken();
-        }
-    }
-
     gehe_zu_Ort(Ort) {
         if (this.Ort) {
-            this.verlasse_Ort(this.Ort);
+            this.Ort.verlassen();
         }
 
         this.Ort = Ort;
-        document.getElementById("Status-Ort").innerText = Ort.Name;
-        document.getElementById("Ort-Bild").src = "Orte/" + Ort.Name + ".png?nocache=" + Date.now();
+        this.Ort.betreten();
 
-        for (let Gegenstand of Ort.Gegenstände) {
-            Gegenstand.anzeigen();
-        }
-    
-        for (let Portal_Name in this.Portale) {
-            let Portal = this.Portale[Portal_Name];
-            Portal.wechsle_zu(Ort);
+        for (var Monster_Name in this.Monster) {
+            let Monster = this.Monster[Monster_Name];
+            Monster.gehe_in_zufälligen_Ort();
         }
     }
 }

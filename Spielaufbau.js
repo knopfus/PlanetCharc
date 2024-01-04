@@ -68,6 +68,25 @@ var Spielaufbau = {
 
     },
 
+    Monster: {
+        "Klauenspringer": {
+            Orte: [
+                { in: "Lavawelt", links: 420, oben: 255, breit: 150, hoch: 150, gedreht: 0 },
+                { in: "Unerreichbarer_Ort" }
+            ],
+    
+            Lebenspunkte: 100
+        },
+        "Zwerggreif": {
+            Orte: [
+                { in: "Dschungel_1", links: 350, oben: 25, breit: 150, hoch: 150, gedreht: 0 },
+                { in: "Unerreichbarer_Ort" }
+            ],
+    
+            Lebenspunkte: 80
+        }    
+    },
+
     Aktionen: {
         gehe_zu: {
             auf_Portal: function(Portal) {
@@ -78,6 +97,12 @@ var Spielaufbau = {
         nehmen: {
             auf_Gegenstand: function(Gegenstand) {
                 Gegenstand.nehmen();
+            }
+        },
+
+        kämpfen: {
+            auf_Monster: function(Monster, Spiel) {
+                Monster.bekämpfen(Spiel.Kraft);
             }
         }
     },
