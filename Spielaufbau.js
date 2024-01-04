@@ -54,6 +54,11 @@ var Spielaufbau = {
             West: { zu: "Lavawelt",             links: 0, oben: 50, breit: 50, hoch: 611 }
         } },
 
+        Nichts: { Portale: {
+            Süd: { zu: "Gipfel",                links: 50, oben: 661, breit: 1340, hoch: 50}
+        } },
+    
+
         Unerreichbarer_Ort: { }
     },
 
