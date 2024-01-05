@@ -15,11 +15,10 @@ var Spielaufbau = {
                 { links: 570,  oben: 650, Radius: 50, zoom: 100 },
                 { links: 546,  oben: 554, Radius: 50, zoom: 100 },
                 { links: 500,  oben: 470, Radius: 50, zoom: 100 },
-                { links: 610,  oben: 405, Radius: 50, zoom: 100 },
-                { links: 750,  oben: 400, Radius: 50, zoom: 100 },
+                { links: 610,  oben: 385, Radius: 50, zoom: 100 },
+                { links: 750,  oben: 380, Radius: 50, zoom: 100 },
                 { links: 831,  oben: 451, Radius: 50, zoom: 100 },
                 { links: 905,  oben: 520, Radius: 50, zoom: 100 },
-                { links: 1705, oben: 505, Radius: 50, zoom: 100 },
                 { links: 1010, oben: 557, Radius: 50, zoom: 100 },
                 { links: 1134, oben: 504, Radius: 50, zoom: 100 },
                 { links: 1252, oben: 469, Radius: 50, zoom: 100 }
@@ -27,6 +26,12 @@ var Spielaufbau = {
             Portale: {
                 West: { zu: "Dschungel_1",      links: 0, oben: 50, breit: 50, hoch: 611 },
                 Ost:  { zu: "Dschungel_2",      links: 1390, oben: 50, breit: 50, hoch: 611 }
+            },
+            Eintritte: {
+                // Herkunts-Ort:    Wegpunkt-Nummer
+                "Start":            7,
+                "Dschungel_1":      3,
+                "Dschungel_2":      16
             }
         },
         Dschungel_1: {             
@@ -162,7 +167,7 @@ var Spielaufbau = {
             },
 
             auf_Ort: function(Ort, Spiel, event) {
-                Spiel.Spieler.gehe_zu({ links: event.offsetX, oben: event.offsetY, breite: 150, höhe: 150 });
+                //Spiel.Spieler.gehe_zu({ links: event.offsetX, oben: event.offsetY, breite: 150, höhe: 150 });
             }
         },
 

@@ -40,17 +40,10 @@ class Ein_Wegpunkt {
             // Dieses Wegpunkt ist für diesen Ort nicht definiert worden, daher finden sich im Ort
             // unter diesem Wegpunktnamen keine Eigenschaften
             this.Wegpunkt_div.style.visibility = "hidden";
-        }        
+        }
     }
 
     gehe_zu() {
-        let Koordinaten = {
-            links: this.Eigenschaften.links - 0.5 * this.Eigenschaften.zoom,
-            oben: this.Eigenschaften.oben - this.Eigenschaften.zoom,
-            breit: this.Eigenschaften.zoom,
-            hoch: this.Eigenschaften.zoom
-        };
-
-        this.Spiel.Spieler.gehe_zu(Koordinaten);
+        this.Spiel.Spieler.gehe_zu(this);
     }
 }

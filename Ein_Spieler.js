@@ -6,14 +6,42 @@ class Ein_Spieler {
         this.Spieler_div = document.getElementById("Spieler");
     }
 
-    gehe_zu(Koordinaten) {
-        if (!this.Koordinaten) {
-            // Noch keine Koordinaten - Keine Animation
+    gehe_zu(Wegpunkt) {
+        if (!Wegpunkt.Eigenschaften) return; // Versuche nicht zu einem nicht existierenden Wegpunkt zu gehen
+
+        if (!this.Wegpunkt) {
+            // Noch kein Wegpunkt - Keine Animation
+
+            let Koordinaten = {
+                links: Wegpunkt.Eigenschaften.links - 0.5 * Wegpunkt.Eigenschaften.zoom,
+                oben: Wegpunkt.Eigenschaften.oben - Wegpunkt.Eigenschaften.zoom,
+                breit: Wegpunkt.Eigenschaften.zoom,
+                hoch: Wegpunkt.Eigenschaften.zoom
+            };
+
             this.platziere_bei(Koordinaten);
+            this.Wegpunkt = Wegpunkt;
             return;
         }
 
-        let Schritte = 100;
+        this.Ziel_Wegpunkt = Wegpunkt;
+        let Differenz = this.Ziel_Wegpunkt.Nummer - this.Wegpunkt.Nummer;
+        if (Differenz == -1 || Differenz == 1) { // || bedeutet "oder"
+            this.nächster_Wegpunkt = Wegpunkt;
+        } else {
+            let Vorzeichen = Math.sign(Differenz);
+            let nächster_Wegpunkt_Nummer = this.Wegpunkt.Nummer + Vorzeichen;
+            this.nächster_Wegpunkt = this.Spiel.Wegpunkte[nächster_Wegpunkt_Nummer];
+        }
+
+        let Koordinaten = {
+            links: this.nächster_Wegpunkt.Eigenschaften.links - 0.5 * this.nächster_Wegpunkt.Eigenschaften.zoom,
+            oben: this.nächster_Wegpunkt.Eigenschaften.oben - this.nächster_Wegpunkt.Eigenschaften.zoom,
+            breit: this.nächster_Wegpunkt.Eigenschaften.zoom,
+            hoch: this.nächster_Wegpunkt.Eigenschaften.zoom
+        };
+
+        let Schritte = 50;
         this.Schritte = Schritte;
         this.Schritt_Richtung = {
             nach_rechts: (Koordinaten.links - this.Koordinaten.links) / Schritte,
@@ -21,6 +49,14 @@ class Ein_Spieler {
             verbreitern: (Koordinaten.breit - this.Koordinaten.breit) / Schritte,
             erhöhen: (Koordinaten.hoch - this.Koordinaten.hoch) / Schritte
         };
+    }
+
+    betrete_Ort_bei(Wegpunkt) {
+        this.Wegpunkt = null;
+        this.Koordinaten = null;
+        this.Schritte = 0;
+
+        this.gehe_zu(Wegpunkt);
     }
 
     platziere_bei(Koordinaten) {
@@ -42,6 +78,14 @@ class Ein_Spieler {
 
             this.Schritte -= 1;
             this.platziere_bei(Koordinaten);
+
+            if (this.Schritte == 0) {
+                // Am nächsten Wegpunkt angekommen
+                this.Wegpunkt = this.nächster_Wegpunkt;
+                if (this.nächster_Wegpunkt != this.Ziel_Wegpunkt) {
+                    this.gehe_zu(this.Ziel_Wegpunkt);
+                }
+            }
         }
     }
 }

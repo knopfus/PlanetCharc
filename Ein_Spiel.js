@@ -29,6 +29,12 @@ class Ein_Spiel {
                 let zu = this.Orte[Portal_Eigenschaften.zu];
                 Ort.Portal_hinzufügen(Portal_Name, { zu: zu, links: Portal_Eigenschaften.links, oben: Portal_Eigenschaften.oben, breit: Portal_Eigenschaften.breit, hoch: Portal_Eigenschaften.hoch });
             }
+
+            for (let Ort_Name in Eigenschaften.Eintritte) {
+                let Wegpunkt_Nummer = Eigenschaften.Eintritte[Ort_Name];
+                let Wegpunkt = this.Wegpunkte[Wegpunkt_Nummer];
+                Ort.Eintritt_hinzufügen(Ort_Name, Wegpunkt);
+            }
         }
 
         this.Gegenstände = {};
@@ -59,7 +65,7 @@ class Ein_Spiel {
             this.Aktionen[Aktion_Name] = Aktion;
         }
 
-        this.Spieler = new Ein_Spieler()
+        this.Spieler = new Ein_Spieler(this);
 
         let self = this;
         document.getElementById("Ort-Bild").onclick = function(event) {
@@ -90,10 +96,6 @@ class Ein_Spiel {
         document.onclick = function() {
             document.getElementById("musik").play();
         }
-
-        this.Spieler.gehe_zu({
-            links: 150, oben: 150, breit: 150, hoch: 150
-        });
     }
 
     gehe_zu_Ort(Ort) {
@@ -101,8 +103,17 @@ class Ein_Spiel {
             this.Ort.verlassen();
         }
 
+        let alter_Ort_Name = "Start";
+        if (this.Ort) {
+            alter_Ort_Name = this.Ort.Name;
+        }
+        
         this.Ort = Ort;
         this.Ort.betreten();
+
+        let Eintritt_Wegpunkt = this.Ort.Eintritte[alter_Ort_Name];
+        if (!Eintritt_Wegpunkt) { Eintritt_Wegpunkt = this.Wegpunkte[0]; }
+        this.Spieler.betrete_Ort_bei(Eintritt_Wegpunkt);
 
         for (var Monster_Name in this.Monster) {
             let Monster = this.Monster[Monster_Name];

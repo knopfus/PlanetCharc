@@ -5,6 +5,7 @@ class Ein_Ort {
         
         this.Gegenstände = [];
         this.Portale = {};
+        this.Eintritte = {};
 
         this.Status_Ort_element = document.getElementById("Status-Ort");
         this.Ort_Bild_div = document.getElementById("Ort-Bild");
@@ -48,5 +49,9 @@ class Ein_Ort {
 
     Portal_hinzufügen(Portal_Name, Eigenschaften) {
         this.Portale[Portal_Name] = Eigenschaften;
+    }
+
+    Eintritt_hinzufügen(Ort_Name, Wegpunkt) {
+        this.Eintritte[Ort_Name] = Wegpunkt;
     }
 }
