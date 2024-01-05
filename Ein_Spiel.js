@@ -1,5 +1,11 @@
 class Ein_Spiel {
     constructor(Spielaufbau) {
+        this.Wegpunkte = [];
+        for (let i = 0; i < 20; i++) {
+            let Wegpunkt = new Ein_Wegpunkt(i, this);
+            this.Wegpunkte.hinzufügen(Wegpunkt);
+        }
+
         this.Portale = {};
         for (let Portal_Name of Spielaufbau.Portale) {
             let Portal = new Ein_Portal(Portal_Name, this);
@@ -14,12 +20,14 @@ class Ein_Spiel {
 
         for (let Ort_Name in Spielaufbau.Orte) {
             let Eigenschaften = Spielaufbau.Orte[Ort_Name];
-
             let Ort = this.Orte[Ort_Name];
+
+            Ort.Wegpunkte_hinzufügen(Eigenschaften.Wegpunkte);
+
             for (let Portal_Name in Eigenschaften.Portale) {
                 let Portal_Eigenschaften = Eigenschaften.Portale[Portal_Name];
                 let zu = this.Orte[Portal_Eigenschaften.zu];
-                Ort.portal(Portal_Name, { zu: zu, links: Portal_Eigenschaften.links, oben: Portal_Eigenschaften.oben, breit: Portal_Eigenschaften.breit, hoch: Portal_Eigenschaften.hoch });
+                Ort.Portal_hinzufügen(Portal_Name, { zu: zu, links: Portal_Eigenschaften.links, oben: Portal_Eigenschaften.oben, breit: Portal_Eigenschaften.breit, hoch: Portal_Eigenschaften.hoch });
             }
         }
 
@@ -51,10 +59,14 @@ class Ein_Spiel {
             this.Aktionen[Aktion_Name] = Aktion;
         }
 
+        this.Spieler = new Ein_Spieler()
+
         let self = this;
-        document.getElementById("Ort-Bild").onclick = function() {
+        document.getElementById("Ort-Bild").onclick = function(event) {
+            console.log(event.offsetX + "," + event.offsetY);
+
             if (self.aktive_Aktion) {
-                self.aktive_Aktion.ausführen_auf_Ort(self.Ort);
+                self.aktive_Aktion.ausführen_auf_Ort(self.Ort, event);
             }
         };
     }
@@ -78,6 +90,10 @@ class Ein_Spiel {
         document.onclick = function() {
             document.getElementById("musik").play();
         }
+
+        this.Spieler.gehe_zu({
+            links: 150, oben: 150, breit: 150, hoch: 150
+        });
     }
 
     gehe_zu_Ort(Ort) {
@@ -138,5 +154,7 @@ class Ein_Spiel {
             let Monster = this.Monster[Monster_Name];
             Monster.Spieluhr_tickt();
         }
+
+        this.Spieler.Spieluhr_tickt();
     }
 }

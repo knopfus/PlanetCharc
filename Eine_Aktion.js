@@ -28,9 +28,9 @@ class Eine_Aktion {
         this.Aktion_div.classList.add("aktiv");
     }
 
-    ausführen_auf_Ort(Ort) {
+    ausführen_auf_Ort(Ort, event) {
         if (this.Eigenschaften.auf_Ort) {
-            this.Eigenschaften.auf_Ort(Ort, this.Spiel);
+            this.Eigenschaften.auf_Ort(Ort, this.Spiel, event);
         }
 
         this.deaktivieren();
@@ -39,6 +39,14 @@ class Eine_Aktion {
     ausführen_auf_Gegenstand(Gegenstand) {
         if (this.Eigenschaften.auf_Gegenstand) {
             this.Eigenschaften.auf_Gegenstand(Gegenstand, this.Spiel);
+        }
+
+        this.deaktivieren();
+    }
+
+    ausführen_auf_Wegpunkt(Wegpunkt) {
+        if (this.Eigenschaften.auf_Wegpunkt) {
+            this.Eigenschaften.auf_Wegpunkt(Wegpunkt, this.Spiel);
         }
 
         this.deaktivieren();

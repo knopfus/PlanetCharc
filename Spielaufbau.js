@@ -3,15 +3,40 @@ var Spielaufbau = {
 
     Orte: {
 
-        Silberne_Lichtung: { Portale: {
-            Nord: { zu: "Dschungel_1",          links: 50, oben: 0, breit: 1340, hoch: 50 },
-            Ost:  { zu: "Dschungel_2",          links: 1390, oben: 50, breit: 50, hoch: 611 }
-        } },
-        Dschungel_1: { Portale: {
-            Nord: { zu: "Berge_der_Angst",      links: 50, oben: 0, breit: 1340, hoch: 50 },
-            Süd:  { zu: "Silberne_Lichtung",    links: 50, oben: 661, breit: 1340, hoch: 50 },
-            West: { zu: "Grosse_Wiese",         links: 0, oben: 50, breit: 50, hoch: 611 }
-        } },
+        Silberne_Lichtung: {
+            Wegpunkte: [
+                { links: 170,  oben: 70,  Radius: 50, zoom: 100 },
+                { links: 103,  oben: 159, Radius: 50, zoom: 100 },
+                { links: 120,  oben: 270, Radius: 50, zoom: 100 },
+                { links: 145,  oben: 393, Radius: 50, zoom: 100 },
+                { links: 265,  oben: 460, Radius: 50, zoom: 100 },
+                { links: 344,  oben: 534, Radius: 50, zoom: 100 },
+                { links: 410,  oben: 650, Radius: 50, zoom: 100 },
+                { links: 570,  oben: 650, Radius: 50, zoom: 100 },
+                { links: 546,  oben: 554, Radius: 50, zoom: 100 },
+                { links: 500,  oben: 470, Radius: 50, zoom: 100 },
+                { links: 610,  oben: 405, Radius: 50, zoom: 100 },
+                { links: 750,  oben: 400, Radius: 50, zoom: 100 },
+                { links: 831,  oben: 451, Radius: 50, zoom: 100 },
+                { links: 905,  oben: 520, Radius: 50, zoom: 100 },
+                { links: 1705, oben: 505, Radius: 50, zoom: 100 },
+                { links: 1010, oben: 557, Radius: 50, zoom: 100 },
+                { links: 1134, oben: 504, Radius: 50, zoom: 100 },
+                { links: 1252, oben: 469, Radius: 50, zoom: 100 }
+            ],
+            Portale: {
+                West: { zu: "Dschungel_1",      links: 0, oben: 50, breit: 50, hoch: 611 },
+                Ost:  { zu: "Dschungel_2",      links: 1390, oben: 50, breit: 50, hoch: 611 }
+            }
+        },
+        Dschungel_1: {             
+            
+            Portale: {
+                Nord: { zu: "Berge_der_Angst",      links: 50, oben: 0, breit: 1340, hoch: 50 },
+                Ost:  { zu: "Silberne_Lichtung",    links: 1390, oben: 50, breit: 50, hoch: 611 },
+                West: { zu: "Grosse_Wiese",         links: 0, oben: 50, breit: 50, hoch: 611 }
+            } 
+        },
         Berge_der_Angst: { Portale: {
             Ost:  { zu: "Lavawelt",             links: 1390, oben: 50, breit: 50, hoch: 611 },
             Süd:  { zu: "Grosse_Wiese",         links: 50, oben: 661, breit: 1340, hoch: 50 },
@@ -34,10 +59,32 @@ var Spielaufbau = {
             Ost:  { zu: "Ewiges_Eis",           links: 1390, oben: 50, breit: 50, hoch: 611 }
         } },
 
-        Dschungel_2: { Portale: {
-            Ost:  { zu: "Fluss",                links: 1390, oben: 50, breit: 50, hoch: 611 },
-            West: { zu: "Silberne_Lichtung",    links: 0, oben: 50, breit: 50, hoch: 611 }
-        } },
+        Dschungel_2: { 
+            
+            Wegpunkte: [
+                { links: 1053, oben: 83,  Radius: 50, zoom: 100 },
+                { links: 966,  oben: 123, Radius: 50, zoom: 100 },
+                { links: 869,  oben: 169, Radius: 50, zoom: 100 },
+                { links: 781,  oben: 213, Radius: 50, zoom: 100 },
+                { links: 694,  oben: 267, Radius: 50, zoom: 100 },
+                { links: 599,  oben: 304, Radius: 50, zoom: 100 },
+                { links: 569,  oben: 478, Radius: 50, zoom: 100 },
+                { links: 469,  oben: 513, Radius: 50, zoom: 100 },
+                { links: 377,  oben: 598, Radius: 50, zoom: 100 },
+                { links: 489,  oben: 664, Radius: 50, zoom: 100 },
+                { links: 610,  oben: 673, Radius: 50, zoom: 100 },
+                { links: 713,  oben: 675, Radius: 50, zoom: 100 },
+                { links: 828,  oben: 639, Radius: 50, zoom: 100 },
+                { links: 791,  oben: 587, Radius: 50, zoom: 100 },
+                { links: 851,  oben: 527, Radius: 50, zoom: 100 }
+                
+            ],
+            
+            Portale: {
+                Ost:  { zu: "Fluss",                links: 1390, oben: 50, breit: 50, hoch: 611 },
+                West: { zu: "Silberne_Lichtung",    links: 0, oben: 50, breit: 50, hoch: 611 }
+            } 
+        },
         Fluss: { Portale: {
             Nord: { zu: "Quelle_des_Lichts",    links: 50, oben: 0, breit: 1340, hoch: 50 },
             West: { zu: "Dschungel_2",          links: 0, oben: 50, breit: 50, hoch: 611 }
@@ -94,8 +141,16 @@ var Spielaufbau = {
 
     Aktionen: {
         gehe_zu: {
+            auf_Wegpunkt: function(Wegpunkt) {
+                Wegpunkt.gehe_zu();
+            },
+
             auf_Portal: function(Portal) {
                 Portal.gehe_zu();
+            },
+
+            auf_Ort: function(Ort, Spiel, event) {
+                Spiel.Spieler.gehe_zu({ links: event.offsetX, oben: event.offsetY, breite: 150, höhe: 150 });
             }
         },
 

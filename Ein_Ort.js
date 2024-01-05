@@ -23,6 +23,10 @@ class Ein_Ort {
         for (let Gegenstand of this.Gegenstände) {
             Gegenstand.anzeigen();
         }
+
+        for (let Wegpunkt of this.Spiel.Wegpunkte) {
+            Wegpunkt.wechsle_zu(this);
+        }
     
         for (let Portal_Name in this.Spiel.Portale) {
             let Portal = this.Spiel.Portale[Portal_Name];
@@ -38,7 +42,11 @@ class Ein_Ort {
         this.Gegenstände.entfernen(Gegenstand);
     }
 
-    portal(Portal_Name, Eigenschaften) {
+    Wegpunkte_hinzufügen(Wegpunkte) {
+        this.Wegpunkte = Wegpunkte;
+    }
+
+    Portal_hinzufügen(Portal_Name, Eigenschaften) {
         this.Portale[Portal_Name] = Eigenschaften;
     }
 }

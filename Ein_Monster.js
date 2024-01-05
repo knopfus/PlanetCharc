@@ -35,7 +35,7 @@ class Ein_Monster {
             let Ort_Name = Ort_Eigenschaften.in;
             let Ort = this.Spiel.Orte[Ort_Name];
 
-            this.Orte.push({
+            this.Orte.hinzufügen({
                 in: Ort,
                 links: Ort_Eigenschaften.links,
                 oben: Ort_Eigenschaften.oben,
