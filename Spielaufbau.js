@@ -18,6 +18,7 @@ var Spielaufbau = {
             West: { zu: "Gipfel",               links: 0, oben: 50, breit: 50, hoch: 611 }
         } },
         Gipfel: { Portale: {
+            Nord: { zu: "Nichts",               links: 50, oben: 0, breit: 1340, hoch: 50 },
             Ost:  { zu: "Berge_der_Angst",      links: 1390, oben: 50, breit: 50, hoch: 611 }
         } },
         Grosse_Wiese: { Portale: {

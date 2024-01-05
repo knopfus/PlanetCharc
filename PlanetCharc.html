@@ -15,24 +15,14 @@
 
     <img id="Ort-Bild" src="AdventureSpielVorlage/hourglass.gif"></img>
 
+    <div id="Portal_Vorlage" class="Portal"></div>
+
     <div id="Gegenstand_Vorlage" class="Gegenstand">
         <img> </img>
     </div>
 
-    <div id="Klauenspringer" class="Monster">
-      <img src="Gegner/Klauenspringer.png">
-    </div>
-
-    <div id="Zwerggreif" class="Monster">
-      🦅
-    </div>
-
-    <div id="Skyly_10" class="Tier">
-        🐥
-    </div>
-
-    <div id="Skyly_12" class="Tier">
-      🐥
+    <div id="Monster_Vorlage" class="Monster">
+      <img> </img>
     </div>
 
   </div>
@@ -51,8 +41,12 @@
         &#9995;
       </div>
 
-      <div class="Aktion" id="Aktion-kaempfen"> 
+      <div class="Aktion" id="Aktion-kämpfen"> 
         ⚔️
+      </div>
+
+      <div class="Aktion" id="Aktion-unsterblich"> 
+        🛡️
       </div>
 
     </div>
@@ -75,15 +69,22 @@
 
   <div id="Game_Over">
     <b>Game Over</b><br/>
-    <button id="Neustarten">Neustarten</button>
+    <button id="Neustarten" onclick="window.location.reload">Neustarten</button>
   </div>
 </div> <!-- Spiel -->
 
 <link rel="stylesheet" href="PlanetCharc.css"/>
 
-<script type="text/javascript" src="PlanetCharc.js"></script>
+<script type="text/javascript" src="Funktionen.js"></script>
 
-<script type="text/javascript" src="AdventureSpielVorlage/AdventureSpielVorlage.js"></script>
+<script type="text/javascript" src="Eine_Aktion.js"></script>
+<script type="text/javascript" src="Ein_Gegenstand.js"></script>
+<script type="text/javascript" src="Ein_Monster.js"></script>
+<script type="text/javascript" src="Ein_Ort.js"></script>
+<script type="text/javascript" src="Ein_Portal.js"></script>
+<script type="text/javascript" src="Ein_Spiel.js"></script>
+<script type="text/javascript" src="Spielaufbau.js"></script>
+<script type="text/javascript" src="Spiel_starten.js"></script>
 
 </body>
-</html>                                                                                               
+</html>
