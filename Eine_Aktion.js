@@ -28,9 +28,9 @@ class Eine_Aktion {
         this.Aktion_div.classList.add("aktiv");
     }
 
-    ausführen_auf_Ort() {
+    ausführen_auf_Ort(Ort) {
         if (this.Eigenschaften.auf_Ort) {
-            this.Eigenschaften.auf_Ort(this.Spiel);
+            this.Eigenschaften.auf_Ort(Ort, this.Spiel);
         }
 
         this.deaktivieren();

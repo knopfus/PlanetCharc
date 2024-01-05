@@ -2,7 +2,10 @@ class Ein_Monster {
     constructor(Name, Eigenschaften, Spiel) {
         this.Name = Name;
         this.Spiel = Spiel;
+        this.Lebenspunkte = Eigenschaften.Lebenspunkte;
+        this.Kraft = Eigenschaften.Kraft;
 
+        // Die HTML Elemente für das Monster vorbereiten
         let Monster_Vorlage = document.getElementById("Monster_Vorlage");
         let Monster_div = Monster_Vorlage.cloneNode(true);
 
@@ -24,6 +27,7 @@ class Ein_Monster {
 
         this.Monster_div = Monster_div;
 
+        // Sich merken, wo das Monster auftauchen kann
         let Orte = Eigenschaften.Orte;
         this.Orte = [];
 
@@ -41,9 +45,16 @@ class Ein_Monster {
             });
         }
 
-        this.Lebenspunkte = Eigenschaften.Lebenspunkte;
+        // Sich merken, welchen Gegenstand es als Belohnung geben kann
+        if (Eigenschaften.Belohnung) {
+            this.Gegenstand_als_Belohnung = this.Spiel.Gegenstände[Eigenschaften.Belohnung];
+        }
     }
 
+    /**
+     * Aus den möglichen Orten dieses Monsters einen zufälligen auswählen und
+     * das Monster auftauchen lassen, falls der Spieler gerade am gleichen Ort ist.
+     */
     gehe_in_zufälligen_Ort() {
         if (this.tot()) { return; } // Code gar nicht erst ausführen
 
@@ -59,34 +70,37 @@ class Ein_Monster {
         if (Eigenschaften.gedreht)  { this.Monster_div.style.transform    = "rotate(" + Eigenschaften.gedreht + "deg)"; }
 
         if (this.Spiel.Ort == this.Ort) {
-            this.anzeigen();
+            this.tauche_auf();
         } else {
-            this.verstecken();
+            this.verschwinde();
         }
     }
 
-    anzeigen() {
+    /**
+     * Das Monster auftauchen und angreifen lassen.
+     */
+    tauche_auf() {
         if (this.tot()) { return; } // Code gar nicht erst ausführen
 
         this.Monster_div.style.visibility = "visible";
         spiele_Sound_Effect(this.Name);
     }
 
-    verstecken() {
+    verschwinde() {
         this.Monster_div.style.visibility = "hidden";
     }
 
-    bekämpfen(wieviel) {
-        if (this.tot()) { return; } // Code gar nicht erst ausführen
+    bekämpfen(Spieler_Kraft) {
+        if (this.tot()) return; // Code gar nicht erst ausführen
 
-        this.Lebenspunkte = this.Lebenspunkte - wieviel;
+        this.Lebenspunkte = this.Lebenspunkte - Spieler_Kraft;
         if (this.tot()) {
             spiele_Sound_Effect("aargh");
-            this.verstecken();
+            this.verschwinde();
 
-            /*if ( window.AlleMonster["Klauenspringer"].Ort_Name == Spielstand.aktueller_Ort_Name && window.AlleMonster["Klauenspringer"].lebendig == false) {
-                Ort.Gegenstände.hinzufügen( window.Gegenstände["Klauenspringer-Zahn"] );
-            }*/
+            if (this.Gegenstand_als_Belohnung) {
+                this.Gegenstand_als_Belohnung.platziere_in(this.Ort);
+            }
         } else {
             spiele_Sound_Effect("autsch");
         }
@@ -98,5 +112,13 @@ class Ein_Monster {
 
     lebendig() {
         return !this.tot();
+    }
+
+    Spieluhr_tickt() {
+        if (this.tot()) return; // Code gar nicht erst ausführen
+
+        if (this.Ort == this.Spiel.Ort) {
+            this.Spiel.Spieler_bekämpfen(this.Kraft);
+        }
     }
 }

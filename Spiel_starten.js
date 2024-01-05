@@ -1,1 +1,1 @@
-var Spiel = new Ein_Spiel(Spielaufbau);
+var Spiel = new Ein_Spiel(Spielaufbau).starten();

@@ -52,8 +52,14 @@ class Ein_Gegenstand {
     }
 
     platziere_in(Ort) {
+        if (this.Ort) {
+            this.entferne_aus(this.Ort);
+        }
         this.Ort = Ort;
         Ort.hinzufügen(this);
+        if (this.Ort == this.Spiel.Ort) {
+            this.anzeigen();
+        }
     }
 
     nehmen() {

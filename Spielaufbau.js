@@ -64,7 +64,7 @@ var Spielaufbau = {
 
     Gegenstände: {
 
-        "Klauenspringer-Zahn": { in: "Dschungel_1", links: 470, oben: 287.5, breit: 50, hoch: 85, gedreht: 263 }
+        "Klauenspringer-Zahn": { in: "Unerreichbarer_Ort", links: 470, oben: 305, breit: 50, hoch: 85, gedreht: 263 }
 
     },
 
@@ -75,15 +75,19 @@ var Spielaufbau = {
                 { in: "Unerreichbarer_Ort" }
             ],
     
-            Lebenspunkte: 100
+            Lebenspunkte: 100,
+            Kraft: 7,
+
+            Belohnung: "Klauenspringer-Zahn"
         },
         "Zwerggreif": {
             Orte: [
-                { in: "Dschungel_1", links: 350, oben: 25, breit: 150, hoch: 150, gedreht: 0 },
+                { in: "Dschungel_1", links: 1023, oben: 176, breit: 108, hoch: 108, gedreht: 10 },
                 { in: "Unerreichbarer_Ort" }
             ],
     
-            Lebenspunkte: 80
+            Lebenspunkte: 80,
+            Kraft: 7
         }    
     },
 
@@ -104,8 +108,18 @@ var Spielaufbau = {
             auf_Monster: function(Monster, Spiel) {
                 Monster.bekämpfen(Spiel.Kraft);
             }
+        },
+
+        unsterblich: {
+            auf_Ort: function(Ort, Spiel) {
+                Spiel.unsterblich();
+            }
         }
     },
 
-    Ich: { in: "Silberne_Lichtung" }
+    Spieler: {
+        in: "Silberne_Lichtung",
+        Lebenspunkte: 100,
+        Kraft: 20
+    }
 }

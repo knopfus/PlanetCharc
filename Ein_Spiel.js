@@ -54,16 +54,30 @@ class Ein_Spiel {
         let self = this;
         document.getElementById("Ort-Bild").onclick = function() {
             if (self.aktive_Aktion) {
-                self.aktive_Aktion.ausführen_auf_Ort();
+                self.aktive_Aktion.ausführen_auf_Ort(self.Ort);
             }
         };
+    }
 
-        this.Kraft = 20;
+    starten() {
+        if (this.läuft) return; // Man kann nur einmal starten
+
+        this.läuft = true;
+
+        this.Lebenspunkte = Spielaufbau.Spieler.Lebenspunkte;
+        this.Kraft = Spielaufbau.Spieler.Kraft;
+        this.aktive_Aktion = null;
 
         this.Ort = null;
-        this.gehe_zu_Ort(this.Orte[Spielaufbau.Ich.in]);
+        this.gehe_zu_Ort(this.Orte[Spielaufbau.Spieler.in]);
 
-        this.aktive_Aktion = null;
+        let self = this;
+        this.Spieluhr = window.setInterval(function() { self.Spieluhr_tickt(); }, 10);
+
+        // Musik abspielen beim ersten Klick
+        document.onclick = function() {
+            document.getElementById("musik").play();
+        }
     }
 
     gehe_zu_Ort(Ort) {
@@ -77,6 +91,52 @@ class Ein_Spiel {
         for (var Monster_Name in this.Monster) {
             let Monster = this.Monster[Monster_Name];
             Monster.gehe_in_zufälligen_Ort();
+        }
+    }
+
+    Spieler_bekämpfen(Kraft) {
+        this.Lebenspunkte_verändern(- Kraft / 100);
+    }
+
+    Lebenspunkte_verändern(Differenz) {
+        if (this.ist_unsterblich) return;
+
+        this.Lebenspunkte = this.Lebenspunkte + Differenz;
+        this.zeige_Lebenspunkte_an();
+        if (this.Lebenspunkte <= 0) {
+            this.Game_over();
+        }
+    }
+
+    zeige_Lebenspunkte_an() {
+        let Lebenspunkte_div = document.getElementById("Lebenspunkte");
+    
+        Lebenspunkte_div.style.width = this.Lebenspunkte + "%";
+    
+        var max_color = 200;
+        var g = this.Lebenspunkte / 100 * (2 * max_color);
+        var r = 2 * max_color - g;
+        var b = 0;
+        if (g > max_color) { g = max_color; }
+        if (r > max_color) { r = max_color; }
+        var rgb = "rgb(" + r + ", " + g + ", " + b + ")";
+    
+        Lebenspunkte_div.style.backgroundColor = rgb;
+    }
+
+    unsterblich() {
+        this.ist_unsterblich = true;
+    }
+    
+    Game_over() {
+        window.clearInterval(this.Spieluhr);
+        document.getElementById("Game_Over").style.visibility = "visible";
+    }
+
+    Spieluhr_tickt() {
+        for (var Monster_Name in this.Monster) {
+            let Monster = this.Monster[Monster_Name];
+            Monster.Spieluhr_tickt();
         }
     }
 }
