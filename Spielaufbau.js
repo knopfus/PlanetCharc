@@ -112,7 +112,9 @@ var Spielaufbau = {
 
     Gegenstände: {
 
-        "Klauenspringer-Zahn": { in: "Unerreichbarer_Ort", links: 470, oben: 305, breit: 50, hoch: 85, gedreht: 263 }
+        "Klauenspringer-Zahn": { in: "Unerreichbarer_Ort", links: 470, oben: 305, breit: 50, hoch: 85, gedreht: 263 },
+
+        "Lichtkristall": { in: "Unerreichbarer_Ort", links: 470, oben: 305, breit: 50, hoch: 85, gedreht: 0 }
 
     },
 
@@ -127,6 +129,16 @@ var Spielaufbau = {
             Kraft: 7,
 
             Belohnung: "Klauenspringer-Zahn"
+        },
+        "Yeti": {
+            Orte: [
+                { in: "Höhle_Yeti", links: 420, oben: 255, breit: 800, hoch: 671, gedreht: 0 }            
+            ],
+    
+            Lebenspunkte: 110,
+            Kraft: 9,
+
+            Belohnung: "Lichtkristall"
         },
         "Zwerggreif": {
             Orte: [
