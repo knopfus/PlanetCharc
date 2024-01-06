@@ -41,7 +41,7 @@ class Ein_Spieler {
             hoch: this.nächster_Wegpunkt.Eigenschaften.zoom
         };
 
-        let Schritte = 50;
+        let Schritte = 20;
         this.Schritte = Schritte;
         this.Schritt_Richtung = {
             nach_rechts: (Koordinaten.links - this.Koordinaten.links) / Schritte,
@@ -82,7 +82,15 @@ class Ein_Spieler {
             if (this.Schritte == 0) {
                 // Am nächsten Wegpunkt angekommen
                 this.Wegpunkt = this.nächster_Wegpunkt;
-                if (this.nächster_Wegpunkt != this.Ziel_Wegpunkt) {
+                if (this.nächster_Wegpunkt == this.Ziel_Wegpunkt) {
+                    // Am Ziel-Wegpunkt angekommen -> Falls Portal, Ort wechseln
+                    if (this.Wegpunkt.Eigenschaften.Portal) {
+                        let Ort = this.Spiel.Orte[this.Wegpunkt.Eigenschaften.Portal];
+                        this.Spiel.gehe_zu_Ort(Ort);
+                    }
+                } else {
+                    // Noch nicht am Ziel-Wegpunkt angekommen -> Nochmals "gehe_zu" machen, dort wird
+                    // der nächste Wegpunkt ermittelt.
                     this.gehe_zu(this.Ziel_Wegpunkt);
                 }
             }

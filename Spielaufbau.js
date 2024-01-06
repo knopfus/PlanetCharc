@@ -5,7 +5,7 @@ var Spielaufbau = {
 
         Silberne_Lichtung: {
             Wegpunkte: [
-                { links: 170,  oben: 70,  Radius: 50, zoom: 100 },
+                { links: 170,  oben: 70,  Radius: 50, zoom: 100, Portal: "Dschungel_1" },
                 { links: 103,  oben: 159, Radius: 50, zoom: 100 },
                 { links: 120,  oben: 270, Radius: 50, zoom: 100 },
                 { links: 145,  oben: 393, Radius: 50, zoom: 100 },
@@ -21,17 +21,13 @@ var Spielaufbau = {
                 { links: 905,  oben: 520, Radius: 50, zoom: 100 },
                 { links: 1010, oben: 557, Radius: 50, zoom: 100 },
                 { links: 1134, oben: 504, Radius: 50, zoom: 100 },
-                { links: 1252, oben: 469, Radius: 50, zoom: 100 }
+                { links: 1252, oben: 469, Radius: 50, zoom: 100, Portal: "Dschungel_2" }
             ],
-            Portale: {
-                West: { zu: "Dschungel_1",      links: 0, oben: 50, breit: 50, hoch: 611 },
-                Ost:  { zu: "Dschungel_2",      links: 1390, oben: 50, breit: 50, hoch: 611 }
-            },
             Eintritte: {
-                // Herkunts-Ort:    Wegpunkt-Nummer
-                "Start":            7,
-                "Dschungel_1":      3,
-                "Dschungel_2":      16
+                // Herkunts-Ort:        Wegpunkt-Nummer
+                "Start":                7,
+                "Dschungel_1":          3,
+                "Dschungel_2":          16
             }
         },
         Dschungel_1: {             
@@ -67,7 +63,7 @@ var Spielaufbau = {
         Dschungel_2: { 
             
             Wegpunkte: [
-                { links: 1053, oben: 83,  Radius: 50, zoom: 100 },
+                { links: 1053, oben: 83,  Radius: 50, zoom: 100, Portal: "Silberne_Lichtung" },
                 { links: 966,  oben: 123, Radius: 50, zoom: 100 },
                 { links: 869,  oben: 169, Radius: 50, zoom: 100 },
                 { links: 781,  oben: 213, Radius: 50, zoom: 100 },
@@ -81,14 +77,13 @@ var Spielaufbau = {
                 { links: 713,  oben: 675, Radius: 50, zoom: 100 },
                 { links: 828,  oben: 639, Radius: 50, zoom: 100 },
                 { links: 791,  oben: 587, Radius: 50, zoom: 100 },
-                { links: 851,  oben: 527, Radius: 50, zoom: 100 }
-                
+                { links: 851,  oben: 527, Radius: 50, zoom: 100, Portal: "Fluss" }
             ],
-            
-            Portale: {
-                Ost:  { zu: "Fluss",                links: 1390, oben: 50, breit: 50, hoch: 611 },
-                West: { zu: "Silberne_Lichtung",    links: 0, oben: 50, breit: 50, hoch: 611 }
-            } 
+            Eintritte: {
+                // Herkunts-Ort:        Wegpunkt-Nummer
+                "Silberne_Lichtung":    0,
+                "Fluss":                14
+            }
         },
         Fluss: { Portale: {
             Nord: { zu: "Quelle_des_Lichts",    links: 50, oben: 0, breit: 1340, hoch: 50 },
