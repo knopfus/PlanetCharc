@@ -46,4 +46,8 @@ class Ein_Wegpunkt {
     gehe_zu() {
         this.Spiel.Spieler.gehe_zu(this);
     }
+
+    rot() {
+        this.Wegpunkt_div.style.border = "1px solid red";
+    }
 }

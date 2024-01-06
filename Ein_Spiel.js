@@ -75,6 +75,17 @@ class Ein_Spiel {
                 self.aktive_Aktion.ausführen_auf_Ort(self.Ort, event);
             }
         };
+
+        document.onkeydown = function(event) {
+            if (event.key == "g") {
+                self.Spieler.ANZAHL_SCHRITTE = 20;
+
+                for (let i = 0; i < 20; i++) {
+                    let Wegpunkt = self.Wegpunkte[i];
+                    Wegpunkt.rot();
+                }        
+            }
+        }
     }
 
     starten() {

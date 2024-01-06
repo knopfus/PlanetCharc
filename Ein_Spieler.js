@@ -4,6 +4,8 @@ class Ein_Spieler {
 
         // Das HTML Element vorbereiten
         this.Spieler_div = document.getElementById("Spieler");
+
+        this.ANZAHL_SCHRITTE = 50;
     }
 
     gehe_zu(Wegpunkt) {
@@ -41,7 +43,7 @@ class Ein_Spieler {
             hoch: this.nächster_Wegpunkt.Eigenschaften.zoom
         };
 
-        let Schritte = 20;
+        let Schritte = this.ANZAHL_SCHRITTE;
         this.Schritte = Schritte;
         this.Schritt_Richtung = {
             nach_rechts: (Koordinaten.links - this.Koordinaten.links) / Schritte,

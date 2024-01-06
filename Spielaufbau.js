@@ -32,10 +32,25 @@ var Spielaufbau = {
         },
         Dschungel_1: {             
             
-            Portale: {
-                Nord: { zu: "Berge_der_Angst",      links: 50, oben: 0, breit: 1340, hoch: 50 },
-                Ost:  { zu: "Silberne_Lichtung",    links: 1390, oben: 50, breit: 50, hoch: 611 },
-                West: { zu: "Grosse_Wiese",         links: 0, oben: 50, breit: 50, hoch: 611 }
+            Wegpunkte: [
+                { links: 69,   oben: 426, Radius: 50, zoom: 100, Portal: "Grosse_Wiese" },
+                { links: 203,  oben: 484, Radius: 50, zoom: 100 },
+                { links: 281,  oben: 557, Radius: 50, zoom: 100 },
+                { links: 450,  oben: 570, Radius: 50, zoom: 100 },
+                { links: 569,  oben: 534, Radius: 50, zoom: 100 },
+                { links: 715,  oben: 565, Radius: 50, zoom: 100 },
+                { links: 892,  oben: 511, Radius: 50, zoom: 100 },
+                { links: 898,  oben: 397, Radius: 50, zoom: 100 },
+                { links: 847,  oben: 352, Radius: 50, zoom: 100, Portal: "Berge_der_Angst" },
+                { links: 1120, oben: 387, Radius: 50, zoom: 100 },
+                { links: 1236, oben: 505, Radius: 50, zoom: 100 },
+                { links: 1380, oben: 511, Radius: 50, zoom: 100, Portal: "Silberne_Lichtung" }
+            ],
+            Eintritte: {
+                // Herkunts-Ort:        Wegpunkt-Nummer
+                "Berge_der_Angst":      8,
+                "Silberne_Lichtung":    11,
+                "Grosse_Wiese":         0
             } 
         },
         Berge_der_Angst: { Portale: {
