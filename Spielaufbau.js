@@ -5,23 +5,23 @@ var Spielaufbau = {
 
         Silberne_Lichtung: {
             Wegpunkte: [
-                { links: 170,  oben: 70,  Radius: 50, zoom: 100, Portal: "Dschungel_1" },
-                { links: 103,  oben: 159, Radius: 50, zoom: 100 },
-                { links: 120,  oben: 270, Radius: 50, zoom: 100 },
-                { links: 145,  oben: 393, Radius: 50, zoom: 100 },
-                { links: 265,  oben: 460, Radius: 50, zoom: 100 },
-                { links: 344,  oben: 534, Radius: 50, zoom: 100 },
-                { links: 410,  oben: 650, Radius: 50, zoom: 100 },
-                { links: 570,  oben: 650, Radius: 50, zoom: 100 },
-                { links: 546,  oben: 554, Radius: 50, zoom: 100 },
-                { links: 500,  oben: 470, Radius: 50, zoom: 100 },
-                { links: 610,  oben: 385, Radius: 50, zoom: 100 },
-                { links: 750,  oben: 380, Radius: 50, zoom: 100 },
-                { links: 831,  oben: 451, Radius: 50, zoom: 100 },
-                { links: 905,  oben: 520, Radius: 50, zoom: 100 },
-                { links: 1010, oben: 557, Radius: 50, zoom: 100 },
-                { links: 1134, oben: 504, Radius: 50, zoom: 100 },
-                { links: 1252, oben: 469, Radius: 50, zoom: 100, Portal: "Dschungel_2" }
+                { links: 170,  oben: 70,  Radius: 120, zoom: 100, Portal: "Dschungel_1" },
+                { links: 103,  oben: 159, Radius: 120, zoom: 100 },
+                { links: 120,  oben: 270, Radius: 120, zoom: 100 },
+                { links: 145,  oben: 393, Radius: 120, zoom: 100 },
+                { links: 265,  oben: 460, Radius: 120, zoom: 100 },
+                { links: 344,  oben: 534, Radius: 120, zoom: 100 },
+                { links: 410,  oben: 650, Radius: 120, zoom: 100 },
+                { links: 570,  oben: 650, Radius: 120, zoom: 100 },
+                { links: 546,  oben: 554, Radius: 120, zoom: 100 },
+                { links: 500,  oben: 470, Radius: 120, zoom: 100 },
+                { links: 610,  oben: 385, Radius: 120, zoom: 100 },
+                { links: 750,  oben: 380, Radius: 120, zoom: 100 },
+                { links: 831,  oben: 451, Radius: 120, zoom: 100 },
+                { links: 905,  oben: 520, Radius: 120, zoom: 100 },
+                { links: 1010, oben: 557, Radius: 120, zoom: 100 },
+                { links: 1134, oben: 504, Radius: 120, zoom: 100 },
+                { links: 1252, oben: 469, Radius: 120, zoom: 100, Portal: "Dschungel_2" }
             ],
             Eintritte: {
                 // Herkunts-Ort:        Wegpunkt-Nummer
@@ -33,18 +33,18 @@ var Spielaufbau = {
         Dschungel_1: {             
             
             Wegpunkte: [
-                { links: 69,   oben: 426, Radius: 50, zoom: 100, Portal: "Grosse_Wiese" },
-                { links: 203,  oben: 484, Radius: 50, zoom: 100 },
-                { links: 281,  oben: 557, Radius: 50, zoom: 100 },
-                { links: 450,  oben: 570, Radius: 50, zoom: 100 },
-                { links: 569,  oben: 534, Radius: 50, zoom: 100 },
-                { links: 715,  oben: 565, Radius: 50, zoom: 100 },
-                { links: 892,  oben: 511, Radius: 50, zoom: 100 },
-                { links: 898,  oben: 397, Radius: 50, zoom: 100 },
-                { links: 847,  oben: 352, Radius: 50, zoom: 100, Portal: "Berge_der_Angst" },
-                { links: 1120, oben: 387, Radius: 50, zoom: 100 },
-                { links: 1236, oben: 505, Radius: 50, zoom: 100 },
-                { links: 1380, oben: 511, Radius: 50, zoom: 100, Portal: "Silberne_Lichtung" }
+                { links: 69,   oben: 426, Radius: 120, zoom: 100, Portal: "Grosse_Wiese" },
+                { links: 203,  oben: 484, Radius: 120, zoom: 100 },
+                { links: 281,  oben: 557, Radius: 120, zoom: 100 },
+                { links: 450,  oben: 570, Radius: 120, zoom: 100 },
+                { links: 569,  oben: 534, Radius: 120, zoom: 100 },
+                { links: 715,  oben: 565, Radius: 120, zoom: 100 },
+                { links: 892,  oben: 511, Radius: 120, zoom: 100 },
+                { links: 898,  oben: 397, Radius: 120, zoom: 100 },
+                { links: 847,  oben: 352, Radius: 120, zoom: 100, Portal: "Berge_der_Angst" },
+                { links: 1120, oben: 387, Radius: 120, zoom: 100 },
+                { links: 1236, oben: 505, Radius: 120, zoom: 100 },
+                { links: 1380, oben: 511, Radius: 120, zoom: 100, Portal: "Silberne_Lichtung" }
             ],
             Eintritte: {
                 // Herkunts-Ort:        Wegpunkt-Nummer
@@ -78,21 +78,21 @@ var Spielaufbau = {
         Dschungel_2: { 
             
             Wegpunkte: [
-                { links: 1053, oben: 83,  Radius: 50, zoom: 100, Portal: "Silberne_Lichtung" },
-                { links: 966,  oben: 123, Radius: 50, zoom: 100 },
-                { links: 869,  oben: 169, Radius: 50, zoom: 100 },
-                { links: 781,  oben: 213, Radius: 50, zoom: 100 },
-                { links: 694,  oben: 267, Radius: 50, zoom: 100 },
-                { links: 599,  oben: 304, Radius: 50, zoom: 100 },
-                { links: 569,  oben: 478, Radius: 50, zoom: 100 },
-                { links: 469,  oben: 513, Radius: 50, zoom: 100 },
-                { links: 377,  oben: 598, Radius: 50, zoom: 100 },
-                { links: 489,  oben: 664, Radius: 50, zoom: 100 },
-                { links: 610,  oben: 673, Radius: 50, zoom: 100 },
-                { links: 713,  oben: 675, Radius: 50, zoom: 100 },
-                { links: 828,  oben: 639, Radius: 50, zoom: 100 },
-                { links: 791,  oben: 587, Radius: 50, zoom: 100 },
-                { links: 851,  oben: 527, Radius: 50, zoom: 100, Portal: "Fluss" }
+                { links: 1053, oben: 83,  Radius: 120, zoom: 100, Portal: "Silberne_Lichtung" },
+                { links: 966,  oben: 123, Radius: 120, zoom: 100 },
+                { links: 869,  oben: 169, Radius: 120, zoom: 100 },
+                { links: 781,  oben: 213, Radius: 120, zoom: 100 },
+                { links: 694,  oben: 267, Radius: 120, zoom: 100 },
+                { links: 599,  oben: 304, Radius: 120, zoom: 100 },
+                { links: 569,  oben: 478, Radius: 120, zoom: 100 },
+                { links: 469,  oben: 513, Radius: 120, zoom: 100 },
+                { links: 377,  oben: 598, Radius: 120, zoom: 100 },
+                { links: 489,  oben: 664, Radius: 120, zoom: 100 },
+                { links: 610,  oben: 673, Radius: 120, zoom: 100 },
+                { links: 713,  oben: 675, Radius: 120, zoom: 100 },
+                { links: 828,  oben: 639, Radius: 120, zoom: 100 },
+                { links: 791,  oben: 587, Radius: 120, zoom: 100 },
+                { links: 851,  oben: 527, Radius: 120, zoom: 100, Portal: "Fluss" }
             ],
             Eintritte: {
                 // Herkunts-Ort:        Wegpunkt-Nummer
