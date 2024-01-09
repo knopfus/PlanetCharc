@@ -170,10 +170,12 @@ var Spielaufbau = {
         gehe_zu: {
             auf_Wegpunkt: function(Wegpunkt) {
                 Wegpunkt.gehe_zu();
+                return true; // Aktion deaktivieren
             },
 
             auf_Portal: function(Portal) {
                 Portal.gehe_zu();
+                return true; // Aktion deaktivieren
             },
 
             auf_Ort: function(Ort, Spiel, event) {
@@ -184,18 +186,23 @@ var Spielaufbau = {
         nehmen: {
             auf_Gegenstand: function(Gegenstand) {
                 Gegenstand.nehmen();
+                return true; // Aktion deaktivieren
             }
         },
 
         kämpfen: {
             auf_Monster: function(Monster, Spiel) {
                 Monster.bekämpfen(Spiel.Kraft);
+                if (Monster.tot()) {
+                    return true; // Aktion deaktivieren
+                }
             }
         },
 
         unsterblich: {
             auf_Ort: function(Ort, Spiel) {
                 Spiel.unsterblich();
+                return true; // Aktion deaktivieren
             }
         }
     },
@@ -203,6 +210,6 @@ var Spielaufbau = {
     Spieler: {
         in: "Silberne_Lichtung",
         Lebenspunkte: 100,
-        Kraft: 20
+        Kraft: 3
     }
 }

@@ -7,7 +7,11 @@ class Eine_Aktion {
         let Aktion_div = document.getElementById("Aktion-" + Name);
         let self = this;
         Aktion_div.onclick = function() {
-            self.aktivieren();
+            if (self.Spiel.aktive_Aktion == self) {
+                self.deaktivieren();
+            } else {
+                self.aktivieren();
+            }
         };
         this.Aktion_div = Aktion_div;
     }
@@ -30,41 +34,46 @@ class Eine_Aktion {
 
     ausführen_auf_Ort(Ort, event) {
         if (this.Eigenschaften.auf_Ort) {
-            this.Eigenschaften.auf_Ort(Ort, this.Spiel, event);
+            let deaktivieren = this.Eigenschaften.auf_Ort(Ort, this.Spiel, event);
+            if (deaktivieren) {
+                this.deaktivieren();
+            }
         }
-
-        this.deaktivieren();
     }
 
     ausführen_auf_Gegenstand(Gegenstand) {
         if (this.Eigenschaften.auf_Gegenstand) {
-            this.Eigenschaften.auf_Gegenstand(Gegenstand, this.Spiel);
+            let deaktivieren = this.Eigenschaften.auf_Gegenstand(Gegenstand, this.Spiel);
+            if (deaktivieren) {
+                this.deaktivieren();
+            }
         }
-
-        this.deaktivieren();
     }
 
     ausführen_auf_Wegpunkt(Wegpunkt) {
         if (this.Eigenschaften.auf_Wegpunkt) {
-            this.Eigenschaften.auf_Wegpunkt(Wegpunkt, this.Spiel);
+            let deaktivieren = this.Eigenschaften.auf_Wegpunkt(Wegpunkt, this.Spiel);
+            if (deaktivieren) {
+                this.deaktivieren();
+            }
         }
-
-        this.deaktivieren();
     }
 
     ausführen_auf_Portal(Portal) {
         if (this.Eigenschaften.auf_Portal) {
-            this.Eigenschaften.auf_Portal(Portal, this.Spiel);
+            let deaktivieren = this.Eigenschaften.auf_Portal(Portal, this.Spiel);
+            if (deaktivieren) {
+                this.deaktivieren();
+            }
         }
-
-        this.deaktivieren();
     }
 
     ausführen_auf_Monster(Monster) {
         if (this.Eigenschaften.auf_Monster) {
-            this.Eigenschaften.auf_Monster(Monster, this.Spiel);
+            let deaktivieren = this.Eigenschaften.auf_Monster(Monster, this.Spiel);
+            if (deaktivieren) {
+                this.deaktivieren();
+            }
         }
-
-        this.deaktivieren();
     }
 }
