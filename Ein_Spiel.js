@@ -1,11 +1,5 @@
 class Ein_Spiel {
     constructor(Spielaufbau) {
-        this.Wegpunkte = [];
-        for (let i = 0; i < 20; i++) {
-            let Wegpunkt = new Ein_Wegpunkt(i, this);
-            this.Wegpunkte.hinzufügen(Wegpunkt);
-        }
-
         this.Portale = {};
         for (let Portal_Name of Spielaufbau.Portale) {
             let Portal = new Ein_Portal(Portal_Name, this);
@@ -14,15 +8,14 @@ class Ein_Spiel {
 
         this.Orte = {};
         for (let Ort_Name in Spielaufbau.Orte) {
-            let Ort = new Ein_Ort(Ort_Name, this);
+            let Eigenschaften = Spielaufbau.Orte[Ort_Name];
+            let Ort = new Ein_Ort(Ort_Name, Eigenschaften, this);
             this.Orte[Ort_Name] = Ort;
         }
 
         for (let Ort_Name in Spielaufbau.Orte) {
             let Eigenschaften = Spielaufbau.Orte[Ort_Name];
             let Ort = this.Orte[Ort_Name];
-
-            Ort.Wegpunkte_hinzufügen(Eigenschaften.Wegpunkte);
 
             for (let Portal_Name in Eigenschaften.Portale) {
                 let Portal_Eigenschaften = Eigenschaften.Portale[Portal_Name];
@@ -32,7 +25,7 @@ class Ein_Spiel {
 
             for (let Ort_Name in Eigenschaften.Eintritte) {
                 let Wegpunkt_Nummer = Eigenschaften.Eintritte[Ort_Name];
-                let Wegpunkt = this.Wegpunkte[Wegpunkt_Nummer];
+                let Wegpunkt = Ort.Weg.Wegpunkte[Wegpunkt_Nummer];
                 Ort.Eintritt_hinzufügen(Ort_Name, Wegpunkt);
             }
         }
@@ -79,11 +72,8 @@ class Ein_Spiel {
         document.onkeydown = function(event) {
             if (event.key == "g") {
                 self.Spieler.ANZAHL_SCHRITTE = 20;
-
-                for (let i = 0; i < 20; i++) {
-                    let Wegpunkt = self.Wegpunkte[i];
-                    Wegpunkt.rot();
-                }        
+                self.Entwickler_Modus = true;
+                self.Ort.Weg.anzeigen();
             }
         }
     }
@@ -123,7 +113,7 @@ class Ein_Spiel {
         this.Ort.betreten();
 
         let Eintritt_Wegpunkt = this.Ort.Eintritte[alter_Ort_Name];
-        if (!Eintritt_Wegpunkt) { Eintritt_Wegpunkt = this.Wegpunkte[0]; }
+        if (!Eintritt_Wegpunkt) { Eintritt_Wegpunkt = this.Ort.Weg.Wegpunkte[0]; }
         this.Spieler.betrete_Ort_bei(Eintritt_Wegpunkt);
 
         for (var Monster_Name in this.Monster) {

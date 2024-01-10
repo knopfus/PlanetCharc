@@ -1,7 +1,9 @@
 class Ein_Ort {
-    constructor(Name, Spiel) {
+    constructor(Name, Eigenschaften, Spiel) {
         this.Name = Name;
         this.Spiel = Spiel;
+        this.Eigenschaften = Eigenschaften;
+        this.Weg = new Ein_Weg(0, Eigenschaften.Wegpunkte, this, this.Spiel);
         
         this.Gegenstände = [];
         this.Portale = {};
@@ -15,6 +17,7 @@ class Ein_Ort {
         for (let Gegenstand of this.Gegenstände) {
             Gegenstand.verstecken();
         }
+        this.Weg.verstecken();
     }
 
     betreten() {
@@ -25,9 +28,7 @@ class Ein_Ort {
             Gegenstand.anzeigen();
         }
 
-        for (let Wegpunkt of this.Spiel.Wegpunkte) {
-            Wegpunkt.wechsle_zu(this);
-        }
+        this.Weg.anzeigen();
     
         for (let Portal_Name in this.Spiel.Portale) {
             let Portal = this.Spiel.Portale[Portal_Name];
@@ -41,10 +42,6 @@ class Ein_Ort {
 
     entfernen(Gegenstand) {
         this.Gegenstände.entfernen(Gegenstand);
-    }
-
-    Wegpunkte_hinzufügen(Wegpunkte) {
-        this.Wegpunkte = Wegpunkte;
     }
 
     Portal_hinzufügen(Portal_Name, Eigenschaften) {

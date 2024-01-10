@@ -33,7 +33,7 @@ class Ein_Spieler {
         } else {
             let Vorzeichen = Math.sign(Differenz);
             let nächster_Wegpunkt_Nummer = this.Wegpunkt.Nummer + Vorzeichen;
-            this.nächster_Wegpunkt = this.Spiel.Wegpunkte[nächster_Wegpunkt_Nummer];
+            this.nächster_Wegpunkt = this.Spiel.Ort.Weg.Wegpunkte[nächster_Wegpunkt_Nummer];
         }
 
         let Koordinaten = {
