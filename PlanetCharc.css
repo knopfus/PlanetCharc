@@ -106,6 +106,7 @@ h1 {
 
 #Spieler {
     position: absolute;
+    z-index: 101000;
 }
 #Spieler > img {
     max-width: 100%;

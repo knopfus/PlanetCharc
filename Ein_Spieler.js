@@ -29,7 +29,11 @@ class Ein_Spieler {
         this.Ziel_Wegpunkt = Wegpunkt;
 
         let Wegpunkte = Wegpunkt.Weg.Weg_berechnen(this.Wegpunkt, this.Ziel_Wegpunkt);
-        this.nächster_Wegpunkt = Wegpunkte[0];
+        if (Wegpunkte.length == 0) {
+            this.nächster_Wegpunkt = this.Ziel_Wegpunkt;
+        } else {
+            this.nächster_Wegpunkt = Wegpunkte[0];
+        }
 
         let Koordinaten = {
             links: this.nächster_Wegpunkt.Eigenschaften.links - 0.5 * this.nächster_Wegpunkt.Eigenschaften.zoom,

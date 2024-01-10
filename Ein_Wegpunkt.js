@@ -1,6 +1,7 @@
 class Ein_Wegpunkt {
-    constructor(Nummer, Eigenschaften, Weg, Spiel) {
+    constructor(Nummer, Pfad_Nummer, Eigenschaften, Weg, Spiel) {
         this.Nummer = Nummer;
+        this.Pfad_Nummer = Pfad_Nummer;
         this.Eigenschaften = Eigenschaften;
         this.Weg = Weg;
         this.Spiel = Spiel;
@@ -8,7 +9,7 @@ class Ein_Wegpunkt {
         let Wegpunkt_Vorlage = document.getElementById("Wegpunkt_Vorlage");
         let Wegpunkt_div = Wegpunkt_Vorlage.cloneNode(true);
 
-        Wegpunkt_div.setAttribute("id", "Wegpunkt_" + Weg.Ort.Name + "_" + Nummer);
+        Wegpunkt_div.setAttribute("id", "Wegpunkt_" + Weg.Ort.Name + "_" + Pfad_Nummer + "_" + Nummer);
 
         Wegpunkt_div.style.left = Eigenschaften.links - Eigenschaften.Radius + "px";
         Wegpunkt_div.style.top = Eigenschaften.oben - Eigenschaften.Radius + "px";

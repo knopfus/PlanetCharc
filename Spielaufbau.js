@@ -1,4 +1,10 @@
 var Spielaufbau = {
+    Spieler: {
+        in: "Silberne_Lichtung",
+        Lebenspunkte: 100,
+        Kraft: 3
+    },
+
     Portale: [ "Nord", "Ost", "Süd", "West" ],
 
     Orte: {
@@ -6,13 +12,13 @@ var Spielaufbau = {
         Silberne_Lichtung: {
             Pfade: [
                 [
-                    { links: 170,  oben: 70,  Radius: 120, zoom: 100, Portal: "Dschungel_1" },
+                    { links: 170,  oben: 110,  Radius: 120, zoom: 100 },
                     { links: 103,  oben: 159, Radius: 120, zoom: 100 },
                     { links: 120,  oben: 270, Radius: 120, zoom: 100 },
                     { links: 145,  oben: 393, Radius: 120, zoom: 100 },
                     { links: 265,  oben: 460, Radius: 120, zoom: 100 },
                     { links: 344,  oben: 534, Radius: 120, zoom: 100 },
-                    { links: 410,  oben: 650, Radius: 120, zoom: 100 },
+                    { links: 410,  oben: 650, Radius: 120, zoom: 100, Kreuzung: true },
                     { links: 570,  oben: 650, Radius: 120, zoom: 100 },
                     { links: 546,  oben: 554, Radius: 120, zoom: 100 },
                     { links: 500,  oben: 470, Radius: 120, zoom: 100 },
@@ -23,6 +29,9 @@ var Spielaufbau = {
                     { links: 1010, oben: 557, Radius: 120, zoom: 100 },
                     { links: 1134, oben: 504, Radius: 120, zoom: 100 },
                     { links: 1252, oben: 469, Radius: 120, zoom: 100, Portal: "Dschungel_2" }
+                ],[
+                    { links: 260,  oben: 650, Radius: 120, zoom: 100, Kreuzung: true },
+                    { links: 109,  oben: 662, Radius: 120, zoom: 100, Portal: "Dschungel_1" }
                 ]
             ]
         },
@@ -54,11 +63,35 @@ var Spielaufbau = {
             Nord: { zu: "Nichts",               links: 50, oben: 0, breit: 1340, hoch: 50 },
             Ost:  { zu: "Berge_der_Angst",      links: 1390, oben: 50, breit: 50, hoch: 611 }
         } },
-        Grosse_Wiese: { Portale: {
-            Nord: { zu: "Berge_der_Angst",      links: 50, oben: 0, breit: 1340, hoch: 50 },
-            Ost:  { zu: "Dschungel_1",          links: 1390, oben: 50, breit: 50, hoch: 611 },
-            West: { zu: "Ewiges_Eis",           links: 0, oben: 50, breit: 50, hoch: 611 }
-        } },
+        Grosse_Wiese: {             
+            
+            Pfade: [
+                [
+                    { links: 867,  oben: 706, Radius: 120, zoom: 120, Portal: "Dschungel_1" },
+                    { links: 914,  oben: 609, Radius: 120, zoom: 100 },
+                    { links: 904,  oben: 496, Radius: 120, zoom: 90 },
+                    { links: 834,  oben: 449, Radius: 120, zoom: 80 },
+                    { links: 707,  oben: 425, Radius: 120, zoom: 70 },
+                    { links: 518,  oben: 423, Radius: 120, zoom: 60 },
+                    { links: 437,  oben: 397, Radius: 120, zoom: 50, Kreuzung: true },
+                    { links: 400,  oben: 318, Radius: 120, zoom: 30 },
+                    { links: 302,  oben: 284, Radius: 120, zoom: 20, Portal: "Berge_der_Angst" }
+                ],
+                [
+                    { links: 64,  oben: 454, Radius: 120, zoom: 50, Portal: "Ewiges_Eis" },
+                    { links: 209,  oben: 456, Radius: 120, zoom: 50 },
+                    { links: 309,  oben: 412, Radius: 120, zoom: 50 },
+                    { links: 437,  oben: 397, Radius: 120, zoom: 50, Kreuzung: true },
+                    { links: 491,  oben: 378, Radius: 120, zoom: 50 },
+                    { links: 614,  oben: 341, Radius: 120, zoom: 50 },
+                    { links: 792,  oben: 331, Radius: 120, zoom: 50 },
+                    { links: 995,  oben: 359, Radius: 120, zoom: 50 },
+                    { links: 1123,  oben: 360, Radius: 120, zoom: 50 },
+                    { links: 1229,  oben: 367, Radius: 120, zoom: 50 },
+                    { links: 1388,  oben: 365, Radius: 120, zoom: 50 }
+                ]
+            ]
+        },
         Ewiges_Eis: { Portale: {
             Ost:  { zu: "Grosse_Wiese",         links: 1390, oben: 50, breit: 50, hoch: 611 },
             West: { zu: "Höhle_Yeti",           links: 0, oben: 50, breit: 50, hoch: 611 }
@@ -194,11 +227,5 @@ var Spielaufbau = {
                 return true; // Aktion deaktivieren
             }
         }
-    },
-
-    Spieler: {
-        in: "Silberne_Lichtung",
-        Lebenspunkte: 100,
-        Kraft: 3
     }
 }
