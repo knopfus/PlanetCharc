@@ -27,4 +27,29 @@ class Ein_Weg {
             Wegpunkt.verstecken();
         }
     }
+
+    /**
+     * Gibt ein Array von Wegpunkten zurück, die der Spieler durchschreiten muss, um von a nach b zu kommen.
+     * 
+     * Das Array kann leer sein, wenn der Spieler schon beim Ziel_Wegpunkt ist.
+     */
+    Weg_berechnen(Start_Wegpunkt, Ziel_Wegpunkt) {
+        if (Start_Wegpunkt == Ziel_Wegpunkt) return [];
+        let Differenz = Ziel_Wegpunkt.Nummer - Start_Wegpunkt.Nummer;
+
+        let Wegpunkte = [];
+        if (Differenz < 0) {
+            // Rückwärts zählen
+            for (let i = Start_Wegpunkt.Nummer - 1; i >= Ziel_Wegpunkt.Nummer; i--) {
+                Wegpunkte.hinzufügen(this.Wegpunkte[i]);
+            }
+        } else {
+            // Vorwärts zählen
+            for (let i = Start_Wegpunkt.Nummer + 1; i <= Ziel_Wegpunkt.Nummer; i++) {
+                Wegpunkte.hinzufügen(this.Wegpunkte[i]);
+            }
+        }
+
+        return Wegpunkte;
+    }
 }

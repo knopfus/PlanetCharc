@@ -2,6 +2,7 @@ class Ein_Wegpunkt {
     constructor(Nummer, Eigenschaften, Weg, Spiel) {
         this.Nummer = Nummer;
         this.Eigenschaften = Eigenschaften;
+        this.Weg = Weg;
         this.Spiel = Spiel;
 
         let Wegpunkt_Vorlage = document.getElementById("Wegpunkt_Vorlage");

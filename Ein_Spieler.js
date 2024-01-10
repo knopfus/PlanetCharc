@@ -11,6 +11,8 @@ class Ein_Spieler {
     gehe_zu(Wegpunkt) {
         if (!Wegpunkt.Eigenschaften) return; // Versuche nicht zu einem nicht existierenden Wegpunkt zu gehen
 
+        if (this.Wegpunkt == Wegpunkt) return; // Nichts zu tun, schon am richtigen Ort
+
         if (!this.Wegpunkt) {
             // Noch kein Wegpunkt - Keine Animation
 
@@ -27,14 +29,9 @@ class Ein_Spieler {
         }
 
         this.Ziel_Wegpunkt = Wegpunkt;
-        let Differenz = this.Ziel_Wegpunkt.Nummer - this.Wegpunkt.Nummer;
-        if (Differenz == -1 || Differenz == 1) { // || bedeutet "oder"
-            this.nächster_Wegpunkt = Wegpunkt;
-        } else {
-            let Vorzeichen = Math.sign(Differenz);
-            let nächster_Wegpunkt_Nummer = this.Wegpunkt.Nummer + Vorzeichen;
-            this.nächster_Wegpunkt = this.Spiel.Ort.Weg.Wegpunkte[nächster_Wegpunkt_Nummer];
-        }
+
+        let Wegpunkte = Wegpunkt.Weg.Weg_berechnen(this.Wegpunkt, this.Ziel_Wegpunkt);
+        this.nächster_Wegpunkt = Wegpunkte[0];
 
         let Koordinaten = {
             links: this.nächster_Wegpunkt.Eigenschaften.links - 0.5 * this.nächster_Wegpunkt.Eigenschaften.zoom,
