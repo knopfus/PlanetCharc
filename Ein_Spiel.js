@@ -25,7 +25,7 @@ class Ein_Spiel {
 
             for (let Ort_Name in Eigenschaften.Eintritte) {
                 let Wegpunkt_Nummer = Eigenschaften.Eintritte[Ort_Name];
-                let Wegpunkt = Ort.Weg.Wegpunkte[Wegpunkt_Nummer];
+                let Wegpunkt = Ort.Weg.Pfade[0][Wegpunkt_Nummer];
                 Ort.Eintritt_hinzufügen(Ort_Name, Wegpunkt);
             }
         }
@@ -112,8 +112,8 @@ class Ein_Spiel {
         this.Ort = Ort;
         this.Ort.betreten();
 
-        let Eintritt_Wegpunkt = this.Ort.Eintritte[alter_Ort_Name];
-        if (!Eintritt_Wegpunkt) { Eintritt_Wegpunkt = this.Ort.Weg.Wegpunkte[0]; }
+        let Eintritt_Wegpunkt = this.Ort.Weg.Eintritte[alter_Ort_Name];
+        if (!Eintritt_Wegpunkt) { Eintritt_Wegpunkt = this.Ort.Weg.Pfade[0][0]; }
         this.Spieler.betrete_Ort_bei(Eintritt_Wegpunkt);
 
         for (var Monster_Name in this.Monster) {

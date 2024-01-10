@@ -3,7 +3,7 @@ class Ein_Ort {
         this.Name = Name;
         this.Spiel = Spiel;
         this.Eigenschaften = Eigenschaften;
-        this.Weg = new Ein_Weg(0, Eigenschaften.Wegpunkte, this, this.Spiel);
+        this.Weg = new Ein_Weg(0, Eigenschaften.Pfade, this, this.Spiel);
         
         this.Gegenstände = [];
         this.Portale = {};

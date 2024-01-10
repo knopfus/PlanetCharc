@@ -11,8 +11,6 @@ class Ein_Spieler {
     gehe_zu(Wegpunkt) {
         if (!Wegpunkt.Eigenschaften) return; // Versuche nicht zu einem nicht existierenden Wegpunkt zu gehen
 
-        if (this.Wegpunkt == Wegpunkt) return; // Nichts zu tun, schon am richtigen Ort
-
         if (!this.Wegpunkt) {
             // Noch kein Wegpunkt - Keine Animation
 
