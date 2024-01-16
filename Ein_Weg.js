@@ -11,28 +11,46 @@ class Ein_Weg {
             if (Pfade.length > 2) {
                 throw "Nur 2 Pfade pro Ort unterstützt.";
             }
-            for (let Pfad_Nummer = 0; Pfad_Nummer < Pfade.length; Pfad_Nummer++) {
-                let Wegpunkte = Pfade[Pfad_Nummer];
-                let Pfad = [];
-                this.Pfade.hinzufügen(Pfad);
-                for (let i = 0; i < Wegpunkte.length; i++) {
-                    let Wegpunkt = new Ein_Wegpunkt(i, Pfad_Nummer, Wegpunkte[i], this, this.Spiel);
-                    Pfad.hinzufügen(Wegpunkt);
-                    // Wenn ein Wegpunkt ein Portal zu einem anderen Ort hat, soll man von dort bei diesem Wegpunkt landen
-                    if (Wegpunkte[i].Portal) {
-                        let Ort_Name = Wegpunkte[i].Portal;
-                        this.Eintritte[Ort_Name] = Wegpunkt;
-                    }
-                    if (Wegpunkte[i].Kreuzung) {
-                        this.Kreuzung.hinzufügen(Wegpunkt);
-                    }
-                }
+            for (let i = 0; i < Pfade.length; i++) {
+                let Wegpunkte = Pfade[i];
+                this.Pfad_hinzufügen(Wegpunkte);
             }
-        } else {
-            let Pfad = [];
-            this.Pfade.hinzufügen(Pfad);
-            let Wegpunkt = new Ein_Wegpunkt(0, 0, { links: 103,  oben: 159, Radius: 120, zoom: 100 }, this, this.Spiel);
-            Pfad.hinzufügen(Wegpunkt);
+        }
+    }
+
+    Pfad_hinzufügen(Wegpunkte) {
+        let Pfad_Nummer = this.Pfade.length;
+        let Pfad = [];
+        this.Pfade.hinzufügen(Pfad);
+        if (Wegpunkte) {
+            for (let i = 0; i < Wegpunkte.length; i++) {
+                this.Wegpunkt_hinzufügen(Pfad_Nummer, Wegpunkte[i]);
+            }
+        }
+    }
+
+    Wegpunkt_hinzufügen(Pfad_Nummer, Wegpunkt_Eigenschaften) {
+        let Pfad = this.Pfade[Pfad_Nummer];
+        if (!Pfad) {
+            // Pfad existiert noch gar nicht, noch kurz hinzufügen
+            this.Pfad_hinzufügen();
+            Pfad = this.Pfade[Pfad_Nummer];
+        }
+        let i = Pfad.length;
+
+        let Wegpunkt = new Ein_Wegpunkt(i, Pfad_Nummer, Wegpunkt_Eigenschaften, this, this.Spiel);
+
+        Pfad.hinzufügen(Wegpunkt);
+        // Wenn ein Wegpunkt ein Portal zu einem anderen Ort hat, soll man von dort bei diesem Wegpunkt landen
+        if (Wegpunkt_Eigenschaften.Portal) {
+            let Ort_Name = Wegpunkt_Eigenschaften.Portal;
+            this.Eintritte[Ort_Name] = Wegpunkt;
+        }
+        if (Wegpunkt_Eigenschaften.Kreuzung) {
+            this.Kreuzung.hinzufügen(Wegpunkt);
+        }
+        if (Wegpunkt_Eigenschaften.Start) {
+            this.Eintritte["Start"] = Wegpunkt;
         }
     }
 
@@ -63,10 +81,8 @@ class Ein_Weg {
         if (Start_Wegpunkt.Pfad_Nummer == Ziel_Wegpunkt.Pfad_Nummer) {
             // Wir bleiben auf dem gleichen Pfad, einfach dem Pfad entlang laufen
 
-            let Differenz = Ziel_Wegpunkt.Nummer - Start_Wegpunkt.Nummer;
-
             let Wegpunkte = [];
-            if (Differenz < 0) {
+            if (Ziel_Wegpunkt.Nummer < Start_Wegpunkt.Nummer) {
                 // Rückwärts zählen
                 for (let i = Start_Wegpunkt.Nummer - 1; i >= Ziel_Wegpunkt.Nummer; i--) {
                     Wegpunkte.hinzufügen(this.Pfade[Start_Wegpunkt.Pfad_Nummer][i]);

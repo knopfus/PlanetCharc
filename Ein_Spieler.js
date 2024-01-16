@@ -6,6 +6,7 @@ class Ein_Spieler {
         this.Spieler_div = document.getElementById("Spieler");
 
         this.ANZAHL_SCHRITTE = 50;
+        this.ANZAHL_SCHRITTE_ENTWICKLER_MODUS = 20;
     }
 
     gehe_zu(Wegpunkt) {
@@ -42,7 +43,7 @@ class Ein_Spieler {
             hoch: this.nächster_Wegpunkt.Eigenschaften.zoom
         };
 
-        let Schritte = this.ANZAHL_SCHRITTE;
+        let Schritte = this.Spiel.Entwickler_Modus ? this.ANZAHL_SCHRITTE_ENTWICKLER_MODUS : this.ANZAHL_SCHRITTE;
         this.Schritte = Schritte;
         this.Schritt_Richtung = {
             nach_rechts: (Koordinaten.links - this.Koordinaten.links) / Schritte,
@@ -57,7 +58,7 @@ class Ein_Spieler {
         this.Koordinaten = null;
         this.Schritte = 0;
 
-        this.gehe_zu(Wegpunkt);
+        if (Wegpunkt) this.gehe_zu(Wegpunkt);
     }
 
     platziere_bei(Koordinaten) {

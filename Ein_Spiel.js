@@ -7,10 +7,15 @@ class Ein_Spiel {
         }
 
         this.Orte = {};
+        this.Orte_Kürzel = {};
         for (let Ort_Name in Spielaufbau.Orte) {
             let Eigenschaften = Spielaufbau.Orte[Ort_Name];
             let Ort = new Ein_Ort(Ort_Name, Eigenschaften, this);
             this.Orte[Ort_Name] = Ort;
+
+            if (Eigenschaften.Kürzel) {
+                this.Orte_Kürzel[Eigenschaften.Kürzel] = Ort;
+            }
         }
 
         for (let Ort_Name in Spielaufbau.Orte) {
@@ -62,8 +67,6 @@ class Ein_Spiel {
 
         let self = this;
         document.getElementById("Ort-Bild").onclick = function(event) {
-            console.log(event.offsetX + "," + event.offsetY);
-
             if (self.aktive_Aktion) {
                 self.aktive_Aktion.ausführen_auf_Ort(self.Ort, event);
             }
@@ -71,9 +74,15 @@ class Ein_Spiel {
 
         document.onkeydown = function(event) {
             if (event.key == "g") {
-                self.Spieler.ANZAHL_SCHRITTE = 20;
-                self.Entwickler_Modus = true;
+                self.Entwickler_Modus = !self.Entwickler_Modus;
+
                 self.Ort.Weg.anzeigen();
+                for (let Aktion_Name in self.Aktionen) {
+                    self.Aktionen[Aktion_Name].anzeigen_falls_Entwickler_Modus();
+                }
+            }
+            if (event.key in self.Orte_Kürzel) {
+                self.gehe_zu_Ort(self.Orte_Kürzel[event.key]);
             }
         }
     }
@@ -113,7 +122,6 @@ class Ein_Spiel {
         this.Ort.betreten();
 
         let Eintritt_Wegpunkt = this.Ort.Weg.Eintritte[alter_Ort_Name];
-        if (!Eintritt_Wegpunkt) { Eintritt_Wegpunkt = this.Ort.Weg.Pfade[0][0]; }
         this.Spieler.betrete_Ort_bei(Eintritt_Wegpunkt);
 
         for (var Monster_Name in this.Monster) {

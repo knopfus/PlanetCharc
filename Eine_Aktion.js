@@ -5,6 +5,11 @@ class Eine_Aktion {
         this.Spiel = Spiel;
 
         let Aktion_div = document.getElementById("Aktion-" + Name);
+        this.Aktion_div = Aktion_div;
+        if (Eigenschaften.Entwickler_Modus) {
+            Aktion_div.style.float = "right";
+            this.anzeigen_falls_Entwickler_Modus();
+        }
         let self = this;
         Aktion_div.onclick = function() {
             if (self.Spiel.aktive_Aktion == self) {
@@ -13,12 +18,22 @@ class Eine_Aktion {
                 self.aktivieren();
             }
         };
-        this.Aktion_div = Aktion_div;
+    }
+
+    anzeigen_falls_Entwickler_Modus() {
+        if (this.Eigenschaften.Entwickler_Modus && !this.Spiel.Entwickler_Modus) {
+            this.Aktion_div.style.display = "none";
+        } else {
+            this.Aktion_div.style.display = "";
+        }
     }
 
     deaktivieren() {
-        this.Spiel.aktive_Aktion = null;
-        this.Aktion_div.classList.remove("aktiv");
+        let wirklich_deaktivieren = this.beim_Deaktivieren();
+        if (wirklich_deaktivieren) {
+            this.Spiel.aktive_Aktion = null;
+            this.Aktion_div.classList.remove("aktiv");
+        }
     }
 
     aktivieren() {
@@ -30,6 +45,24 @@ class Eine_Aktion {
         document.getElementById("Status-Aktion").innerText = this.Name;
 
         this.Aktion_div.classList.add("aktiv");
+        this.beim_Aktivieren();
+    }
+
+    beim_Aktivieren() {
+        if (this.Eigenschaften.beim_Aktivieren) {
+            let deaktivieren = this.Eigenschaften.beim_Aktivieren(this.Spiel);
+            if (deaktivieren) {
+                this.deaktivieren();
+            }
+        }
+    }
+
+    beim_Deaktivieren() {
+        if (this.Eigenschaften.beim_Deaktivieren) {
+            return this.Eigenschaften.beim_Deaktivieren(this.Spiel);
+        } else {
+            return true; // wirklich_deaktivieren
+        }
     }
 
     ausführen_auf_Ort(Ort, event) {

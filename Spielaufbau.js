@@ -19,7 +19,7 @@ var Spielaufbau = {
                     { links: 265,  oben: 460, Radius: 120, zoom: 100 },
                     { links: 344,  oben: 534, Radius: 120, zoom: 100 },
                     { links: 410,  oben: 650, Radius: 120, zoom: 100, Kreuzung: true },
-                    { links: 570,  oben: 650, Radius: 120, zoom: 100 },
+                    { links: 570,  oben: 650, Radius: 120, zoom: 100, Start: true },
                     { links: 546,  oben: 554, Radius: 120, zoom: 100 },
                     { links: 500,  oben: 470, Radius: 120, zoom: 100 },
                     { links: 610,  oben: 385, Radius: 120, zoom: 100 },
@@ -36,7 +36,6 @@ var Spielaufbau = {
             ]
         },
         Dschungel_1: {             
-            
             Pfade: [
                 [
                     { links: 69,   oben: 426, Radius: 120, zoom: 100, Portal: "Grosse_Wiese" },
@@ -92,10 +91,24 @@ var Spielaufbau = {
                 ]
             ]
         },
-        Ewiges_Eis: { Portale: {
-            Ost:  { zu: "Grosse_Wiese",         links: 1390, oben: 50, breit: 50, hoch: 611 },
-            West: { zu: "Höhle_Yeti",           links: 0, oben: 50, breit: 50, hoch: 611 }
-        } },
+        Ewiges_Eis: {
+            Kürzel: "e",
+            Pfade: [
+                [
+                    {"links":50,"oben":626,"Radius":125.2,"zoom":125.2},
+                    {"links":187,"oben":664,"Radius":132.8,"zoom":132.8},
+                    {"links":400,"oben":705,"Radius":141,"zoom":141},
+                    {"links":653,"oben":677,"Radius":80,"zoom":135.4},
+                    {"links":873,"oben":665,"Radius":80,"zoom":133,"Kreuzung":true},
+                    {"links":1062,"oben":671,"Radius":80,"zoom":134.2},
+                    {"links":1197,"oben":710,"Radius":142,"zoom":142},
+                    {"links":1386,"oben":709,"Radius":141.8,"zoom":141.8, Portal: "Grosse_Wiese"}
+                ],[
+                    {"links":763,"oben":625,"Radius":117,"zoom":117,"Kreuzung":true},
+                    {"links":603,"oben":605,"Radius":109,"zoom":109, Portal: "Höhle_Yeti"}
+                ]
+            ]
+        },
         Höhle_Yeti: { Portale: {
             Ost:  { zu: "Ewiges_Eis",           links: 1390, oben: 50, breit: 50, hoch: 611 }
         } },
@@ -198,10 +211,6 @@ var Spielaufbau = {
             auf_Portal: function(Portal) {
                 Portal.gehe_zu();
                 return true; // Aktion deaktivieren
-            },
-
-            auf_Ort: function(Ort, Spiel, event) {
-                //Spiel.Spieler.gehe_zu({ links: event.offsetX, oben: event.offsetY, breite: 150, höhe: 150 });
             }
         },
 
@@ -222,9 +231,55 @@ var Spielaufbau = {
         },
 
         unsterblich: {
-            auf_Ort: function(Ort, Spiel) {
+            Entwickler_Modus: true,
+            beim_Aktivieren: function(Spiel) {
                 Spiel.unsterblich();
                 return true; // Aktion deaktivieren
+            }
+        },
+
+        Weg_Design: {
+            Entwickler_Modus: true,
+            beim_Aktivieren: function(Spiel) {
+                Spiel.Weg_Design_Pfad_Nummer = Spiel.Ort.Weg.Pfade.length;
+            },
+            auf_Ort: function(Ort, Spiel, event) {
+                Ort.Weg.Wegpunkt_hinzufügen(Spiel.Weg_Design_Pfad_Nummer, { links: event.offsetX, oben: event.offsetY, Radius: event.offsetY / 5, zoom: event.offsetY / 5 });
+                Ort.Weg.anzeigen();
+            },
+            auf_Wegpunkt: function(Wegpunkt) {
+                Wegpunkt.Eigenschaften.Kreuzung = true;
+            },
+            beim_Deaktivieren: function(Spiel) {
+                Spiel.Weg_Design_Pfad_Nummer = Spiel.Ort.Weg.Pfade.length;
+                if (Spiel.Weg_Design_Pfad_Nummer >= 2) {
+                    // Nicht mehr als 2 Pfade möglich
+                    // -> aufhören zu designen, Wegpunkte ausgeben und Aktion wirklich deaktivieren
+
+                    let json = "Pfade: [\n";
+                    for (let i = 0; i < Spiel.Ort.Weg.Pfade.length; i++) {
+                        let Pfad = Spiel.Ort.Weg.Pfade[i];
+                        if (i > 0) {
+                            json += "    ],[\n";
+                        } else {
+                            json += "    [\n";
+                        }
+
+                        let Anzahl = Pfad.length;
+                        for (let Wegpunkt of Pfad) {
+                            if (Wegpunkt.Nummer < Anzahl - 1) {
+                                json += "        " + JSON.stringify(Wegpunkt.Eigenschaften) + ",\n";
+                            } else {
+                                json += "        " + JSON.stringify(Wegpunkt.Eigenschaften) + "\n";
+                            }
+                        }
+                    }
+                    json += "    ]\n";
+                    json += "]\n";
+                    console.log(json);       
+
+                    return true;
+                }
             }
         }
     }
