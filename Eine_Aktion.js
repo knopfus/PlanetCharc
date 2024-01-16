@@ -16,6 +16,7 @@ class Eine_Aktion {
                 self.deaktivieren();
             } else {
                 self.aktivieren();
+                self.Spiel.Sprechblase.verstecken();
             }
         };
     }

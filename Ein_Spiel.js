@@ -35,6 +35,8 @@ class Ein_Spiel {
             }
         }
 
+        this.Sprechblase = new Eine_Sprechblase();
+
         this.Gegenstände = {};
         for (let Gegenstand_Name in Spielaufbau.Gegenstände) {
             let Eigenschaften = Spielaufbau.Gegenstände[Gegenstand_Name];

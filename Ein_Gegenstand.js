@@ -72,6 +72,12 @@ class Ein_Gegenstand {
         this.im_Besitz_anzeigen();
     }
 
+    anschauen() {
+        if (this.Eigenschaften.feststellen) {
+            this.Spiel.Sprechblase.anzeigen(this.Eigenschaften.feststellen);
+        }
+    }
+
     anzeigen() {
         this.Gegenstand_div.style.visibility = "visible";
     }

@@ -34,6 +34,11 @@ class Ein_Ort {
             let Portal = this.Spiel.Portale[Portal_Name];
             Portal.wechsle_zu(this);
         }
+
+        if (this.Eigenschaften.feststellen && !this.schon_festgestellt) {
+            this.Spiel.Sprechblase.anzeigen(this.Eigenschaften.feststellen);
+            this.schon_festgestellt = true;
+        }
     }
 
     hinzufügen(Gegenstand) {

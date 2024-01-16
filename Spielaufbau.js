@@ -10,6 +10,15 @@ var Spielaufbau = {
     Orte: {
 
         Silberne_Lichtung: {
+            feststellen: "Hallo Gavin!\n" +
+                "Der Entwicklermodus ist jetzt richtig cool geworden:\n" +
+                "Mit dem Weg-Designer kannst du Wege mit Mausklicks erstellen.\n" +
+                "1. Aktivieren\n" +
+                "2. Wegpunkte für den Pfad 0 per Klick erzeugen\n" +
+                "3. Auf Aktion klicken (wie zum Deaktivieren, aber Aktion wird noch nicht deaktiviert)\n" +
+                "4. Wegpunkte für den Pfad 1 per Klick erzeugen\n" +
+                "5. Auf die Wegpunkte der beiden Pfade klicken, die als Kreuzung dienen sollen\n" +
+                "6. Aktion deaktivieren, das JSON wird automatisch in der Konsole ausgegeben und kann kopiert werden.",
             Pfade: [
                 [
                     { links: 170,  oben: 110,  Radius: 120, zoom: 100 },
@@ -143,11 +152,14 @@ var Spielaufbau = {
             Nord: { zu: "Lavawelt",             links: 50, oben: 0, breit: 1340, hoch: 50 },
             Süd:  { zu: "Fluss",                links: 50, oben: 661, breit: 1340, hoch: 50 }
         } },
-        Lavawelt: { Portale: {
-            Ost:  { zu: "Reich_des_Giganten",   links: 1390, oben: 50, breit: 50, hoch: 611 },
-            Süd:  { zu: "Quelle_des_Lichts",    links: 50, oben: 661, breit: 1340, hoch: 50 },
-            West: { zu: "Berge_der_Angst",      links: 0, oben: 50, breit: 50, hoch: 611 }
-        } },
+        Lavawelt: {
+            Kürzel: "l",
+            Portale: {
+                Ost:  { zu: "Reich_des_Giganten",   links: 1390, oben: 50, breit: 50, hoch: 611 },
+                Süd:  { zu: "Quelle_des_Lichts",    links: 50, oben: 661, breit: 1340, hoch: 50 },
+                West: { zu: "Berge_der_Angst",      links: 0, oben: 50, breit: 50, hoch: 611 }
+            }
+        },
         Reich_des_Giganten: { Portale: {
             West: { zu: "Lavawelt",             links: 0, oben: 50, breit: 50, hoch: 611 }
         } },
@@ -162,7 +174,11 @@ var Spielaufbau = {
 
     Gegenstände: {
 
-        "Klauenspringer-Zahn": { in: "Unerreichbarer_Ort", links: 470, oben: 305, breit: 50, hoch: 85, gedreht: 263 },
+        "Klauenspringer-Zahn": {
+            in: "Unerreichbarer_Ort",
+            feststellen: "Oh, da ist etwas liegen geblieben. Sieht aus wie ein Zahn von diesem Monster.",
+            links: 470, oben: 305, breit: 50, hoch: 85, gedreht: 263
+        },
 
         "Lichtkristall": { in: "Unerreichbarer_Ort", links: 470, oben: 305, breit: 50, hoch: 85, gedreht: 0 }
 
@@ -227,6 +243,13 @@ var Spielaufbau = {
                 if (Monster.tot()) {
                     return true; // Aktion deaktivieren
                 }
+            }
+        },
+
+        anschauen: {
+            auf_Gegenstand: function(Gegenstand) {
+                Gegenstand.anschauen();
+                return true; // Aktion deaktivieren
             }
         },
 
