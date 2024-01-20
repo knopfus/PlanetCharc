@@ -69,6 +69,10 @@ class Ein_Spieler {
         this.Spieler_div.style.height = Koordinaten.hoch + "px";
     }
 
+    feststellen(text) {
+        this.Spiel.Sprechblase.anzeigen(text);
+    }
+
     Spieluhr_tickt() {
         if (this.Schritte) {
             let Koordinaten = {

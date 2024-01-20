@@ -3,6 +3,7 @@ class Eine_Aktion {
         this.Name = Name;
         this.Eigenschaften = Eigenschaften;
         this.Spiel = Spiel;
+        this.Status = {}; // Eine Aktion kann sich beim Ausführen Dinge merken, indem sie im Status gespeichert werden
 
         let Aktion_div = document.getElementById("Aktion-" + Name);
         this.Aktion_div = Aktion_div;
@@ -35,6 +36,7 @@ class Eine_Aktion {
             this.Spiel.aktive_Aktion = null;
             this.Aktion_div.classList.remove("aktiv");
         }
+        this.Status_anzeigen();
     }
 
     aktivieren() {
@@ -43,15 +45,15 @@ class Eine_Aktion {
         }
 
         this.Spiel.aktive_Aktion = this;
-        document.getElementById("Status-Aktion").innerText = this.Name;
 
         this.Aktion_div.classList.add("aktiv");
         this.beim_Aktivieren();
+        this.Status_anzeigen();
     }
 
     beim_Aktivieren() {
         if (this.Eigenschaften.beim_Aktivieren) {
-            let deaktivieren = this.Eigenschaften.beim_Aktivieren(this.Spiel);
+            let deaktivieren = this.Eigenschaften.beim_Aktivieren(this.Spiel, this);
             if (deaktivieren) {
                 this.deaktivieren();
             }
@@ -60,7 +62,7 @@ class Eine_Aktion {
 
     beim_Deaktivieren() {
         if (this.Eigenschaften.beim_Deaktivieren) {
-            return this.Eigenschaften.beim_Deaktivieren(this.Spiel);
+            return this.Eigenschaften.beim_Deaktivieren(this.Spiel, this);
         } else {
             return true; // wirklich_deaktivieren
         }
@@ -68,28 +70,31 @@ class Eine_Aktion {
 
     ausführen_auf_Ort(Ort, event) {
         if (this.Eigenschaften.auf_Ort) {
-            let deaktivieren = this.Eigenschaften.auf_Ort(Ort, this.Spiel, event);
+            let deaktivieren = this.Eigenschaften.auf_Ort(Ort, this.Spiel, this, event);
             if (deaktivieren) {
                 this.deaktivieren();
             }
+            this.Status_anzeigen();
         }
     }
 
-    ausführen_auf_Gegenstand(Gegenstand) {
+    ausführen_auf_Gegenstand(Gegenstand, event) {
         if (this.Eigenschaften.auf_Gegenstand) {
-            let deaktivieren = this.Eigenschaften.auf_Gegenstand(Gegenstand, this.Spiel);
+            let deaktivieren = this.Eigenschaften.auf_Gegenstand(Gegenstand, this.Spiel, this, event);
             if (deaktivieren) {
                 this.deaktivieren();
             }
+            this.Status_anzeigen();
         }
     }
 
-    ausführen_auf_Wegpunkt(Wegpunkt) {
+    ausführen_auf_Wegpunkt(Wegpunkt, event) {
         if (this.Eigenschaften.auf_Wegpunkt) {
-            let deaktivieren = this.Eigenschaften.auf_Wegpunkt(Wegpunkt, this.Spiel);
+            let deaktivieren = this.Eigenschaften.auf_Wegpunkt(Wegpunkt, this.Spiel, this, event);
             if (deaktivieren) {
                 this.deaktivieren();
             }
+            this.Status_anzeigen();
         }
     }
 
@@ -99,15 +104,25 @@ class Eine_Aktion {
             if (deaktivieren) {
                 this.deaktivieren();
             }
+            this.Status_anzeigen();
         }
     }
 
-    ausführen_auf_Monster(Monster) {
+    ausführen_auf_Monster(Monster, event) {
         if (this.Eigenschaften.auf_Monster) {
-            let deaktivieren = this.Eigenschaften.auf_Monster(Monster, this.Spiel);
+            let deaktivieren = this.Eigenschaften.auf_Monster(Monster, this.Spiel, this, event);
             if (deaktivieren) {
                 this.deaktivieren();
             }
+            this.Status_anzeigen();
+        }
+    }
+
+    Status_anzeigen() {
+        if (this.Spiel.aktive_Aktion == null) {
+            document.getElementById("Status-Aktion").innerText = "keine";
+        } else {
+            document.getElementById("Status-Aktion").innerText = this.Spiel.aktive_Aktion.Name + " " + JSON.stringify(this.Spiel.aktive_Aktion.Status);
         }
     }
 }

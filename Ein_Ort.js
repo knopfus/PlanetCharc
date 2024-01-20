@@ -36,7 +36,7 @@ class Ein_Ort {
         }
 
         if (this.Eigenschaften.feststellen && !this.schon_festgestellt) {
-            this.Spiel.Sprechblase.anzeigen(this.Eigenschaften.feststellen);
+            this.Spiel.Spieler.feststellen(this.Eigenschaften.feststellen);
             this.schon_festgestellt = true;
         }
     }

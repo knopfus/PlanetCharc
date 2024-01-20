@@ -18,9 +18,9 @@ class Ein_Wegpunkt {
         Wegpunkt_div.style.visibility = "visible";
 
         let self = this;
-        Wegpunkt_div.onclick = function() {
+        Wegpunkt_div.onclick = function(event) {
             if (self.Spiel.aktive_Aktion) {
-                self.Spiel.aktive_Aktion.ausführen_auf_Wegpunkt(self);
+                self.Spiel.aktive_Aktion.ausführen_auf_Wegpunkt(self, event);
             }
         };
 

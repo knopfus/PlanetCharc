@@ -62,11 +62,28 @@ var Spielaufbau = {
                 ]
             ]
         },
-        Berge_der_Angst: { Portale: {
-            Ost:  { zu: "Lavawelt",             links: 1390, oben: 50, breit: 50, hoch: 611 },
-            Süd:  { zu: "Grosse_Wiese",         links: 50, oben: 661, breit: 1340, hoch: 50 },
-            West: { zu: "Gipfel",               links: 0, oben: 50, breit: 50, hoch: 611 }
-        } },
+        Berge_der_Angst: {
+            Kürzel: "b",
+            Pfade: [
+                [
+                    {"links":3,"oben":642,"Radius":126.4,"zoom":126.4,Portal:"Grosse_Wiese"},
+                    {"links":309,"oben":664,"Radius":130.8,"zoom":130.8},
+                    {"links":577,"oben":707,"Radius":139.4,"zoom":139.4},
+                    {"links":880,"oben":725,"Radius":120,"zoom":141,"Kreuzung":true},
+                    {"links":1193,"oben":738,"Radius":140,"zoom":141.6},
+                    {"links":1434,"oben":748,"Radius":140,"zoom":141.6,Portal: "Lavawelt"}
+                ],[
+                    {"links":884,"oben":720,"Radius":10,"zoom":100,"Kreuzung":true},
+                    {"links":945,"oben":720,"Radius":10,"zoom":80},
+                    {"links":930.4,"oben":707.4,"Radius":10,"zoom":70},
+                    {"links":875.6,"oben":695.6,"Radius":10,"zoom":60},
+                    {"links":841.92,"oben":663.92,"Radius":10,"zoom":50},
+                    {"links":912.48,"oben":643.48,"Radius":10,"zoom":40},
+                    {"links":977.784,"oben":621.784,"Radius":10,"zoom":30},
+                    {"links":1056.84704,"oben":607.84704,"Radius":120,"zoom":20, Portal: "Gipfel"}
+                ]
+            ]
+        },
         Gipfel: { Portale: {
             Nord: { zu: "Nichts",               links: 50, oben: 0, breit: 1340, hoch: 50 },
             Ost:  { zu: "Berge_der_Angst",      links: 1390, oben: 50, breit: 50, hoch: 611 }
@@ -154,15 +171,49 @@ var Spielaufbau = {
         } },
         Lavawelt: {
             Kürzel: "l",
-            Portale: {
-                Ost:  { zu: "Reich_des_Giganten",   links: 1390, oben: 50, breit: 50, hoch: 611 },
-                Süd:  { zu: "Quelle_des_Lichts",    links: 50, oben: 661, breit: 1340, hoch: 50 },
-                West: { zu: "Berge_der_Angst",      links: 0, oben: 50, breit: 50, hoch: 611 }
-            }
+            Pfade: [
+                [
+                    {"links":71,"oben":336,"Radius":67.2,"zoom":67.2,Portal: "Berge_der_Angst"},
+                    {"links":99,"oben":414,"Radius":82.8,"zoom":82.8},
+                    {"links":194,"oben":471,"Radius":94.2,"zoom":94.2},
+                    {"links":312,"oben":444,"Radius":88.8,"zoom":88.8},
+                    {"links":435,"oben":416,"Radius":83.2,"zoom":83.2}
+                ],[
+                    {"links":1428,"oben":398,"Radius":79.6,"zoom":79.6, Portal: "Quelle_des_Lichts"},
+                    {"links":1325,"oben":450,"Radius":90,"zoom":90},
+                    {"links":1205,"oben":454,"Radius":90.8,"zoom":90.8},
+                    {"links":1114,"oben":412,"Radius":82.4,"zoom":82.4},
+                    {"links":1026,"oben":397,"Radius":79.4,"zoom":79.4},
+                    {"links":914,"oben":394,"Radius":78.8,"zoom":78.8},
+                    {"links":801,"oben":368,"Radius":73.6,"zoom":73.6},
+                    {"links":691,"oben":340,"Radius":68,"zoom":68, Portal: "Reich_des_Giganten"}
+                ]
+            ]
         },
-        Reich_des_Giganten: { Portale: {
-            West: { zu: "Lavawelt",             links: 0, oben: 50, breit: 50, hoch: 611 }
-        } },
+
+        Reich_des_Giganten: { 
+            Pfade: [
+                [
+                    {"links":65,"oben":369,"Radius":73.8,"zoom":73.8, Portal: "Lavawelt"},
+                    {"links":145,"oben":399,"Radius":79.8,"zoom":79.8},
+                    {"links":225,"oben":448,"Radius":89.6,"zoom":89.6},
+                    {"links":325,"oben":488,"Radius":97.6,"zoom":97.6},
+                    {"links":437,"oben":496,"Radius":99.2,"zoom":99.2},
+                    {"links":561,"oben":482,"Radius":96.4,"zoom":96.4,"Kreuzung":true},
+                    {"links":680,"oben":491,"Radius":98.2,"zoom":98.2},
+                    {"links":808,"oben":506,"Radius":101.2,"zoom":101.2},
+                    {"links":924,"oben":550,"Radius":110,"zoom":110},
+                    {"links":1066,"oben":568,"Radius":113.6,"zoom":113.6},
+                    {"links":1205,"oben":582,"Radius":116.4,"zoom":116.4},
+                    {"links":1379,"oben":550,"Radius":110,"zoom":110},
+                    {"links":1324,"oben":425,"Radius":85,"zoom":85},
+                    {"links":1250,"oben":369,"Radius":73.8,"zoom":73.8},
+                    {"links":1334,"oben":307,"Radius":61.4,"zoom":61.4}
+                ]
+            ],
+            
+            Kürzel: "r"
+        },
 
         Nichts: { Portale: {
             Süd: { zu: "Gipfel",                links: 50, oben: 661, breit: 1340, hoch: 50}
@@ -231,8 +282,12 @@ var Spielaufbau = {
         },
 
         nehmen: {
-            auf_Gegenstand: function(Gegenstand) {
-                Gegenstand.nehmen();
+            auf_Gegenstand: function(Gegenstand, Spiel) {
+                if (sind_näher_als(Spiel.Spieler.Koordinaten, Gegenstand.Eigenschaften, 100)) {
+                    Gegenstand.nehmen();
+                } else {
+                    Spiel.Spieler.feststellen("Das ist zu weit weg, ich komme da nicht ran.");
+                }
                 return true; // Aktion deaktivieren
             }
         },
@@ -263,19 +318,26 @@ var Spielaufbau = {
 
         Weg_Design: {
             Entwickler_Modus: true,
-            beim_Aktivieren: function(Spiel) {
-                Spiel.Weg_Design_Pfad_Nummer = Spiel.Ort.Weg.Pfade.length;
+            beim_Aktivieren: function(Spiel, Aktion) {
+                Aktion.Status.Weg_Design_Pfad_Nummer = 0;
             },
-            auf_Ort: function(Ort, Spiel, event) {
-                Ort.Weg.Wegpunkt_hinzufügen(Spiel.Weg_Design_Pfad_Nummer, { links: event.offsetX, oben: event.offsetY, Radius: event.offsetY / 5, zoom: event.offsetY / 5 });
+            auf_Ort: function(Ort, Spiel, Aktion, event) {
+                let links = event.offsetX;
+                let oben = event.offsetY;
+                let Pfad_Nummer = Aktion.Status.Weg_Design_Pfad_Nummer;
+                Ort.Weg.Wegpunkt_hinzufügen(Pfad_Nummer, { links: links, oben: oben, Radius: oben / 5, zoom: oben / 5 });
                 Ort.Weg.anzeigen();
             },
-            auf_Wegpunkt: function(Wegpunkt) {
-                Wegpunkt.Eigenschaften.Kreuzung = true;
+            auf_Wegpunkt: function(Wegpunkt, Spiel, Aktion, event) {
+                let links = Wegpunkt.Eigenschaften.links - Wegpunkt.Eigenschaften.Radius + event.offsetX;
+                let oben = Wegpunkt.Eigenschaften.oben - Wegpunkt.Eigenschaften.Radius + event.offsetY;
+                let Pfad_Nummer = Aktion.Status.Weg_Design_Pfad_Nummer;
+                Wegpunkt.Weg.Wegpunkt_hinzufügen(Pfad_Nummer, { links: links, oben: oben, Radius: oben / 5, zoom: oben / 5 });
+                Wegpunkt.Weg.anzeigen();
             },
-            beim_Deaktivieren: function(Spiel) {
-                Spiel.Weg_Design_Pfad_Nummer = Spiel.Ort.Weg.Pfade.length;
-                if (Spiel.Weg_Design_Pfad_Nummer >= 2) {
+            beim_Deaktivieren: function(Spiel, Aktion) {
+                Aktion.Status.Weg_Design_Pfad_Nummer++;
+                if (Aktion.Status.Weg_Design_Pfad_Nummer >= 2) {
                     // Nicht mehr als 2 Pfade möglich
                     // -> aufhören zu designen, Wegpunkte ausgeben und Aktion wirklich deaktivieren
 

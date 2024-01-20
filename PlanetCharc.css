@@ -177,3 +177,8 @@ h1 {
 }
 
 #Gegenstand_in_Besitz_Vorlage { display: none; }
+
+#Status {
+    position: absolute;
+    z-index: -1;
+}

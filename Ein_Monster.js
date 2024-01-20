@@ -13,9 +13,9 @@ class Ein_Monster {
         this.Monster_div = document.getElementById(Name);
 
         let self = this;
-        Monster_div.onclick = function() {
+        Monster_div.onclick = function(event) {
             if (self.Spiel.aktive_Aktion) {
-                self.Spiel.aktive_Aktion.ausführen_auf_Monster(self);
+                self.Spiel.aktive_Aktion.ausführen_auf_Monster(self, event);
             }
         };
 

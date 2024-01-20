@@ -83,6 +83,7 @@ class Ein_Spiel {
                     self.Aktionen[Aktion_Name].anzeigen_falls_Entwickler_Modus();
                 }
             }
+            document.getElementById("Status").style.zIndex = self.Entwickler_Modus ? "100000" : "-1";
             if (event.key in self.Orte_Kürzel) {
                 self.gehe_zu_Ort(self.Orte_Kürzel[event.key]);
             }

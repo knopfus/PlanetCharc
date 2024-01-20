@@ -15,9 +15,9 @@ class Ein_Gegenstand {
         if (Eigenschaften.gedreht)  { Gegenstand_div.style.transform    = "rotate(" + Eigenschaften.gedreht + "deg)"; }
 
         let self = this;
-        Gegenstand_div.onclick = function() {
+        Gegenstand_div.onclick = function(event) {
             if (self.Spiel.aktive_Aktion) {
-                self.Spiel.aktive_Aktion.ausführen_auf_Gegenstand(self);
+                self.Spiel.aktive_Aktion.ausführen_auf_Gegenstand(self, event);
             }
         };
 
@@ -74,7 +74,7 @@ class Ein_Gegenstand {
 
     anschauen() {
         if (this.Eigenschaften.feststellen) {
-            this.Spiel.Sprechblase.anzeigen(this.Eigenschaften.feststellen);
+            this.Spiel.Spieler.feststellen(this.Eigenschaften.feststellen);
         }
     }
 
