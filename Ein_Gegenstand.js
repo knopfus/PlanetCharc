@@ -4,6 +4,8 @@ class Ein_Gegenstand {
         this.Eigenschaften = Eigenschaften;
         this.Spiel = Spiel;
 
+        this.Zustand = this.Eigenschaften.Zustand;
+
         let Gegenstand_Vorlage = document.getElementById("Gegenstand_Vorlage");
         let Gegenstand_div = Gegenstand_Vorlage.cloneNode(true);
 
@@ -74,34 +76,22 @@ class Ein_Gegenstand {
     }
 
     drücken() {
-
-        if (this.Name == "Lavawelt_Mechanik_Wasser"
-            || this.Name == "Lavawelt_Mechanik_Pflanze"
-            || this.Name == "Lavawelt_Mechanik_Feuer"
-            || this.Name == "Lavawelt_Mechanik_Wind") {
-
-            this.gedrückt = true;
-            this.anzeigen();
-            
-            this.Spiel.Lavawelt_Mechanik.gedrückte_Symbole.hinzufügen(this.Name);
-            if (this.Spiel.Lavawelt_Mechanik.gedrückte_Symbole.length == 4) {
-                if (this.Spiel.Lavawelt_Mechanik.gedrückte_Symbole.ist_gleich( 
-                    [ "Lavawelt_Mechanik_Pflanze","Lavawelt_Mechanik_Wasser","Lavawelt_Mechanik_Feuer","Lavawelt_Mechanik_Wind" ]))
-                {
-                    this.Spiel.Wasserfall_teilen();
-                } else {
-                    this.Spiel.Lavawelt_Mechanik.gedrückte_Symbole = [];
-                    this.Spiel.Gegenstände.Lavawelt_Mechanik_Pflanze.gedrückt = false
-                    this.Spiel.Gegenstände.Lavawelt_Mechanik_Pflanze.anzeigen();
-                    this.Spiel.Gegenstände.Lavawelt_Mechanik_Wasser.gedrückt = false
-                    this.Spiel.Gegenstände.Lavawelt_Mechanik_Wasser.anzeigen();
-                    this.Spiel.Gegenstände.Lavawelt_Mechanik_Feuer.gedrückt = false
-                    this.Spiel.Gegenstände.Lavawelt_Mechanik_Feuer.anzeigen();
-                    this.Spiel.Gegenstände.Lavawelt_Mechanik_Wind.gedrückt = false
-                    this.Spiel.Gegenstände.Lavawelt_Mechanik_Wind.anzeigen();
-                };
-            }
+        for (let Mechanik_Name in this.Spiel.Mechaniken) {
+            let Mechanik = this.Spiel.Mechaniken[Mechanik_Name];
+            if (Mechanik.enthält(this)) {
+                Mechanik.drücken(this);
+            }    
         }
+    }
+
+    ein() {
+        this.Zustand = "ein";
+        this.anzeigen();
+    }
+
+    aus() {
+        this.Zustand = "aus";
+        this.anzeigen();
     }
 
     anschauen() {
@@ -112,11 +102,11 @@ class Ein_Gegenstand {
 
     anzeigen() {
         this.Gegenstand_div.style.visibility = "visible";
-        this.Gegenstand_img.style.visibility = "hidden"
-        if (this.gedrückt == true) {
-            this.Gegenstand_img.style.visibility = ""
-        }
-        
+        if (this.Zustand == "aus") {
+            this.Gegenstand_img.style.visibility = "hidden";
+        } else {
+            this.Gegenstand_img.style.visibility = "";
+        }        
     }
 
     verstecken() {

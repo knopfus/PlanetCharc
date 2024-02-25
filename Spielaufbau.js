@@ -281,28 +281,33 @@ var Spielaufbau = {
 
         "Lavawelt_Mechanik_Kreuz": {
             in: "Lavawelt_Mechanik",
-            feststellen: "Sieht aus als ob ich hier irgendetwas drücken muss.",
-            links: 453, oben: 192, breit: 591, hoch: 513
+            feststellen: "Diese alten Symbolen in ihrer Anordnungen sehen fast ein bisschen wie ein Rätsel aus.",
+            links: 453, oben: 192, breit: 591, hoch: 513,
+            Zustand: "aus"
         },
         "Lavawelt_Mechanik_Wasser": {
             in: "Lavawelt_Mechanik",
-            feststellen: "Sieht aus als ob ich hier irgendetwas drücken muss.",
-            links: 453, oben: 192, breit: 306, hoch: 220
+            feststellen: "Diese alten Symbolen in ihrer Anordnung sehen fast ein bisschen wie ein Rätsel aus.",
+            links: 453, oben: 192, breit: 306, hoch: 220,
+            Zustand: "aus"
         },
         "Lavawelt_Mechanik_Pflanze": {
             in: "Lavawelt_Mechanik",
-            feststellen: "Sieht aus als ob ich hier irgendetwas drücken muss.",
-            links: 453+345, oben: 192, breit: 246, hoch: 255
+            feststellen: "Diese alten Symbolen in ihrer Anordnung sehen fast ein bisschen wie ein Rätsel aus.",
+            links: 453+345, oben: 192, breit: 246, hoch: 255,
+            Zustand: "aus"
         },
         "Lavawelt_Mechanik_Feuer": {
             in: "Lavawelt_Mechanik",
-            feststellen: "Sieht aus als ob ich hier irgendetwas drücken muss.",
-            links: 453, oben: 192+234, breit: 265, hoch: 236
+            feststellen: "Diese alten Symbolen in ihrer Anordnung sehen fast ein bisschen wie ein Rätsel aus.",
+            links: 453, oben: 192+234, breit: 265, hoch: 236,
+            Zustand: "aus"
         },
         "Lavawelt_Mechanik_Wind": {
             in: "Lavawelt_Mechanik",
-            feststellen: "Sieht aus als ob ich hier irgendetwas drücken muss.",
-            links: 453+305, oben: 192+295, breit: 285, hoch: 218
+            feststellen: "Diese alten Symbolen in ihrer Anordnung sehen fast ein bisschen wie ein Rätsel aus.",
+            links: 453+305, oben: 192+295, breit: 285, hoch: 218,
+            Zustand: "aus"
         },
 
         "Lichtkristall": { in: "Unerreichbarer_Ort", links: 470, oben: 305, breit: 50, hoch: 85, gedreht: 0 }
@@ -340,6 +345,17 @@ var Spielaufbau = {
             Lebenspunkte: 80,
             Kraft: 7
         }    
+    },
+
+    Mechaniken: {
+        Lavawelt_Mechanik: {
+            Zugehörige_Gegenstände: [ "Lavawelt_Mechanik_Pflanze","Lavawelt_Mechanik_Wasser","Lavawelt_Mechanik_Feuer","Lavawelt_Mechanik_Wind" ],
+            Richtiger_Code: [ "Lavawelt_Mechanik_Pflanze","Lavawelt_Mechanik_Wasser","Lavawelt_Mechanik_Feuer","Lavawelt_Mechanik_Wind" ],
+
+            gelöst: function(Spiel) {
+                Spiel.Wasserfall_teilen();
+            }
+        }
     },
 
     Aktionen: {

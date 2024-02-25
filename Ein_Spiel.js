@@ -65,9 +65,12 @@ class Ein_Spiel {
             this.Aktionen[Aktion_Name] = Aktion;
         }
 
-        this.Lavawelt_Mechanik = {
-            gedrückte_Symbole: []
-        };
+        this.Mechaniken = {};
+        for (let Mechanik_Name in Spielaufbau.Mechaniken) {
+            let Eigenschaften = Spielaufbau.Mechaniken[Mechanik_Name];
+            let Mechanik = new Eine_Mechanik(Mechanik_Name, Eigenschaften, this);
+            this.Mechaniken[Mechanik_Name] = Mechanik;
+        }
 
         this.Spieler = new Ein_Spieler(this);
 
@@ -145,10 +148,9 @@ class Ein_Spiel {
     }
 
     Wasserfall_teilen() {
-        this.Gegenstände.Lavawelt_Mechanik_Kreuz.gedrückt = true;
-        this.Gegenstände.Lavawelt_Mechanik_Kreuz.anzeigen();
+        this.Gegenstände.Lavawelt_Mechanik_Kreuz.ein();
 
-        this.Spieler.feststellen("In diesem Moment müssten wir jetzt weiter programmieren, dass sich der Wasserfall teilt und ein Geräusch ertönt.");
+        this.Spieler.feststellen("Interessant, jetzt leuchtet plötzlich auch das Kreuz auf. Was soll das wohl bedeuten? Ich sehe nicht, dass sich irgendetwas getan hätte... Jedenfalls nicht in Sichtweite...");
     }
 
     Lebenspunkte_verändern(Differenz) {
