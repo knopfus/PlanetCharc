@@ -84,10 +84,31 @@ var Spielaufbau = {
                 ]
             ]
         },
-        Gipfel: { Portale: {
-            Nord: { zu: "Nichts",               links: 50, oben: 0, breit: 1340, hoch: 50 },
-            Ost:  { zu: "Berge_der_Angst",      links: 1390, oben: 50, breit: 50, hoch: 611 }
-        } },
+        Gipfel: { 
+            
+            Pfade: [
+                [
+                    {"links":10,"oben":494,"Radius":98.8,"zoom":98.8},
+                    {"links":230,"oben":519,"Radius":103.8,"zoom":103.8},
+                    {"links":432,"oben":527,"Radius":105.4,"zoom":105.4},
+                    {"links":665,"oben":534,"Radius":106.8,"zoom":106.8},
+                    {"links":940,"oben":493,"Radius":98.6,"zoom":98.6},
+                    {"links":1095,"oben":456,"Radius":91.2,"zoom":91.2},
+                    {"links":977,"oben":397,"Radius":79.4,"zoom":79.4},
+                    {"links":1084,"oben":362,"Radius":72.4,"zoom":72.4}
+                ],[
+                    {"links":840,"oben":434,"Radius":86.8,"zoom":86.8},
+                    {"links":720,"oben":394,"Radius":78.8,"zoom":78.8},
+                    {"links":616,"oben":333,"Radius":66.6,"zoom":66.6},
+                    {"links":577,"oben":276,"Radius":55.2,"zoom":55.2}
+                ]
+            ],
+            
+            Portale: {
+                Nord: { zu: "Nichts",               links: 50, oben: 0, breit: 1340, hoch: 50 },
+                Ost:  { zu: "Berge_der_Angst",      links: 1390, oben: 50, breit: 50, hoch: 611 }
+            }
+        },
         Grosse_Wiese: {             
             
             Pfade: [
@@ -135,9 +156,21 @@ var Spielaufbau = {
                 ]
             ]
         },
-        Höhle_Yeti: { Portale: {
-            Ost:  { zu: "Ewiges_Eis",           links: 1390, oben: 50, breit: 50, hoch: 611 }
-        } },
+        Höhle_Yeti: {
+            Kürzel: "y",
+            Pfade: [
+                [
+                    {"links":1422,"oben":703,"Radius":140.6,"zoom":140.6, Portal: "Ewiges_Eis" },
+                    {"links":1137,"oben":704,"Radius":140.8,"zoom":140.8},
+                    {"links":614,"oben":653,"Radius":130.6,"zoom":130.6},
+                    {"links":530,"oben":551,"Radius":110.2,"zoom":110.2},
+                    {"links":805,"oben":542,"Radius":108.4,"zoom":108.4},
+                    {"links":956,"oben":477,"Radius":95.4,"zoom":95.4},
+                    {"links":595,"oben":421,"Radius":84.2,"zoom":84.2},
+                    {"links":467,"oben":372,"Radius":74.4,"zoom":74.4}
+                ]
+            ]
+        },
 
         Dschungel_2: { 
             
@@ -175,6 +208,7 @@ var Spielaufbau = {
                 [
                     {"links":71,"oben":336,"Radius":67.2,"zoom":67.2,Portal: "Berge_der_Angst"},
                     {"links":99,"oben":414,"Radius":82.8,"zoom":82.8},
+                    {"links":186,"oben":360,"Radius":72,"zoom":72, Portal: "Lavawelt_Mechanik"},
                     {"links":194,"oben":471,"Radius":94.2,"zoom":94.2},
                     {"links":312,"oben":444,"Radius":88.8,"zoom":88.8},
                     {"links":435,"oben":416,"Radius":83.2,"zoom":83.2}
@@ -187,6 +221,20 @@ var Spielaufbau = {
                     {"links":914,"oben":394,"Radius":78.8,"zoom":78.8},
                     {"links":801,"oben":368,"Radius":73.6,"zoom":73.6},
                     {"links":691,"oben":340,"Radius":68,"zoom":68, Portal: "Reich_des_Giganten"}
+                ]
+            ]
+        },
+    
+        Lavawelt_Mechanik: {
+            Kürzel: "m",
+            Portale: {
+                Nord: { zu: "Lavawelt",         links: 50, oben: 0, breit: 1340, hoch: 155 },
+                Ost:  { zu: "Lavawelt",         links: 1130, oben: 50, breit: 310, hoch: 661 },
+                West: { zu: "Lavawelt",         links: 0, oben: 50, breit: 379, hoch: 661 }
+            },
+            Pfade: [
+                [
+                    {"links":-100,"oben":336,"Radius":67.2,"zoom":67.2,Portal: "Lavawelt"}
                 ]
             ]
         },
@@ -229,6 +277,32 @@ var Spielaufbau = {
             in: "Unerreichbarer_Ort",
             feststellen: "Oh, da ist etwas liegen geblieben. Sieht aus wie ein Zahn von diesem Monster.",
             links: 470, oben: 305, breit: 50, hoch: 85, gedreht: 263
+        },
+
+        "Lavawelt_Mechanik_Kreuz": {
+            in: "Lavawelt_Mechanik",
+            feststellen: "Sieht aus als ob ich hier irgendetwas drücken muss.",
+            links: 453, oben: 192, breit: 591, hoch: 513
+        },
+        "Lavawelt_Mechanik_Wasser": {
+            in: "Lavawelt_Mechanik",
+            feststellen: "Sieht aus als ob ich hier irgendetwas drücken muss.",
+            links: 453, oben: 192, breit: 306, hoch: 220
+        },
+        "Lavawelt_Mechanik_Pflanze": {
+            in: "Lavawelt_Mechanik",
+            feststellen: "Sieht aus als ob ich hier irgendetwas drücken muss.",
+            links: 453+345, oben: 192, breit: 246, hoch: 255
+        },
+        "Lavawelt_Mechanik_Feuer": {
+            in: "Lavawelt_Mechanik",
+            feststellen: "Sieht aus als ob ich hier irgendetwas drücken muss.",
+            links: 453, oben: 192+234, breit: 265, hoch: 236
+        },
+        "Lavawelt_Mechanik_Wind": {
+            in: "Lavawelt_Mechanik",
+            feststellen: "Sieht aus als ob ich hier irgendetwas drücken muss.",
+            links: 453+305, oben: 192+295, breit: 285, hoch: 218
         },
 
         "Lichtkristall": { in: "Unerreichbarer_Ort", links: 470, oben: 305, breit: 50, hoch: 85, gedreht: 0 }
@@ -288,6 +362,14 @@ var Spielaufbau = {
                 } else {
                     Spiel.Spieler.feststellen("Das ist zu weit weg, ich komme da nicht ran.");
                 }
+                return true; // Aktion deaktivieren
+            }
+        },
+
+        drücken: {
+            auf_Gegenstand: function(Gegenstand, Spiel) {
+                Gegenstand.drücken();
+                
                 return true; // Aktion deaktivieren
             }
         },

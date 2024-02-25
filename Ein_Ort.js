@@ -33,6 +33,7 @@ class Ein_Ort {
         for (let Portal_Name in this.Spiel.Portale) {
             let Portal = this.Spiel.Portale[Portal_Name];
             Portal.wechsle_zu(this);
+            Portal.anzeigen();
         }
 
         if (this.Eigenschaften.feststellen && !this.schon_festgestellt) {

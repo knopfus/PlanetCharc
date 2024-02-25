@@ -41,6 +41,15 @@ class Ein_Portal {
         
     }
 
+    anzeigen() {
+        this.Portal_div.style.display = "";
+        if (this.Spiel.Entwickler_Modus) {
+            this.Portal_div.style.border = "1px solid red";
+        } else {
+            this.Portal_div.style.border = "0px";
+        }
+    }
+
     gehe_zu() {
         let Ort = this.Eigenschaften.zu;
         this.Spiel.gehe_zu_Ort(Ort);

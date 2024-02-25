@@ -7,6 +7,10 @@ Array.prototype.hinzufügen = function( element ) {
     this.push( element );
 };
 
+Array.prototype.ist_gleich = function( array ) {
+    return JSON.stringify(array) === JSON.stringify(this);
+}
+
 function spiele_Sound_Effect(Sound_Name) {
     let player = document.getElementById("Sound_Effects");
     player.src = "./Sound_Effects/" + Sound_Name + ".wav";

@@ -65,6 +65,10 @@ class Ein_Spiel {
             this.Aktionen[Aktion_Name] = Aktion;
         }
 
+        this.Lavawelt_Mechanik = {
+            gedrückte_Symbole: []
+        };
+
         this.Spieler = new Ein_Spieler(this);
 
         let self = this;
@@ -79,6 +83,9 @@ class Ein_Spiel {
                 self.Entwickler_Modus = !self.Entwickler_Modus;
 
                 self.Ort.Weg.anzeigen();
+                for (let Portal_Name in self.Portale) {
+                    self.Portale[Portal_Name].anzeigen();
+                }
                 for (let Aktion_Name in self.Aktionen) {
                     self.Aktionen[Aktion_Name].anzeigen_falls_Entwickler_Modus();
                 }
@@ -135,6 +142,13 @@ class Ein_Spiel {
 
     Spieler_bekämpfen(Kraft) {
         this.Lebenspunkte_verändern(- Kraft / 100);
+    }
+
+    Wasserfall_teilen() {
+        this.Gegenstände.Lavawelt_Mechanik_Kreuz.gedrückt = true;
+        this.Gegenstände.Lavawelt_Mechanik_Kreuz.anzeigen();
+
+        this.Spieler.feststellen("In diesem Moment müssten wir jetzt weiter programmieren, dass sich der Wasserfall teilt und ein Geräusch ertönt.");
     }
 
     Lebenspunkte_verändern(Differenz) {
