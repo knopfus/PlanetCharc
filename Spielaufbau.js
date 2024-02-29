@@ -310,21 +310,24 @@ var Spielaufbau = {
             Zustand: "aus"
         },
         "Mondblume": {
-            in: "Silberne_Lichtung",
-            feststellen: "Diese Blume leuchtet so magisch. Ob sie wohl zu etwas nützlich ist?",
-            links: 1011, oben: 515, breit: 35, hoch: 35 / 685 * 845, gedreht: -10,
+            feststellen: "Diese Blumen leuchten so magisch und duften herrlich, da würde ich am liebsten reinbeissen.",
+            mehrere: [
+                { in: "Silberne_Lichtung", links: 840, oben: 575, breit: 40, hoch: 40 / 685 * 845, gedreht: 0 },
+                { in: "Silberne_Lichtung", links: 1040, oben: 515, breit: 28, hoch: 32 / 685 * 845, gedreht: 10 },
+                { in: "Silberne_Lichtung", links: 1011, oben: 515, breit: 35, hoch: 35 / 685 * 845, gedreht: -10 }
+            ],
             anwenden: function(Gegenstand, Spiel) {
                 if (Spiel.Lebenspunkte < Spielaufbau.Spieler.Lebenspunkte) {
                     Spiel.Lebenspunkte_verändern(10);
                     Gegenstand.aus_Besitz_entfernen();
-                    Gegenstand.platziere_später_in("Silberne_Lichtung", 10);
+                    Gegenstand.regeneriere_in(10);
 
-                    Spiel.Spieler.feststellen("Mhm, die waren fein. Jetzt fühle mich wieder gestärkt!");
+                    Spiel.Spieler.feststellen("Mhm, die war fein. Jetzt fühle mich wieder gestärkt!");
                 } else {
                     Gegenstand.aus_Besitz_entfernen();
 
                     Spiel.Spieler.feststellen("Mhm, lecker... irgendwie bin ich jetzt etwas high!");
-                    Gegenstand.platziere_später_in("Silberne_Lichtung", 10);
+                    Gegenstand.regeneriere_in(10);
                 }
             }
         },

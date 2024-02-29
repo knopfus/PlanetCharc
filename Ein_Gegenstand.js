@@ -59,10 +59,10 @@ class Ein_Gegenstand {
         this.verstecken();
     }
 
-    platziere_später_in(Ort_Name, Sekunden) {
+    regeneriere_in(Sekunden) {
         let self = this;
         window.setTimeout(function() {
-            self.platziere_in(self.Spiel.Orte[Ort_Name]);
+            self.platziere_in(self.Spiel.Orte[self.Eigenschaften.in]);
         }, 1000 * Sekunden);
     }
 

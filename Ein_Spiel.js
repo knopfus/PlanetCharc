@@ -41,11 +41,24 @@ class Ein_Spiel {
         for (let Gegenstand_Name in Spielaufbau.Gegenstände) {
             let Eigenschaften = Spielaufbau.Gegenstände[Gegenstand_Name];
 
-            let Gegenstand = new Ein_Gegenstand(Gegenstand_Name, Eigenschaften, this);
-            this.Gegenstände[Gegenstand_Name] = Gegenstand;
-            
-            if ( Eigenschaften.in ) {
-                Gegenstand.platziere_in(this.Orte[Eigenschaften.in]);
+            if (Eigenschaften.mehrere) {
+                for (let i = 0; i < Eigenschaften.mehrere.length; i++) {
+                    let Eigenschaften_Stück = { ...Eigenschaften, ...Eigenschaften.mehrere[i] };
+                    delete Eigenschaften_Stück.mehrere;
+                    let Gegenstand = new Ein_Gegenstand(Gegenstand_Name, Eigenschaften_Stück, this);
+                    this.Gegenstände[Gegenstand_Name + i] = Gegenstand;
+                    
+                    if ( Eigenschaften_Stück.in ) {
+                        Gegenstand.platziere_in(this.Orte[Eigenschaften_Stück.in]);
+                    }    
+                }
+            } else {
+                let Gegenstand = new Ein_Gegenstand(Gegenstand_Name, Eigenschaften, this);
+                this.Gegenstände[Gegenstand_Name] = Gegenstand;
+                
+                if ( Eigenschaften.in ) {
+                    Gegenstand.platziere_in(this.Orte[Eigenschaften.in]);
+                }    
             }
         }
 
