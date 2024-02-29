@@ -309,6 +309,25 @@ var Spielaufbau = {
             links: 453+305, oben: 192+295, breit: 285, hoch: 218,
             Zustand: "aus"
         },
+        "Mondblume": {
+            in: "Silberne_Lichtung",
+            feststellen: "Diese Blume leuchtet so magisch. Ob sie wohl zu etwas nützlich ist?",
+            links: 1011, oben: 515, breit: 35, hoch: 35 / 685 * 845, gedreht: -10,
+            anwenden: function(Gegenstand, Spiel) {
+                if (Spiel.Lebenspunkte < Spielaufbau.Spieler.Lebenspunkte) {
+                    Spiel.Lebenspunkte_verändern(10);
+                    Gegenstand.aus_Besitz_entfernen();
+                    Gegenstand.platziere_später_in("Silberne_Lichtung", 10);
+
+                    Spiel.Spieler.feststellen("Mhm, die waren fein. Jetzt fühle mich wieder gestärkt!");
+                } else {
+                    Gegenstand.aus_Besitz_entfernen();
+
+                    Spiel.Spieler.feststellen("Mhm, lecker... irgendwie bin ich jetzt etwas high!");
+                    Gegenstand.platziere_später_in("Silberne_Lichtung", 10);
+                }
+            }
+        },
 
         "Lichtkristall": { in: "Unerreichbarer_Ort", links: 470, oben: 305, breit: 50, hoch: 85, gedreht: 0 }
 
@@ -373,7 +392,7 @@ var Spielaufbau = {
 
         nehmen: {
             auf_Gegenstand: function(Gegenstand, Spiel) {
-                if (sind_näher_als(Spiel.Spieler.Koordinaten, Gegenstand.Eigenschaften, 100)) {
+                if (sind_näher_als(Spiel.Spieler.Koordinaten, Gegenstand.Eigenschaften, 200)) {
                     Gegenstand.nehmen();
                 } else {
                     Spiel.Spieler.feststellen("Das ist zu weit weg, ich komme da nicht ran.");
@@ -390,6 +409,13 @@ var Spielaufbau = {
             }
         },
 
+        anwenden: {
+            auf_Gegenstand_in_Besitz: function(Gegenstand, Spiel) {
+                Gegenstand.anwenden();
+                return true;
+            }
+        },
+
         kämpfen: {
             auf_Monster: function(Monster, Spiel) {
                 Monster.bekämpfen(Spiel.Kraft);
@@ -401,6 +427,10 @@ var Spielaufbau = {
 
         anschauen: {
             auf_Gegenstand: function(Gegenstand) {
+                Gegenstand.anschauen();
+                return true; // Aktion deaktivieren
+            },
+            auf_Gegenstand_in_Besitz: function(Gegenstand) {
                 Gegenstand.anschauen();
                 return true; // Aktion deaktivieren
             }

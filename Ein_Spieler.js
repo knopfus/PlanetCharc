@@ -1,5 +1,5 @@
 class Ein_Spieler {
-    constructor(Spiel) {
+    constructor(Spiel, Eigenschaften) {
         this.Spiel = Spiel;
 
         // Das HTML Element vorbereiten

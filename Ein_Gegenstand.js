@@ -16,13 +16,6 @@ class Ein_Gegenstand {
         if (Eigenschaften.hoch)     { Gegenstand_div.style.height       = Eigenschaften.hoch + "px"; }
         if (Eigenschaften.gedreht)  { Gegenstand_div.style.transform    = "rotate(" + Eigenschaften.gedreht + "deg)"; }
 
-        let self = this;
-        Gegenstand_div.onclick = function(event) {
-            if (self.Spiel.aktive_Aktion) {
-                self.Spiel.aktive_Aktion.ausführen_auf_Gegenstand(self, event);
-            }
-        };
-
         let Gegenstand_img = Gegenstand_div.getElementsByTagName("img")[0];
         Gegenstand_img.setAttribute("src", "Gegenstaende/" + Name + ".png?nocache=" + Date.now());
 
@@ -47,11 +40,30 @@ class Ein_Gegenstand {
 
         this.Gegenstand_in_Besitz_div = Gegenstand_in_Besitz_div;
 
+        let self = this;
+        Gegenstand_div.onclick = function(event) {
+            if (self.Spiel.aktive_Aktion) {
+                self.Spiel.aktive_Aktion.ausführen_auf_Gegenstand(self, event);
+            }
+        };
+        Gegenstand_in_Besitz_div.onclick = function(event) {
+            if (self.Spiel.aktive_Aktion) {
+                self.Spiel.aktive_Aktion.ausführen_auf_Gegenstand_in_Besitz(self, event);
+            }
+        };
+
     }
 
     entferne_aus(Ort) {
         this.Ort.entfernen(this);
         this.verstecken();
+    }
+
+    platziere_später_in(Ort_Name, Sekunden) {
+        let self = this;
+        window.setTimeout(function() {
+            self.platziere_in(self.Spiel.Orte[Ort_Name]);
+        }, 1000 * Sekunden);
     }
 
     platziere_in(Ort) {
@@ -75,6 +87,11 @@ class Ein_Gegenstand {
         this.im_Besitz_anzeigen();
     }
 
+    aus_Besitz_entfernen() {
+        this.ist_in_Besitz = false;
+        this.im_Besitz_verstecken();
+    }
+
     drücken() {
         for (let Mechanik_Name in this.Spiel.Mechaniken) {
             let Mechanik = this.Spiel.Mechaniken[Mechanik_Name];
@@ -92,6 +109,12 @@ class Ein_Gegenstand {
     aus() {
         this.Zustand = "aus";
         this.anzeigen();
+    }
+
+    anwenden() {
+        if (this.Eigenschaften.anwenden) {
+            this.Eigenschaften.anwenden(this, this.Spiel);
+        }
     }
 
     anschauen() {
@@ -115,5 +138,9 @@ class Ein_Gegenstand {
 
     im_Besitz_anzeigen() {
         this.Gegenstand_in_Besitz_div.style.display = "";
+    }
+
+    im_Besitz_verstecken() {
+        this.Gegenstand_in_Besitz_div.style.display = "none";
     }
 }

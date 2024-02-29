@@ -154,9 +154,13 @@ class Ein_Spiel {
     }
 
     Lebenspunkte_verändern(Differenz) {
-        if (this.ist_unsterblich) return;
+        if (this.ist_unsterblich && Differenz < 0) { Differenz = 0; };
 
         this.Lebenspunkte = this.Lebenspunkte + Differenz;
+        if (this.Lebenspunkte > Spielaufbau.Spieler.Lebenspunkte) {
+            this.Lebenspunkte = Spielaufbau.Spieler.Lebenspunkte;
+        }
+        
         this.zeige_Lebenspunkte_an();
         if (this.Lebenspunkte <= 0) {
             this.Game_over();

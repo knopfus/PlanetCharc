@@ -88,6 +88,16 @@ class Eine_Aktion {
         }
     }
 
+    ausführen_auf_Gegenstand_in_Besitz(Gegenstand, event) {
+        if (this.Eigenschaften.auf_Gegenstand_in_Besitz) {
+            let deaktivieren = this.Eigenschaften.auf_Gegenstand_in_Besitz(Gegenstand, this.Spiel, this, event);
+            if (deaktivieren) {
+                this.deaktivieren();
+            }
+            this.Status_anzeigen();
+        }
+    }
+
     ausführen_auf_Wegpunkt(Wegpunkt, event) {
         if (this.Eigenschaften.auf_Wegpunkt) {
             let deaktivieren = this.Eigenschaften.auf_Wegpunkt(Wegpunkt, this.Spiel, this, event);
