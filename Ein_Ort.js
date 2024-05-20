@@ -54,6 +54,22 @@ class Ein_Ort {
         this.Portale[Portal_Name] = Eigenschaften;
     }
 
+    // Fluss.Portal_ersetzen("Quelle_des_Lichts", "offene_Quelle_des_Lichts")
+    // Lavawelt.Portal_ersetzen("Quelle_des_Lichts", "offene_Quelle_des_Lichts")
+    Portal_ersetzen(Portal_Name_alt, Portal_Name_neu) {
+        // Beim Ort suchen, wo es dieses Portal hat
+        // Hierfür muss es den Wegpunkt suchen, der dieses Portal hat
+        // Hierfür muss man im Ort im Weg in allen Pfaden in allen Wegpunkten suchen
+        for (let Pfad of this.Weg.Pfade) {
+            for (let Wegpunkt of Pfad) {
+                if (Portal_Name_alt == Wegpunkt.Eigenschaften.Portal) {
+                    Wegpunkt.Eigenschaften.Portal = Portal_Name_neu;
+                }
+            }
+        }
+        
+    }
+
     Eintritt_hinzufügen(Ort_Name, Wegpunkt) {
         this.Eintritte[Ort_Name] = Wegpunkt;
     }

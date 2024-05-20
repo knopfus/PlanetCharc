@@ -10,15 +10,7 @@ var Spielaufbau = {
     Orte: {
 
         Silberne_Lichtung: {
-            feststellen: "Hallo Gavin!\n" +
-                "Der Entwicklermodus ist jetzt richtig cool geworden:\n" +
-                "Mit dem Weg-Designer kannst du Wege mit Mausklicks erstellen.\n" +
-                "1. Aktivieren\n" +
-                "2. Wegpunkte für den Pfad 0 per Klick erzeugen\n" +
-                "3. Auf Aktion klicken (wie zum Deaktivieren, aber Aktion wird noch nicht deaktiviert)\n" +
-                "4. Wegpunkte für den Pfad 1 per Klick erzeugen\n" +
-                "5. Auf die Wegpunkte der beiden Pfade klicken, die als Kreuzung dienen sollen\n" +
-                "6. Aktion deaktivieren, das JSON wird automatisch in der Konsole ausgegeben und kann kopiert werden.",
+            feststellen: "Er musste mit seinem Volk vom Planeten fliehen, der von einem unmittelbaren Kometeneinschlag bedroht war. Aber er verpasste den Abflug mit dem Ortschiff und konnte sich nur noch aussen festhalten, wobei er auf dem Flug zum Ziel-Planeten den Halt verlor und auf dem Planeten CHARC landete. Deshalb muss er sich nun zurechtfinden, sich ernähren und zugleich versuchen mit seinem Volk Kontakt aufzunehmen um abgeholt zu werden.\n\nKlicke hier um zu starten.",
             Pfade: [
                 [
                     { links: 170,  oben: 110,  Radius: 120, zoom: 100 },
@@ -194,14 +186,76 @@ var Spielaufbau = {
                 ]
             ]
         },
-        Fluss: { Portale: {
-            Nord: { zu: "Quelle_des_Lichts",    links: 50, oben: 0, breit: 1340, hoch: 50 },
-            West: { zu: "Dschungel_2",          links: 0, oben: 50, breit: 50, hoch: 611 }
-        } },
-        Quelle_des_Lichts: { Portale: {
-            Nord: { zu: "Lavawelt",             links: 50, oben: 0, breit: 1340, hoch: 50 },
-            Süd:  { zu: "Fluss",                links: 50, oben: 661, breit: 1340, hoch: 50 }
-        } },
+        Fluss: {
+            Portale: {
+                Nord: { zu: "Quelle_des_Lichts",    links: 50, oben: 0, breit: 1340, hoch: 50 },
+                West: { zu: "Dschungel_2",          links: 0, oben: 50, breit: 50, hoch: 611 }
+            },
+            Kürzel: "f"
+        },
+        Grotte_des_Lichts: {
+            Kürzel: "g",
+            Pfade: [
+                [
+                    {"links":504,"oben":667,"Radius":133.4,"zoom":133.4},
+                    {"links":255,"oben":521,"Radius":104.2,"zoom":104.2},
+                    {"links":410,"oben":381,"Radius":76.2,"zoom":76.2},
+                    {"links":560,"oben":365,"Radius":73,"zoom":73},
+                    {"links":676,"oben":370,"Radius":74,"zoom":74},
+                    {"links":843,"oben":402,"Radius":80.4,"zoom":80.4},
+                    {"links":948,"oben":354,"Radius":70.8,"zoom":70.8},
+                    {"links":1053,"oben":296,"Radius":59.2,"zoom":59.2,Portal:"offene_Quelle_des_Lichts"}
+                ]
+            ]
+        },
+        Quelle_des_Lichts: { 
+            Kürzel: "q",
+            Pfade: [
+                [
+                    {"links":353,"oben":270,"Radius":54,"zoom":54, Portal: "Lavawelt"},
+                    {"links":484,"oben":286,"Radius":57.2,"zoom":57.2},
+                    {"links":597,"oben":298,"Radius":59.6,"zoom":59.6},
+                    {"links":641.4,"oben":288.4,"Radius":57.67999999999999,"zoom":57.67999999999999},
+                    {"links":714,"oben":306,"Radius":61.2,"zoom":61.2},
+                    {"links":805,"oben":315,"Radius":63,"zoom":63},
+                    {"links":897,"oben":323,"Radius":64.6,"zoom":64.6},
+                    {"links":960,"oben":361,"Radius":72.2,"zoom":72.2},
+                    {"links":1057,"oben":437,"Radius":87.4,"zoom":87.4},
+                    {"links":996,"oben":510,"Radius":102,"zoom":102},
+                    {"links":1091,"oben":594,"Radius":118.8,"zoom":118.8},
+                    {"links":1156.2,"oben":638.2,"Radius":127.64000000000001,"zoom":127.64000000000001},
+                    {"links":1227.56,"oben":659.5600000000001,"Radius":131.912,"zoom":131.912},
+                    {"links":1409,"oben":695,"Radius":139,"zoom":139, Portal: "Fluss"}
+                ]
+            ]
+        },
+        offene_Quelle_des_Lichts: { 
+            Kürzel: "o",
+            Pfade: [
+                [
+                    {"links":353,"oben":270,"Radius":54,"zoom":54,"Portal":"Lavawelt"},
+                    {"links":484,"oben":286,"Radius":57.2,"zoom":57.2},
+                    {"links":597,"oben":298,"Radius":59.6,"zoom":59.6},
+                    {"links":641.4,"oben":288.4,"Radius":57.67999999999999,"zoom":57.67999999999999},
+                    {"links":714,"oben":306,"Radius":61.2,"zoom":61.2},
+                    {"links":805,"oben":315,"Radius":63,"zoom":63},
+                    {"links":897,"oben":323,"Radius":64.6,"zoom":64.6},
+                    {"links":960,"oben":361,"Radius":72.2,"zoom":72.2},
+                    {"links":1057,"oben":437,"Radius":87.4,"zoom":87.4},
+                    {"links":996,"oben":510,"Radius":102,"zoom":102,Kreuzung:true},
+                    {"links":1091,"oben":594,"Radius":118.8,"zoom":118.8},
+                    {"links":1156.2,"oben":638.2,"Radius":127.64000000000001,"zoom":127.64000000000001},
+                    {"links":1227.56,"oben":659.5600000000001,"Radius":131.912,"zoom":131.912},
+                    {"links":1409,"oben":695,"Radius":139,"zoom":139,"Portal":"Fluss"}
+                ],[
+                    {"links":896,"oben":552,"Radius":50,"zoom":110.4,Kreuzung:true},
+                    {"links":782,"oben":564,"Radius":50,"zoom":112.8},
+                    {"links":668,"oben":552,"Radius":50,"zoom":110.4},
+                    {"links":550,"oben":486,"Radius":97.2,"zoom":97.2},
+                    {"links":714,"oben":465,"Radius":150,"zoom":89, Portal: "Grotte_des_Lichts"}
+                ]
+            ]
+        },
         Lavawelt: {
             Kürzel: "l",
             Pfade: [

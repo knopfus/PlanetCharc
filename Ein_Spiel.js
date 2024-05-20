@@ -95,7 +95,7 @@ class Ein_Spiel {
         };
 
         document.onkeydown = function(event) {
-            if (event.key == "g") {
+            if (event.key == "§") {
                 self.Entwickler_Modus = !self.Entwickler_Modus;
 
                 self.Ort.Weg.anzeigen();
@@ -162,7 +162,8 @@ class Ein_Spiel {
 
     Wasserfall_teilen() {
         this.Gegenstände.Lavawelt_Mechanik_Kreuz.ein();
-
+        this.Orte.Fluss.Portal_ersetzen("Quelle_des_Lichts", "offene_Quelle_des_Lichts");
+        this.Orte.Lavawelt.Portal_ersetzen("Quelle_des_Lichts", "offene_Quelle_des_Lichts");
         this.Spieler.feststellen("Interessant, jetzt leuchtet plötzlich auch das Kreuz auf. Was soll das wohl bedeuten? Ich sehe nicht, dass sich irgendetwas getan hätte... Jedenfalls nicht in Sichtweite...");
     }
 
