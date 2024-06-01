@@ -84,12 +84,12 @@ var Spielaufbau = {
                     {"links":230,"oben":519,"Radius":103.8,"zoom":103.8},
                     {"links":432,"oben":527,"Radius":105.4,"zoom":105.4},
                     {"links":665,"oben":534,"Radius":106.8,"zoom":106.8},
-                    {"links":940,"oben":493,"Radius":98.6,"zoom":98.6},
+                    {"links":940,"oben":493,"Radius":98.6,"zoom":98.6, Kreuzung: true},
                     {"links":1095,"oben":456,"Radius":91.2,"zoom":91.2},
                     {"links":977,"oben":397,"Radius":79.4,"zoom":79.4},
                     {"links":1084,"oben":362,"Radius":72.4,"zoom":72.4}
                 ],[
-                    {"links":840,"oben":434,"Radius":86.8,"zoom":86.8},
+                    {"links":840,"oben":434,"Radius":86.8,"zoom":86.8, Kreuzung: true},
                     {"links":720,"oben":394,"Radius":78.8,"zoom":78.8},
                     {"links":616,"oben":333,"Radius":66.6,"zoom":66.6},
                     {"links":577,"oben":276,"Radius":55.2,"zoom":55.2}
@@ -191,6 +191,20 @@ var Spielaufbau = {
                 Nord: { zu: "Quelle_des_Lichts",    links: 50, oben: 0, breit: 1340, hoch: 50 },
                 West: { zu: "Dschungel_2",          links: 0, oben: 50, breit: 50, hoch: 611 }
             },
+            Pfade: [
+                [
+                    {"links":58,"oben":556,"Radius":111.2,"zoom":111.2, Portal: "Dschungel_2"},
+                    {"links":232,"oben":532,"Radius":106.4,"zoom":106.4},
+                    {"links":343,"oben":455,"Radius":91,"zoom":91},
+                    {"links":277,"oben":383,"Radius":76.6,"zoom":76.6},
+                    {"links":366,"oben":359,"Radius":71.8,"zoom":71.8},
+                    {"links":473,"oben":385,"Radius":77,"zoom":77},
+                    {"links":591,"oben":387,"Radius":77.4,"zoom":77.4},
+                    {"links":701,"oben":378,"Radius":75.6,"zoom":75.6},
+                    {"links":809,"oben":357,"Radius":71.4,"zoom":71.4},
+                    {"links":925,"oben":341,"Radius":68.2,"zoom":68.2, Portal: "Quelle_des_Lichts"}
+                ]
+            ],
             Kürzel: "f"
         },
         Grotte_des_Lichts: {
@@ -383,10 +397,35 @@ var Spielaufbau = {
                     Spiel.Spieler.feststellen("Mhm, lecker... irgendwie bin ich jetzt etwas high!");
                     Gegenstand.regeneriere_in(10);
                 }
+                return true;
             }
         },
 
-        "Lichtkristall": { in: "Unerreichbarer_Ort", links: 470, oben: 305, breit: 50, hoch: 85, gedreht: 0 }
+        "Lichtkristall_Einkerbung": {
+            in: "Grotte_des_Lichts",
+            links: 155, oben: 455, breit: 50, hoch: 85, gedreht: 0,
+            anderen_Gegenstand_auf_diesen_anwenden: function(Gegenstand, anderer_Gegenstand, Spiel) {
+                // TO DO: Was soll hier passieren (wenn der Lichtkristall angewendet wird?)
+                
+            }
+        },
+        "leuchender_Lichtkristall": {
+            in: "Unerreichbarer_Ort",
+            links: 155, oben: 455, breit: 50, hoch: 85, gedreht: 0,
+            anderen_Gegenstand_auf_diesen_anwenden: function(Gegenstand, anderer_Gegenstand, Spiel) {
+                // TO DO: Was soll hier passieren (wenn der Lichtkristall angewendet wird?)
+                
+            }
+        },
+        "Lichtkristall": {
+            in: "Unerreichbarer_Ort",
+            links: 470, oben: 305, breit: 50, hoch: 85, gedreht: 0,
+            anwenden: function(Gegenstand, Spiel) {
+                // Noch nichts zu tun, der Gegenstand soll auf etwas angewendet werden können, daher Aktion
+                // nicht deaktivieren
+                return false;
+            }
+        }
 
     },
 
@@ -467,8 +506,33 @@ var Spielaufbau = {
         },
 
         anwenden: {
-            auf_Gegenstand_in_Besitz: function(Gegenstand, Spiel) {
-                Gegenstand.anwenden();
+            auf_Gegenstand_in_Besitz: function(Gegenstand, Spiel, Aktion) {
+                let deaktivieren = Gegenstand.anwenden();
+                if (deaktivieren) {
+                    // Dies trifft auf Gegenstände zu, die man direkt anwenden kann, z.B. Mondblumen
+                    // => Wir geben true zurück um die Aktion wieder zu deaktivieren
+                    return true;
+                } else {
+                    // Wenn der Gegenstand im Besitz beim anwenden "false" zurück gab, d.h. die Aktion wird
+                    // noch nicht deaktiviert, bedeutet das, dass der Gegenstand auf etwas im Ort angewendet
+                    // werden kann. Wir merken uns den Gegenstand.
+                    Aktion.Status.anzuwendender_Gegenstand_Name = Gegenstand.Name;
+                    return false; // Aktion noch nicht deaktivieren
+                }
+            },
+            auf_Gegenstand: function(Gegenstand, Spiel, Aktion) {
+                // Wenn man bei der Aktion "anwenden" zuerst auf einen Gegenstand in Besitz geklickt hat, der
+                // auf etwas anderes angewendet werden kann, dann wenden wir diesen jetzt auf den betroffenen
+                // Gegenstand an (sofern er das kann)
+                if (Aktion.Status.anzuwendender_Gegenstand_Name) {
+                    let deaktivieren = Gegenstand.anderen_Gegenstand_auf_diesen_anwenden(Aktion.Status.anzuwendender_Gegenstand_Name);
+                    return deaktivieren;
+                }
+            },
+            beim_Deaktivieren: function(Spiel, Aktion) {
+                if (Aktion.Status.anzuwendender_Gegenstand_Name) {
+                    delete Aktion.Status.anzuwendender_Gegenstand_Name; // Keinen Gegenstand mehr merken
+                }
                 return true;
             }
         },

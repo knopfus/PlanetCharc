@@ -27,12 +27,6 @@ class Ein_Spiel {
                 let zu = this.Orte[Portal_Eigenschaften.zu];
                 Ort.Portal_hinzufügen(Portal_Name, { zu: zu, links: Portal_Eigenschaften.links, oben: Portal_Eigenschaften.oben, breit: Portal_Eigenschaften.breit, hoch: Portal_Eigenschaften.hoch });
             }
-
-            for (let Ort_Name in Eigenschaften.Eintritte) {
-                let Wegpunkt_Nummer = Eigenschaften.Eintritte[Ort_Name];
-                let Wegpunkt = Ort.Weg.Pfade[0][Wegpunkt_Nummer];
-                Ort.Eintritt_hinzufügen(Ort_Name, Wegpunkt);
-            }
         }
 
         this.Sprechblase = new Eine_Sprechblase();
@@ -161,10 +155,11 @@ class Ein_Spiel {
     }
 
     Wasserfall_teilen() {
+        spiele_Sound_Effect("Wasserfall_teilen");
         this.Gegenstände.Lavawelt_Mechanik_Kreuz.ein();
-        this.Orte.Fluss.Portal_ersetzen("Quelle_des_Lichts", "offene_Quelle_des_Lichts");
-        this.Orte.Lavawelt.Portal_ersetzen("Quelle_des_Lichts", "offene_Quelle_des_Lichts");
-        this.Spieler.feststellen("Interessant, jetzt leuchtet plötzlich auch das Kreuz auf. Was soll das wohl bedeuten? Ich sehe nicht, dass sich irgendetwas getan hätte... Jedenfalls nicht in Sichtweite...");
+        this.Orte.Fluss.Weg.Portal_ersetzen("Quelle_des_Lichts", "offene_Quelle_des_Lichts");
+        this.Orte.Lavawelt.Weg.Portal_ersetzen("Quelle_des_Lichts", "offene_Quelle_des_Lichts");
+        this.Spieler.feststellen("Interessant, jetzt leuchtet plötzlich auch das Kreuz auf. Was soll das wohl bedeuten? Ich sehe nicht, dass sich irgendetwas getan hätte... Jedenfalls nicht in Sichtweite... Aber höre ich da was?");
     }
 
     Lebenspunkte_verändern(Differenz) {

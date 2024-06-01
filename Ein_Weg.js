@@ -115,4 +115,20 @@ class Ein_Weg {
             return Wegpunkte;
         }
     }
+
+    Portal_ersetzen(Portal_Name_alt, Portal_Name_neu) {
+        // Beim Weg suchen, wo es dieses Portal hat
+        // Hierfür muss es den Wegpunkt suchen, der dieses Portal hat
+        // Hierfür muss man im Ort im Weg in allen Pfaden in allen Wegpunkten suchen
+        // Beim Eretzen des Portals muss auch der entsprechende Eintritt ersetzt werden.
+        for (let Pfad of this.Pfade) {
+            for (let Wegpunkt of Pfad) {
+                if (Portal_Name_alt == Wegpunkt.Eigenschaften.Portal) {
+                    Wegpunkt.Eigenschaften.Portal = Portal_Name_neu;
+                    this.Eintritte[Portal_Name_neu] = Wegpunkt;
+                }
+            }
+        }
+        
+    }
 }

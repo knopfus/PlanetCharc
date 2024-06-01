@@ -113,7 +113,15 @@ class Ein_Gegenstand {
 
     anwenden() {
         if (this.Eigenschaften.anwenden) {
-            this.Eigenschaften.anwenden(this, this.Spiel);
+            return this.Eigenschaften.anwenden(this, this.Spiel);
+        }
+        return true;
+    }
+
+    anderen_Gegenstand_auf_diesen_anwenden(anderer_Gegenstand_Name) {
+        if (this.Eigenschaften.anderen_Gegenstand_auf_diesen_anwenden) {
+            let anderer_Gegenstand = this.Spiel.Gegenstände[anderer_Gegenstand_Name];
+            this.Eigenschaften.anderen_Gegenstand_auf_diesen_anwenden(this, anderer_Gegenstand, this.Spiel);
         }
     }
 
