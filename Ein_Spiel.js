@@ -162,6 +162,13 @@ class Ein_Spiel {
         this.Spieler.feststellen("Interessant, jetzt leuchtet plötzlich auch das Kreuz auf. Was soll das wohl bedeuten? Ich sehe nicht, dass sich irgendetwas getan hätte... Jedenfalls nicht in Sichtweite... Aber höre ich da was?");
     }
 
+    Quelle_des_Lichts_aktivieren() {
+        this.Orte.Fluss.Weg.Portal_ersetzen("offene_Quelle_des_Lichts", "aktivierte_Quelle_des_Lichts");
+        this.Orte.Lavawelt.Weg.Portal_ersetzen("offene_Quelle_des_Lichts", "aktivierte_Quelle_des_Lichts");
+        this.Orte.Grotte_des_Lichts.Weg.Portal_ersetzen("offene_Quelle_des_Lichts", "aktivierte_Quelle_des_Lichts");
+        spiele_Sound_Effect("Quelle_des_Lichts_aktivieren");
+    }
+
     Lebenspunkte_verändern(Differenz) {
         if (this.ist_unsterblich && Differenz < 0) { Differenz = 0; };
 

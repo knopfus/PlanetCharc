@@ -270,6 +270,35 @@ var Spielaufbau = {
                 ]
             ]
         },
+
+        aktivierte_Quelle_des_Lichts: { 
+            Kürzel: "a",
+            Pfade: [
+                [
+                    {"links":353,"oben":270,"Radius":54,"zoom":54,"Portal":"Lavawelt"},
+                    {"links":484,"oben":286,"Radius":57.2,"zoom":57.2},
+                    {"links":597,"oben":298,"Radius":59.6,"zoom":59.6},
+                    {"links":641.4,"oben":288.4,"Radius":57.67999999999999,"zoom":57.67999999999999},
+                    {"links":714,"oben":306,"Radius":61.2,"zoom":61.2},
+                    {"links":805,"oben":315,"Radius":63,"zoom":63},
+                    {"links":897,"oben":323,"Radius":64.6,"zoom":64.6},
+                    {"links":960,"oben":361,"Radius":72.2,"zoom":72.2},
+                    {"links":1057,"oben":437,"Radius":87.4,"zoom":87.4},
+                    {"links":996,"oben":510,"Radius":102,"zoom":102,Kreuzung:true},
+                    {"links":1091,"oben":594,"Radius":118.8,"zoom":118.8},
+                    {"links":1156.2,"oben":638.2,"Radius":127.64000000000001,"zoom":127.64000000000001},
+                    {"links":1227.56,"oben":659.5600000000001,"Radius":131.912,"zoom":131.912},
+                    {"links":1409,"oben":695,"Radius":139,"zoom":139,"Portal":"Fluss"}
+                ],[
+                    {"links":896,"oben":552,"Radius":50,"zoom":110.4,Kreuzung:true},
+                    {"links":782,"oben":564,"Radius":50,"zoom":112.8},
+                    {"links":668,"oben":552,"Radius":50,"zoom":110.4},
+                    {"links":550,"oben":486,"Radius":97.2,"zoom":97.2},
+                    {"links":714,"oben":465,"Radius":150,"zoom":89, Portal: "Grotte_des_Lichts"}
+                ]
+            ]
+        },
+
         Lavawelt: {
             Kürzel: "l",
             Pfade: [
@@ -334,9 +363,9 @@ var Spielaufbau = {
         Nichts: { Portale: {
             Süd: { zu: "Gipfel",                links: 50, oben: 661, breit: 1340, hoch: 50}
         } },
-    
 
-        Unerreichbarer_Ort: { }
+
+        Unerreichbarer_Ort: { Kürzel: "x" }
     },
 
     Gegenstände: {
@@ -405,11 +434,16 @@ var Spielaufbau = {
             in: "Grotte_des_Lichts",
             links: 155, oben: 455, breit: 50, hoch: 85, gedreht: 0,
             anderen_Gegenstand_auf_diesen_anwenden: function(Gegenstand, anderer_Gegenstand, Spiel) {
-                // TO DO: Was soll hier passieren (wenn der Lichtkristall angewendet wird?)
-                
+                if (anderer_Gegenstand.Name == "Lichtkristall") {
+                    anderer_Gegenstand.aus_Besitz_entfernen();
+                    Spiel.Gegenstände.leuchtender_Lichtkristall.platziere_in(Spiel.Orte.Grotte_des_Lichts);
+                    Spiel.Quelle_des_Lichts_aktivieren();
+                } else {
+                    return true;
+                }
             }
         },
-        "leuchender_Lichtkristall": {
+        "leuchtender_Lichtkristall": {
             in: "Unerreichbarer_Ort",
             links: 155, oben: 455, breit: 50, hoch: 85, gedreht: 0,
             anderen_Gegenstand_auf_diesen_anwenden: function(Gegenstand, anderer_Gegenstand, Spiel) {
