@@ -29,7 +29,7 @@ class Eine_Mechanik {
         Gegenstand.ein();
         
         this.gedrückte_Symbole.hinzufügen(Gegenstand.Name);
-    
+        spiele_Sound_Effect("Knopf")
         if (this.gedrückte_Symbole.length == 4) {
             if (this.gedrückte_Symbole.ist_gleich(this.Richtiger_Code))
             {

@@ -7,6 +7,8 @@ class Ein_Spieler {
 
         this.ANZAHL_SCHRITTE = 50;
         this.ANZAHL_SCHRITTE_ENTWICKLER_MODUS = 20;
+        this.SCHRITTLÄNGE = 5;
+        this.SCHRITTLÄNGE_ENTWICKLER_MODUS = 20;
     }
 
     gehe_zu(Wegpunkt) {
@@ -43,7 +45,14 @@ class Ein_Spieler {
             hoch: this.nächster_Wegpunkt.Eigenschaften.zoom
         };
 
-        let Schritte = this.Spiel.Entwickler_Modus ? this.ANZAHL_SCHRITTE_ENTWICKLER_MODUS : this.ANZAHL_SCHRITTE;
+        let Richtung = {
+            nach_rechts: (Koordinaten.links - this.Koordinaten.links),
+            nach_unten: (Koordinaten.oben - this.Koordinaten.oben)
+        };
+        let Distanz = Math.sqrt((Richtung.nach_rechts ** 2 + Richtung.nach_unten ** 2));
+        let Schrittlänge = this.Spiel.Entwickler_Modus ? this.SCHRITTLÄNGE_ENTWICKLER_MODUS : this.SCHRITTLÄNGE;
+        let Schritte = Math.floor(Distanz / Schrittlänge);
+        //let Schritte = this.Spiel.Entwickler_Modus ? this.ANZAHL_SCHRITTE_ENTWICKLER_MODUS : this.ANZAHL_SCHRITTE;
         this.Schritte = Schritte;
         this.Schritt_Richtung = {
             nach_rechts: (Koordinaten.links - this.Koordinaten.links) / Schritte,
