@@ -37,6 +37,10 @@ var Spielaufbau = {
                 ]
             ]
         },
+        Dimension_der_Kätzchen: {
+            Kürzel: "k",
+            feststellen: "Miau.",
+        },
         Dschungel_1: {             
             Pfade: [
                 [
@@ -385,6 +389,13 @@ var Spielaufbau = {
             }
         },
 
+        "Dokument": {
+            in: "Unerreichbarer_Ort",
+            feststellen: "Sieht nach einem alten Dokument aus.",
+            feststellen_im_Besitz: "Text",
+            links: 470, oben: 325, breit: 50, hoch: 85
+        },
+
         "Lavawelt_Mechanik_Kreuz": {
             in: "Lavawelt_Mechanik",
             feststellen: "Diese alten Symbolen in ihrer Anordnungen sehen fast ein bisschen wie ein Rätsel aus.",
@@ -471,6 +482,15 @@ var Spielaufbau = {
                 // nicht deaktivieren
                 return false;
             }
+        },
+        "Wollknäuel": {
+            in: "Unerreichbarer_Ort",
+            links: 470, oben: 305, breit: 50, hoch: 85, gedreht: 0,
+            anwenden: function(Gegenstand, Spiel) {
+                // Noch nichts zu tun, der Gegenstand soll auf etwas angewendet werden können, daher Aktion
+                // nicht deaktivieren
+                return false;
+            }
         }
 
     },
@@ -495,7 +515,7 @@ var Spielaufbau = {
             Lebenspunkte: 140,
             Kraft: 12,
 
-            Belohnung: "Lichtkristall"
+            Belohnung: "Dokument"
         },
         "Zwerggreif": {
             Orte: [
@@ -522,10 +542,19 @@ var Spielaufbau = {
                 { in: "Reich_des_Giganten", links: 420, oben: 255, breit: 800, hoch: 671, gedreht: 0 },
             ],
     
-            Lebenspunkte: 200,
+            Lebenspunkte: 300,
             Kraft: 15,
             Belohnung: "Lichtkristall"
-        }        
+        },
+        "Miau": {
+            Orte: [
+                { in: "Dimension_der_Kätzchen", links: 420, oben: 255, breit: 800, hoch: 671, gedreht: 0 },
+            ],
+    
+            Lebenspunkte: 500,
+            Kraft: 15,
+            Belohnung: "Wollknäuel"
+        }      
     },
 
     Mechaniken: {
@@ -572,7 +601,7 @@ var Spielaufbau = {
         },
 
         anwenden: {
-            auf_Gegenstand_in_Besitz: function(Gegenstand, Spiel, Aktion) {
+            auf_Gegenstand_im_Besitz: function(Gegenstand, Spiel, Aktion) {
                 let deaktivieren = Gegenstand.anwenden();
                 if (deaktivieren) {
                     // Dies trifft auf Gegenstände zu, die man direkt anwenden kann, z.B. Mondblumen
@@ -617,8 +646,8 @@ var Spielaufbau = {
                 Gegenstand.anschauen();
                 return true; // Aktion deaktivieren
             },
-            auf_Gegenstand_in_Besitz: function(Gegenstand) {
-                Gegenstand.anschauen();
+            auf_Gegenstand_im_Besitz: function(Gegenstand) {
+                Gegenstand.anschauen_im_Besitz();
                 return true; // Aktion deaktivieren
             }
         },

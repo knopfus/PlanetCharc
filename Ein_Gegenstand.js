@@ -26,19 +26,19 @@ class Ein_Gegenstand {
         this.Gegenstand_img = Gegenstand_img;
 
 
-        let Gegenstand_in_Besitz_Vorlage = document.getElementById("Gegenstand_in_Besitz_Vorlage");
-        let Gegenstand_in_Besitz_div = Gegenstand_in_Besitz_Vorlage.cloneNode(true);
+        let Gegenstand_im_Besitz_Vorlage = document.getElementById("Gegenstand_im_Besitz_Vorlage");
+        let Gegenstand_im_Besitz_div = Gegenstand_im_Besitz_Vorlage.cloneNode(true);
 
-        Gegenstand_in_Besitz_div.setAttribute("id", "Gegenstand_in_Besitz_" + Name);
-        Gegenstand_in_Besitz_div.style.display = "none";
+        Gegenstand_im_Besitz_div.setAttribute("id", "Gegenstand_im_Besitz_" + Name);
+        Gegenstand_im_Besitz_div.style.display = "none";
 
-        let Gegenstand_in_Besitz_img = Gegenstand_in_Besitz_div.getElementsByTagName("img")[0];
-        Gegenstand_in_Besitz_img.setAttribute("src", "Gegenstaende/" + Name + ".png?nocache=" + Date.now());
+        let Gegenstand_im_Besitz_img = Gegenstand_im_Besitz_div.getElementsByTagName("img")[0];
+        Gegenstand_im_Besitz_img.setAttribute("src", "Gegenstaende/" + Name + ".png?nocache=" + Date.now());
 
         let Besitz_div = document.getElementById("Besitz");
-        Besitz_div.appendChild(Gegenstand_in_Besitz_div);
+        Besitz_div.appendChild(Gegenstand_im_Besitz_div);
 
-        this.Gegenstand_in_Besitz_div = Gegenstand_in_Besitz_div;
+        this.Gegenstand_im_Besitz_div = Gegenstand_im_Besitz_div;
 
         let self = this;
         Gegenstand_div.onclick = function(event) {
@@ -46,9 +46,9 @@ class Ein_Gegenstand {
                 self.Spiel.aktive_Aktion.ausführen_auf_Gegenstand(self, event);
             }
         };
-        Gegenstand_in_Besitz_div.onclick = function(event) {
+        Gegenstand_im_Besitz_div.onclick = function(event) {
             if (self.Spiel.aktive_Aktion) {
-                self.Spiel.aktive_Aktion.ausführen_auf_Gegenstand_in_Besitz(self, event);
+                self.Spiel.aktive_Aktion.ausführen_auf_Gegenstand_im_Besitz(self, event);
             }
         };
 
@@ -83,12 +83,12 @@ class Ein_Gegenstand {
         }
 
         this.Ort = null;
-        this.ist_in_Besitz = true;
+        this.ist_im_Besitz = true;
         this.im_Besitz_anzeigen();
     }
 
     aus_Besitz_entfernen() {
-        this.ist_in_Besitz = false;
+        this.ist_im_Besitz = false;
         this.im_Besitz_verstecken();
     }
 
@@ -131,6 +131,12 @@ class Ein_Gegenstand {
         }
     }
 
+    anschauen_im_Besitz() {
+        if (this.Eigenschaften.feststellen_im_Besitz) {
+            this.Spiel.Spieler.feststellen(this.Eigenschaften.feststellen_im_Besitz);
+        }
+    }
+
     anzeigen() {
         this.Gegenstand_div.style.visibility = "visible";
         if (this.Zustand == "aus") {
@@ -145,10 +151,10 @@ class Ein_Gegenstand {
     }
 
     im_Besitz_anzeigen() {
-        this.Gegenstand_in_Besitz_div.style.display = "";
+        this.Gegenstand_im_Besitz_div.style.display = "";
     }
 
     im_Besitz_verstecken() {
-        this.Gegenstand_in_Besitz_div.style.display = "none";
+        this.Gegenstand_im_Besitz_div.style.display = "none";
     }
 }

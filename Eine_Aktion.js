@@ -88,9 +88,9 @@ class Eine_Aktion {
         }
     }
 
-    ausführen_auf_Gegenstand_in_Besitz(Gegenstand, event) {
-        if (this.Eigenschaften.auf_Gegenstand_in_Besitz) {
-            let deaktivieren = this.Eigenschaften.auf_Gegenstand_in_Besitz(Gegenstand, this.Spiel, this, event);
+    ausführen_auf_Gegenstand_im_Besitz(Gegenstand, event) {
+        if (this.Eigenschaften.auf_Gegenstand_im_Besitz) {
+            let deaktivieren = this.Eigenschaften.auf_Gegenstand_im_Besitz(Gegenstand, this.Spiel, this, event);
             if (deaktivieren) {
                 this.deaktivieren();
             }
