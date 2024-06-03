@@ -82,9 +82,16 @@ class Ein_Spiel {
         this.Spieler = new Ein_Spieler(this, Spielaufbau.Spieler);
 
         let self = this;
-        document.getElementById("Ort-Bild").onclick = function(event) {
+        document.getElementById("Ort-Bild").onclick = 
+        document.getElementById("Ort-Bild-vorne").onclick = function(event) {
             if (self.aktive_Aktion) {
                 self.aktive_Aktion.ausführen_auf_Ort(self.Ort, event);
+            }
+        };
+        document.getElementById("Ort-Bild").onmousemove =
+        document.getElementById("Ort-Bild-vorne").onmousemove = function(event) {
+            if (self.aktive_Aktion && self.aktive_Aktion.hover) {
+                self.aktive_Aktion.ausführen_hover_auf_Ort(self.Ort, event);
             }
         };
 

@@ -14,26 +14,18 @@ var Spielaufbau = {
             feststellen: "Er musste mit seinem Volk vom Planeten fliehen, der von einem unmittelbaren Kometeneinschlag bedroht war. Aber er verpasste den Abflug mit dem Ortschiff und konnte sich nur noch aussen festhalten, wobei er auf dem Flug zum Ziel-Planeten den Halt verlor und auf dem Planeten CHARC landete. Deshalb muss er sich nun zurechtfinden, sich ernähren und zugleich versuchen mit seinem Volk Kontakt aufzunehmen um abgeholt zu werden.\n\nKlicke hier um zu starten.",
             Pfade: [
                 [
-                    { links: 170,  oben: 110,  Radius: 120, vorne: 100 },
-                    { links: 103,  oben: 159, Radius: 120, vorne: 100 },
-                    { links: 120,  oben: 270, Radius: 120, vorne: 100 },
-                    { links: 145,  oben: 393, Radius: 120, vorne: 100 },
-                    { links: 265,  oben: 460, Radius: 120, vorne: 100 },
-                    { links: 344,  oben: 534, Radius: 120, vorne: 100 },
-                    { links: 410,  oben: 650, Radius: 120, vorne: 100, Kreuzung: true },
-                    { links: 570,  oben: 650, Radius: 120, vorne: 100, Start: true },
-                    { links: 546,  oben: 554, Radius: 120, vorne: 100 },
-                    { links: 500,  oben: 470, Radius: 120, vorne: 100 },
-                    { links: 610,  oben: 385, Radius: 120, vorne: 100 },
-                    { links: 750,  oben: 380, Radius: 120, vorne: 100 },
-                    { links: 831,  oben: 451, Radius: 120, vorne: 100 },
-                    { links: 905,  oben: 520, Radius: 120, vorne: 100 },
-                    { links: 1010, oben: 557, Radius: 120, vorne: 100 },
-                    { links: 1134, oben: 504, Radius: 120, vorne: 100 },
-                    { links: 1252, oben: 469, Radius: 120, vorne: 100, Portal: "Dschungel_2" }
+                    {"links":4,"oben":705,"vorne":230,"Radius":253, Portal: "Dschungel_1" },
+                    {"links":551,"oben":652,"vorne":150,"Radius":5, Kreuzung: true, Start: true},
+                    {"links":493,"oben":526,"vorne":138,"Radius":5},
+                    {"links":557,"oben":398,"vorne":130,"Radius":5},
+                    {"links":771,"oben":368,"vorne":96,"Radius":7},
+                    {"links":859,"oben":496,"vorne":74,"Radius":5},
+                    {"links":927,"oben":544,"vorne":103,"Radius":174},
+                    {"links":1110,"oben":481,"vorne":77,"Radius":6},
+                    {"links":1409,"oben":458,"vorne":65,"Radius":218, Portal: "Dschungel_2"}
                 ],[
-                    { links: 260,  oben: 650, Radius: 120, vorne: 100, Kreuzung: true },
-                    { links: 109,  oben: 662, Radius: 120, vorne: 100, Portal: "Dschungel_1" }
+                    {"links":399,"oben":640,"vorne":197,"Radius":7, Kreuzung: true},
+                    {"links":160,"oben":375,"vorne":191,"Radius":144}
                 ]
             ]
         },
@@ -85,7 +77,7 @@ var Spielaufbau = {
             
             Pfade: [
                 [
-                    {"links":10,"oben":494,"Radius":98.8,"vorne":98.8},
+                    {"links":10,"oben":494,"Radius":98.8,"vorne":98.8, Portal: "Berge_der_Angst"},
                     {"links":230,"oben":519,"Radius":103.8,"vorne":103.8},
                     {"links":432,"oben":527,"Radius":105.4,"vorne":105.4},
                     {"links":665,"oben":534,"Radius":106.8,"vorne":106.8},
@@ -97,14 +89,9 @@ var Spielaufbau = {
                     {"links":840,"oben":434,"Radius":86.8,"vorne":86.8, Kreuzung: true},
                     {"links":720,"oben":394,"Radius":78.8,"vorne":78.8},
                     {"links":616,"oben":333,"Radius":66.6,"vorne":66.6},
-                    {"links":577,"oben":276,"Radius":55.2,"vorne":55.2}
+                    {"links":577,"oben":276,"Radius":55.2,"vorne":55.2, Portal: "Nichts" }
                 ]
-            ],
-            
-            Portale: {
-                Nord: { zu: "Nichts",               links: 50, oben: 0, breit: 1340, hoch: 50 },
-                Ost:  { zu: "Berge_der_Angst",      links: 1390, oben: 50, breit: 50, hoch: 611 }
-            }
+            ]
         },
         Grosse_Wiese: {             
             
@@ -656,21 +643,77 @@ var Spielaufbau = {
             Entwickler_Modus: true,
             beim_Aktivieren: function(Spiel, Aktion) {
                 Aktion.Status.Weg_Design_Pfad_Nummer = 0;
+                Aktion.Status.Modus = "platzieren";
             },
             auf_Ort: function(Ort, Spiel, Aktion, event) {
-                let links = event.offsetX;
-                let oben = event.offsetY;
-                let Pfad_Nummer = Aktion.Status.Weg_Design_Pfad_Nummer;
-                Ort.Weg.Wegpunkt_hinzufügen(Pfad_Nummer, { links: links, oben: oben, Radius: oben / 5, vorne: oben / 5 });
-                Ort.Weg.anzeigen();
+                // Erster Klick: Wir sind im "platzieren" Modus. Ein neuer Wegpunkt wird hinzugefügt,
+                // der aber noch nicht fertig ist.
+                if (Aktion.Status.Modus == "platzieren") {
+                    let Wegpunkt = Ort.Weg.Wegpunkt_hinzufügen(
+                        Aktion.Status.Weg_Design_Pfad_Nummer,
+                        {
+                            links: event.offsetX,
+                            oben: event.offsetY,
+                            vorne: 0,
+                            Radius: 0,
+                            Entwurf: true
+                        });
+                    Aktion.Status.Wegpunkt_Entwurf = Wegpunkt.Eigenschaften;
+                    Ort.Weg.anzeigen();
+
+                    // Nächster Modus: "vorne", d.h. beim nächsten Klick werden wir die Eigenschaft
+                    // "vorne" setzen.
+                    Aktion.Status.Modus = "vorne";
+
+                    // Ab jetzt reagieren wir auf "hover", also wenn die Maus sich bewegt.
+                    Aktion.hover = true;
+                    return false;
+                }
+
+                // Der zweite Klick geschieht im Modus "vorne": Jetzt übernehmen wir die Eigenschaft
+                // "Radius", die beim hovern verändert wurde, als "vorne". Danach wird wirklich der
+                // Radius geändert.
+                if (Aktion.Status.Modus == "vorne") {
+                    Aktion.Status.Wegpunkt_Entwurf.vorne = Aktion.Status.Wegpunkt_Entwurf.Radius;
+                    Aktion.Status.Modus = "Radius";
+                    Ort.Weg.anzeigen();
+                    return false;
+                }
+
+                // Beim dritten Klick setzen wir den Radius und schliessen den Entwurf ab.
+                if (Aktion.Status.Modus == "Radius") {
+                    delete Aktion.hover;
+                    Aktion.Status.Wegpunkt_Entwurf.Entwurf = false;
+                    Aktion.Status.Modus = "platzieren";
+                    Ort.Weg.anzeigen();
+                    delete Aktion.Status.Wegpunkt_Entwurf;
+                    return false;
+                }
             },
-            auf_Wegpunkt: function(Wegpunkt, Spiel, Aktion, event) {
+            hover_auf_Ort: function(Ort, Spiel, Aktion, event) {
+                // Beim hovern ändern wir immer den Radius, selbst, wenn "vorne" geändert
+                // werden soll. Das ist, damit der rote Kreis anzeigt, wie gross "vorne" sein
+                // wird.
+                if (Aktion.Status.Modus == "vorne" || Aktion.Status.Modus == "Radius") {
+                    let links2 = event.offsetX;
+                    let oben2 = event.offsetY;
+
+                    let abstand = Math.floor(Math.sqrt(
+                        (Aktion.Status.Wegpunkt_Entwurf.links - links2) ** 2 +
+                        (Aktion.Status.Wegpunkt_Entwurf.oben - oben2) ** 2
+                    ));
+
+                    Aktion.Status.Wegpunkt_Entwurf.Radius = Math.max(0, abstand);
+                    Ort.Weg.anzeigen();
+                }
+            },
+            /*auf_Wegpunkt: function(Wegpunkt, Spiel, Aktion, event) {
                 let links = Wegpunkt.Eigenschaften.links - Wegpunkt.Eigenschaften.Radius + event.offsetX;
                 let oben = Wegpunkt.Eigenschaften.oben - Wegpunkt.Eigenschaften.Radius + event.offsetY;
                 let Pfad_Nummer = Aktion.Status.Weg_Design_Pfad_Nummer;
                 Wegpunkt.Weg.Wegpunkt_hinzufügen(Pfad_Nummer, { links: links, oben: oben, Radius: oben / 5, vorne: oben / 5 });
                 Wegpunkt.Weg.anzeigen();
-            },
+            },*/
             beim_Deaktivieren: function(Spiel, Aktion) {
                 Aktion.Status.Weg_Design_Pfad_Nummer++;
                 if (Aktion.Status.Weg_Design_Pfad_Nummer >= 2) {

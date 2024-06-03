@@ -52,6 +52,8 @@ class Ein_Weg {
         if (Wegpunkt_Eigenschaften.Start) {
             this.Eintritte["Start"] = Wegpunkt;
         }
+
+        return Wegpunkt;
     }
 
     anzeigen() {

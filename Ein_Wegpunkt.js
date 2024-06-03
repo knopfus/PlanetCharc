@@ -11,12 +11,6 @@ class Ein_Wegpunkt {
 
         Wegpunkt_div.setAttribute("id", "Wegpunkt_" + Weg.Ort.Name + "_" + Pfad_Nummer + "_" + Nummer);
 
-        Wegpunkt_div.style.left = Eigenschaften.links - Eigenschaften.Radius + "px";
-        Wegpunkt_div.style.top = Eigenschaften.oben - Eigenschaften.Radius + "px";
-        Wegpunkt_div.style.width = 2 * Eigenschaften.Radius + "px";
-        Wegpunkt_div.style.height = 2 * Eigenschaften.Radius + "px";
-        Wegpunkt_div.style.visibility = "visible";
-
         let self = this;
         Wegpunkt_div.onclick = function(event) {
             if (self.Spiel.aktive_Aktion) {
@@ -33,11 +27,23 @@ class Ein_Wegpunkt {
     }
 
     anzeigen() {
+        this.Wegpunkt_div.style.left = this.Eigenschaften.links - this.Eigenschaften.Radius + "px";
+        this.Wegpunkt_div.style.top = this.Eigenschaften.oben - this.Eigenschaften.Radius + "px";
+        this.Wegpunkt_div.style.width = 2 * this.Eigenschaften.Radius + "px";
+        this.Wegpunkt_div.style.height = 2 * this.Eigenschaften.Radius + "px";
+        this.Wegpunkt_div.style.visibility = "visible";
+
         this.Wegpunkt_div.style.display = "";
         if (this.Spiel.Entwickler_Modus) {
             this.Wegpunkt_div.style.border = "1px solid red";
         } else {
             this.Wegpunkt_div.style.border = "0px";
+        }
+
+        if (this.Eigenschaften.Entwurf) {
+            this.Wegpunkt_div.style["pointer-events"] = "none";
+        } else {
+            this.Wegpunkt_div.style.removeProperty("pointer-events");
         }
     }
 

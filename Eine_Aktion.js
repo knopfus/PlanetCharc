@@ -78,6 +78,13 @@ class Eine_Aktion {
         }
     }
 
+    ausführen_hover_auf_Ort(Ort, event) {
+        if (this.Eigenschaften.hover_auf_Ort) {
+            this.Eigenschaften.hover_auf_Ort(Ort, this.Spiel, this, event);
+            this.Status_anzeigen();
+        }
+    }
+
     ausführen_auf_Gegenstand(Gegenstand, event) {
         if (this.Eigenschaften.auf_Gegenstand) {
             let deaktivieren = this.Eigenschaften.auf_Gegenstand(Gegenstand, this.Spiel, this, event);

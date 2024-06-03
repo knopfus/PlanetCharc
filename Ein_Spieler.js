@@ -4,12 +4,13 @@ class Ein_Spieler {
         this.Kraft = Eigenschaften.Kraft;
         this.Lebenspunkte = Eigenschaften.Lebenspunkte;
         this.Maximale_Lebenspunkte = Eigenschaften.Lebenspunkte;
+        this.Schritte = 0;
 
         // Das HTML Element vorbereiten
         this.Spieler_div = document.getElementById("Spieler");
 
-        this.SCHRITT_LÄNGE = 0.05;
-        this.SCHRITT_LÄNGE_ENTWICKLER_MODUS = 0.1;
+        this.SCHRITT_LÄNGE = 0.02;
+        this.SCHRITT_LÄNGE_ENTWICKLER_MODUS = 0.05;
     }
 
     gehe_zu(Wegpunkt) {
@@ -62,7 +63,19 @@ class Ein_Spieler {
         this.Koordinaten = null;
         this.Schritt_Richtung = null;
 
-        if (Wegpunkt) this.gehe_zu(Wegpunkt);
+        if (Wegpunkt) {
+            this.gehe_zu(Wegpunkt);
+            let Nummer = Wegpunkt.Nummer;
+            let Pfad_Nummer = Wegpunkt.Pfad_Nummer;
+            let letzte_Nummer = Wegpunkt.Weg.Pfade[Pfad_Nummer].length - 1;
+            if (Nummer == 0 && letzte_Nummer > 0) {
+                let nächster_Wegpunkt = Wegpunkt.Weg.Pfade[Pfad_Nummer][Nummer + 1];
+                this.gehe_zu(nächster_Wegpunkt);
+            } else if (Nummer == letzte_Nummer) {
+                let nächster_Wegpunkt = Wegpunkt.Weg.Pfade[Pfad_Nummer][Nummer - 1];
+                this.gehe_zu(nächster_Wegpunkt);
+            }
+        }
     }
 
     platziere_bei(Koordinaten) {
@@ -73,6 +86,15 @@ class Ein_Spieler {
         this.Spieler_div.style.width = Koordinaten.vorne + "px";
         this.Spieler_div.style.height = Koordinaten.vorne + "px";
         this.Spieler_div.style.zIndex = Koordinaten.vorne;
+
+        this.Spieler_div.style.rotate = (this.Schritte % 20) / 5 + "deg";
+        if (this.Schritt_Richtung) {
+            if (this.Schritt_Richtung.nach_rechts > 0) {
+                this.Spieler_div.style.transform = "scaleX(-1)";
+            } else {
+                this.Spieler_div.style.transform = "";
+            }
+        }
     }
 
     feststellen(text) {
@@ -97,6 +119,7 @@ class Ein_Spieler {
 
     Lebenspunkte_wiederherstellen() {
         this.Lebenspunkte = this.Maximale_Lebenspunkte;
+        this.Spiel.zeige_Lebenspunkte_an();
     }
 
     Spieluhr_tickt() {
@@ -115,6 +138,8 @@ class Ein_Spieler {
                       
             let Schrittlänge = (this.Spiel.Entwickler_Modus ? this.SCHRITT_LÄNGE_ENTWICKLER_MODUS : this.SCHRITT_LÄNGE) * this.Koordinaten.vorne;
 
+            this.Schritte++;
+
             let dies_ist_der_letzte_Schritt = (Schrittlänge > Distanz);
             // Der letzte Schritt muss evtl. kleiner sein
             if (dies_ist_der_letzte_Schritt) {
@@ -131,6 +156,7 @@ class Ein_Spieler {
 
             if (dies_ist_der_letzte_Schritt) {
                 this.Schritt_Richtung = null;
+                this.Schritte = 0;
 
                 // Am nächsten Wegpunkt angekommen
                 this.Wegpunkt = this.nächster_Wegpunkt;
