@@ -130,6 +130,8 @@ class Ein_Spieler {
             this.platziere_bei(Koordinaten);
 
             if (dies_ist_der_letzte_Schritt) {
+                this.Schritt_Richtung = null;
+
                 // Am nächsten Wegpunkt angekommen
                 this.Wegpunkt = this.nächster_Wegpunkt;
                 if (this.nächster_Wegpunkt == this.Ziel_Wegpunkt) {
