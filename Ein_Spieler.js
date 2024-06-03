@@ -1,6 +1,9 @@
 class Ein_Spieler {
     constructor(Spiel, Eigenschaften) {
         this.Spiel = Spiel;
+        this.Kraft = Eigenschaften.Kraft;
+        this.Lebenspunkte = Eigenschaften.Lebenspunkte;
+        this.Maximale_Lebenspunkte = Eigenschaften.Lebenspunkte;
 
         // Das HTML Element vorbereiten
         this.Spieler_div = document.getElementById("Spieler");
@@ -80,6 +83,26 @@ class Ein_Spieler {
 
     feststellen(text) {
         this.Spiel.Sprechblase.anzeigen(text);
+    }
+
+    bekämpfen(Kraft) {
+        this.Lebenspunkte_verändern(- Kraft / 100);
+    }
+
+    Lebenspunkte_verändern(Differenz) {
+        this.Lebenspunkte = this.Lebenspunkte + Differenz;
+        if (this.Lebenspunkte > this.Maximale_Lebenspunkte) {
+            this.Lebenspunkte = this.Maximale_Lebenspunkte;
+        }
+        
+        this.Spiel.zeige_Lebenspunkte_an();
+        if (this.Lebenspunkte <= 0) {
+            this.Spiel.Game_over();
+        }
+    }
+
+    Lebenspunkte_wiederherstellen() {
+        this.Lebenspunkte = this.Maximale_Lebenspunkte;
     }
 
     Spieluhr_tickt() {

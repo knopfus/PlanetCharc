@@ -10,6 +10,7 @@ var Spielaufbau = {
     Orte: {
 
         Silberne_Lichtung: {
+            Kürzel: "s",
             feststellen: "Er musste mit seinem Volk vom Planeten fliehen, der von einem unmittelbaren Kometeneinschlag bedroht war. Aber er verpasste den Abflug mit dem Ortschiff und konnte sich nur noch aussen festhalten, wobei er auf dem Flug zum Ziel-Planeten den Halt verlor und auf dem Planeten CHARC landete. Deshalb muss er sich nun zurechtfinden, sich ernähren und zugleich versuchen mit seinem Volk Kontakt aufzunehmen um abgeholt zu werden.\n\nKlicke hier um zu starten.",
             Pfade: [
                 [
@@ -373,7 +374,15 @@ var Spielaufbau = {
         "Klauenspringer-Zahn": {
             in: "Unerreichbarer_Ort",
             feststellen: "Oh, da ist etwas liegen geblieben. Sieht aus wie ein Zahn von diesem Monster.",
-            links: 470, oben: 305, breit: 50, hoch: 85, gedreht: 263
+            links: 470, oben: 305, breit: 50, hoch: 85, gedreht: 263,
+            anwenden: function(Gegenstand, Spiel) {
+                Spiel.Spieler.Kraft = Spiel.Spieler.Kraft + 1;
+                Spiel.Spieler.feststellen("Den werde ich verwenden, um mich zu verteidigen.")
+
+                Gegenstand.aus_Besitz_entfernen();
+
+                return true; // Aktion deaktivieren
+            }
         },
 
         "Lavawelt_Mechanik_Kreuz": {
@@ -417,8 +426,8 @@ var Spielaufbau = {
                 { in: "aktivierte_Quelle_des_Lichts", links: 1011, oben: 515, breit: 35, hoch: 35 / 685 * 845, gedreht: -10 }
             ],
             anwenden: function(Gegenstand, Spiel) {
-                if (Spiel.Lebenspunkte < Spielaufbau.Spieler.Lebenspunkte) {
-                    Spiel.Lebenspunkte_verändern(10);
+                if (Spiel.Spieler.Lebenspunkte < Spielaufbau.Spieler.Lebenspunkte) {
+                    Spiel.Spieler.Lebenspunkte_verändern(10);
                     Gegenstand.aus_Besitz_entfernen();
                     Gegenstand.regeneriere_in(10);
 
@@ -483,8 +492,8 @@ var Spielaufbau = {
                 { in: "Höhle_Yeti", links: 420, oben: 255, breit: 800, hoch: 671, gedreht: 0 }            
             ],
     
-            Lebenspunkte: 110,
-            Kraft: 9,
+            Lebenspunkte: 140,
+            Kraft: 12,
 
             Belohnung: "Lichtkristall"
         },
@@ -496,7 +505,27 @@ var Spielaufbau = {
     
             Lebenspunkte: 80,
             Kraft: 7
-        }    
+        },
+       /* "Baum": {
+            Orte: [
+                { in: "Dschungel_1", links: 1023, oben: 176, breit: 108, hoch: 108, gedreht: 10 }                
+            ],
+    
+            Lebenspunkte: 80,
+            Kraft: 0,
+
+            Belohnung: "Mondblume"
+
+        },*/
+        "Gigant": {
+            Orte: [
+                { in: "Reich_des_Giganten", links: 420, oben: 255, breit: 800, hoch: 671, gedreht: 0 },
+            ],
+    
+            Lebenspunkte: 200,
+            Kraft: 15,
+            Belohnung: "Lichtkristall"
+        }        
     },
 
     Mechaniken: {
@@ -576,7 +605,7 @@ var Spielaufbau = {
 
         kämpfen: {
             auf_Monster: function(Monster, Spiel) {
-                Monster.bekämpfen(Spiel.Kraft);
+                Monster.bekämpfen(Spiel.Spieler.Kraft);
                 if (Monster.tot()) {
                     return true; // Aktion deaktivieren
                 }
@@ -590,14 +619,6 @@ var Spielaufbau = {
             },
             auf_Gegenstand_in_Besitz: function(Gegenstand) {
                 Gegenstand.anschauen();
-                return true; // Aktion deaktivieren
-            }
-        },
-
-        unsterblich: {
-            Entwickler_Modus: true,
-            beim_Aktivieren: function(Spiel) {
-                Spiel.unsterblich();
                 return true; // Aktion deaktivieren
             }
         },

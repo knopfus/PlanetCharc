@@ -118,7 +118,7 @@ class Ein_Monster {
         if (this.tot()) return; // Code gar nicht erst ausführen
 
         if (this.Ort == this.Spiel.Ort) {
-            this.Spiel.Spieler_bekämpfen(this.Kraft);
+            this.Spiel.Spieler.bekämpfen(this.Kraft);
         }
     }
 }

@@ -79,7 +79,7 @@ class Ein_Spiel {
             this.Mechaniken[Mechanik_Name] = Mechanik;
         }
 
-        this.Spieler = new Ein_Spieler(this);
+        this.Spieler = new Ein_Spieler(this, Spielaufbau.Spieler);
 
         let self = this;
         document.getElementById("Ort-Bild").onclick = function(event) {
@@ -91,6 +91,7 @@ class Ein_Spiel {
         document.onkeydown = function(event) {
             if (event.key == "§") {
                 self.Entwickler_Modus = !self.Entwickler_Modus;
+                document.getElementById("Status").style.zIndex = self.Entwickler_Modus ? "100000" : "-1";
 
                 self.Ort.Weg.anzeigen();
                 for (let Portal_Name in self.Portale) {
@@ -100,7 +101,11 @@ class Ein_Spiel {
                     self.Aktionen[Aktion_Name].anzeigen_falls_Entwickler_Modus();
                 }
             }
-            document.getElementById("Status").style.zIndex = self.Entwickler_Modus ? "100000" : "-1";
+
+            if (event.key == "$") {
+                self.Spieler.Lebenspunkte_wiederherstellen();
+            }
+
             if (event.key in self.Orte_Kürzel) {
                 self.gehe_zu_Ort(self.Orte_Kürzel[event.key]);
             }
@@ -112,8 +117,6 @@ class Ein_Spiel {
 
         this.läuft = true;
 
-        this.Lebenspunkte = Spielaufbau.Spieler.Lebenspunkte;
-        this.Kraft = Spielaufbau.Spieler.Kraft;
         this.aktive_Aktion = null;
 
         this.Ort = null;
@@ -150,10 +153,6 @@ class Ein_Spiel {
         }
     }
 
-    Spieler_bekämpfen(Kraft) {
-        this.Lebenspunkte_verändern(- Kraft / 100);
-    }
-
     Wasserfall_teilen() {
         spiele_Sound_Effect("Wasserfall_teilen");
         this.Gegenstände.Lavawelt_Mechanik_Kreuz.ein();
@@ -169,27 +168,13 @@ class Ein_Spiel {
         spiele_Sound_Effect("Quelle_des_Lichts_aktivieren");
     }
 
-    Lebenspunkte_verändern(Differenz) {
-        if (this.ist_unsterblich && Differenz < 0) { Differenz = 0; };
-
-        this.Lebenspunkte = this.Lebenspunkte + Differenz;
-        if (this.Lebenspunkte > Spielaufbau.Spieler.Lebenspunkte) {
-            this.Lebenspunkte = Spielaufbau.Spieler.Lebenspunkte;
-        }
-        
-        this.zeige_Lebenspunkte_an();
-        if (this.Lebenspunkte <= 0) {
-            this.Game_over();
-        }
-    }
-
     zeige_Lebenspunkte_an() {
         let Lebenspunkte_div = document.getElementById("Lebenspunkte");
     
-        Lebenspunkte_div.style.width = this.Lebenspunkte + "%";
+        Lebenspunkte_div.style.width = this.Spieler.Lebenspunkte + "%";
     
         var max_color = 200;
-        var g = this.Lebenspunkte / 100 * (2 * max_color);
+        var g = this.Spieler.Lebenspunkte / 100 * (2 * max_color);
         var r = 2 * max_color - g;
         var b = 0;
         if (g > max_color) { g = max_color; }
@@ -197,10 +182,6 @@ class Ein_Spiel {
         var rgb = "rgb(" + r + ", " + g + ", " + b + ")";
     
         Lebenspunkte_div.style.backgroundColor = rgb;
-    }
-
-    unsterblich() {
-        this.ist_unsterblich = true;
     }
     
     Game_over() {
