@@ -11,6 +11,7 @@ class Ein_Ort {
 
         this.Status_Ort_element = document.getElementById("Status-Ort");
         this.Ort_Bild_div = document.getElementById("Ort-Bild");
+        this.Ort_Bild_vorne_div = document.getElementById("Ort-Bild-vorne");
     }
 
     verlassen() {
@@ -23,6 +24,7 @@ class Ein_Ort {
     betreten() {
         this.Status_Ort_element.innerText = this.Name;
         this.Ort_Bild_div.src = "Orte/" + this.Name + ".png?nocache=" + Date.now();
+        this.Ort_Bild_vorne_div.src = "Orte/" + this.Name + "_vorne.png?nocache=" + Date.now();
 
         for (let Gegenstand of this.Gegenstände) {
             Gegenstand.anzeigen();

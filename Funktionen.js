@@ -11,10 +11,17 @@ Array.prototype.ist_gleich = function( array ) {
     return JSON.stringify(array) === JSON.stringify(this);
 }
 
-function spiele_Sound_Effect(Sound_Name) {
+async function spiele_Sound_Effect(Sound_Name) {
     let player = document.getElementById("Sound_Effects");
     player.src = "./Sound_Effects/" + Sound_Name + ".wav";
-    player.play();
+
+    try {
+        await player.play();
+    }
+    catch (error) {
+        console.log("Sound Effect '" + Sound_Name + "' fehlt (noch).");
+    }
+    
 }
 
 function sind_näher_als(Koordinaten_1, Koordinaten_2, Abstand) {
