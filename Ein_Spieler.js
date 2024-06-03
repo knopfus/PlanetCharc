@@ -19,10 +19,9 @@ class Ein_Spieler {
             // Noch kein Wegpunkt - Keine Animation
 
             let Koordinaten = {
-                links: Wegpunkt.Eigenschaften.links - 0.5 * Wegpunkt.Eigenschaften.zoom,
-                oben: Wegpunkt.Eigenschaften.oben - Wegpunkt.Eigenschaften.zoom,
-                breit: Wegpunkt.Eigenschaften.zoom,
-                hoch: Wegpunkt.Eigenschaften.zoom
+                links: Wegpunkt.Eigenschaften.links - 0.5 * Wegpunkt.Eigenschaften.vorne,
+                oben: Wegpunkt.Eigenschaften.oben - Wegpunkt.Eigenschaften.vorne,
+                vorne: Wegpunkt.Eigenschaften.vorne
             };
 
             this.platziere_bei(Koordinaten);
@@ -40,10 +39,9 @@ class Ein_Spieler {
         }
 
         let Ziel_Koordinaten = {
-            links: this.nächster_Wegpunkt.Eigenschaften.links - 0.5 * this.nächster_Wegpunkt.Eigenschaften.zoom,
-            oben: this.nächster_Wegpunkt.Eigenschaften.oben - this.nächster_Wegpunkt.Eigenschaften.zoom,
-            breit: this.nächster_Wegpunkt.Eigenschaften.zoom,
-            hoch: this.nächster_Wegpunkt.Eigenschaften.zoom
+            links: this.nächster_Wegpunkt.Eigenschaften.links - 0.5 * this.nächster_Wegpunkt.Eigenschaften.vorne,
+            oben: this.nächster_Wegpunkt.Eigenschaften.oben - this.nächster_Wegpunkt.Eigenschaften.vorne,
+            vorne: this.nächster_Wegpunkt.Eigenschaften.vorne
         };
 
         let Differenz = {
@@ -55,8 +53,7 @@ class Ein_Spieler {
         this.Schritt_Richtung = {
             nach_rechts: (Ziel_Koordinaten.links - this.Koordinaten.links) / Distanz,
             nach_unten: (Ziel_Koordinaten.oben - this.Koordinaten.oben) / Distanz,
-            verbreitern: (Ziel_Koordinaten.breit - this.Koordinaten.breit) / Distanz,
-            erhöhen: (Ziel_Koordinaten.hoch - this.Koordinaten.hoch) / Distanz
+            nach_vorne: (Ziel_Koordinaten.vorne - this.Koordinaten.vorne) / Distanz
         };
     }
 
@@ -70,10 +67,12 @@ class Ein_Spieler {
 
     platziere_bei(Koordinaten) {
         this.Koordinaten = Koordinaten;
+
         this.Spieler_div.style.left = Koordinaten.links + "px";
         this.Spieler_div.style.top = Koordinaten.oben + "px";
-        this.Spieler_div.style.width = Koordinaten.breit + "px";
-        this.Spieler_div.style.height = Koordinaten.hoch + "px";
+        this.Spieler_div.style.width = Koordinaten.vorne + "px";
+        this.Spieler_div.style.height = Koordinaten.vorne + "px";
+        this.Spieler_div.style.zIndex = Koordinaten.vorne;
     }
 
     feststellen(text) {
@@ -103,10 +102,9 @@ class Ein_Spieler {
     Spieluhr_tickt() {
         if (this.Schritt_Richtung) {
             let Ziel_Koordinaten = {
-                links: this.nächster_Wegpunkt.Eigenschaften.links - 0.5 * this.nächster_Wegpunkt.Eigenschaften.zoom,
-                oben: this.nächster_Wegpunkt.Eigenschaften.oben - this.nächster_Wegpunkt.Eigenschaften.zoom,
-                breit: this.nächster_Wegpunkt.Eigenschaften.zoom,
-                hoch: this.nächster_Wegpunkt.Eigenschaften.zoom
+                links: this.nächster_Wegpunkt.Eigenschaften.links - 0.5 * this.nächster_Wegpunkt.Eigenschaften.vorne,
+                oben: this.nächster_Wegpunkt.Eigenschaften.oben - this.nächster_Wegpunkt.Eigenschaften.vorne,
+                vorne: this.nächster_Wegpunkt.Eigenschaften.vorne
             };
     
             let Differenz = {
@@ -115,7 +113,7 @@ class Ein_Spieler {
             };
             let Distanz = Math.sqrt((Differenz.nach_rechts ** 2 + Differenz.nach_unten ** 2));
                       
-            let Schrittlänge = (this.Spiel.Entwickler_Modus ? this.SCHRITT_LÄNGE_ENTWICKLER_MODUS : this.SCHRITT_LÄNGE) * this.Koordinaten.breit;
+            let Schrittlänge = (this.Spiel.Entwickler_Modus ? this.SCHRITT_LÄNGE_ENTWICKLER_MODUS : this.SCHRITT_LÄNGE) * this.Koordinaten.vorne;
 
             let dies_ist_der_letzte_Schritt = (Schrittlänge > Distanz);
             // Der letzte Schritt muss evtl. kleiner sein
@@ -126,8 +124,7 @@ class Ein_Spieler {
             let Koordinaten = {
                 links: this.Koordinaten.links + this.Schritt_Richtung.nach_rechts * Schrittlänge,
                 oben: this.Koordinaten.oben + this.Schritt_Richtung.nach_unten * Schrittlänge,
-                breit: this.Koordinaten.breit + this.Schritt_Richtung.verbreitern * Schrittlänge,
-                hoch: this.Koordinaten.hoch + this.Schritt_Richtung.erhöhen * Schrittlänge
+                vorne: this.Koordinaten.vorne + this.Schritt_Richtung.nach_vorne * Schrittlänge
             }
 
             this.platziere_bei(Koordinaten);

@@ -14,44 +14,44 @@ var Spielaufbau = {
             feststellen: "Er musste mit seinem Volk vom Planeten fliehen, der von einem unmittelbaren Kometeneinschlag bedroht war. Aber er verpasste den Abflug mit dem Ortschiff und konnte sich nur noch aussen festhalten, wobei er auf dem Flug zum Ziel-Planeten den Halt verlor und auf dem Planeten CHARC landete. Deshalb muss er sich nun zurechtfinden, sich ernähren und zugleich versuchen mit seinem Volk Kontakt aufzunehmen um abgeholt zu werden.\n\nKlicke hier um zu starten.",
             Pfade: [
                 [
-                    { links: 170,  oben: 110,  Radius: 120, zoom: 100 },
-                    { links: 103,  oben: 159, Radius: 120, zoom: 100 },
-                    { links: 120,  oben: 270, Radius: 120, zoom: 100 },
-                    { links: 145,  oben: 393, Radius: 120, zoom: 100 },
-                    { links: 265,  oben: 460, Radius: 120, zoom: 100 },
-                    { links: 344,  oben: 534, Radius: 120, zoom: 100 },
-                    { links: 410,  oben: 650, Radius: 120, zoom: 100, Kreuzung: true },
-                    { links: 570,  oben: 650, Radius: 120, zoom: 100, Start: true },
-                    { links: 546,  oben: 554, Radius: 120, zoom: 100 },
-                    { links: 500,  oben: 470, Radius: 120, zoom: 100 },
-                    { links: 610,  oben: 385, Radius: 120, zoom: 100 },
-                    { links: 750,  oben: 380, Radius: 120, zoom: 100 },
-                    { links: 831,  oben: 451, Radius: 120, zoom: 100 },
-                    { links: 905,  oben: 520, Radius: 120, zoom: 100 },
-                    { links: 1010, oben: 557, Radius: 120, zoom: 100 },
-                    { links: 1134, oben: 504, Radius: 120, zoom: 100 },
-                    { links: 1252, oben: 469, Radius: 120, zoom: 100, Portal: "Dschungel_2" }
+                    { links: 170,  oben: 110,  Radius: 120, vorne: 100 },
+                    { links: 103,  oben: 159, Radius: 120, vorne: 100 },
+                    { links: 120,  oben: 270, Radius: 120, vorne: 100 },
+                    { links: 145,  oben: 393, Radius: 120, vorne: 100 },
+                    { links: 265,  oben: 460, Radius: 120, vorne: 100 },
+                    { links: 344,  oben: 534, Radius: 120, vorne: 100 },
+                    { links: 410,  oben: 650, Radius: 120, vorne: 100, Kreuzung: true },
+                    { links: 570,  oben: 650, Radius: 120, vorne: 100, Start: true },
+                    { links: 546,  oben: 554, Radius: 120, vorne: 100 },
+                    { links: 500,  oben: 470, Radius: 120, vorne: 100 },
+                    { links: 610,  oben: 385, Radius: 120, vorne: 100 },
+                    { links: 750,  oben: 380, Radius: 120, vorne: 100 },
+                    { links: 831,  oben: 451, Radius: 120, vorne: 100 },
+                    { links: 905,  oben: 520, Radius: 120, vorne: 100 },
+                    { links: 1010, oben: 557, Radius: 120, vorne: 100 },
+                    { links: 1134, oben: 504, Radius: 120, vorne: 100 },
+                    { links: 1252, oben: 469, Radius: 120, vorne: 100, Portal: "Dschungel_2" }
                 ],[
-                    { links: 260,  oben: 650, Radius: 120, zoom: 100, Kreuzung: true },
-                    { links: 109,  oben: 662, Radius: 120, zoom: 100, Portal: "Dschungel_1" }
+                    { links: 260,  oben: 650, Radius: 120, vorne: 100, Kreuzung: true },
+                    { links: 109,  oben: 662, Radius: 120, vorne: 100, Portal: "Dschungel_1" }
                 ]
             ]
         },
         Dschungel_1: {             
             Pfade: [
                 [
-                    { links: 69,   oben: 426, Radius: 120, zoom: 100, Portal: "Grosse_Wiese" },
-                    { links: 203,  oben: 484, Radius: 120, zoom: 100 },
-                    { links: 281,  oben: 557, Radius: 120, zoom: 100 },
-                    { links: 450,  oben: 570, Radius: 120, zoom: 100 },
-                    { links: 569,  oben: 534, Radius: 120, zoom: 100 },
-                    { links: 715,  oben: 565, Radius: 120, zoom: 100 },
-                    { links: 892,  oben: 511, Radius: 120, zoom: 100 },
-                    { links: 898,  oben: 397, Radius: 120, zoom: 100 },
-                    { links: 847,  oben: 352, Radius: 120, zoom: 100, Portal: "Berge_der_Angst" },
-                    { links: 1120, oben: 387, Radius: 120, zoom: 100 },
-                    { links: 1236, oben: 505, Radius: 120, zoom: 100 },
-                    { links: 1380, oben: 511, Radius: 120, zoom: 100, Portal: "Silberne_Lichtung" }
+                    { links: 69,   oben: 426, Radius: 120, vorne: 100, Portal: "Grosse_Wiese" },
+                    { links: 203,  oben: 484, Radius: 120, vorne: 100 },
+                    { links: 281,  oben: 557, Radius: 120, vorne: 100 },
+                    { links: 450,  oben: 570, Radius: 120, vorne: 100 },
+                    { links: 569,  oben: 534, Radius: 120, vorne: 100 },
+                    { links: 715,  oben: 565, Radius: 120, vorne: 100 },
+                    { links: 892,  oben: 511, Radius: 120, vorne: 100 },
+                    { links: 898,  oben: 397, Radius: 120, vorne: 100 },
+                    { links: 847,  oben: 352, Radius: 120, vorne: 100, Portal: "Berge_der_Angst" },
+                    { links: 1120, oben: 387, Radius: 120, vorne: 100 },
+                    { links: 1236, oben: 505, Radius: 120, vorne: 100 },
+                    { links: 1380, oben: 511, Radius: 120, vorne: 100, Portal: "Silberne_Lichtung" }
                 ]
             ]
         },
@@ -59,21 +59,21 @@ var Spielaufbau = {
             Kürzel: "b",
             Pfade: [
                 [
-                    {"links":3,"oben":642,"Radius":126.4,"zoom":126.4,Portal:"Grosse_Wiese"},
-                    {"links":309,"oben":664,"Radius":130.8,"zoom":130.8},
-                    {"links":577,"oben":707,"Radius":139.4,"zoom":139.4},
-                    {"links":880,"oben":725,"Radius":120,"zoom":141,"Kreuzung":true},
-                    {"links":1193,"oben":738,"Radius":140,"zoom":141.6},
-                    {"links":1434,"oben":748,"Radius":140,"zoom":141.6,Portal: "Lavawelt"}
+                    {"links":3,"oben":642,"Radius":126.4,"vorne":126.4,Portal:"Grosse_Wiese"},
+                    {"links":309,"oben":664,"Radius":130.8,"vorne":130.8},
+                    {"links":577,"oben":707,"Radius":139.4,"vorne":139.4},
+                    {"links":880,"oben":725,"Radius":120,"vorne":141,"Kreuzung":true},
+                    {"links":1193,"oben":738,"Radius":140,"vorne":141.6},
+                    {"links":1434,"oben":748,"Radius":140,"vorne":141.6,Portal: "Lavawelt"}
                 ],[
-                    {"links":884,"oben":720,"Radius":10,"zoom":100,"Kreuzung":true},
-                    {"links":945,"oben":720,"Radius":10,"zoom":80},
-                    {"links":930.4,"oben":707.4,"Radius":10,"zoom":70},
-                    {"links":875.6,"oben":695.6,"Radius":10,"zoom":60},
-                    {"links":841.92,"oben":663.92,"Radius":10,"zoom":50},
-                    {"links":912.48,"oben":643.48,"Radius":10,"zoom":40},
-                    {"links":977.784,"oben":621.784,"Radius":10,"zoom":30},
-                    {"links":1056.84704,"oben":607.84704,"Radius":120,"zoom":20, Portal: "Gipfel"}
+                    {"links":884,"oben":720,"Radius":10,"vorne":100,"Kreuzung":true},
+                    {"links":945,"oben":720,"Radius":10,"vorne":80},
+                    {"links":930.4,"oben":707.4,"Radius":10,"vorne":70},
+                    {"links":875.6,"oben":695.6,"Radius":10,"vorne":60},
+                    {"links":841.92,"oben":663.92,"Radius":10,"vorne":50},
+                    {"links":912.48,"oben":643.48,"Radius":10,"vorne":40},
+                    {"links":977.784,"oben":621.784,"Radius":10,"vorne":30},
+                    {"links":1056.84704,"oben":607.84704,"Radius":120,"vorne":20, Portal: "Gipfel"}
                 ]
             ]
         },
@@ -81,19 +81,19 @@ var Spielaufbau = {
             
             Pfade: [
                 [
-                    {"links":10,"oben":494,"Radius":98.8,"zoom":98.8},
-                    {"links":230,"oben":519,"Radius":103.8,"zoom":103.8},
-                    {"links":432,"oben":527,"Radius":105.4,"zoom":105.4},
-                    {"links":665,"oben":534,"Radius":106.8,"zoom":106.8},
-                    {"links":940,"oben":493,"Radius":98.6,"zoom":98.6, Kreuzung: true},
-                    {"links":1095,"oben":456,"Radius":91.2,"zoom":91.2},
-                    {"links":977,"oben":397,"Radius":79.4,"zoom":79.4},
-                    {"links":1084,"oben":362,"Radius":72.4,"zoom":72.4}
+                    {"links":10,"oben":494,"Radius":98.8,"vorne":98.8},
+                    {"links":230,"oben":519,"Radius":103.8,"vorne":103.8},
+                    {"links":432,"oben":527,"Radius":105.4,"vorne":105.4},
+                    {"links":665,"oben":534,"Radius":106.8,"vorne":106.8},
+                    {"links":940,"oben":493,"Radius":98.6,"vorne":98.6, Kreuzung: true},
+                    {"links":1095,"oben":456,"Radius":91.2,"vorne":91.2},
+                    {"links":977,"oben":397,"Radius":79.4,"vorne":79.4},
+                    {"links":1084,"oben":362,"Radius":72.4,"vorne":72.4}
                 ],[
-                    {"links":840,"oben":434,"Radius":86.8,"zoom":86.8, Kreuzung: true},
-                    {"links":720,"oben":394,"Radius":78.8,"zoom":78.8},
-                    {"links":616,"oben":333,"Radius":66.6,"zoom":66.6},
-                    {"links":577,"oben":276,"Radius":55.2,"zoom":55.2}
+                    {"links":840,"oben":434,"Radius":86.8,"vorne":86.8, Kreuzung: true},
+                    {"links":720,"oben":394,"Radius":78.8,"vorne":78.8},
+                    {"links":616,"oben":333,"Radius":66.6,"vorne":66.6},
+                    {"links":577,"oben":276,"Radius":55.2,"vorne":55.2}
                 ]
             ],
             
@@ -106,28 +106,28 @@ var Spielaufbau = {
             
             Pfade: [
                 [
-                    { links: 867,  oben: 706, Radius: 120, zoom: 120, Portal: "Dschungel_1" },
-                    { links: 914,  oben: 609, Radius: 120, zoom: 100 },
-                    { links: 904,  oben: 496, Radius: 120, zoom: 90 },
-                    { links: 834,  oben: 449, Radius: 120, zoom: 80 },
-                    { links: 707,  oben: 425, Radius: 120, zoom: 70 },
-                    { links: 518,  oben: 423, Radius: 120, zoom: 60 },
-                    { links: 437,  oben: 397, Radius: 120, zoom: 50, Kreuzung: true },
-                    { links: 400,  oben: 318, Radius: 120, zoom: 30 },
-                    { links: 302,  oben: 284, Radius: 120, zoom: 20, Portal: "Berge_der_Angst" }
+                    { links: 867,  oben: 706, Radius: 120, vorne: 120, Portal: "Dschungel_1" },
+                    { links: 914,  oben: 609, Radius: 120, vorne: 100 },
+                    { links: 904,  oben: 496, Radius: 120, vorne: 90 },
+                    { links: 834,  oben: 449, Radius: 120, vorne: 80 },
+                    { links: 707,  oben: 425, Radius: 120, vorne: 70 },
+                    { links: 518,  oben: 423, Radius: 120, vorne: 60 },
+                    { links: 437,  oben: 397, Radius: 120, vorne: 50, Kreuzung: true },
+                    { links: 400,  oben: 318, Radius: 120, vorne: 30 },
+                    { links: 302,  oben: 284, Radius: 120, vorne: 20, Portal: "Berge_der_Angst" }
                 ],
                 [
-                    { links: 64,  oben: 454, Radius: 120, zoom: 50, Portal: "Ewiges_Eis" },
-                    { links: 209,  oben: 456, Radius: 120, zoom: 50 },
-                    { links: 309,  oben: 412, Radius: 120, zoom: 50 },
-                    { links: 437,  oben: 397, Radius: 120, zoom: 50, Kreuzung: true },
-                    { links: 491,  oben: 378, Radius: 120, zoom: 50 },
-                    { links: 614,  oben: 341, Radius: 120, zoom: 50 },
-                    { links: 792,  oben: 331, Radius: 120, zoom: 50 },
-                    { links: 995,  oben: 359, Radius: 120, zoom: 50 },
-                    { links: 1123,  oben: 360, Radius: 120, zoom: 50 },
-                    { links: 1229,  oben: 367, Radius: 120, zoom: 50 },
-                    { links: 1388,  oben: 365, Radius: 120, zoom: 50 }
+                    { links: 64,  oben: 454, Radius: 120, vorne: 50, Portal: "Ewiges_Eis" },
+                    { links: 209,  oben: 456, Radius: 120, vorne: 50 },
+                    { links: 309,  oben: 412, Radius: 120, vorne: 50 },
+                    { links: 437,  oben: 397, Radius: 120, vorne: 50, Kreuzung: true },
+                    { links: 491,  oben: 378, Radius: 120, vorne: 50 },
+                    { links: 614,  oben: 341, Radius: 120, vorne: 50 },
+                    { links: 792,  oben: 331, Radius: 120, vorne: 50 },
+                    { links: 995,  oben: 359, Radius: 120, vorne: 50 },
+                    { links: 1123,  oben: 360, Radius: 120, vorne: 50 },
+                    { links: 1229,  oben: 367, Radius: 120, vorne: 50 },
+                    { links: 1388,  oben: 365, Radius: 120, vorne: 50 }
                 ]
             ]
         },
@@ -135,17 +135,17 @@ var Spielaufbau = {
             Kürzel: "e",
             Pfade: [
                 [
-                    {"links":50,"oben":626,"Radius":125.2,"zoom":125.2},
-                    {"links":187,"oben":664,"Radius":132.8,"zoom":132.8},
-                    {"links":400,"oben":705,"Radius":141,"zoom":141},
-                    {"links":653,"oben":677,"Radius":80,"zoom":135.4},
-                    {"links":873,"oben":665,"Radius":80,"zoom":133,"Kreuzung":true},
-                    {"links":1062,"oben":671,"Radius":80,"zoom":134.2},
-                    {"links":1197,"oben":710,"Radius":142,"zoom":142},
-                    {"links":1386,"oben":709,"Radius":141.8,"zoom":141.8, Portal: "Grosse_Wiese"}
+                    {"links":50,"oben":626,"Radius":125.2,"vorne":125.2},
+                    {"links":187,"oben":664,"Radius":132.8,"vorne":132.8},
+                    {"links":400,"oben":705,"Radius":141,"vorne":141},
+                    {"links":653,"oben":677,"Radius":80,"vorne":135.4},
+                    {"links":873,"oben":665,"Radius":80,"vorne":133,"Kreuzung":true},
+                    {"links":1062,"oben":671,"Radius":80,"vorne":134.2},
+                    {"links":1197,"oben":710,"Radius":142,"vorne":142},
+                    {"links":1386,"oben":709,"Radius":141.8,"vorne":141.8, Portal: "Grosse_Wiese"}
                 ],[
-                    {"links":763,"oben":625,"Radius":117,"zoom":117,"Kreuzung":true},
-                    {"links":603,"oben":605,"Radius":109,"zoom":109, Portal: "Höhle_Yeti"}
+                    {"links":763,"oben":625,"Radius":117,"vorne":117,"Kreuzung":true},
+                    {"links":603,"oben":605,"Radius":109,"vorne":109, Portal: "Höhle_Yeti"}
                 ]
             ]
         },
@@ -153,14 +153,14 @@ var Spielaufbau = {
             Kürzel: "y",
             Pfade: [
                 [
-                    {"links":1422,"oben":703,"Radius":140.6,"zoom":140.6, Portal: "Ewiges_Eis" },
-                    {"links":1137,"oben":704,"Radius":140.8,"zoom":140.8},
-                    {"links":614,"oben":653,"Radius":130.6,"zoom":130.6},
-                    {"links":530,"oben":551,"Radius":110.2,"zoom":110.2},
-                    {"links":805,"oben":542,"Radius":108.4,"zoom":108.4},
-                    {"links":956,"oben":477,"Radius":95.4,"zoom":95.4},
-                    {"links":595,"oben":421,"Radius":84.2,"zoom":84.2},
-                    {"links":467,"oben":372,"Radius":74.4,"zoom":74.4}
+                    {"links":1422,"oben":703,"Radius":140.6,"vorne":140.6, Portal: "Ewiges_Eis" },
+                    {"links":1137,"oben":704,"Radius":140.8,"vorne":140.8},
+                    {"links":614,"oben":653,"Radius":130.6,"vorne":130.6},
+                    {"links":530,"oben":551,"Radius":110.2,"vorne":110.2},
+                    {"links":805,"oben":542,"Radius":108.4,"vorne":108.4},
+                    {"links":956,"oben":477,"Radius":95.4,"vorne":95.4},
+                    {"links":595,"oben":421,"Radius":84.2,"vorne":84.2},
+                    {"links":467,"oben":372,"Radius":74.4,"vorne":74.4}
                 ]
             ]
         },
@@ -169,21 +169,21 @@ var Spielaufbau = {
             
             Pfade: [
                 [
-                    { links: 1053, oben: 83,  Radius: 120, zoom: 100, Portal: "Silberne_Lichtung" },
-                    { links: 966,  oben: 123, Radius: 120, zoom: 100 },
-                    { links: 869,  oben: 169, Radius: 120, zoom: 100 },
-                    { links: 781,  oben: 213, Radius: 120, zoom: 100 },
-                    { links: 694,  oben: 267, Radius: 120, zoom: 100 },
-                    { links: 599,  oben: 304, Radius: 120, zoom: 100 },
-                    { links: 569,  oben: 478, Radius: 120, zoom: 100 },
-                    { links: 469,  oben: 513, Radius: 120, zoom: 100 },
-                    { links: 377,  oben: 598, Radius: 120, zoom: 100 },
-                    { links: 489,  oben: 664, Radius: 120, zoom: 100 },
-                    { links: 610,  oben: 673, Radius: 120, zoom: 100 },
-                    { links: 713,  oben: 675, Radius: 120, zoom: 100 },
-                    { links: 828,  oben: 639, Radius: 120, zoom: 100 },
-                    { links: 791,  oben: 587, Radius: 120, zoom: 100 },
-                    { links: 851,  oben: 527, Radius: 120, zoom: 100, Portal: "Fluss" }
+                    { links: 1053, oben: 83,  Radius: 120, vorne: 100, Portal: "Silberne_Lichtung" },
+                    { links: 966,  oben: 123, Radius: 120, vorne: 100 },
+                    { links: 869,  oben: 169, Radius: 120, vorne: 100 },
+                    { links: 781,  oben: 213, Radius: 120, vorne: 100 },
+                    { links: 694,  oben: 267, Radius: 120, vorne: 100 },
+                    { links: 599,  oben: 304, Radius: 120, vorne: 100 },
+                    { links: 569,  oben: 478, Radius: 120, vorne: 100 },
+                    { links: 469,  oben: 513, Radius: 120, vorne: 100 },
+                    { links: 377,  oben: 598, Radius: 120, vorne: 100 },
+                    { links: 489,  oben: 664, Radius: 120, vorne: 100 },
+                    { links: 610,  oben: 673, Radius: 120, vorne: 100 },
+                    { links: 713,  oben: 675, Radius: 120, vorne: 100 },
+                    { links: 828,  oben: 639, Radius: 120, vorne: 100 },
+                    { links: 791,  oben: 587, Radius: 120, vorne: 100 },
+                    { links: 851,  oben: 527, Radius: 120, vorne: 100, Portal: "Fluss" }
                 ]
             ]
         },
@@ -194,16 +194,16 @@ var Spielaufbau = {
             },
             Pfade: [
                 [
-                    {"links":58,"oben":556,"Radius":111.2,"zoom":111.2, Portal: "Dschungel_2"},
-                    {"links":232,"oben":532,"Radius":106.4,"zoom":106.4},
-                    {"links":343,"oben":455,"Radius":91,"zoom":91},
-                    {"links":277,"oben":383,"Radius":76.6,"zoom":76.6},
-                    {"links":366,"oben":359,"Radius":71.8,"zoom":71.8},
-                    {"links":473,"oben":385,"Radius":77,"zoom":77},
-                    {"links":591,"oben":387,"Radius":77.4,"zoom":77.4},
-                    {"links":701,"oben":378,"Radius":75.6,"zoom":75.6},
-                    {"links":809,"oben":357,"Radius":71.4,"zoom":71.4},
-                    {"links":925,"oben":341,"Radius":68.2,"zoom":68.2, Portal: "Quelle_des_Lichts"}
+                    {"links":58,"oben":556,"Radius":111.2,"vorne":111.2, Portal: "Dschungel_2"},
+                    {"links":232,"oben":532,"Radius":106.4,"vorne":106.4},
+                    {"links":343,"oben":455,"Radius":91,"vorne":91},
+                    {"links":277,"oben":383,"Radius":76.6,"vorne":76.6},
+                    {"links":366,"oben":359,"Radius":71.8,"vorne":71.8},
+                    {"links":473,"oben":385,"Radius":77,"vorne":77},
+                    {"links":591,"oben":387,"Radius":77.4,"vorne":77.4},
+                    {"links":701,"oben":378,"Radius":75.6,"vorne":75.6},
+                    {"links":809,"oben":357,"Radius":71.4,"vorne":71.4},
+                    {"links":925,"oben":341,"Radius":68.2,"vorne":68.2, Portal: "Quelle_des_Lichts"}
                 ]
             ],
             Kürzel: "f"
@@ -212,14 +212,14 @@ var Spielaufbau = {
             Kürzel: "g",
             Pfade: [
                 [
-                    {"links":504,"oben":667,"Radius":133.4,"zoom":133.4},
-                    {"links":255,"oben":521,"Radius":104.2,"zoom":104.2},
-                    {"links":410,"oben":381,"Radius":76.2,"zoom":76.2},
-                    {"links":560,"oben":365,"Radius":73,"zoom":73},
-                    {"links":676,"oben":370,"Radius":74,"zoom":74},
-                    {"links":843,"oben":402,"Radius":80.4,"zoom":80.4},
-                    {"links":948,"oben":354,"Radius":70.8,"zoom":70.8},
-                    {"links":1053,"oben":296,"Radius":59.2,"zoom":59.2,Portal:"offene_Quelle_des_Lichts"}
+                    {"links":504,"oben":667,"Radius":133.4,"vorne":133.4},
+                    {"links":255,"oben":521,"Radius":104.2,"vorne":104.2},
+                    {"links":410,"oben":381,"Radius":76.2,"vorne":76.2},
+                    {"links":560,"oben":365,"Radius":73,"vorne":73},
+                    {"links":676,"oben":370,"Radius":74,"vorne":74},
+                    {"links":843,"oben":402,"Radius":80.4,"vorne":80.4},
+                    {"links":948,"oben":354,"Radius":70.8,"vorne":70.8},
+                    {"links":1053,"oben":296,"Radius":59.2,"vorne":59.2,Portal:"offene_Quelle_des_Lichts"}
                 ]
             ]
         },
@@ -227,20 +227,20 @@ var Spielaufbau = {
             Kürzel: "q",
             Pfade: [
                 [
-                    {"links":353,"oben":270,"Radius":54,"zoom":54, Portal: "Lavawelt"},
-                    {"links":484,"oben":286,"Radius":57.2,"zoom":57.2},
-                    {"links":597,"oben":298,"Radius":59.6,"zoom":59.6},
-                    {"links":641.4,"oben":288.4,"Radius":57.67999999999999,"zoom":57.67999999999999},
-                    {"links":714,"oben":306,"Radius":61.2,"zoom":61.2},
-                    {"links":805,"oben":315,"Radius":63,"zoom":63},
-                    {"links":897,"oben":323,"Radius":64.6,"zoom":64.6},
-                    {"links":960,"oben":361,"Radius":72.2,"zoom":72.2},
-                    {"links":1057,"oben":437,"Radius":87.4,"zoom":87.4},
-                    {"links":996,"oben":510,"Radius":102,"zoom":102},
-                    {"links":1091,"oben":594,"Radius":118.8,"zoom":118.8},
-                    {"links":1156.2,"oben":638.2,"Radius":127.64000000000001,"zoom":127.64000000000001},
-                    {"links":1227.56,"oben":659.5600000000001,"Radius":131.912,"zoom":131.912},
-                    {"links":1409,"oben":695,"Radius":139,"zoom":139, Portal: "Fluss"}
+                    {"links":353,"oben":270,"Radius":54,"vorne":54, Portal: "Lavawelt"},
+                    {"links":484,"oben":286,"Radius":57.2,"vorne":57.2},
+                    {"links":597,"oben":298,"Radius":59.6,"vorne":59.6},
+                    {"links":641.4,"oben":288.4,"Radius":57.67999999999999,"vorne":57.67999999999999},
+                    {"links":714,"oben":306,"Radius":61.2,"vorne":61.2},
+                    {"links":805,"oben":315,"Radius":63,"vorne":63},
+                    {"links":897,"oben":323,"Radius":64.6,"vorne":64.6},
+                    {"links":960,"oben":361,"Radius":72.2,"vorne":72.2},
+                    {"links":1057,"oben":437,"Radius":87.4,"vorne":87.4},
+                    {"links":996,"oben":510,"Radius":102,"vorne":102},
+                    {"links":1091,"oben":594,"Radius":118.8,"vorne":118.8},
+                    {"links":1156.2,"oben":638.2,"Radius":127.64000000000001,"vorne":127.64000000000001},
+                    {"links":1227.56,"oben":659.5600000000001,"Radius":131.912,"vorne":131.912},
+                    {"links":1409,"oben":695,"Radius":139,"vorne":139, Portal: "Fluss"}
                 ]
             ]
         },
@@ -248,26 +248,26 @@ var Spielaufbau = {
             Kürzel: "o",
             Pfade: [
                 [
-                    {"links":353,"oben":270,"Radius":54,"zoom":54,"Portal":"Lavawelt"},
-                    {"links":484,"oben":286,"Radius":57.2,"zoom":57.2},
-                    {"links":597,"oben":298,"Radius":59.6,"zoom":59.6},
-                    {"links":641.4,"oben":288.4,"Radius":57.67999999999999,"zoom":57.67999999999999},
-                    {"links":714,"oben":306,"Radius":61.2,"zoom":61.2},
-                    {"links":805,"oben":315,"Radius":63,"zoom":63},
-                    {"links":897,"oben":323,"Radius":64.6,"zoom":64.6},
-                    {"links":960,"oben":361,"Radius":72.2,"zoom":72.2},
-                    {"links":1057,"oben":437,"Radius":87.4,"zoom":87.4},
-                    {"links":996,"oben":510,"Radius":102,"zoom":102,Kreuzung:true},
-                    {"links":1091,"oben":594,"Radius":118.8,"zoom":118.8},
-                    {"links":1156.2,"oben":638.2,"Radius":127.64000000000001,"zoom":127.64000000000001},
-                    {"links":1227.56,"oben":659.5600000000001,"Radius":131.912,"zoom":131.912},
-                    {"links":1409,"oben":695,"Radius":139,"zoom":139,"Portal":"Fluss"}
+                    {"links":353,"oben":270,"Radius":54,"vorne":54,"Portal":"Lavawelt"},
+                    {"links":484,"oben":286,"Radius":57.2,"vorne":57.2},
+                    {"links":597,"oben":298,"Radius":59.6,"vorne":59.6},
+                    {"links":641.4,"oben":288.4,"Radius":57.67999999999999,"vorne":57.67999999999999},
+                    {"links":714,"oben":306,"Radius":61.2,"vorne":61.2},
+                    {"links":805,"oben":315,"Radius":63,"vorne":63},
+                    {"links":897,"oben":323,"Radius":64.6,"vorne":64.6},
+                    {"links":960,"oben":361,"Radius":72.2,"vorne":72.2},
+                    {"links":1057,"oben":437,"Radius":87.4,"vorne":87.4},
+                    {"links":996,"oben":510,"Radius":102,"vorne":102,Kreuzung:true},
+                    {"links":1091,"oben":594,"Radius":118.8,"vorne":118.8},
+                    {"links":1156.2,"oben":638.2,"Radius":127.64000000000001,"vorne":127.64000000000001},
+                    {"links":1227.56,"oben":659.5600000000001,"Radius":131.912,"vorne":131.912},
+                    {"links":1409,"oben":695,"Radius":139,"vorne":139,"Portal":"Fluss"}
                 ],[
-                    {"links":896,"oben":552,"Radius":50,"zoom":110.4,Kreuzung:true},
-                    {"links":782,"oben":564,"Radius":50,"zoom":112.8},
-                    {"links":668,"oben":552,"Radius":50,"zoom":110.4},
-                    {"links":550,"oben":486,"Radius":97.2,"zoom":97.2},
-                    {"links":714,"oben":465,"Radius":150,"zoom":89, Portal: "Grotte_des_Lichts"}
+                    {"links":896,"oben":552,"Radius":50,"vorne":110.4,Kreuzung:true},
+                    {"links":782,"oben":564,"Radius":50,"vorne":112.8},
+                    {"links":668,"oben":552,"Radius":50,"vorne":110.4},
+                    {"links":550,"oben":486,"Radius":97.2,"vorne":97.2},
+                    {"links":714,"oben":465,"Radius":150,"vorne":89, Portal: "Grotte_des_Lichts"}
                 ]
             ]
         },
@@ -276,26 +276,26 @@ var Spielaufbau = {
             Kürzel: "a",
             Pfade: [
                 [
-                    {"links":353,"oben":270,"Radius":54,"zoom":54,"Portal":"Lavawelt"},
-                    {"links":484,"oben":286,"Radius":57.2,"zoom":57.2},
-                    {"links":597,"oben":298,"Radius":59.6,"zoom":59.6},
-                    {"links":641.4,"oben":288.4,"Radius":57.67999999999999,"zoom":57.67999999999999},
-                    {"links":714,"oben":306,"Radius":61.2,"zoom":61.2},
-                    {"links":805,"oben":315,"Radius":63,"zoom":63},
-                    {"links":897,"oben":323,"Radius":64.6,"zoom":64.6},
-                    {"links":960,"oben":361,"Radius":72.2,"zoom":72.2},
-                    {"links":1057,"oben":437,"Radius":87.4,"zoom":87.4},
-                    {"links":996,"oben":510,"Radius":102,"zoom":102,Kreuzung:true},
-                    {"links":1091,"oben":594,"Radius":118.8,"zoom":118.8},
-                    {"links":1156.2,"oben":638.2,"Radius":127.64000000000001,"zoom":127.64000000000001},
-                    {"links":1227.56,"oben":659.5600000000001,"Radius":131.912,"zoom":131.912},
-                    {"links":1409,"oben":695,"Radius":139,"zoom":139,"Portal":"Fluss"}
+                    {"links":353,"oben":270,"Radius":54,"vorne":54,"Portal":"Lavawelt"},
+                    {"links":484,"oben":286,"Radius":57.2,"vorne":57.2},
+                    {"links":597,"oben":298,"Radius":59.6,"vorne":59.6},
+                    {"links":641.4,"oben":288.4,"Radius":57.67999999999999,"vorne":57.67999999999999},
+                    {"links":714,"oben":306,"Radius":61.2,"vorne":61.2},
+                    {"links":805,"oben":315,"Radius":63,"vorne":63},
+                    {"links":897,"oben":323,"Radius":64.6,"vorne":64.6},
+                    {"links":960,"oben":361,"Radius":72.2,"vorne":72.2},
+                    {"links":1057,"oben":437,"Radius":87.4,"vorne":87.4},
+                    {"links":996,"oben":510,"Radius":102,"vorne":102,Kreuzung:true},
+                    {"links":1091,"oben":594,"Radius":118.8,"vorne":118.8},
+                    {"links":1156.2,"oben":638.2,"Radius":127.64000000000001,"vorne":127.64000000000001},
+                    {"links":1227.56,"oben":659.5600000000001,"Radius":131.912,"vorne":131.912},
+                    {"links":1409,"oben":695,"Radius":139,"vorne":139,"Portal":"Fluss"}
                 ],[
-                    {"links":896,"oben":552,"Radius":50,"zoom":110.4,Kreuzung:true},
-                    {"links":782,"oben":564,"Radius":50,"zoom":112.8},
-                    {"links":668,"oben":552,"Radius":50,"zoom":110.4},
-                    {"links":550,"oben":486,"Radius":97.2,"zoom":97.2},
-                    {"links":714,"oben":465,"Radius":150,"zoom":89, Portal: "Grotte_des_Lichts"}
+                    {"links":896,"oben":552,"Radius":50,"vorne":110.4,Kreuzung:true},
+                    {"links":782,"oben":564,"Radius":50,"vorne":112.8},
+                    {"links":668,"oben":552,"Radius":50,"vorne":110.4},
+                    {"links":550,"oben":486,"Radius":97.2,"vorne":97.2},
+                    {"links":714,"oben":465,"Radius":150,"vorne":89, Portal: "Grotte_des_Lichts"}
                 ]
             ]
         },
@@ -304,21 +304,21 @@ var Spielaufbau = {
             Kürzel: "l",
             Pfade: [
                 [
-                    {"links":71,"oben":336,"Radius":67.2,"zoom":67.2,Portal: "Berge_der_Angst"},
-                    {"links":99,"oben":414,"Radius":82.8,"zoom":82.8},
-                    {"links":186,"oben":360,"Radius":72,"zoom":72, Portal: "Lavawelt_Mechanik"},
-                    {"links":194,"oben":471,"Radius":94.2,"zoom":94.2},
-                    {"links":312,"oben":444,"Radius":88.8,"zoom":88.8},
-                    {"links":435,"oben":416,"Radius":83.2,"zoom":83.2}
+                    {"links":71,"oben":336,"Radius":67.2,"vorne":67.2,Portal: "Berge_der_Angst"},
+                    {"links":99,"oben":414,"Radius":82.8,"vorne":82.8},
+                    {"links":186,"oben":360,"Radius":72,"vorne":72, Portal: "Lavawelt_Mechanik"},
+                    {"links":194,"oben":471,"Radius":94.2,"vorne":94.2},
+                    {"links":312,"oben":444,"Radius":88.8,"vorne":88.8},
+                    {"links":435,"oben":416,"Radius":83.2,"vorne":83.2}
                 ],[
-                    {"links":1428,"oben":398,"Radius":79.6,"zoom":79.6, Portal: "Quelle_des_Lichts"},
-                    {"links":1325,"oben":450,"Radius":90,"zoom":90},
-                    {"links":1205,"oben":454,"Radius":90.8,"zoom":90.8},
-                    {"links":1114,"oben":412,"Radius":82.4,"zoom":82.4},
-                    {"links":1026,"oben":397,"Radius":79.4,"zoom":79.4},
-                    {"links":914,"oben":394,"Radius":78.8,"zoom":78.8},
-                    {"links":801,"oben":368,"Radius":73.6,"zoom":73.6},
-                    {"links":691,"oben":340,"Radius":68,"zoom":68, Portal: "Reich_des_Giganten"}
+                    {"links":1428,"oben":398,"Radius":79.6,"vorne":79.6, Portal: "Quelle_des_Lichts"},
+                    {"links":1325,"oben":450,"Radius":90,"vorne":90},
+                    {"links":1205,"oben":454,"Radius":90.8,"vorne":90.8},
+                    {"links":1114,"oben":412,"Radius":82.4,"vorne":82.4},
+                    {"links":1026,"oben":397,"Radius":79.4,"vorne":79.4},
+                    {"links":914,"oben":394,"Radius":78.8,"vorne":78.8},
+                    {"links":801,"oben":368,"Radius":73.6,"vorne":73.6},
+                    {"links":691,"oben":340,"Radius":68,"vorne":68, Portal: "Reich_des_Giganten"}
                 ]
             ]
         },
@@ -332,7 +332,7 @@ var Spielaufbau = {
             },
             Pfade: [
                 [
-                    {"links":-100,"oben":336,"Radius":67.2,"zoom":67.2,Portal: "Lavawelt"}
+                    {"links":-100,"oben":336,"Radius":67.2,"vorne":67.2,Portal: "Lavawelt"}
                 ]
             ]
         },
@@ -340,21 +340,21 @@ var Spielaufbau = {
         Reich_des_Giganten: { 
             Pfade: [
                 [
-                    {"links":65,"oben":369,"Radius":73.8,"zoom":73.8, Portal: "Lavawelt"},
-                    {"links":145,"oben":399,"Radius":79.8,"zoom":79.8},
-                    {"links":225,"oben":448,"Radius":89.6,"zoom":89.6},
-                    {"links":325,"oben":488,"Radius":97.6,"zoom":97.6},
-                    {"links":437,"oben":496,"Radius":99.2,"zoom":99.2},
-                    {"links":561,"oben":482,"Radius":96.4,"zoom":96.4,"Kreuzung":true},
-                    {"links":680,"oben":491,"Radius":98.2,"zoom":98.2},
-                    {"links":808,"oben":506,"Radius":101.2,"zoom":101.2},
-                    {"links":924,"oben":550,"Radius":110,"zoom":110},
-                    {"links":1066,"oben":568,"Radius":113.6,"zoom":113.6},
-                    {"links":1205,"oben":582,"Radius":116.4,"zoom":116.4},
-                    {"links":1379,"oben":550,"Radius":110,"zoom":110},
-                    {"links":1324,"oben":425,"Radius":85,"zoom":85},
-                    {"links":1250,"oben":369,"Radius":73.8,"zoom":73.8},
-                    {"links":1334,"oben":307,"Radius":61.4,"zoom":61.4}
+                    {"links":65,"oben":369,"Radius":73.8,"vorne":73.8, Portal: "Lavawelt"},
+                    {"links":145,"oben":399,"Radius":79.8,"vorne":79.8},
+                    {"links":225,"oben":448,"Radius":89.6,"vorne":89.6},
+                    {"links":325,"oben":488,"Radius":97.6,"vorne":97.6},
+                    {"links":437,"oben":496,"Radius":99.2,"vorne":99.2},
+                    {"links":561,"oben":482,"Radius":96.4,"vorne":96.4,"Kreuzung":true},
+                    {"links":680,"oben":491,"Radius":98.2,"vorne":98.2},
+                    {"links":808,"oben":506,"Radius":101.2,"vorne":101.2},
+                    {"links":924,"oben":550,"Radius":110,"vorne":110},
+                    {"links":1066,"oben":568,"Radius":113.6,"vorne":113.6},
+                    {"links":1205,"oben":582,"Radius":116.4,"vorne":116.4},
+                    {"links":1379,"oben":550,"Radius":110,"vorne":110},
+                    {"links":1324,"oben":425,"Radius":85,"vorne":85},
+                    {"links":1250,"oben":369,"Radius":73.8,"vorne":73.8},
+                    {"links":1334,"oben":307,"Radius":61.4,"vorne":61.4}
                 ]
             ],
             
@@ -632,14 +632,14 @@ var Spielaufbau = {
                 let links = event.offsetX;
                 let oben = event.offsetY;
                 let Pfad_Nummer = Aktion.Status.Weg_Design_Pfad_Nummer;
-                Ort.Weg.Wegpunkt_hinzufügen(Pfad_Nummer, { links: links, oben: oben, Radius: oben / 5, zoom: oben / 5 });
+                Ort.Weg.Wegpunkt_hinzufügen(Pfad_Nummer, { links: links, oben: oben, Radius: oben / 5, vorne: oben / 5 });
                 Ort.Weg.anzeigen();
             },
             auf_Wegpunkt: function(Wegpunkt, Spiel, Aktion, event) {
                 let links = Wegpunkt.Eigenschaften.links - Wegpunkt.Eigenschaften.Radius + event.offsetX;
                 let oben = Wegpunkt.Eigenschaften.oben - Wegpunkt.Eigenschaften.Radius + event.offsetY;
                 let Pfad_Nummer = Aktion.Status.Weg_Design_Pfad_Nummer;
-                Wegpunkt.Weg.Wegpunkt_hinzufügen(Pfad_Nummer, { links: links, oben: oben, Radius: oben / 5, zoom: oben / 5 });
+                Wegpunkt.Weg.Wegpunkt_hinzufügen(Pfad_Nummer, { links: links, oben: oben, Radius: oben / 5, vorne: oben / 5 });
                 Wegpunkt.Weg.anzeigen();
             },
             beim_Deaktivieren: function(Spiel, Aktion) {
