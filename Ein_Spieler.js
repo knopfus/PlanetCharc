@@ -8,10 +8,8 @@ class Ein_Spieler {
         // Das HTML Element vorbereiten
         this.Spieler_div = document.getElementById("Spieler");
 
-        this.ANZAHL_SCHRITTE = 50;
-        this.ANZAHL_SCHRITTE_ENTWICKLER_MODUS = 20;
-        this.SCHRITTLÄNGE = 5;
-        this.SCHRITTLÄNGE_ENTWICKLER_MODUS = 20;
+        this.SCHRITT_LÄNGE = 0.05;
+        this.SCHRITT_LÄNGE_ENTWICKLER_MODUS = 0.1;
     }
 
     gehe_zu(Wegpunkt) {
@@ -41,34 +39,31 @@ class Ein_Spieler {
             this.nächster_Wegpunkt = Wegpunkte[0];
         }
 
-        let Koordinaten = {
+        let Ziel_Koordinaten = {
             links: this.nächster_Wegpunkt.Eigenschaften.links - 0.5 * this.nächster_Wegpunkt.Eigenschaften.zoom,
             oben: this.nächster_Wegpunkt.Eigenschaften.oben - this.nächster_Wegpunkt.Eigenschaften.zoom,
             breit: this.nächster_Wegpunkt.Eigenschaften.zoom,
             hoch: this.nächster_Wegpunkt.Eigenschaften.zoom
         };
 
-        let Richtung = {
-            nach_rechts: (Koordinaten.links - this.Koordinaten.links),
-            nach_unten: (Koordinaten.oben - this.Koordinaten.oben)
+        let Differenz = {
+            nach_rechts: (Ziel_Koordinaten.links - this.Koordinaten.links),
+            nach_unten: (Ziel_Koordinaten.oben - this.Koordinaten.oben)
         };
-        let Distanz = Math.sqrt((Richtung.nach_rechts ** 2 + Richtung.nach_unten ** 2));
-        let Schrittlänge = this.Spiel.Entwickler_Modus ? this.SCHRITTLÄNGE_ENTWICKLER_MODUS : this.SCHRITTLÄNGE;
-        let Schritte = Math.floor(Distanz / Schrittlänge);
-        //let Schritte = this.Spiel.Entwickler_Modus ? this.ANZAHL_SCHRITTE_ENTWICKLER_MODUS : this.ANZAHL_SCHRITTE;
-        this.Schritte = Schritte;
+        let Distanz = Math.sqrt((Differenz.nach_rechts ** 2 + Differenz.nach_unten ** 2));
+        
         this.Schritt_Richtung = {
-            nach_rechts: (Koordinaten.links - this.Koordinaten.links) / Schritte,
-            nach_unten: (Koordinaten.oben - this.Koordinaten.oben) / Schritte,
-            verbreitern: (Koordinaten.breit - this.Koordinaten.breit) / Schritte,
-            erhöhen: (Koordinaten.hoch - this.Koordinaten.hoch) / Schritte
+            nach_rechts: (Ziel_Koordinaten.links - this.Koordinaten.links) / Distanz,
+            nach_unten: (Ziel_Koordinaten.oben - this.Koordinaten.oben) / Distanz,
+            verbreitern: (Ziel_Koordinaten.breit - this.Koordinaten.breit) / Distanz,
+            erhöhen: (Ziel_Koordinaten.hoch - this.Koordinaten.hoch) / Distanz
         };
     }
 
     betrete_Ort_bei(Wegpunkt) {
         this.Wegpunkt = null;
         this.Koordinaten = null;
-        this.Schritte = 0;
+        this.Schritt_Richtung = null;
 
         if (Wegpunkt) this.gehe_zu(Wegpunkt);
     }
@@ -106,18 +101,38 @@ class Ein_Spieler {
     }
 
     Spieluhr_tickt() {
-        if (this.Schritte) {
-            let Koordinaten = {
-                links: this.Koordinaten.links + this.Schritt_Richtung.nach_rechts,
-                oben: this.Koordinaten.oben + this.Schritt_Richtung.nach_unten,
-                breit: this.Koordinaten.breit + this.Schritt_Richtung.verbreitern,
-                hoch: this.Koordinaten.hoch + this.Schritt_Richtung.erhöhen
+        if (this.Schritt_Richtung) {
+            let Ziel_Koordinaten = {
+                links: this.nächster_Wegpunkt.Eigenschaften.links - 0.5 * this.nächster_Wegpunkt.Eigenschaften.zoom,
+                oben: this.nächster_Wegpunkt.Eigenschaften.oben - this.nächster_Wegpunkt.Eigenschaften.zoom,
+                breit: this.nächster_Wegpunkt.Eigenschaften.zoom,
+                hoch: this.nächster_Wegpunkt.Eigenschaften.zoom
+            };
+    
+            let Differenz = {
+                nach_rechts: (Ziel_Koordinaten.links - this.Koordinaten.links),
+                nach_unten: (Ziel_Koordinaten.oben - this.Koordinaten.oben)
+            };
+            let Distanz = Math.sqrt((Differenz.nach_rechts ** 2 + Differenz.nach_unten ** 2));
+                      
+            let Schrittlänge = (this.Spiel.Entwickler_Modus ? this.SCHRITT_LÄNGE_ENTWICKLER_MODUS : this.SCHRITT_LÄNGE) * this.Koordinaten.breit;
+
+            let dies_ist_der_letzte_Schritt = (Schrittlänge > Distanz);
+            // Der letzte Schritt muss evtl. kleiner sein
+            if (dies_ist_der_letzte_Schritt) {
+                Schrittlänge = Distanz;
             }
 
-            this.Schritte -= 1;
+            let Koordinaten = {
+                links: this.Koordinaten.links + this.Schritt_Richtung.nach_rechts * Schrittlänge,
+                oben: this.Koordinaten.oben + this.Schritt_Richtung.nach_unten * Schrittlänge,
+                breit: this.Koordinaten.breit + this.Schritt_Richtung.verbreitern * Schrittlänge,
+                hoch: this.Koordinaten.hoch + this.Schritt_Richtung.erhöhen * Schrittlänge
+            }
+
             this.platziere_bei(Koordinaten);
 
-            if (this.Schritte == 0) {
+            if (dies_ist_der_letzte_Schritt) {
                 // Am nächsten Wegpunkt angekommen
                 this.Wegpunkt = this.nächster_Wegpunkt;
                 if (this.nächster_Wegpunkt == this.Ziel_Wegpunkt) {
