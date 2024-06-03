@@ -707,13 +707,6 @@ var Spielaufbau = {
                     Ort.Weg.anzeigen();
                 }
             },
-            /*auf_Wegpunkt: function(Wegpunkt, Spiel, Aktion, event) {
-                let links = Wegpunkt.Eigenschaften.links - Wegpunkt.Eigenschaften.Radius + event.offsetX;
-                let oben = Wegpunkt.Eigenschaften.oben - Wegpunkt.Eigenschaften.Radius + event.offsetY;
-                let Pfad_Nummer = Aktion.Status.Weg_Design_Pfad_Nummer;
-                Wegpunkt.Weg.Wegpunkt_hinzufügen(Pfad_Nummer, { links: links, oben: oben, Radius: oben / 5, vorne: oben / 5 });
-                Wegpunkt.Weg.anzeigen();
-            },*/
             beim_Deaktivieren: function(Spiel, Aktion) {
                 Aktion.Status.Weg_Design_Pfad_Nummer++;
                 if (Aktion.Status.Weg_Design_Pfad_Nummer >= 2) {
