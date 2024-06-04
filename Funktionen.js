@@ -19,7 +19,11 @@ async function spiele_Sound_Effect(Sound_Name) {
         await player.play();
     }
     catch (error) {
-        console.log("Sound Effect '" + Sound_Name + "' fehlt (noch).");
+        if (error.message.includes("no supported source")) {
+            console.log("Sound Effect '" + Sound_Name + "' fehlt (noch).");
+        } else {
+            console.error(error);
+        }
     }
     
 }
