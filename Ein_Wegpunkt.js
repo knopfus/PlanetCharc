@@ -8,6 +8,7 @@ class Ein_Wegpunkt {
 
         let Wegpunkt_Vorlage = document.getElementById("Wegpunkt_Vorlage");
         let Wegpunkt_div = Wegpunkt_Vorlage.cloneNode(true);
+        let Wegpunkt_vorne_div = Wegpunkt_div.getElementsByClassName("Wegpunkt-vorne")[0];
 
         Wegpunkt_div.setAttribute("id", "Wegpunkt_" + Weg.Ort.Name + "_" + Pfad_Nummer + "_" + Nummer);
 
@@ -22,6 +23,7 @@ class Ein_Wegpunkt {
         Ort_div.appendChild(Wegpunkt_div);
 
         this.Wegpunkt_div = Wegpunkt_div;
+        this.Wegpunkt_vorne_div = Wegpunkt_vorne_div;
 
         this.verstecken();
     }
@@ -33,11 +35,18 @@ class Ein_Wegpunkt {
         this.Wegpunkt_div.style.height = 2 * this.Eigenschaften.Radius + "px";
         this.Wegpunkt_div.style.visibility = "visible";
 
+        this.Wegpunkt_vorne_div.style.left = this.Eigenschaften.Radius - this.Eigenschaften.vorne + "px";
+        this.Wegpunkt_vorne_div.style.top = this.Eigenschaften.Radius - this.Eigenschaften.vorne + "px";
+        this.Wegpunkt_vorne_div.style.width = 2 * this.Eigenschaften.vorne + "px";
+        this.Wegpunkt_vorne_div.style.height = 2 * this.Eigenschaften.vorne + "px";
+
         this.Wegpunkt_div.style.display = "";
         if (this.Spiel.Entwickler_Modus) {
             this.Wegpunkt_div.style.border = "1px solid red";
+            this.Wegpunkt_vorne_div.style.display = "";
         } else {
             this.Wegpunkt_div.style.border = "0px";
+            this.Wegpunkt_vorne_div.style.display = "none";
         }
 
         if (this.Eigenschaften.Entwurf) {

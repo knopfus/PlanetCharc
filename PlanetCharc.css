@@ -103,6 +103,13 @@ h1 {
 #Wegpunkt_Vorlage {
     display: none;
 }
+.Wegpunkt-vorne {
+    position: absolute;
+    border: 1px solid blue;
+    border-radius: 50%;
+    z-index: 1009;
+    pointer-events: none;
+}
 
 .Portal {
     position: absolute;

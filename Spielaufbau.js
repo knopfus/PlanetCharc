@@ -36,18 +36,15 @@ var Spielaufbau = {
         Dschungel_1: {             
             Pfade: [
                 [
-                    { links: 69,   oben: 426, Radius: 120, vorne: 100, Portal: "Grosse_Wiese" },
-                    { links: 203,  oben: 484, Radius: 120, vorne: 100 },
-                    { links: 281,  oben: 557, Radius: 120, vorne: 100 },
-                    { links: 450,  oben: 570, Radius: 120, vorne: 100 },
-                    { links: 569,  oben: 534, Radius: 120, vorne: 100 },
-                    { links: 715,  oben: 565, Radius: 120, vorne: 100 },
-                    { links: 892,  oben: 511, Radius: 120, vorne: 100 },
-                    { links: 898,  oben: 397, Radius: 120, vorne: 100 },
-                    { links: 847,  oben: 352, Radius: 120, vorne: 100, Portal: "Berge_der_Angst" },
-                    { links: 1120, oben: 387, Radius: 120, vorne: 100 },
-                    { links: 1236, oben: 505, Radius: 120, vorne: 100 },
-                    { links: 1380, oben: 511, Radius: 120, vorne: 100, Portal: "Silberne_Lichtung" }
+                    {"links":49,"oben":473,"vorne":156,"Radius":216, Portal: "Grosse_Wiese"},
+                    {"links":383,"oben":527,"vorne":149,"Radius":5, Kreuzung: true},
+                    {"links":811,"oben":529,"vorne":144,"Radius":168},
+                    {"links":1031,"oben":457,"vorne":123,"Radius":4},
+                    {"links":1203,"oben":509,"vorne":146,"Radius":3},
+                    {"links":1415,"oben":584,"vorne":191,"Radius":191, Portal: "Silberne_Lichtung"}
+                ],[
+                    {"links":495,"oben":424,"vorne":68,"Radius":2, Kreuzung: true},
+                    {"links":520,"oben":347,"vorne":17,"Radius":116, Portal: "Berge_der_Angst"}
                 ]
             ]
         },
@@ -55,21 +52,15 @@ var Spielaufbau = {
             Kürzel: "b",
             Pfade: [
                 [
-                    {"links":3,"oben":642,"Radius":126.4,"vorne":126.4,Portal:"Grosse_Wiese"},
-                    {"links":309,"oben":664,"Radius":130.8,"vorne":130.8},
-                    {"links":577,"oben":707,"Radius":139.4,"vorne":139.4},
-                    {"links":880,"oben":725,"Radius":120,"vorne":141,"Kreuzung":true},
-                    {"links":1193,"oben":738,"Radius":140,"vorne":141.6},
-                    {"links":1434,"oben":748,"Radius":140,"vorne":141.6,Portal: "Lavawelt"}
+                    {"links":8,"oben":694,"vorne":147,"Radius":208,Portal:"Grosse_Wiese"},
+                    {"links":239,"oben":681,"vorne":148,"Radius":4},
+                    {"links":1010,"oben":759,"vorne":160,"Radius":1, Kreuzung: true},
+                    {"links":1230,"oben":776,"vorne":156,"Radius":4},
+                    {"links":1435,"oben":797,"vorne":189,"Radius":254,Portal: "Lavawelt"}
                 ],[
-                    {"links":884,"oben":720,"Radius":10,"vorne":100,"Kreuzung":true},
-                    {"links":945,"oben":720,"Radius":10,"vorne":80},
-                    {"links":930.4,"oben":707.4,"Radius":10,"vorne":70},
-                    {"links":875.6,"oben":695.6,"Radius":10,"vorne":60},
-                    {"links":841.92,"oben":663.92,"Radius":10,"vorne":50},
-                    {"links":912.48,"oben":643.48,"Radius":10,"vorne":40},
-                    {"links":977.784,"oben":621.784,"Radius":10,"vorne":30},
-                    {"links":1056.84704,"oben":607.84704,"Radius":120,"vorne":20, Portal: "Gipfel"}
+                    {"links":925,"oben":715,"vorne":36,"Radius":2, Kreuzung: true},
+                    {"links":850,"oben":683,"vorne":21,"Radius":3},
+                    {"links":1060,"oben":610,"vorne":14,"Radius":142, Portal: "Gipfel"}
                 ]
             ]
         },
@@ -94,31 +85,28 @@ var Spielaufbau = {
             ]
         },
         Grosse_Wiese: {             
-            
+            Kürzel: "w",
             Pfade: [
                 [
-                    { links: 867,  oben: 706, Radius: 120, vorne: 120, Portal: "Dschungel_1" },
-                    { links: 914,  oben: 609, Radius: 120, vorne: 100 },
-                    { links: 904,  oben: 496, Radius: 120, vorne: 90 },
-                    { links: 834,  oben: 449, Radius: 120, vorne: 80 },
-                    { links: 707,  oben: 425, Radius: 120, vorne: 70 },
-                    { links: 518,  oben: 423, Radius: 120, vorne: 60 },
-                    { links: 437,  oben: 397, Radius: 120, vorne: 50, Kreuzung: true },
-                    { links: 400,  oben: 318, Radius: 120, vorne: 30 },
-                    { links: 302,  oben: 284, Radius: 120, vorne: 20, Portal: "Berge_der_Angst" }
+                    {"links":887,"oben":795,"vorne":150,"Radius":250, Portal: "Dschungel_1"},
+                    {"links":887,"oben":685,"vorne":145,"Radius":3},
+                    {"links":921,"oben":474,"vorne":92,"Radius":3},
+                    {"links":658,"oben":423,"vorne":67,"Radius":3},
+                    {"links":440,"oben":416,"vorne":60,"Radius":4, Kreuzung: true},
+                    {"links":176,"oben":384,"vorne":37,"Radius":5},
+                    {"links":405,"oben":360,"vorne":24,"Radius":2},
+                    {"links":411,"oben":334,"vorne":13,"Radius":3},
+                    {"links":304,"oben":310,"vorne":9,"Radius":113, Portal: "Berge_der_Angst"}
                 ],
                 [
-                    { links: 64,  oben: 454, Radius: 120, vorne: 50, Portal: "Ewiges_Eis" },
-                    { links: 209,  oben: 456, Radius: 120, vorne: 50 },
-                    { links: 309,  oben: 412, Radius: 120, vorne: 50 },
-                    { links: 437,  oben: 397, Radius: 120, vorne: 50, Kreuzung: true },
-                    { links: 491,  oben: 378, Radius: 120, vorne: 50 },
-                    { links: 614,  oben: 341, Radius: 120, vorne: 50 },
-                    { links: 792,  oben: 331, Radius: 120, vorne: 50 },
-                    { links: 995,  oben: 359, Radius: 120, vorne: 50 },
-                    { links: 1123,  oben: 360, Radius: 120, vorne: 50 },
-                    { links: 1229,  oben: 367, Radius: 120, vorne: 50 },
-                    { links: 1388,  oben: 365, Radius: 120, vorne: 50 }
+                    {"links":13,"oben":460,"vorne":71,"Radius":132, Portal: "Ewiges_Eis"},
+                    {"links":261,"oben":433,"vorne":68,"Radius":2},
+                    {"links":440,"oben":416,"vorne":60,"Radius":4, Kreuzung: true},
+                    {"links":502,"oben":383,"vorne":34,"Radius":4},
+                    {"links":797,"oben":395,"vorne":40,"Radius":3},
+                    {"links":967,"oben":375,"vorne":35,"Radius":3},
+                    {"links":1211,"oben":404,"vorne":45,"Radius":4},
+                    {"links":1402,"oben":389,"vorne":38,"Radius":138}
                 ]
             ]
         },
@@ -642,15 +630,16 @@ var Spielaufbau = {
         Weg_Design: {
             Entwickler_Modus: true,
             beim_Aktivieren: function(Spiel, Aktion) {
-                Aktion.Status.Weg_Design_Pfad_Nummer = 0;
+                Aktion.Status.Pfad_Nummer = 0;
                 Aktion.Status.Modus = "platzieren";
+                spiele_Sound_Effect("Pfad_Nummer_0_Wegpunkt_platzieren");
             },
             auf_Ort: function(Ort, Spiel, Aktion, event) {
                 // Erster Klick: Wir sind im "platzieren" Modus. Ein neuer Wegpunkt wird hinzugefügt,
                 // der aber noch nicht fertig ist.
                 if (Aktion.Status.Modus == "platzieren") {
                     let Wegpunkt = Ort.Weg.Wegpunkt_hinzufügen(
-                        Aktion.Status.Weg_Design_Pfad_Nummer,
+                        Aktion.Status.Pfad_Nummer,
                         {
                             links: event.offsetX,
                             oben: event.offsetY,
@@ -659,23 +648,24 @@ var Spielaufbau = {
                             Entwurf: true
                         });
                     Aktion.Status.Wegpunkt_Entwurf = Wegpunkt.Eigenschaften;
+                    Aktion.Status.Nummer = Wegpunkt.Nummer;
                     Ort.Weg.anzeigen();
 
                     // Nächster Modus: "vorne", d.h. beim nächsten Klick werden wir die Eigenschaft
-                    // "vorne" setzen.
+                    // "vorne" setzen (blauer Kreis).
                     Aktion.Status.Modus = "vorne";
+                    spiele_Sound_Effect("Eigenschaft_vorne_einstellen");
 
                     // Ab jetzt reagieren wir auf "hover", also wenn die Maus sich bewegt.
                     Aktion.hover = true;
                     return false;
                 }
 
-                // Der zweite Klick geschieht im Modus "vorne": Jetzt übernehmen wir die Eigenschaft
-                // "Radius", die beim hovern verändert wurde, als "vorne". Danach wird wirklich der
-                // Radius geändert.
+                // Der zweite Klick geschieht im Modus "vorne": Die Eigenschaft "vorne" bleibt nun
+                // fix, als nächstes wird der Radius geändert (roter Kreis).
                 if (Aktion.Status.Modus == "vorne") {
-                    Aktion.Status.Wegpunkt_Entwurf.vorne = Aktion.Status.Wegpunkt_Entwurf.Radius;
                     Aktion.Status.Modus = "Radius";
+                    spiele_Sound_Effect("Eigenschaft_Radius_einstellen");
                     Ort.Weg.anzeigen();
                     return false;
                 }
@@ -683,33 +673,42 @@ var Spielaufbau = {
                 // Beim dritten Klick setzen wir den Radius und schliessen den Entwurf ab.
                 if (Aktion.Status.Modus == "Radius") {
                     delete Aktion.hover;
-                    Aktion.Status.Wegpunkt_Entwurf.Entwurf = false;
+                    delete Aktion.Status.Wegpunkt_Entwurf.Entwurf;
+                    delete Aktion.Status.Nummer;
                     Aktion.Status.Modus = "platzieren";
+                    spiele_Sound_Effect("Wegpunkt_platzieren");
                     Ort.Weg.anzeigen();
                     delete Aktion.Status.Wegpunkt_Entwurf;
                     return false;
                 }
             },
             hover_auf_Ort: function(Ort, Spiel, Aktion, event) {
-                // Beim hovern ändern wir immer den Radius, selbst, wenn "vorne" geändert
-                // werden soll. Das ist, damit der rote Kreis anzeigt, wie gross "vorne" sein
-                // wird.
+                // Beim hovern (mit der Maus bewegen) ändern wir immer sofort den 
+                // Radius (roter Kreis) bzw. "vorne" (blauen Kreis), damit man sieht, wie gross es ist,
+                // bevor man klickt.
                 if (Aktion.Status.Modus == "vorne" || Aktion.Status.Modus == "Radius") {
                     let links2 = event.offsetX;
                     let oben2 = event.offsetY;
 
-                    let abstand = Math.floor(Math.sqrt(
+                    let abstand = Math.max(0, Math.floor(Math.sqrt(
                         (Aktion.Status.Wegpunkt_Entwurf.links - links2) ** 2 +
                         (Aktion.Status.Wegpunkt_Entwurf.oben - oben2) ** 2
-                    ));
+                    )));
 
-                    Aktion.Status.Wegpunkt_Entwurf.Radius = Math.max(0, abstand);
+                    if (Aktion.Status.Modus == "vorne") {
+                        Aktion.Status.Wegpunkt_Entwurf.vorne = abstand;
+                    } else {
+                        Aktion.Status.Wegpunkt_Entwurf.Radius = abstand;
+                    }
+                    
                     Ort.Weg.anzeigen();
+                    let Wegpunkt = Ort.Weg.Pfade[Aktion.Status.Pfad_Nummer][Aktion.Status.Nummer];
+                    Spiel.Spieler.platziere_bei_Wegpunkt(Wegpunkt);
                 }
             },
             beim_Deaktivieren: function(Spiel, Aktion) {
-                Aktion.Status.Weg_Design_Pfad_Nummer++;
-                if (Aktion.Status.Weg_Design_Pfad_Nummer >= 2) {
+                Aktion.Status.Pfad_Nummer++;
+                if (Aktion.Status.Pfad_Nummer >= 2) {
                     // Nicht mehr als 2 Pfade möglich
                     // -> aufhören zu designen, Wegpunkte ausgeben und Aktion wirklich deaktivieren
 
@@ -736,6 +735,8 @@ var Spielaufbau = {
                     console.log(json);       
 
                     return true;
+                } else {
+                    spiele_Sound_Effect("Pfad_Nummer_1_Wegpunkt_platzieren");
                 }
             }
         }

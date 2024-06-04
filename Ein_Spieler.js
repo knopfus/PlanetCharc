@@ -13,20 +13,24 @@ class Ein_Spieler {
         this.SCHRITT_LÄNGE_ENTWICKLER_MODUS = 0.05;
     }
 
+    platziere_bei_Wegpunkt(Wegpunkt) {
+        let Koordinaten = {
+            links: Wegpunkt.Eigenschaften.links - 0.5 * Wegpunkt.Eigenschaften.vorne,
+            oben: Wegpunkt.Eigenschaften.oben - Wegpunkt.Eigenschaften.vorne,
+            vorne: Wegpunkt.Eigenschaften.vorne
+        };
+
+        this.platziere_bei(Koordinaten);
+        this.Wegpunkt = Wegpunkt;
+    }
+
     gehe_zu(Wegpunkt) {
         if (!Wegpunkt.Eigenschaften) return; // Versuche nicht zu einem nicht existierenden Wegpunkt zu gehen
 
         if (!this.Wegpunkt) {
             // Noch kein Wegpunkt - Keine Animation
 
-            let Koordinaten = {
-                links: Wegpunkt.Eigenschaften.links - 0.5 * Wegpunkt.Eigenschaften.vorne,
-                oben: Wegpunkt.Eigenschaften.oben - Wegpunkt.Eigenschaften.vorne,
-                vorne: Wegpunkt.Eigenschaften.vorne
-            };
-
-            this.platziere_bei(Koordinaten);
-            this.Wegpunkt = Wegpunkt;
+            this.platziere_bei_Wegpunkt(Wegpunkt);
             return;
         }
 
@@ -47,15 +51,25 @@ class Ein_Spieler {
 
         let Differenz = {
             nach_rechts: (Ziel_Koordinaten.links - this.Koordinaten.links),
-            nach_unten: (Ziel_Koordinaten.oben - this.Koordinaten.oben)
+            nach_unten: (Ziel_Koordinaten.oben - this.Koordinaten.oben),
+            nach_vorne: (Ziel_Koordinaten.vorne - this.Koordinaten.vorne)
         };
-        let Distanz = Math.sqrt((Differenz.nach_rechts ** 2 + Differenz.nach_unten ** 2));
+        let Distanz = Math.sqrt((Differenz.nach_rechts ** 2 + Differenz.nach_unten ** 2 + Differenz.nach_vorne ** 2));
+
+        if (Distanz == 0) {
+            this.Schritt_Richtung = {
+                nach_rechts: 0,
+                nach_unten: 0,
+                nach_vorne: 0
+            };
+        } else {
+            this.Schritt_Richtung = {
+                nach_rechts: (Ziel_Koordinaten.links - this.Koordinaten.links) / Distanz,
+                nach_unten: (Ziel_Koordinaten.oben - this.Koordinaten.oben) / Distanz,
+                nach_vorne: (Ziel_Koordinaten.vorne - this.Koordinaten.vorne) / Distanz
+            };
+        }
         
-        this.Schritt_Richtung = {
-            nach_rechts: (Ziel_Koordinaten.links - this.Koordinaten.links) / Distanz,
-            nach_unten: (Ziel_Koordinaten.oben - this.Koordinaten.oben) / Distanz,
-            nach_vorne: (Ziel_Koordinaten.vorne - this.Koordinaten.vorne) / Distanz
-        };
     }
 
     betrete_Ort_bei(Wegpunkt) {
@@ -132,10 +146,11 @@ class Ein_Spieler {
     
             let Differenz = {
                 nach_rechts: (Ziel_Koordinaten.links - this.Koordinaten.links),
-                nach_unten: (Ziel_Koordinaten.oben - this.Koordinaten.oben)
+                nach_unten: (Ziel_Koordinaten.oben - this.Koordinaten.oben),
+                nach_vorne: (Ziel_Koordinaten.vorne - this.Koordinaten.vorne)
             };
-            let Distanz = Math.sqrt((Differenz.nach_rechts ** 2 + Differenz.nach_unten ** 2));
-                      
+            let Distanz = Math.sqrt((Differenz.nach_rechts ** 2 + Differenz.nach_unten ** 2 + Differenz.nach_vorne ** 2));
+                          
             let Schrittlänge = (this.Spiel.Entwickler_Modus ? this.SCHRITT_LÄNGE_ENTWICKLER_MODUS : this.SCHRITT_LÄNGE) * this.Koordinaten.vorne;
 
             this.Schritte++;
