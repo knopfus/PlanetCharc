@@ -362,7 +362,7 @@ var Spielaufbau = {
 
     Gegenstände: {
 
-        "Klauenspringer-Zahn": {
+        "Klauenspringer_Zahn": {
             in: "Unerreichbarer_Ort",
             feststellen: "Oh, da ist etwas liegen geblieben. Sieht aus wie ein Zahn von diesem Monster.",
             links: 470, oben: 305, breit: 50, hoch: 85, gedreht: 263,
@@ -492,7 +492,7 @@ var Spielaufbau = {
             Lebenspunkte: 100,
             Kraft: 7,
 
-            Belohnung: "Klauenspringer-Zahn"
+            Belohnung: "Klauenspringer_Zahn"
         },
         "Yeti": {
             Orte: [

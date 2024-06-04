@@ -112,6 +112,26 @@ class Ein_Spiel {
             if (event.key == "$") {
                 self.Spieler.Lebenspunkte_wiederherstellen();
             }
+            
+            if (event.key == "ä") {
+                self.Spieler.Kraft = self.Spieler.Kraft + 1000;
+            }
+
+            if (event.key == "1") {
+                self.Gegenstände.Mondblume0.nehmen();
+            }
+
+            if (event.key == "2") {
+                self.Gegenstände.Holz.nehmen();
+            }
+
+            if (event.key == "3") {
+                self.Gegenstände.Klauenspringer_Zahn.nehmen();
+            }
+
+            if (event.key == "4") {
+                self.Gegenstände.Lichtkristall.nehmen();
+            }
 
             if (event.key in self.Orte_Kürzel) {
                 self.gehe_zu_Ort(self.Orte_Kürzel[event.key]);
