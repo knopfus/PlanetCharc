@@ -133,6 +133,14 @@ class Ein_Spiel {
                 self.Gegenstände.Lichtkristall.nehmen();
             }
 
+            if (event.key == "5") {
+                self.Gegenstände.Miau.nehmen();
+            }
+
+            if (event.key == "6") {
+                self.Gegenstände.Dokument.nehmen();
+            }
+
             if (event.key in self.Orte_Kürzel) {
                 self.gehe_zu_Ort(self.Orte_Kürzel[event.key]);
             }

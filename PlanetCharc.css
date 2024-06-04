@@ -123,7 +123,7 @@ h1 {
     position: absolute;
     border: 0px solid black;
     visibility: hidden;
-    z-index: 1020;
+    /*z-index: 1020;*/
 }
 .Gegenstand > img {
     max-width: 100%;

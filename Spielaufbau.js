@@ -32,6 +32,9 @@ var Spielaufbau = {
         Dimension_der_Kätzchen: {
             Kürzel: "k",
             feststellen: "Miau.",
+            Pfade: [
+                [{"links":500,"oben":544,"vorne":103,"Radius":500}],
+            ]
         },
         Dschungel_1: {             
             Pfade: [
@@ -84,7 +87,7 @@ var Spielaufbau = {
                 ]
             ]
         },
-        Grosse_Wiese: {             
+        Grosse_Wiese: {
             Kürzel: "w",
             Pfade: [
                 [
@@ -145,47 +148,36 @@ var Spielaufbau = {
         },
 
         Dschungel_2: { 
-            
             Pfade: [
                 [
-                    { links: 1053, oben: 83,  Radius: 120, vorne: 100, Portal: "Silberne_Lichtung" },
-                    { links: 966,  oben: 123, Radius: 120, vorne: 100 },
-                    { links: 869,  oben: 169, Radius: 120, vorne: 100 },
-                    { links: 781,  oben: 213, Radius: 120, vorne: 100 },
-                    { links: 694,  oben: 267, Radius: 120, vorne: 100 },
-                    { links: 599,  oben: 304, Radius: 120, vorne: 100 },
-                    { links: 569,  oben: 478, Radius: 120, vorne: 100 },
-                    { links: 469,  oben: 513, Radius: 120, vorne: 100 },
-                    { links: 377,  oben: 598, Radius: 120, vorne: 100 },
-                    { links: 489,  oben: 664, Radius: 120, vorne: 100 },
-                    { links: 610,  oben: 673, Radius: 120, vorne: 100 },
-                    { links: 713,  oben: 675, Radius: 120, vorne: 100 },
-                    { links: 828,  oben: 639, Radius: 120, vorne: 100 },
-                    { links: 791,  oben: 587, Radius: 120, vorne: 100 },
-                    { links: 851,  oben: 527, Radius: 120, vorne: 100, Portal: "Fluss" }
+                    {"links":192,"oben":382,"vorne":94,"Radius":261, Portal: "Silberne_Lichtung"},
+                    {"links":492,"oben":486,"vorne":146,"Radius":4},
+                    {"links":586,"oben":614,"vorne":142,"Radius":5},
+                    {"links":702,"oben":652,"vorne":169,"Radius":5},
+                    {"links":808,"oben":664,"vorne":177,"Radius":6},
+                    {"links":776,"oben":597,"vorne":143,"Radius":7},
+                    {"links":1357,"oben":460,"vorne":107,"Radius":357, Portal: "Fluss"}
                 ]
             ]
         },
         Fluss: {
-            Portale: {
-                Nord: { zu: "Quelle_des_Lichts",    links: 50, oben: 0, breit: 1340, hoch: 50 },
-                West: { zu: "Dschungel_2",          links: 0, oben: 50, breit: 50, hoch: 611 }
-            },
+            Kürzel: "f",
             Pfade: [
                 [
-                    {"links":58,"oben":556,"Radius":111.2,"vorne":111.2, Portal: "Dschungel_2"},
-                    {"links":232,"oben":532,"Radius":106.4,"vorne":106.4},
-                    {"links":343,"oben":455,"Radius":91,"vorne":91},
-                    {"links":277,"oben":383,"Radius":76.6,"vorne":76.6},
-                    {"links":366,"oben":359,"Radius":71.8,"vorne":71.8},
-                    {"links":473,"oben":385,"Radius":77,"vorne":77},
-                    {"links":591,"oben":387,"Radius":77.4,"vorne":77.4},
-                    {"links":701,"oben":378,"Radius":75.6,"vorne":75.6},
-                    {"links":809,"oben":357,"Radius":71.4,"vorne":71.4},
-                    {"links":925,"oben":341,"Radius":68.2,"vorne":68.2, Portal: "Quelle_des_Lichts"}
+                    {"links":17,"oben":567,"vorne":304,"Radius":253, Portal: "Dschungel_2"},
+                    {"links":334,"oben":475,"vorne":160,"Radius":6, Kreuzung: true},
+                    {"links":303,"oben":378,"vorne":138,"Radius":5},
+                    {"links":628,"oben":399,"vorne":92,"Radius":5},
+                    {"links":692,"oben":392,"vorne":76,"Radius":6},
+                    {"links":857,"oben":379,"vorne":69,"Radius":6},
+                    {"links":978,"oben":343,"vorne":43,"Radius":197, Portal: "Quelle_des_Lichts"}
+                ],[
+                    {"links":418,"oben":547,"vorne":164,"Radius":5, Kreuzung: true},
+                    {"links":851,"oben":603,"vorne":185,"Radius":5},
+                    {"links":1236,"oben":520,"vorne":186,"Radius":6},
+                    {"links":1434,"oben":488,"vorne":237,"Radius":180}
                 ]
-            ],
-            Kürzel: "f"
+            ]
         },
         Grotte_des_Lichts: {
             Kürzel: "g",
@@ -206,20 +198,18 @@ var Spielaufbau = {
             Kürzel: "q",
             Pfade: [
                 [
-                    {"links":353,"oben":270,"Radius":54,"vorne":54, Portal: "Lavawelt"},
-                    {"links":484,"oben":286,"Radius":57.2,"vorne":57.2},
-                    {"links":597,"oben":298,"Radius":59.6,"vorne":59.6},
-                    {"links":641.4,"oben":288.4,"Radius":57.67999999999999,"vorne":57.67999999999999},
-                    {"links":714,"oben":306,"Radius":61.2,"vorne":61.2},
-                    {"links":805,"oben":315,"Radius":63,"vorne":63},
-                    {"links":897,"oben":323,"Radius":64.6,"vorne":64.6},
-                    {"links":960,"oben":361,"Radius":72.2,"vorne":72.2},
-                    {"links":1057,"oben":437,"Radius":87.4,"vorne":87.4},
-                    {"links":996,"oben":510,"Radius":102,"vorne":102},
-                    {"links":1091,"oben":594,"Radius":118.8,"vorne":118.8},
-                    {"links":1156.2,"oben":638.2,"Radius":127.64000000000001,"vorne":127.64000000000001},
-                    {"links":1227.56,"oben":659.5600000000001,"Radius":131.912,"vorne":131.912},
-                    {"links":1409,"oben":695,"Radius":139,"vorne":139, Portal: "Fluss"}
+                    {"links":1400,"oben":847,"vorne":263,"Radius":269, Portal: "Fluss"},
+                    {"links":1033,"oben":723,"vorne":225,"Radius":5},
+                    {"links":1155,"oben":640,"vorne":201,"Radius":3},
+                    {"links":865,"oben":749,"vorne":180,"Radius":3},
+                    {"links":593,"oben":758,"vorne":186,"Radius":2},
+                    {"links":406,"oben":660,"vorne":147,"Radius":2},
+                    {"links":156,"oben":581,"vorne":115,"Radius":4},
+                    {"links":8,"oben":431,"vorne":86,"Radius":2},
+                    {"links":70,"oben":218,"vorne":60,"Radius":3},
+                    {"links":601,"oben":308,"vorne":77,"Radius":4},
+                    {"links":909,"oben":328,"vorne":81,"Radius":4},
+                    {"links":1151,"oben":314,"vorne":87,"Radius":296, Portal: "Lavawelt"}
                 ]
             ]
         },
@@ -227,26 +217,25 @@ var Spielaufbau = {
             Kürzel: "o",
             Pfade: [
                 [
-                    {"links":353,"oben":270,"Radius":54,"vorne":54,"Portal":"Lavawelt"},
-                    {"links":484,"oben":286,"Radius":57.2,"vorne":57.2},
-                    {"links":597,"oben":298,"Radius":59.6,"vorne":59.6},
-                    {"links":641.4,"oben":288.4,"Radius":57.67999999999999,"vorne":57.67999999999999},
-                    {"links":714,"oben":306,"Radius":61.2,"vorne":61.2},
-                    {"links":805,"oben":315,"Radius":63,"vorne":63},
-                    {"links":897,"oben":323,"Radius":64.6,"vorne":64.6},
-                    {"links":960,"oben":361,"Radius":72.2,"vorne":72.2},
-                    {"links":1057,"oben":437,"Radius":87.4,"vorne":87.4},
-                    {"links":996,"oben":510,"Radius":102,"vorne":102,Kreuzung:true},
-                    {"links":1091,"oben":594,"Radius":118.8,"vorne":118.8},
-                    {"links":1156.2,"oben":638.2,"Radius":127.64000000000001,"vorne":127.64000000000001},
-                    {"links":1227.56,"oben":659.5600000000001,"Radius":131.912,"vorne":131.912},
-                    {"links":1409,"oben":695,"Radius":139,"vorne":139,"Portal":"Fluss"}
+                    {"links":1400,"oben":847,"vorne":263,"Radius":269, Portal: "Fluss"},
+                    {"links":1033,"oben":723,"vorne":225,"Radius":5},
+                    {"links":1155,"oben":640,"vorne":201,"Radius":3,Kreuzung:true},
+                    {"links":865,"oben":749,"vorne":180,"Radius":3},
+                    {"links":593,"oben":758,"vorne":186,"Radius":2},
+                    {"links":406,"oben":660,"vorne":147,"Radius":2},
+                    {"links":156,"oben":581,"vorne":115,"Radius":4},
+                    {"links":8,"oben":431,"vorne":86,"Radius":2},
+                    {"links":70,"oben":218,"vorne":60,"Radius":3},
+                    {"links":601,"oben":278,"vorne":77,"Radius":4},
+                    {"links":909,"oben":308,"vorne":81,"Radius":4},
+                    {"links":1151,"oben":314,"vorne":87,"Radius":296, Portal: "Lavawelt"}
                 ],[
-                    {"links":896,"oben":552,"Radius":50,"vorne":110.4,Kreuzung:true},
-                    {"links":782,"oben":564,"Radius":50,"vorne":112.8},
-                    {"links":668,"oben":552,"Radius":50,"vorne":110.4},
-                    {"links":550,"oben":486,"Radius":97.2,"vorne":97.2},
-                    {"links":714,"oben":465,"Radius":150,"vorne":89, Portal: "Grotte_des_Lichts"}
+                    {"links":986,"oben":656,"vorne":119,"Radius":2,Kreuzung:true},
+                    {"links":909,"oben":613,"vorne":91,"Radius":2},
+                    {"links":639,"oben":595,"vorne":77,"Radius":3},
+                    {"links":539,"oben":565,"vorne":77,"Radius":3},
+                    {"links":533,"oben":501,"vorne":76,"Radius":2},
+                    {"links":610,"oben":490,"vorne":58,"Radius":133, Portal: "Grotte_des_Lichts"}
                 ]
             ]
         },
@@ -283,21 +272,21 @@ var Spielaufbau = {
             Kürzel: "l",
             Pfade: [
                 [
-                    {"links":71,"oben":336,"Radius":67.2,"vorne":67.2,Portal: "Berge_der_Angst"},
-                    {"links":99,"oben":414,"Radius":82.8,"vorne":82.8},
-                    {"links":186,"oben":360,"Radius":72,"vorne":72, Portal: "Lavawelt_Mechanik"},
-                    {"links":194,"oben":471,"Radius":94.2,"vorne":94.2},
-                    {"links":312,"oben":444,"Radius":88.8,"vorne":88.8},
-                    {"links":435,"oben":416,"Radius":83.2,"vorne":83.2}
+                    {"links":4,"oben":425,"vorne":77,"Radius":102,Portal: "Berge_der_Angst"},
+                    {"links":78,"oben":420,"vorne":75,"Radius":5},
+                    {"links":158,"oben":416,"vorne":75,"Radius":104, Portal: "Lavawelt_Mechanik"},
+                    {"links":288,"oben":467,"vorne":101,"Radius":6},
+                    {"links":431,"oben":431,"vorne":94,"Radius":117}
                 ],[
-                    {"links":1428,"oben":398,"Radius":79.6,"vorne":79.6, Portal: "Quelle_des_Lichts"},
-                    {"links":1325,"oben":450,"Radius":90,"vorne":90},
-                    {"links":1205,"oben":454,"Radius":90.8,"vorne":90.8},
-                    {"links":1114,"oben":412,"Radius":82.4,"vorne":82.4},
-                    {"links":1026,"oben":397,"Radius":79.4,"vorne":79.4},
-                    {"links":914,"oben":394,"Radius":78.8,"vorne":78.8},
-                    {"links":801,"oben":368,"Radius":73.6,"vorne":73.6},
-                    {"links":691,"oben":340,"Radius":68,"vorne":68, Portal: "Reich_des_Giganten"}
+                    {"links":616,"oben":299,"vorne":45,"Radius":98, Portal: "Quelle_des_Lichts"},
+                    {"links":697,"oben":384,"vorne":67,"Radius":8},
+                    {"links":889,"oben":421,"vorne":63,"Radius":6},
+                    {"links":929,"oben":443,"vorne":68,"Radius":6},
+                    {"links":967,"oben":434,"vorne":71,"Radius":7},
+                    {"links":1058,"oben":420,"vorne":82,"Radius":7},
+                    {"links":1200,"oben":490,"vorne":108,"Radius":6},
+                    {"links":1294,"oben":455,"vorne":109,"Radius":6},
+                    {"links":1425,"oben":426,"vorne":113,"Radius":149, Portal: "Reich_des_Giganten"}
                 ]
             ]
         },
@@ -353,7 +342,8 @@ var Spielaufbau = {
         "Klauenspringer_Zahn": {
             in: "Unerreichbarer_Ort",
             feststellen: "Oh, da ist etwas liegen geblieben. Sieht aus wie ein Zahn von diesem Monster.",
-            links: 470, oben: 305, breit: 50, hoch: 85, gedreht: 263,
+            links: 470, oben: 385, breit: 50, hoch: 85, gedreht: 10,
+            nehmbar: true,
             anwenden: function(Gegenstand, Spiel) {
                 Spiel.Spieler.Kraft = Spiel.Spieler.Kraft + 1;
                 Spiel.Spieler.feststellen("Den werde ich verwenden, um mich zu verteidigen.")
@@ -363,12 +353,41 @@ var Spielaufbau = {
                 return true; // Aktion deaktivieren
             }
         },
+        "Miau": {
+            in: "Unerreichbarer_Ort",
+            links: 420, oben: 255, breit: 800, hoch: 671, gedreht: 0,
+            anwenden: function(Gegenstand, Spiel) {
+                Spiel.Spieler.Kraft = Spiel.Spieler.Kraft + 1;
+                Spiel.Spieler.feststellen("So kuschlig!")
+
+
+            }
+        },
+        
+        "Holz": {
+            in: "Unerreichbarer_Ort",
+            feststellen: "Holz werde ich gut brauchen können.",
+            feststellen_im_Besitz: "Holz werde ich gut brauchen können.",
+            links: 600, oben: 500, breit: 50, hoch: 85,
+            nehmbar: true,
+            anwenden: function(Gegenstand, Spiel) {
+                Gegenstand.aus_Besitz_entfernen();
+                return true; // Aktion deaktivieren
+            }
+        },
 
         "Dokument": {
             in: "Unerreichbarer_Ort",
             feststellen: "Sieht nach einem alten Dokument aus.",
-            feststellen_im_Besitz: "Text",
-            links: 470, oben: 325, breit: 50, hoch: 85
+            feststellen_im_Besitz: "Die Bäume saugen dem Wasser die Seele, \n\nwelches das Feuer erstickt. \n\nDas Feuer vertreibt die Luft und den Wind, \n\nder Wind wird die Bäume ausreissen.",
+            links: 470, oben: 325, breit: 50, hoch: 85,
+            nehmbar: true
+        },
+
+        Lavawelt_Mechanik: {
+            in: "Lavawelt",
+            feststellen: "Ist das eine Kritzelei?",
+            links: 109, oben: 310, breit: 144, hoch: 82
         },
 
         "Lavawelt_Mechanik_Kreuz": {
@@ -401,6 +420,7 @@ var Spielaufbau = {
             links: 453+305, oben: 192+295, breit: 285, hoch: 218,
             Zustand: "aus"
         },
+
         "Mondblume": {
             feststellen: "Diese Blumen leuchten so magisch und duften herrlich, da würde ich am liebsten reinbeissen.",
             mehrere: [
@@ -411,6 +431,7 @@ var Spielaufbau = {
                 { in: "aktivierte_Quelle_des_Lichts", links: 1040, oben: 515, breit: 28, hoch: 32 / 685 * 845, gedreht: 10 },
                 { in: "aktivierte_Quelle_des_Lichts", links: 1011, oben: 515, breit: 35, hoch: 35 / 685 * 845, gedreht: -10 }
             ],
+            nehmbar: true,
             anwenden: function(Gegenstand, Spiel) {
                 if (Spiel.Spieler.Lebenspunkte < Spielaufbau.Spieler.Lebenspunkte) {
                     Spiel.Spieler.Lebenspunkte_verändern(10);
@@ -452,20 +473,20 @@ var Spielaufbau = {
         "Lichtkristall": {
             in: "Unerreichbarer_Ort",
             links: 470, oben: 305, breit: 50, hoch: 85, gedreht: 0,
+            nehmbar: true,
             anwenden: function(Gegenstand, Spiel) {
                 // Noch nichts zu tun, der Gegenstand soll auf etwas angewendet werden können, daher Aktion
                 // nicht deaktivieren
                 return false;
             }
         },
-        "Wollknäuel": {
-            in: "Unerreichbarer_Ort",
-            links: 470, oben: 305, breit: 50, hoch: 85, gedreht: 0,
-            anwenden: function(Gegenstand, Spiel) {
-                // Noch nichts zu tun, der Gegenstand soll auf etwas angewendet werden können, daher Aktion
-                // nicht deaktivieren
-                return false;
-            }
+
+        "Baum": {
+            in: "Dschungel_1",
+            links: 500, oben: 320, breit: 300, hoch: 500, gedreht: 0,
+
+            Lebenspunkte: 80,
+            Belohnung: "Holz"
         }
 
     },
@@ -501,17 +522,6 @@ var Spielaufbau = {
             Lebenspunkte: 80,
             Kraft: 7
         },
-       /* "Baum": {
-            Orte: [
-                { in: "Dschungel_1", links: 1023, oben: 176, breit: 108, hoch: 108, gedreht: 10 }                
-            ],
-    
-            Lebenspunkte: 80,
-            Kraft: 0,
-
-            Belohnung: "Mondblume"
-
-        },*/
         "Gigant": {
             Orte: [
                 { in: "Reich_des_Giganten", links: 420, oben: 255, breit: 800, hoch: 671, gedreht: 0 },
@@ -528,7 +538,7 @@ var Spielaufbau = {
     
             Lebenspunkte: 500,
             Kraft: 15,
-            Belohnung: "Wollknäuel"
+            Belohnung: "Miau"
         }      
     },
 
@@ -558,12 +568,14 @@ var Spielaufbau = {
 
         nehmen: {
             auf_Gegenstand: function(Gegenstand, Spiel) {
-                if (sind_näher_als(Spiel.Spieler.Koordinaten, Gegenstand.Eigenschaften, 200)) {
-                    Gegenstand.nehmen();
-                } else {
-                    Spiel.Spieler.feststellen("Das ist zu weit weg, ich komme da nicht ran.");
+                if (Gegenstand.Eigenschaften.nehmbar) {
+                    if (sind_näher_als(Spiel.Spieler.Koordinaten, Gegenstand.Eigenschaften, 200)) {
+                        Gegenstand.nehmen();
+                    } else {
+                        Spiel.Spieler.feststellen("Das ist zu weit weg, ich komme da nicht ran.");
+                    }
+                    return true; // Aktion deaktivieren
                 }
-                return true; // Aktion deaktivieren
             }
         },
 
@@ -612,6 +624,14 @@ var Spielaufbau = {
                 Monster.bekämpfen(Spiel.Spieler.Kraft);
                 if (Monster.tot()) {
                     return true; // Aktion deaktivieren
+                }
+            },
+            auf_Gegenstand: function(Gegenstand, Spiel) {
+                Gegenstand.Eigenschaften.Lebenspunkte = Gegenstand.Eigenschaften.Lebenspunkte - Spiel.Spieler.Kraft;
+                if (Gegenstand.Eigenschaften.Lebenspunkte < 0) {
+                    Spiel.Gegenstände[Gegenstand.Eigenschaften.Belohnung].platziere_in(Gegenstand.Ort);
+                    Gegenstand.entferne_aus(Gegenstand.Ort);
+                    return true;
                 }
             }
         },
