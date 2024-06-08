@@ -272,9 +272,9 @@ var Spielaufbau = {
             Kürzel: "l",
             Pfade: [
                 [
-                    {"links":4,"oben":425,"vorne":77,"Radius":102,Portal: "Berge_der_Angst"},
-                    {"links":78,"oben":420,"vorne":75,"Radius":5},
-                    {"links":158,"oben":416,"vorne":75,"Radius":104, Portal: "Lavawelt_Mechanik"},
+                    {"links":4,"oben":405,"vorne":77,"Radius":70,Portal: "Berge_der_Angst"},
+                    {"links":98,"oben":420,"vorne":75,"Radius":70},
+                    {"links":158,"oben":416,"vorne":75,"Radius":5, Portal: "Lavawelt_Mechanik"},
                     {"links":288,"oben":467,"vorne":101,"Radius":6},
                     {"links":431,"oben":431,"vorne":94,"Radius":117}
                 ],[
@@ -293,14 +293,9 @@ var Spielaufbau = {
     
         Lavawelt_Mechanik: {
             Kürzel: "m",
-            Portale: {
-                Nord: { zu: "Lavawelt",         links: 50, oben: 0, breit: 1340, hoch: 155 },
-                Ost:  { zu: "Lavawelt",         links: 1130, oben: 50, breit: 310, hoch: 661 },
-                West: { zu: "Lavawelt",         links: 0, oben: 50, breit: 379, hoch: 661 }
-            },
             Pfade: [
                 [
-                    {"links":-100,"oben":336,"Radius":67.2,"vorne":67.2,Portal: "Lavawelt"}
+                    {"links":-1,"oben":336,"Radius":6000,"vorne":0,Portal: "Lavawelt"}
                 ]
             ]
         },
@@ -448,7 +443,7 @@ var Spielaufbau = {
         "Lavawelt_Mechanik": {
             in: "Lavawelt",
             feststellen: "Ist das eine Kritzelei?",
-            links: 109, oben: 310, breit: 144, hoch: 82,
+            links: 109, oben: 310, breit: 144, hoch: 82, vorne: 900,
 
             gehe_zu: function(Gegenstand) {
                 Gegenstand.Ort.Weg.Eintritte.Lavawelt_Mechanik.gehe_zu();

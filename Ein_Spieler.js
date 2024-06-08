@@ -81,11 +81,14 @@ class Ein_Spieler {
             this.gehe_zu(Wegpunkt);
             let Nummer = Wegpunkt.Nummer;
             let Pfad_Nummer = Wegpunkt.Pfad_Nummer;
-            let letzte_Nummer = Wegpunkt.Weg.Pfade[Pfad_Nummer].length - 1;
-            if (Nummer == 0 && letzte_Nummer > 0) {
+            let höchste_Nummer = Wegpunkt.Weg.Pfade[Pfad_Nummer].length - 1;
+
+            // Wenn Spieler bei Wegpunkt 0 eintritt, soll er zu Wegpunkt 1 weitergehen (sofern es den gibt)
+            if (Nummer == 0 && höchste_Nummer > 0) {
                 let nächster_Wegpunkt = Wegpunkt.Weg.Pfade[Pfad_Nummer][Nummer + 1];
                 this.gehe_zu(nächster_Wegpunkt);
-            } else if (Nummer == letzte_Nummer) {
+            } else if (Nummer == höchste_Nummer && höchste_Nummer > 0) {
+                // Wenn Spieler beim höchsten Wegpunkt eintritt, soll er einen Wegpunkt zurück gehen (sofern es ihn gibt)
                 let nächster_Wegpunkt = Wegpunkt.Weg.Pfade[Pfad_Nummer][Nummer - 1];
                 this.gehe_zu(nächster_Wegpunkt);
             }
@@ -99,7 +102,6 @@ class Ein_Spieler {
         this.Spieler_div.style.top = Koordinaten.oben + "px";
         this.Spieler_div.style.width = Koordinaten.vorne + "px";
         this.Spieler_div.style.height = Koordinaten.vorne + "px";
-        this.Spieler_div.style.zIndex = Koordinaten.vorne;
 
         this.Spieler_div.style.rotate = (this.Schritte % 20) / 5 + "deg";
         if (this.Schritt_Richtung) {
@@ -155,7 +157,7 @@ class Ein_Spieler {
 
             this.Schritte++;
 
-            let dies_ist_der_letzte_Schritt = (Schrittlänge > Distanz);
+            let dies_ist_der_letzte_Schritt = (Schrittlänge >= Distanz);
             // Der letzte Schritt muss evtl. kleiner sein
             if (dies_ist_der_letzte_Schritt) {
                 Schrittlänge = Distanz;

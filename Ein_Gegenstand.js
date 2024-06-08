@@ -14,6 +14,7 @@ class Ein_Gegenstand {
         if (Eigenschaften.oben)     { Gegenstand_div.style.top          = Eigenschaften.oben + "px"; }
         if (Eigenschaften.breit)    { Gegenstand_div.style.width        = Eigenschaften.breit + "px"; }
         if (Eigenschaften.hoch)     { Gegenstand_div.style.height       = Eigenschaften.hoch + "px"; }
+        if (Eigenschaften.vorne)    { Gegenstand_div.style.zIndex       = Eigenschaften.vorne; }
         if (Eigenschaften.gedreht)  { Gegenstand_div.style.transform    = "rotate(" + Eigenschaften.gedreht + "deg)"; }
 
         let Gegenstand_img = Gegenstand_div.getElementsByTagName("img")[0];
