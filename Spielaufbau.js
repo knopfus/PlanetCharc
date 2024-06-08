@@ -278,7 +278,7 @@ var Spielaufbau = {
                     {"links":288,"oben":467,"vorne":101,"Radius":6},
                     {"links":431,"oben":431,"vorne":94,"Radius":117}
                 ],[
-                    {"links":616,"oben":299,"vorne":45,"Radius":98, Portal: "Quelle_des_Lichts"},
+                    {"links":616,"oben":299,"vorne":45,"Radius":98, Portal: "Reich_des_Giganten"},
                     {"links":697,"oben":384,"vorne":67,"Radius":8},
                     {"links":889,"oben":421,"vorne":63,"Radius":6},
                     {"links":929,"oben":443,"vorne":68,"Radius":6},
@@ -286,7 +286,7 @@ var Spielaufbau = {
                     {"links":1058,"oben":420,"vorne":82,"Radius":7},
                     {"links":1200,"oben":490,"vorne":108,"Radius":6},
                     {"links":1294,"oben":455,"vorne":109,"Radius":6},
-                    {"links":1425,"oben":426,"vorne":113,"Radius":149, Portal: "Reich_des_Giganten"}
+                    {"links":1425,"oben":426,"vorne":113,"Radius":149, Portal: "Quelle_des_Lichts"}
                 ]
             ]
         },
@@ -387,36 +387,40 @@ var Spielaufbau = {
         Lavawelt_Mechanik: {
             in: "Lavawelt",
             feststellen: "Ist das eine Kritzelei?",
-            links: 109, oben: 310, breit: 144, hoch: 82
+            links: 109, oben: 310, breit: 144, hoch: 82,
+
+            gehe_zu: function(Gegenstand) {
+                Gegenstand.Ort.Weg.Eintritte.Lavawelt_Mechanik.gehe_zu();
+            }
         },
 
         "Lavawelt_Mechanik_Kreuz": {
             in: "Lavawelt_Mechanik",
-            feststellen: "Diese alten Symbolen in ihrer Anordnungen sehen fast ein bisschen wie ein Rätsel aus.",
+            feststellen: "Diese alten Symbole in ihrer Anordnungen sehen fast ein bisschen wie ein Rätsel aus.",
             links: 453, oben: 192, breit: 591, hoch: 513,
             Zustand: "aus"
         },
         "Lavawelt_Mechanik_Wasser": {
             in: "Lavawelt_Mechanik",
-            feststellen: "Diese alten Symbolen in ihrer Anordnung sehen fast ein bisschen wie ein Rätsel aus.",
+            feststellen: "Diese alten Symbole in ihrer Anordnung sehen fast ein bisschen wie ein Rätsel aus.",
             links: 453, oben: 192, breit: 306, hoch: 220,
             Zustand: "aus"
         },
         "Lavawelt_Mechanik_Pflanze": {
             in: "Lavawelt_Mechanik",
-            feststellen: "Diese alten Symbolen in ihrer Anordnung sehen fast ein bisschen wie ein Rätsel aus.",
+            feststellen: "Diese alten Symbole in ihrer Anordnung sehen fast ein bisschen wie ein Rätsel aus.",
             links: 453+345, oben: 192, breit: 246, hoch: 255,
             Zustand: "aus"
         },
         "Lavawelt_Mechanik_Feuer": {
             in: "Lavawelt_Mechanik",
-            feststellen: "Diese alten Symbolen in ihrer Anordnung sehen fast ein bisschen wie ein Rätsel aus.",
+            feststellen: "Diese alten Symbole in ihrer Anordnung sehen fast ein bisschen wie ein Rätsel aus.",
             links: 453, oben: 192+234, breit: 265, hoch: 236,
             Zustand: "aus"
         },
         "Lavawelt_Mechanik_Wind": {
             in: "Lavawelt_Mechanik",
-            feststellen: "Diese alten Symbolen in ihrer Anordnung sehen fast ein bisschen wie ein Rätsel aus.",
+            feststellen: "Diese alten Symbole in ihrer Anordnung sehen fast ein bisschen wie ein Rätsel aus.",
             links: 453+305, oben: 192+295, breit: 285, hoch: 218,
             Zustand: "aus"
         },
@@ -474,7 +478,7 @@ var Spielaufbau = {
             in: "Unerreichbarer_Ort",
             links: 470, oben: 305, breit: 50, hoch: 85, gedreht: 0,
             nehmbar: true,
-            anwenden: function(Gegenstand, Spiel) {
+            anwenden: function() {
                 // Noch nichts zu tun, der Gegenstand soll auf etwas angewendet werden können, daher Aktion
                 // nicht deaktivieren
                 return false;
@@ -563,6 +567,13 @@ var Spielaufbau = {
             auf_Portal: function(Portal) {
                 Portal.gehe_zu();
                 return true; // Aktion deaktivieren
+            },
+
+            auf_Gegenstand: function(Gegenstand) {
+                if (Gegenstand.Eigenschaften.gehe_zu) {
+                    Gegenstand.gehe_zu();
+                    return true;
+                }
             }
         },
 

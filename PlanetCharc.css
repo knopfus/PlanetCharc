@@ -70,7 +70,8 @@ h1 {
 }
 
 #Ort-Bild-vorne {
-    z-index: 1000;
+    z-index: 1010;
+    pointer-events: none;
 }
 
 .Sprechblase {
@@ -98,7 +99,7 @@ h1 {
     left: 500px;
     top: 200px;
     border-radius: 50%;
-    z-index: 1010;
+    z-index: 1020;
 }
 #Wegpunkt_Vorlage {
     display: none;
@@ -107,7 +108,7 @@ h1 {
     position: absolute;
     border: 1px solid blue;
     border-radius: 50%;
-    z-index: 1009;
+    z-index: 1019;
     pointer-events: none;
 }
 
@@ -123,7 +124,7 @@ h1 {
     position: absolute;
     border: 0px solid black;
     visibility: hidden;
-    /*z-index: 1020;*/
+    z-index: 1030;
 }
 .Gegenstand > img {
     max-width: 100%;
@@ -132,7 +133,7 @@ h1 {
 
 .Monster {
     position: absolute;
-    z-index: 1030;
+    z-index: 1040;
 }
 .Monster > img {
     max-width: 100%;
@@ -141,6 +142,8 @@ h1 {
 
 #Spieler {
     position: absolute;
+    z-index: 1000;
+    pointer-events: none;
 }
 #Spieler > img {
     max-width: 100%;

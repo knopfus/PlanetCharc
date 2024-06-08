@@ -101,6 +101,12 @@ class Ein_Gegenstand {
         }
     }
 
+    gehe_zu() {
+        if (this.Eigenschaften.gehe_zu) {
+            this.Eigenschaften.gehe_zu(this, this.Spiel);
+        }
+    }
+
     ein() {
         this.Zustand = "ein";
         this.anzeigen();
