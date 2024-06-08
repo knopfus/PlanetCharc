@@ -370,9 +370,8 @@ var Spielaufbau = {
             feststellen_im_Besitz: "Holz werde ich gut brauchen können.",
             links: 600, oben: 500, breit: 50, hoch: 85,
             nehmbar: true,
-            anwenden: function(Gegenstand, Spiel) {
-                Gegenstand.aus_Besitz_entfernen();
-                return true; // Aktion deaktivieren
+            anwenden: function() {
+                return false;
             }
         },
 
@@ -383,8 +382,70 @@ var Spielaufbau = {
             links: 470, oben: 325, breit: 50, hoch: 85,
             nehmbar: true
         },
+        
+        "Seltsame_Konstruktion": {
+            in: "Silberne_Lichtung",
+            feststellen: "Eine seltsame Konstruktion...",
+            links: 760, oben: 480, breit: 135, hoch: 90,
+            anderen_Gegenstand_auf_diesen_anwenden: function(Gegenstand, anderer_Gegenstand, Spiel) {
+                if (anderer_Gegenstand.Name == "Gefüllte_Vase_mit_Licht") {
+                    anderer_Gegenstand.aus_Besitz_entfernen();
+                    Spiel.Spieler.feststellen("Du hast gewonnen!")
+                    /*this.feststellen*/
+                    /*Spiel.Gegenstände.leuchtender_Lichtkristall.platziere_in(Spiel.Orte.Grotte_des_Lichts);
+                    Spiel.Quelle_des_Lichts_aktivieren();*/
+                } else {
+                    return true;
+                }
+            }
+            
+        },
 
-        Lavawelt_Mechanik: {
+        "Zerbrochene_Vase": {
+            in: "Silberne_Lichtung",
+            feststellen: "Sieht nach einer zerstörten Vase aus.",
+            feststellen_im_Besitz: "Irgendwie müsste man die doch reparieren können.",
+            links: 850, oben: 530, breit: 50, hoch: 60,
+            nehmbar: true, 
+            anderen_Gegenstand_auf_diesen_anwenden: function(Gegenstand, anderer_Gegenstand, Spiel) {
+                if (anderer_Gegenstand.Name == "Holz") {
+                    Spiel.Spieler.feststellen("Genau! Mit dem Holz kann ich die Vase ja reparieren.");
+                    anderer_Gegenstand.aus_Besitz_entfernen();
+                    Gegenstand.aus_Besitz_entfernen();
+                    Spiel.Gegenstände.Reparierte_Vase.nehmen();
+                    return true;
+                } else {
+                    Spiel.Spieler.feststellen("Ich weiss nicht, was ich damit Sinnvolles machen könnte.");
+                    return true;
+                }
+            }
+        },
+        
+        "Reparierte_Vase": {
+            in: "Unerreichbarer_Ort",
+            feststellen_im_Besitz: "Hier könnten wir etwas hineinfüllen",
+            links: 850, oben: 530, breit: 50, hoch: 60
+        },
+
+        "Gefüllte_Vase_mit_Licht": {
+            in: "Unerreichbarer_Ort",
+            feststellen_im_Besitz: "Hm, die Vase war vorhin bei dieser seltsamen Konstruktion.",
+            links: 850, oben: 530, breit: 50, hoch: 60,
+            anwenden: function() {
+                // Noch nichts zu tun, der Gegenstand soll auf etwas angewendet werden können, daher Aktion
+                // nicht deaktivieren
+                return false;
+            }
+        },
+
+        "Gefüllte_Vase": {
+            in: "Unerreichbarer_Ort",
+            feststellen_im_Besitz: "Hm, die Vase war vorhin bei dieser seltsamen Konstruktion.",
+            links: 850, oben: 530, breit: 50, hoch: 60
+        },
+
+
+        "Lavawelt_Mechanik": {
             in: "Lavawelt",
             feststellen: "Ist das eine Kritzelei?",
             links: 109, oben: 310, breit: 144, hoch: 82,
@@ -600,11 +661,16 @@ var Spielaufbau = {
 
         anwenden: {
             auf_Gegenstand_im_Besitz: function(Gegenstand, Spiel, Aktion) {
+                if (Aktion.Status.anzuwendender_Gegenstand_Name) {
+                    let deaktivieren = Gegenstand.anderen_Gegenstand_auf_diesen_anwenden(Aktion.Status.anzuwendender_Gegenstand_Name);
+                    return deaktivieren;
+                }
                 let deaktivieren = Gegenstand.anwenden();
                 if (deaktivieren) {
                     // Dies trifft auf Gegenstände zu, die man direkt anwenden kann, z.B. Mondblumen
                     // => Wir geben true zurück um die Aktion wieder zu deaktivieren
                     return true;
+
                 } else {
                     // Wenn der Gegenstand im Besitz beim anwenden "false" zurück gab, d.h. die Aktion wird
                     // noch nicht deaktiviert, bedeutet das, dass der Gegenstand auf etwas im Ort angewendet
@@ -612,6 +678,7 @@ var Spielaufbau = {
                     Aktion.Status.anzuwendender_Gegenstand_Name = Gegenstand.Name;
                     return false; // Aktion noch nicht deaktivieren
                 }
+                
             },
             auf_Gegenstand: function(Gegenstand, Spiel, Aktion) {
                 // Wenn man bei der Aktion "anwenden" zuerst auf einen Gegenstand in Besitz geklickt hat, der

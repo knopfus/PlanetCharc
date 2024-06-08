@@ -138,6 +138,22 @@ class Ein_Spiel {
             if (event.key == "6") {
                 self.Gegenstände.Dokument.nehmen();
             }
+            
+            if (event.key == "7") {
+                self.Gegenstände.Zerbrochene_Vase.nehmen();
+            }
+
+            if (event.key == "8") {
+                self.Gegenstände.Reparierte_Vase.nehmen();
+            }
+            
+            if (event.key == "9") {
+                self.Gegenstände.Gefüllte_Vase.nehmen();
+            }
+
+            if (event.key == "0") {
+                self.Gegenstände.Gefüllte_Vase_mit_Licht.nehmen();
+            }
 
             if (event.key in self.Orte_Kürzel) {
                 self.gehe_zu_Ort(self.Orte_Kürzel[event.key]);
