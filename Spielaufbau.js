@@ -68,22 +68,26 @@ var Spielaufbau = {
             ]
         },
         Gipfel: { 
-            
             Pfade: [
                 [
-                    {"links":10,"oben":494,"Radius":98.8,"vorne":98.8, Portal: "Berge_der_Angst"},
-                    {"links":230,"oben":519,"Radius":103.8,"vorne":103.8},
-                    {"links":432,"oben":527,"Radius":105.4,"vorne":105.4},
-                    {"links":665,"oben":534,"Radius":106.8,"vorne":106.8},
-                    {"links":940,"oben":493,"Radius":98.6,"vorne":98.6, Kreuzung: true},
-                    {"links":1095,"oben":456,"Radius":91.2,"vorne":91.2},
-                    {"links":977,"oben":397,"Radius":79.4,"vorne":79.4},
-                    {"links":1084,"oben":362,"Radius":72.4,"vorne":72.4}
+                    {"links":5,"oben":565,"vorne":140,"Radius":175, Portal: "Berge_der_Angst"},
+                    {"links":185,"oben":534,"vorne":109,"Radius":3},
+                    {"links":429,"oben":531,"vorne":91,"Radius":5},
+                    {"links":657,"oben":533,"vorne":74,"Radius":5},
+                    {"links":941,"oben":489,"vorne":49,"Radius":6},
+                    {"links":952,"oben":465,"vorne":39,"Radius":5, Kreuzung: true},
+                    {"links":882,"oben":448,"vorne":37,"Radius":5},
+                    {"links":757,"oben":421,"vorne":31,"Radius":5},
+                    {"links":605,"oben":327,"vorne":17,"Radius":2},
+                    {"links":626,"oben":321,"vorne":14,"Radius":2},
+                    {"links":643,"oben":304,"vorne":11,"Radius":2},
+                    {"links":631,"oben":290,"vorne":12,"Radius":1},
+                    {"links":651,"oben":257,"vorne":10,"Radius":1},
+                    {"links":663,"oben":232,"vorne":10,"Radius":71, Portal: "Nichts"}
                 ],[
-                    {"links":840,"oben":434,"Radius":86.8,"vorne":86.8, Kreuzung: true},
-                    {"links":720,"oben":394,"Radius":78.8,"vorne":78.8},
-                    {"links":616,"oben":333,"Radius":66.6,"vorne":66.6},
-                    {"links":577,"oben":276,"Radius":55.2,"vorne":55.2, Portal: "Nichts" }
+                    {"links":1007,"oben":432,"vorne":18,"Radius":4, Kreuzung: true},
+                    {"links":985,"oben":422,"vorne":17,"Radius":3},
+                    {"links":1047,"oben":410,"vorne":15,"Radius":60}
                 ]
             ]
         },
@@ -324,9 +328,14 @@ var Spielaufbau = {
             Kürzel: "r"
         },
 
-        Nichts: { Portale: {
-            Süd: { zu: "Gipfel",                links: 50, oben: 661, breit: 1340, hoch: 50}
-        } },
+        Nichts: {
+            Kürzel: 'n',
+            Pfade: [
+                [
+                    {"links":-1,"oben":336,"Radius":6000,"vorne":0,Portal: "Gipfel"}
+                ]
+            ]
+        },
 
 
         Unerreichbarer_Ort: { Kürzel: "x" }
@@ -352,7 +361,7 @@ var Spielaufbau = {
         "Feuerschwert": {
             in: "Unerreichbarer_Ort",
             feststellen: "Oh, da ist etwas liegen geblieben. Sieht aus wie ein Zahn von diesem Monster.",
-            links: 470, oben: 400, breit: 50, hoch: 85, gedreht: 10,
+            links: 300, oben: 440, breit: 50, hoch: 85, gedreht: 10,
             nehmbar: true,
             anwenden: function(Gegenstand, Spiel) {
                 Spiel.Spieler.Kraft = Spiel.Spieler.Kraft + 10;
@@ -636,7 +645,7 @@ var Spielaufbau = {
         },
         "Troll": {
             Orte: [
-                { in: "Gipfel", links: 420, oben: 305, breit: 200, hoch: 200, gedreht: 0 },
+                { in: "Gipfel", links: 300, oben: 340, breit: 200, hoch: 200, gedreht: 0 },
                 { in: "Unerreichbarer_Ort" }
             ],
     
