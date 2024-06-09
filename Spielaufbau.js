@@ -348,6 +348,22 @@ var Spielaufbau = {
                 return true; // Aktion deaktivieren
             }
         },
+
+        "Feuerschwert": {
+            in: "Unerreichbarer_Ort",
+            feststellen: "Oh, da ist etwas liegen geblieben. Sieht aus wie ein Zahn von diesem Monster.",
+            links: 470, oben: 400, breit: 50, hoch: 85, gedreht: 10,
+            nehmbar: true,
+            anwenden: function(Gegenstand, Spiel) {
+                Spiel.Spieler.Kraft = Spiel.Spieler.Kraft + 10;
+                Spiel.Spieler.feststellen("Das ist eine perfekte Waffe gegen gefährliche Kreaturen.")
+
+                Gegenstand.aus_Besitz_entfernen();
+
+                return true; // Aktion deaktivieren
+            }
+        },
+
         "Miau": {
             in: "Unerreichbarer_Ort",
             links: 420, oben: 255, breit: 800, hoch: 671, gedreht: 0,
@@ -376,6 +392,58 @@ var Spielaufbau = {
             feststellen_im_Besitz: "Die Bäume saugen dem Wasser die Seele, \n\nwelches das Feuer erstickt. \n\nDas Feuer vertreibt die Luft und den Wind, \n\nder Wind wird die Bäume ausreissen.",
             links: 470, oben: 325, breit: 50, hoch: 85,
             nehmbar: true
+        },
+        
+        "Wasser": {
+            in: "Quelle_des_Lichts",
+            feststellen: "Hier ist eine ruhige Stelle an der man Wasser schöpfen könnte.",
+            links: 470, oben: 500, breit: 500, hoch: 500,
+            nehmbar: false,
+            anderen_Gegenstand_auf_diesen_anwenden: function(Gegenstand, anderer_Gegenstand, Spiel) {
+                if (anderer_Gegenstand.Name == "Reparierte_Vase") {
+                    anderer_Gegenstand.aus_Besitz_entfernen();
+                    Gegenstand.aus_Besitz_entfernen();
+                    Spiel.Gegenstände.Gefüllte_Vase.nehmen();
+                    return true;
+                } else {
+                    Spiel.Spieler.feststellen("Ich weiss nicht, was ich damit Sinnvolles machen könnte.");
+                    return true;
+                }
+            }
+        },
+        "Wasser2": {
+            in: "offene_Quelle_des_Lichts",
+            feststellen: "Hier ist eine ruhige Stelle an der man das leuchtende Wasser schöpfen könnte.",
+            links: 470, oben: 500, breit: 500, hoch: 500,
+            nehmbar: false,
+            anderen_Gegenstand_auf_diesen_anwenden: function(Gegenstand, anderer_Gegenstand, Spiel) {
+                if (anderer_Gegenstand.Name == "Reparierte_Vase") {
+                    anderer_Gegenstand.aus_Besitz_entfernen();
+                    Gegenstand.aus_Besitz_entfernen();
+                    Spiel.Gegenstände.Gefüllte_Vase.nehmen();
+                    return true;
+                } else {
+                    Spiel.Spieler.feststellen("Ich weiss nicht, was ich damit Sinnvolles machen könnte.");
+                    return true;
+                }
+            }
+        },
+        "Lichtwasser": {
+            in: "aktivierte_Quelle_des_Lichts",
+            feststellen: "Hier ist eine ruhige Stelle an der man das leuchtende Wasser schöpfen könnte.",
+            links: 470, oben: 500, breit: 500, hoch: 500,
+            nehmbar: false,
+            anderen_Gegenstand_auf_diesen_anwenden: function(Gegenstand, anderer_Gegenstand, Spiel) {
+                if (anderer_Gegenstand.Name == "Reparierte_Vase") {
+                    anderer_Gegenstand.aus_Besitz_entfernen();
+                    Gegenstand.aus_Besitz_entfernen();
+                    Spiel.Gegenstände.Gefüllte_Vase_mit_Licht.nehmen();
+                    return true;
+                } else {
+                    Spiel.Spieler.feststellen("Ich weiss nicht, was ich damit Sinnvolles machen könnte.");
+                    return true;
+                }
+            }
         },
         
         "Seltsame_Konstruktion": {
@@ -419,7 +487,10 @@ var Spielaufbau = {
         "Reparierte_Vase": {
             in: "Unerreichbarer_Ort",
             feststellen_im_Besitz: "Hier könnten wir etwas hineinfüllen",
-            links: 850, oben: 530, breit: 50, hoch: 60
+            links: 850, oben: 530, breit: 50, hoch: 60,
+            anwenden: function() {
+                return false;
+            }
         },
 
         "Gefüllte_Vase_mit_Licht": {
@@ -562,6 +633,17 @@ var Spielaufbau = {
             Kraft: 7,
 
             Belohnung: "Klauenspringer_Zahn"
+        },
+        "Troll": {
+            Orte: [
+                { in: "Gipfel", links: 420, oben: 305, breit: 200, hoch: 200, gedreht: 0 },
+                { in: "Unerreichbarer_Ort" }
+            ],
+    
+            Lebenspunkte: 150,
+            Kraft: 10,
+
+            Belohnung: "Feuerschwert"
         },
         "Yeti": {
             Orte: [
