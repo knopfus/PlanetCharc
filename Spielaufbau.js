@@ -203,7 +203,7 @@ var Spielaufbau = {
             Pfade: [
                 [
                     {"links":1400,"oben":847,"vorne":263,"Radius":269, Portal: "Fluss"},
-                    {"links":1033,"oben":723,"vorne":225,"Radius":5},
+                    {"links":1033,"oben":723,"vorne":225,"Radius":150},
                     {"links":1155,"oben":640,"vorne":201,"Radius":3},
                     {"links":865,"oben":749,"vorne":180,"Radius":3},
                     {"links":593,"oben":758,"vorne":186,"Radius":2},
@@ -213,7 +213,7 @@ var Spielaufbau = {
                     {"links":70,"oben":218,"vorne":60,"Radius":3},
                     {"links":601,"oben":308,"vorne":77,"Radius":4},
                     {"links":909,"oben":328,"vorne":81,"Radius":4},
-                    {"links":1151,"oben":314,"vorne":87,"Radius":296, Portal: "Lavawelt"}
+                    {"links":1051,"oben":314,"vorne":87,"Radius":200, Portal: "Lavawelt"}
                 ]
             ]
         },
@@ -222,7 +222,7 @@ var Spielaufbau = {
             Pfade: [
                 [
                     {"links":1400,"oben":847,"vorne":263,"Radius":269, Portal: "Fluss"},
-                    {"links":1033,"oben":723,"vorne":225,"Radius":5},
+                    {"links":1033,"oben":723,"vorne":225,"Radius":150},
                     {"links":1155,"oben":640,"vorne":201,"Radius":3,Kreuzung:true},
                     {"links":865,"oben":749,"vorne":180,"Radius":3},
                     {"links":593,"oben":758,"vorne":186,"Radius":2},
@@ -232,7 +232,7 @@ var Spielaufbau = {
                     {"links":70,"oben":218,"vorne":60,"Radius":3},
                     {"links":601,"oben":278,"vorne":77,"Radius":4},
                     {"links":909,"oben":308,"vorne":81,"Radius":4},
-                    {"links":1151,"oben":314,"vorne":87,"Radius":296, Portal: "Lavawelt"}
+                    {"links":1051,"oben":314,"vorne":87,"Radius":200, Portal: "Lavawelt"}
                 ],[
                     {"links":986,"oben":656,"vorne":119,"Radius":2,Kreuzung:true},
                     {"links":909,"oben":613,"vorne":91,"Radius":2},
@@ -248,26 +248,25 @@ var Spielaufbau = {
             Kürzel: "a",
             Pfade: [
                 [
-                    {"links":353,"oben":270,"Radius":54,"vorne":54,"Portal":"Lavawelt"},
-                    {"links":484,"oben":286,"Radius":57.2,"vorne":57.2},
-                    {"links":597,"oben":298,"Radius":59.6,"vorne":59.6},
-                    {"links":641.4,"oben":288.4,"Radius":57.67999999999999,"vorne":57.67999999999999},
-                    {"links":714,"oben":306,"Radius":61.2,"vorne":61.2},
-                    {"links":805,"oben":315,"Radius":63,"vorne":63},
-                    {"links":897,"oben":323,"Radius":64.6,"vorne":64.6},
-                    {"links":960,"oben":361,"Radius":72.2,"vorne":72.2},
-                    {"links":1057,"oben":437,"Radius":87.4,"vorne":87.4},
-                    {"links":996,"oben":510,"Radius":102,"vorne":102,Kreuzung:true},
-                    {"links":1091,"oben":594,"Radius":118.8,"vorne":118.8},
-                    {"links":1156.2,"oben":638.2,"Radius":127.64000000000001,"vorne":127.64000000000001},
-                    {"links":1227.56,"oben":659.5600000000001,"Radius":131.912,"vorne":131.912},
-                    {"links":1409,"oben":695,"Radius":139,"vorne":139,"Portal":"Fluss"}
+                    {"links":1400,"oben":847,"vorne":263,"Radius":269, Portal: "Fluss"},
+                    {"links":1033,"oben":723,"vorne":225,"Radius":150},
+                    {"links":1155,"oben":640,"vorne":201,"Radius":3,Kreuzung:true},
+                    {"links":865,"oben":749,"vorne":180,"Radius":3},
+                    {"links":593,"oben":758,"vorne":186,"Radius":2},
+                    {"links":406,"oben":660,"vorne":147,"Radius":2},
+                    {"links":156,"oben":581,"vorne":115,"Radius":4},
+                    {"links":8,"oben":431,"vorne":86,"Radius":2},
+                    {"links":70,"oben":218,"vorne":60,"Radius":3},
+                    {"links":601,"oben":278,"vorne":77,"Radius":4},
+                    {"links":909,"oben":308,"vorne":81,"Radius":4},
+                    {"links":1051,"oben":314,"vorne":87,"Radius":200, Portal: "Lavawelt"}
                 ],[
-                    {"links":896,"oben":552,"Radius":50,"vorne":110.4,Kreuzung:true},
-                    {"links":782,"oben":564,"Radius":50,"vorne":112.8},
-                    {"links":668,"oben":552,"Radius":50,"vorne":110.4},
-                    {"links":550,"oben":486,"Radius":97.2,"vorne":97.2},
-                    {"links":714,"oben":465,"Radius":150,"vorne":89, Portal: "Grotte_des_Lichts"}
+                    {"links":986,"oben":656,"vorne":119,"Radius":2,Kreuzung:true},
+                    {"links":909,"oben":613,"vorne":91,"Radius":2},
+                    {"links":639,"oben":595,"vorne":77,"Radius":3},
+                    {"links":539,"oben":565,"vorne":77,"Radius":3},
+                    {"links":533,"oben":501,"vorne":76,"Radius":2},
+                    {"links":610,"oben":490,"vorne":58,"Radius":133, Portal: "Grotte_des_Lichts"}
                 ]
             ]
         },
@@ -404,29 +403,15 @@ var Spielaufbau = {
         },
         
         "Wasser": {
-            in: "Quelle_des_Lichts",
+            mehrere:[
+                { in: "Quelle_des_Lichts", links: 470, oben: 500, breit: 500, hoch: 500 },
+                { in: "offene_Quelle_des_Lichts", links: 470, oben: 500, breit: 500, hoch: 500 }
+            ],
             feststellen: "Hier ist eine ruhige Stelle an der man Wasser schöpfen könnte.",
-            links: 470, oben: 500, breit: 500, hoch: 500,
             nehmbar: false,
             anderen_Gegenstand_auf_diesen_anwenden: function(Gegenstand, anderer_Gegenstand, Spiel) {
                 if (anderer_Gegenstand.Name == "Reparierte_Vase") {
-                    anderer_Gegenstand.aus_Besitz_entfernen();
-                    Gegenstand.aus_Besitz_entfernen();
-                    Spiel.Gegenstände.Gefüllte_Vase.nehmen();
-                    return true;
-                } else {
-                    Spiel.Spieler.feststellen("Ich weiss nicht, was ich damit Sinnvolles machen könnte.");
-                    return true;
-                }
-            }
-        },
-        "Wasser2": {
-            in: "offene_Quelle_des_Lichts",
-            feststellen: "Hier ist eine ruhige Stelle an der man das leuchtende Wasser schöpfen könnte.",
-            links: 470, oben: 500, breit: 500, hoch: 500,
-            nehmbar: false,
-            anderen_Gegenstand_auf_diesen_anwenden: function(Gegenstand, anderer_Gegenstand, Spiel) {
-                if (anderer_Gegenstand.Name == "Reparierte_Vase") {
+                    spiele_Sound_Effect("Wasser_schöpfen");
                     anderer_Gegenstand.aus_Besitz_entfernen();
                     Gegenstand.aus_Besitz_entfernen();
                     Spiel.Gegenstände.Gefüllte_Vase.nehmen();
@@ -444,6 +429,7 @@ var Spielaufbau = {
             nehmbar: false,
             anderen_Gegenstand_auf_diesen_anwenden: function(Gegenstand, anderer_Gegenstand, Spiel) {
                 if (anderer_Gegenstand.Name == "Reparierte_Vase") {
+                    spiele_Sound_Effect("Lichtwasser_schöpfen");
                     anderer_Gegenstand.aus_Besitz_entfernen();
                     Gegenstand.aus_Besitz_entfernen();
                     Spiel.Gegenstände.Gefüllte_Vase_mit_Licht.nehmen();
@@ -463,9 +449,6 @@ var Spielaufbau = {
                 if (anderer_Gegenstand.Name == "Gefüllte_Vase_mit_Licht") {
                     anderer_Gegenstand.aus_Besitz_entfernen();
                     Spiel.Spieler.feststellen("Du hast gewonnen!")
-                    /*this.feststellen*/
-                    /*Spiel.Gegenstände.leuchtender_Lichtkristall.platziere_in(Spiel.Orte.Grotte_des_Lichts);
-                    Spiel.Quelle_des_Lichts_aktivieren();*/
                 } else {
                     return true;
                 }
@@ -495,7 +478,7 @@ var Spielaufbau = {
         
         "Reparierte_Vase": {
             in: "Unerreichbarer_Ort",
-            feststellen_im_Besitz: "Hier könnten wir etwas hineinfüllen",
+            feststellen_im_Besitz: "So kann ich die Vase wieder verwenden.",
             links: 850, oben: 530, breit: 50, hoch: 60,
             anwenden: function() {
                 return false;
@@ -504,7 +487,7 @@ var Spielaufbau = {
 
         "Gefüllte_Vase_mit_Licht": {
             in: "Unerreichbarer_Ort",
-            feststellen_im_Besitz: "Hm, die Vase war vorhin bei dieser seltsamen Konstruktion.",
+            feststellen_im_Besitz: "Jetzt ist meine Vase mit Licht gefüllt. Wie schön! Was soll ich damit bloss machen?",
             links: 850, oben: 530, breit: 50, hoch: 60,
             anwenden: function() {
                 // Noch nichts zu tun, der Gegenstand soll auf etwas angewendet werden können, daher Aktion
@@ -515,8 +498,20 @@ var Spielaufbau = {
 
         "Gefüllte_Vase": {
             in: "Unerreichbarer_Ort",
-            feststellen_im_Besitz: "Hm, die Vase war vorhin bei dieser seltsamen Konstruktion.",
-            links: 850, oben: 530, breit: 50, hoch: 60
+            feststellen_im_Besitz: "Das Wasser wirkt sehr klar und trinkbar.",
+            links: 850, oben: 530, breit: 50, hoch: 60,
+            anwenden: function(Gegenstand, Spiel) {
+                if (Spiel.Spieler.Lebenspunkte < Spielaufbau.Spieler.Lebenspunkte) {
+                    Spiel.Spieler.Lebenspunkte_verändern(10);
+                    Gegenstand.aus_Besitz_entfernen();
+                    Spiel.Gegenstände.Reparierte_Vase.nehmen()
+
+                    Spiel.Spieler.feststellen("Erfrischend!");
+                } else {
+                    Spiel.Spieler.feststellen("Ich habe gerade keinen Durst.");
+                }
+                return true;
+            }
         },
 
 
@@ -574,9 +569,9 @@ var Spielaufbau = {
             nehmbar: true,
             anwenden: function(Gegenstand, Spiel) {
                 if (Spiel.Spieler.Lebenspunkte < Spielaufbau.Spieler.Lebenspunkte) {
-                    Spiel.Spieler.Lebenspunkte_verändern(10);
+                    Spiel.Spieler.Lebenspunkte_verändern(20);
                     Gegenstand.aus_Besitz_entfernen();
-                    Gegenstand.regeneriere_in(10);
+                    Gegenstand.regeneriere_in(20);
 
                     Spiel.Spieler.feststellen("Mhm, die war fein. Jetzt fühle mich wieder gestärkt!");
                 } else {

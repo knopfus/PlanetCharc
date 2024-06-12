@@ -128,19 +128,19 @@ class Ein_Gegenstand {
     anderen_Gegenstand_auf_diesen_anwenden(anderer_Gegenstand_Name) {
         if (this.Eigenschaften.anderen_Gegenstand_auf_diesen_anwenden) {
             let anderer_Gegenstand = this.Spiel.Gegenstände[anderer_Gegenstand_Name];
-            this.Eigenschaften.anderen_Gegenstand_auf_diesen_anwenden(this, anderer_Gegenstand, this.Spiel);
+            return this.Eigenschaften.anderen_Gegenstand_auf_diesen_anwenden(this, anderer_Gegenstand, this.Spiel);
         }
     }
 
     anschauen() {
         if (this.Eigenschaften.feststellen) {
-            this.Spiel.Spieler.feststellen(this.Eigenschaften.feststellen);
+            return this.Spiel.Spieler.feststellen(this.Eigenschaften.feststellen);
         }
     }
 
     anschauen_im_Besitz() {
         if (this.Eigenschaften.feststellen_im_Besitz) {
-            this.Spiel.Spieler.feststellen(this.Eigenschaften.feststellen_im_Besitz);
+            return this.Spiel.Spieler.feststellen(this.Eigenschaften.feststellen_im_Besitz);
         }
     }
 
