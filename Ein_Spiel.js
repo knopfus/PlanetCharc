@@ -81,6 +81,8 @@ class Ein_Spiel {
 
         this.Spieler = new Ein_Spieler(this, Spielaufbau.Spieler);
 
+        this.Entwickler_Passwort = rot13("Charc");
+
         let self = this;
         document.getElementById("Ort-Bild").onclick = function(event) {
             if (self.aktive_Aktion) {
@@ -95,67 +97,58 @@ class Ein_Spiel {
 
         document.onkeydown = function(event) {
             if (event.key == "§") {
-                self.Entwickler_Modus = !self.Entwickler_Modus;
-                document.getElementById("Status").style.zIndex = self.Entwickler_Modus ? "100000" : "-1";
-
-                self.Ort.Weg.anzeigen();
-                for (let Portal_Name in self.Portale) {
-                    self.Portale[Portal_Name].anzeigen();
-                }
-                for (let Aktion_Name in self.Aktionen) {
-                    self.Aktionen[Aktion_Name].anzeigen_falls_Entwickler_Modus();
-                }
+                self.Entwicklermodus_ein_aus();
             }
 
-            if (event.key == "$") {
+            if (event.key == "$" && self.Entwickler_Modus) {
                 self.Spieler.Lebenspunkte_wiederherstellen();
             }
             
-            if (event.key == "ä") {
+            if (event.key == "ä" && self.Entwickler_Modus) {
                 self.Spieler.Kraft = self.Spieler.Kraft + 1000;
             }
 
-            if (event.key == "1") {
+            if (event.key == "1" && self.Entwickler_Modus) {
                 self.Gegenstände.Mondblume0.nehmen();
             }
 
-            if (event.key == "2") {
+            if (event.key == "2" && self.Entwickler_Modus) {
                 self.Gegenstände.Holz.nehmen();
             }
 
-            if (event.key == "3") {
+            if (event.key == "3" && self.Entwickler_Modus) {
                 self.Gegenstände.Klauenspringer_Zahn.nehmen();
             }
 
-            if (event.key == "4") {
+            if (event.key == "4" && self.Entwickler_Modus) {
                 self.Gegenstände.Lichtkristall.nehmen();
             }
 
-            if (event.key == "5") {
+            if (event.key == "5" && self.Entwickler_Modus) {
                 self.Gegenstände.Miau.nehmen();
             }
 
-            if (event.key == "6") {
+            if (event.key == "6" && self.Entwickler_Modus) {
                 self.Gegenstände.Dokument.nehmen();
             }
             
-            if (event.key == "7") {
+            if (event.key == "7" && self.Entwickler_Modus) {
                 self.Gegenstände.Zerbrochene_Vase.nehmen();
             }
 
-            if (event.key == "8") {
+            if (event.key == "8" && self.Entwickler_Modus) {
                 self.Gegenstände.Reparierte_Vase.nehmen();
             }
             
-            if (event.key == "9") {
+            if (event.key == "9" && self.Entwickler_Modus) {
                 self.Gegenstände.Gefüllte_Vase.nehmen();
             }
 
-            if (event.key == "0") {
+            if (event.key == "0" && self.Entwickler_Modus) {
                 self.Gegenstände.Gefüllte_Vase_mit_Licht.nehmen();
             }
 
-            if (event.key in self.Orte_Kürzel) {
+            if (event.key in self.Orte_Kürzel && self.Entwickler_Modus) {
                 self.gehe_zu_Ort(self.Orte_Kürzel[event.key]);
             }
         }
@@ -236,6 +229,30 @@ class Ein_Spiel {
     Game_over() {
         window.clearInterval(this.Spieluhr);
         document.getElementById("Game_Over").style.visibility = "visible";
+    }
+
+    Entwicklermodus_ein_aus() {
+        let self = this;
+
+        if (self.Entwickler_Passwort) {
+            let passwort = window.prompt("Bitte gib das Kennwort ein, wenn du den Entwicklermodus aktivieren willst.");
+            if (self.Entwickler_Passwort == passwort) {
+                self.Entwickler_Passwort = null;
+            } else {
+                return;
+            }
+        }
+
+        self.Entwickler_Modus = !self.Entwickler_Modus;
+        document.getElementById("Status").style.zIndex = self.Entwickler_Modus ? "100000" : "-1";
+
+        self.Ort.Weg.anzeigen();
+        for (let Portal_Name in self.Portale) {
+            self.Portale[Portal_Name].anzeigen();
+        }
+        for (let Aktion_Name in self.Aktionen) {
+            self.Aktionen[Aktion_Name].anzeigen_falls_Entwickler_Modus();
+        }
     }
 
     Spieluhr_tickt() {
