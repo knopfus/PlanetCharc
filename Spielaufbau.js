@@ -47,7 +47,7 @@ var Spielaufbau = {
                     {"links":1415,"oben":584,"vorne":191,"Radius":191, Portal: "Silberne_Lichtung"}
                 ],[
                     {"links":495,"oben":424,"vorne":68,"Radius":2, Kreuzung: true},
-                    {"links":520,"oben":347,"vorne":17,"Radius":116, Portal: "Berge_der_Angst"}
+                    {"links":520,"oben":347,"vorne":27,"Radius":116}
                 ]
             ]
         },
@@ -740,19 +740,25 @@ var Spielaufbau = {
         gehe_zu: {
             auf_Wegpunkt: function(Wegpunkt) {
                 Wegpunkt.gehe_zu();
-                return true; // Aktion deaktivieren
             },
 
             auf_Portal: function(Portal) {
                 Portal.gehe_zu();
-                return true; // Aktion deaktivieren
             },
 
             auf_Gegenstand: function(Gegenstand) {
                 if (Gegenstand.Eigenschaften.gehe_zu) {
                     Gegenstand.gehe_zu();
-                    return true;
                 }
+            },
+
+            beim_Aktivieren: function(Spiel) {
+                Spiel.Ort.Weg.anzeigen();
+            },
+
+            beim_Deaktivieren: function(Spiel) {
+                Spiel.Ort.Weg.verstecken();
+                return true;
             }
         },
 
@@ -764,7 +770,6 @@ var Spielaufbau = {
                     } else {
                         Spiel.Spieler.feststellen("Das ist zu weit weg, ich komme da nicht ran.");
                     }
-                    return true; // Aktion deaktivieren
                 }
             }
         },
@@ -772,8 +777,6 @@ var Spielaufbau = {
         drücken: {
             auf_Gegenstand: function(Gegenstand, Spiel) {
                 Gegenstand.drücken();
-                
-                return true; // Aktion deaktivieren
             }
         },
 
@@ -835,11 +838,9 @@ var Spielaufbau = {
         anschauen: {
             auf_Gegenstand: function(Gegenstand) {
                 Gegenstand.anschauen();
-                return true; // Aktion deaktivieren
             },
             auf_Gegenstand_im_Besitz: function(Gegenstand) {
                 Gegenstand.anschauen_im_Besitz();
-                return true; // Aktion deaktivieren
             }
         },
 
