@@ -408,7 +408,12 @@ var Spielaufbau = {
             feststellen: "Die leuchten wie Sterne.",
             feststellen_im_Besitz: "Diese leuchtenden Sterne sind fein wie Sand.",
             links: 208, oben: 475, breit: 405, hoch: 200,
-            nehmbar: true
+            nehmbar: true,
+            anwenden: function() {
+                // Noch nichts zu tun, der Gegenstand soll auf etwas angewendet werden können, daher Aktion
+                // nicht deaktivieren
+                return false;
+            }
         },
         
         "Wasser": {
@@ -457,12 +462,35 @@ var Spielaufbau = {
             anderen_Gegenstand_auf_diesen_anwenden: function(Gegenstand, anderer_Gegenstand, Spiel) {
                 if (anderer_Gegenstand.Name == "Gefüllte_Vase_mit_Licht") {
                     anderer_Gegenstand.aus_Besitz_entfernen();
-                    Spiel.Spieler.feststellen("Du hast gewonnen!")
+                    Spiel.Gegenstände.Befüllte_Konstruktion.platziere_in(Gegenstand.Ort);
+                    Gegenstand.entferne_aus(Gegenstand.Ort);
+                    spiele_Sound_Effect("Lichtwasser_schöpfen")
                 } else {
                     return true;
                 }
             }
             
+        },
+
+        "Befüllte_Konstruktion": {
+            in: "Unerreichbarer_Ort",
+            feststellen: "Es scheint zu leuchten, aber etwas scheint zu fehlen...",
+            links: 760, oben: 480, breit: 135, hoch: 90,
+            anderen_Gegenstand_auf_diesen_anwenden: function(Gegenstand, anderer_Gegenstand, Spiel) {
+                if (anderer_Gegenstand.Name == "Staubsterne") {
+                    anderer_Gegenstand.aus_Besitz_entfernen();
+                    Spiel.Gegenstände.Aktivierte_Konstruktion.platziere_in(Gegenstand.Ort);
+                    Gegenstand.entferne_aus(Gegenstand.Ort);
+                } else {
+                    return true;
+                }
+            }
+        },
+
+        "Aktivierte_Konstruktion": {
+            in: "Unerreichbarer_Ort",
+            feststellen: "Eine seltsame Konstruktion...",
+            links: 760, oben: -117, breit: 135, hoch: 687,
         },
 
         "Zerbrochene_Vase": {
