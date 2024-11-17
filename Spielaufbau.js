@@ -68,6 +68,7 @@ var Spielaufbau = {
             ]
         },
         Gipfel: { 
+            Kürzel: "g",
             Pfade: [
                 [
                     {"links":5,"oben":565,"vorne":140,"Radius":175, Portal: "Berge_der_Angst"},
@@ -184,7 +185,6 @@ var Spielaufbau = {
             ]
         },
         Grotte_des_Lichts: {
-            Kürzel: "g",
             Pfade: [
                 [
                     {"links":504,"oben":667,"Radius":133.4,"vorne":133.4},
@@ -331,7 +331,8 @@ var Spielaufbau = {
             Kürzel: 'n',
             Pfade: [
                 [
-                    {"links":-1,"oben":336,"Radius":6000,"vorne":0,Portal: "Gipfel"}
+                    {"links":604,"oben":1007,"vorne":362,"Radius":3},
+                    {"links":604,"oben":1007,"vorne":362,"Radius":6000,Portal: "Gipfel"}
                 ]
             ]
         },
@@ -399,6 +400,14 @@ var Spielaufbau = {
             feststellen: "Sieht nach einem alten Dokument aus.",
             feststellen_im_Besitz: "Die Bäume saugen dem Wasser die Seele, \n\nwelches das Feuer erstickt. \n\nDas Feuer vertreibt die Luft und den Wind, \n\nder Wind wird die Bäume ausreissen.",
             links: 470, oben: 325, breit: 50, hoch: 85,
+            nehmbar: true
+        },
+
+        "Staubsterne": {
+            in: "Nichts",
+            feststellen: "Die leuchten wie Sterne.",
+            feststellen_im_Besitz: "Diese leuchtenden Sterne sind fein wie Sand.",
+            links: 208, oben: 475, breit: 405, hoch: 200,
             nehmbar: true
         },
         
@@ -722,7 +731,7 @@ var Spielaufbau = {
         nehmen: {
             auf_Gegenstand: function(Gegenstand, Spiel) {
                 if (Gegenstand.Eigenschaften.nehmbar) {
-                    if (sind_näher_als(Spiel.Spieler.Koordinaten, Gegenstand.Eigenschaften, 200)) {
+                    if (sind_näher_als(Spiel.Spieler.Koordinaten, Gegenstand.Eigenschaften, 100 + Spiel.Spieler.Koordinaten.vorne)) {
                         Gegenstand.nehmen();
                     } else {
                         Spiel.Spieler.feststellen("Das ist zu weit weg, ich komme da nicht ran.");
