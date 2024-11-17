@@ -11,7 +11,11 @@ class Ein_Ort {
 
         this.Status_Ort_element = document.getElementById("Status-Ort");
         this.Ort_Bild_div = document.getElementById("Ort-Bild");
-        this.Ort_Bild_vorne_div = document.getElementById("Ort-Bild-vorne");
+        this.Ort_Bild_vorne_divs = [
+            document.getElementById("Ort-Bild-vorne-1"),
+            document.getElementById("Ort-Bild-vorne-2"),
+            document.getElementById("Ort-Bild-vorne-3")
+        ];
     }
 
     verlassen() {
@@ -24,7 +28,15 @@ class Ein_Ort {
     betreten() {
         this.Status_Ort_element.innerText = this.Name;
         this.Ort_Bild_div.src = "Orte/" + this.Name + ".png?nocache=" + Date.now();
-        this.Ort_Bild_vorne_div.src = "Orte/" + this.Name + "_vorne.png?nocache=" + Date.now();
+        for (var i = 0; i <= 2; i++) {
+            this.Ort_Bild_vorne_divs[i].src = "Orte/" + this.Name + "_vorne_" + (i+1) + ".png?nocache=" + Date.now();
+            this.Ort_Bild_vorne_divs[i].style.removeProperty("z-index");
+        }
+        if (this.Eigenschaften.Bilder_vorne) {
+            for (var i = 0; i < this.Eigenschaften.Bilder_vorne.length; i++) {
+                this.Ort_Bild_vorne_divs[i].style.zIndex = this.Eigenschaften.Bilder_vorne[i];
+            }
+        }
 
         for (let Gegenstand of this.Gegenstände) {
             Gegenstand.anzeigen();

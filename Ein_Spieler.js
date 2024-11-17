@@ -102,6 +102,7 @@ class Ein_Spieler {
         this.Spieler_div.style.top = Koordinaten.oben + "px";
         this.Spieler_div.style.width = Koordinaten.vorne + "px";
         this.Spieler_div.style.height = Koordinaten.vorne + "px";
+        this.Spieler_div.style.zIndex = Math.floor(Koordinaten.vorne);
 
         this.Spieler_div.style.rotate = (this.Schritte % 20) / 5 + "deg";
         if (this.Schritt_Richtung) {

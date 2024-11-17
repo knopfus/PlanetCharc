@@ -11,7 +11,8 @@ var Spielaufbau = {
 
         Silberne_Lichtung: {
             Kürzel: "s",
-            feststellen: "Er musste mit seinem Volk vom Planeten fliehen, der von einem unmittelbaren Kometeneinschlag bedroht war. Aber er verpasste den Abflug mit dem Ortschiff und konnte sich nur noch aussen festhalten, wobei er auf dem Flug zum Ziel-Planeten den Halt verlor und auf dem Planeten CHARC landete. Deshalb muss er sich nun zurechtfinden, sich ernähren und zugleich versuchen mit seinem Volk Kontakt aufzunehmen um abgeholt zu werden.\n\nKlicke hier um zu starten.",
+            Bilder_vorne: [ 1010 ],
+            feststellen: "Klicke, um zu starten.",
             Pfade: [
                 [
                     {"links":4,"oben":705,"vorne":230,"Radius":253, Portal: "Dschungel_1" },
@@ -36,7 +37,8 @@ var Spielaufbau = {
                 [{"links":500,"oben":544,"vorne":103,"Radius":500}],
             ]
         },
-        Dschungel_1: {             
+        Dschungel_1: {   
+            Bilder_vorne: [ 1010 ],          
             Pfade: [
                 [
                     {"links":49,"oben":473,"vorne":156,"Radius":216, Portal: "Grosse_Wiese"},
@@ -94,6 +96,7 @@ var Spielaufbau = {
         },
         Grosse_Wiese: {
             Kürzel: "w",
+            Bilder_vorne: [ 15 ],
             Pfade: [
                 [
                     {"links":887,"oben":795,"vorne":150,"Radius":250, Portal: "Dschungel_1"},
@@ -153,6 +156,7 @@ var Spielaufbau = {
         },
 
         Dschungel_2: { 
+            Bilder_vorne: [ 1010 ],
             Pfade: [
                 [
                     {"links":192,"oben":382,"vorne":94,"Radius":261, Portal: "Silberne_Lichtung"},
@@ -167,6 +171,7 @@ var Spielaufbau = {
         },
         Fluss: {
             Kürzel: "f",
+            Bilder_vorne: [ 1010 ],
             Pfade: [
                 [
                     {"links":17,"oben":567,"vorne":304,"Radius":253, Portal: "Dschungel_2"},
@@ -200,6 +205,7 @@ var Spielaufbau = {
         },
         Quelle_des_Lichts: { 
             Kürzel: "q",
+            Bilder_vorne: [ 1010 ],
             Pfade: [
                 [
                     {"links":1400,"oben":847,"vorne":263,"Radius":269, Portal: "Fluss"},
@@ -219,6 +225,7 @@ var Spielaufbau = {
         },
         offene_Quelle_des_Lichts: { 
             Kürzel: "o",
+            Bilder_vorne: [ 1010 ],
             Pfade: [
                 [
                     {"links":1400,"oben":847,"vorne":263,"Radius":269, Portal: "Fluss"},
