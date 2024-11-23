@@ -390,7 +390,7 @@ var Spielaufbau = {
 
             }
         },
-        
+
         "Holz": {
             in: "Unerreichbarer_Ort",
             feststellen: "Holz werde ich gut brauchen können.",
@@ -403,11 +403,17 @@ var Spielaufbau = {
         },
 
         "Dokument": {
-            in: "Unerreichbarer_Ort",
-            feststellen: "Sieht nach einem alten Dokument aus.",
-            feststellen_im_Besitz: "Die Bäume saugen dem Wasser die Seele, \n\nwelches das Feuer erstickt. \n\nDas Feuer vertreibt die Luft und den Wind, \n\nder Wind wird die Bäume ausreissen.",
-            links: 470, oben: 325, breit: 50, hoch: 85,
+            in: "Höhle_Yeti",
+            feststellen: "Ein altes Dokument. Hier muss jemand gewesen sein!",
+            feststellen_im_Besitz: "Diese Schrift wurde früher auf meinem Planeten benutzt, ich kann sie ungefähr entziffern:\n\nDie Bäume saugen dem Wasser die Seele, \nwelches das Feuer erstickt. \nDas Feuer vertreibt die Luft und den Wind, \nder Wind wird die Bäume ausreissen.",
+            links: 535, oben: 380, breit: 50, hoch: 85, gedreht: 40,
             nehmbar: true
+        },
+
+        "Eingefrorenes_Tagebuch": {
+            in: "Höhle_Yeti",
+            feststellen: "Da ist irgendetwas im Eis eingefroren.",
+            links: 376, oben: 309, breit: 89, hoch: 88
         },
 
         "Staubsterne": {
@@ -698,9 +704,7 @@ var Spielaufbau = {
             ],
     
             Lebenspunkte: 140,
-            Kraft: 12,
-
-            Belohnung: "Dokument"
+            Kraft: 12
         },
         "Zwerggreif": {
             Orte: [
