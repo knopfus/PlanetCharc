@@ -53,8 +53,16 @@ class Ein_Ort {
         }
 
         if (this.Eigenschaften.feststellen && !this.schon_festgestellt) {
-            this.Spiel.Spieler.feststellen(this.Eigenschaften.feststellen);
-            this.schon_festgestellt = true;
+            if (this.Eigenschaften.nach) {
+                var self = this;
+                window.setTimeout(function() {
+                    self.Spiel.Spieler.feststellen(self.Eigenschaften.feststellen);
+                    self.schon_festgestellt = true;
+                }, this.Eigenschaften.nach * 1000);
+            } else {
+                this.Spiel.Spieler.feststellen(this.Eigenschaften.feststellen);
+                this.schon_festgestellt = true;
+            }
         }
     }
 

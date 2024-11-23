@@ -171,6 +171,7 @@ var Spielaufbau = {
         Fluss: {
             Kürzel: "f",
             feststellen: "Autsch. Da haben wir ja mal Glück gehabt, dass mein Sturz durch die Bäume und das Wasser gebremst wurde, und dass die Schwerkraft auf diesem kleinen fremden Planeten so klein ist. Aber dass meine Leute mit dem Raumschiff nun ohne mich von zuhause geflüchtet sind, ist eine Misere! War ja klar, dass ich mich nicht unendlich lange am Fahrgestell festhalten konnte. Dabei war ich doch kaum ein paar Sekunden zu spät beim Raumschiff, als sie losflogen! Na ja, lieber hier einsam gelandet sein als in der Heimat vom Kometen erschlagen werden. Nur, wie werde ich meine Freunde jemals informieren können, dass ich hier bin?",
+            nach: 9,
             Bilder_vorne: [ 100, 1010 ],
             Pfade: [
                 [
