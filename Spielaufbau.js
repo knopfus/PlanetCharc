@@ -1,6 +1,6 @@
 var Spielaufbau = {
     Spieler: {
-        in: "Silberne_Lichtung",
+        in: "Fluss",
         Lebenspunkte: 100,
         Kraft: 3
     },
@@ -12,11 +12,10 @@ var Spielaufbau = {
         Silberne_Lichtung: {
             Kürzel: "s",
             Bilder_vorne: [ 1010 ],
-            feststellen: "Klicke, um zu starten.",
             Pfade: [
                 [
                     {"links":4,"oben":705,"vorne":230,"Radius":253, Portal: "Dschungel_1" },
-                    {"links":551,"oben":652,"vorne":150,"Radius":5, Kreuzung: true, Start: true},
+                    {"links":551,"oben":652,"vorne":150,"Radius":5, Kreuzung: true},
                     {"links":493,"oben":526,"vorne":138,"Radius":5},
                     {"links":557,"oben":398,"vorne":130,"Radius":5},
                     {"links":771,"oben":368,"vorne":96,"Radius":7},
@@ -171,7 +170,8 @@ var Spielaufbau = {
         },
         Fluss: {
             Kürzel: "f",
-            Bilder_vorne: [ 1010 ],
+            feststellen: "Autsch. Da haben wir ja mal Glück gehabt, dass mein Sturz durch die Bäume und das Wasser gebremst wurde, und dass die Schwerkraft auf diesem kleinen fremden Planeten so klein ist. Aber dass meine Leute mit dem Raumschiff nun ohne mich von zuhause geflüchtet sind, ist eine Misere! War ja klar, dass ich mich nicht unendlich lange am Fahrgestell festhalten konnte. Dabei war ich doch kaum ein paar Sekunden zu spät beim Raumschiff, als sie losflogen! Na ja, lieber hier einsam gelandet sein als in der Heimat vom Kometen erschlagen werden. Nur, wie werde ich meine Freunde jemals informieren können, dass ich hier bin?",
+            Bilder_vorne: [ 100, 1010 ],
             Pfade: [
                 [
                     {"links":17,"oben":567,"vorne":304,"Radius":253, Portal: "Dschungel_2"},
@@ -183,7 +183,7 @@ var Spielaufbau = {
                     {"links":978,"oben":343,"vorne":43,"Radius":197, Portal: "Quelle_des_Lichts"}
                 ],[
                     {"links":418,"oben":547,"vorne":164,"Radius":5, Kreuzung: true},
-                    {"links":851,"oben":603,"vorne":185,"Radius":5},
+                    {"links":851,"oben":603,"vorne":185,"Radius":5, Start: true},
                     {"links":1236,"oben":520,"vorne":186,"Radius":6},
                     {"links":1434,"oben":488,"vorne":237,"Radius":180}
                 ]
@@ -502,13 +502,13 @@ var Spielaufbau = {
 
         "Zerbrochene_Vase": {
             in: "Silberne_Lichtung",
-            feststellen: "Sieht nach einer zerstörten Vase aus.",
-            feststellen_im_Besitz: "Irgendwie müsste man die doch reparieren können.",
-            links: 850, oben: 530, breit: 50, hoch: 60,
+            feststellen: "Sieht nach einer zerstörten Vase aus. Sehr merkwürdig. Wie kommt die auf einen einsamen Planeten?",
+            feststellen_im_Besitz: "So zerbrochen ist die Vase leider ziemlich unbrauchbar.",
+            links: 970, oben: 530, breit: 50, hoch: 60,
             nehmbar: true, 
             anderen_Gegenstand_auf_diesen_anwenden: function(Gegenstand, anderer_Gegenstand, Spiel) {
                 if (anderer_Gegenstand.Name == "Holz") {
-                    Spiel.Spieler.feststellen("Genau! Mit dem Holz kann ich die Vase ja reparieren.");
+                    Spiel.Spieler.feststellen("Mit dem Holz kann ich die Vase behelfsmässig reparieren.");
                     anderer_Gegenstand.aus_Besitz_entfernen();
                     Gegenstand.aus_Besitz_entfernen();
                     Spiel.Gegenstände.Reparierte_Vase.nehmen();
@@ -601,14 +601,13 @@ var Spielaufbau = {
         },
 
         "Mondblume": {
-            feststellen: "Diese Blumen leuchten so magisch und duften herrlich, da würde ich am liebsten reinbeissen.",
             mehrere: [
-                { in: "Silberne_Lichtung", links: 840, oben: 575, breit: 40, hoch: 40 / 685 * 845, gedreht: 0 },
-                { in: "Silberne_Lichtung", links: 1040, oben: 515, breit: 28, hoch: 32 / 685 * 845, gedreht: 10 },
-                { in: "Silberne_Lichtung", links: 1011, oben: 515, breit: 35, hoch: 35 / 685 * 845, gedreht: -10 },
-                { in: "aktivierte_Quelle_des_Lichts", links: 840, oben: 575, breit: 40, hoch: 40 / 685 * 845, gedreht: 0 },
-                { in: "aktivierte_Quelle_des_Lichts", links: 1040, oben: 515, breit: 28, hoch: 32 / 685 * 845, gedreht: 10 },
-                { in: "aktivierte_Quelle_des_Lichts", links: 1011, oben: 515, breit: 35, hoch: 35 / 685 * 845, gedreht: -10 }
+                { in: "Silberne_Lichtung", links: 930, oben: 545, breit: 37, hoch: 37 / 685 * 845, gedreht: 0, feststellen: "Seltsam, es wachsen nirgens solche Blumen als genau hier neben diesem zerbrochenen Gefäss.", feststellen_im_Besitz: "Diese Blumen leuchten magisch und duften herrlich. Ob sie wohl essbar sind?" },
+                { in: "Silberne_Lichtung", links: 1010, oben: 525, breit: 25, hoch: 29 / 685 * 845, gedreht: 10, feststellen: "Seltsam, es wachsen nirgens solche Blumen als genau hier neben diesem zerbrochenen Gefäss.", feststellen_im_Besitz: "Diese Blumen leuchten magisch und duften herrlich. Ob sie wohl essbar sind?" },
+                { in: "Silberne_Lichtung", links: 901, oben: 535, breit: 32, hoch: 31 / 685 * 845, gedreht: -10, feststellen: "Seltsam, es wachsen nirgens solche Blumen als genau hier neben diesem zerbrochenen Gefäss.", feststellen_im_Besitz: "Diese Blumen leuchten magisch und duften herrlich. Ob sie wohl essbar sind?" },
+                { in: "aktivierte_Quelle_des_Lichts", links: 840, oben: 575, breit: 40, hoch: 40 / 685 * 845, gedreht: 0, feststellen: "Jetzt wachsen hier plötzlich dieselben Blumen wie bei der zerbrochenen Vase.", feststellen_im_Besitz: "Diese Blumen leuchten magisch und duften herrlich. Ob sie wohl essbar sind?" },
+                { in: "aktivierte_Quelle_des_Lichts", links: 1040, oben: 515, breit: 28, hoch: 32 / 685 * 845, gedreht: 10, feststellen: "Jetzt wachsen hier plötzlich dieselben Blumen wie bei der zerbrochenen Vase.", feststellen_im_Besitz: "Diese Blumen leuchten magisch und duften herrlich. Ob sie wohl essbar sind?" },
+                { in: "aktivierte_Quelle_des_Lichts", links: 1011, oben: 515, breit: 35, hoch: 35 / 685 * 845, gedreht: -10, feststellen: "Jetzt wachsen hier plötzlich dieselben Blumen wie bei der zerbrochenen Vase.", feststellen_im_Besitz: "Diese Blumen leuchten magisch und duften herrlich. Ob sie wohl essbar sind?" }
             ],
             nehmbar: true,
             anwenden: function(Gegenstand, Spiel) {

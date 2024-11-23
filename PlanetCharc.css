@@ -144,6 +144,7 @@ h1 {
     position: absolute;
     z-index: 1000;
     pointer-events: none;
+    animation: 6s herunterfallen-und-aufstehen linear;
 }
 #Spieler > img {
     max-width: 100%;
@@ -202,3 +203,32 @@ h1 {
     z-index: -1;
     background-color: rgba(255, 255, 255, 0.3);
 }
+
+
+
+@keyframes herunterfallen-und-aufstehen {
+    0% {
+        left: 758.5px;
+        top: -418px;
+        width: 185px;
+        height: 185px;
+        z-index: 185;
+        rotate: -50deg;
+    }
+    30%,80% {
+        left: 758.5px;
+        top: 468px;
+        width: 185px;
+        height: 185px;
+        z-index: 185;
+        rotate: -80deg;
+    }
+    100% {
+        left: 758.5px;
+        top: 418px;
+        width: 185px;
+        height: 185px;
+        z-index: 185;
+        rotate: 0deg;
+    }
+  }
