@@ -10,7 +10,7 @@ class Ein_Monster {
         let Monster_div = Monster_Vorlage.cloneNode(true);
 
         Monster_div.setAttribute("id", "Monster_" + Name);
-        this.Monster_div = document.getElementById(Name);
+        Monster_div.style.display = "none";
 
         let self = this;
         Monster_div.onclick = function(event) {
@@ -82,12 +82,12 @@ class Ein_Monster {
     tauche_auf() {
         if (this.tot()) { return; } // Code gar nicht erst ausführen
 
-        this.Monster_div.style.visibility = "visible";
+        this.Monster_div.style.display = "";
         spiele_Sound_Effect(this.Name);
     }
 
     verschwinde() {
-        this.Monster_div.style.visibility = "hidden";
+        this.Monster_div.style.display = "none";
     }
 
     bekämpfen(Spieler_Kraft) {

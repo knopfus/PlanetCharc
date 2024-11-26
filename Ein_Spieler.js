@@ -8,12 +8,14 @@ class Ein_Spieler {
 
         // Das HTML Element vorbereiten
         this.Spieler_div = document.getElementById("Spieler");
+        this.Spieler_div.style.display = "none";
 
         this.SCHRITT_LÄNGE = 0.02;
         this.SCHRITT_LÄNGE_ENTWICKLER_MODUS = 0.05;
     }
 
     fallen() {
+        this.Spieler_div.style.display = "";
         this.Spieler_div.animate(
             [
                 {
