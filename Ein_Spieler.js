@@ -13,6 +13,35 @@ class Ein_Spieler {
         this.SCHRITT_LÄNGE_ENTWICKLER_MODUS = 0.05;
     }
 
+    fallen() {
+        this.Spieler_div.animate(
+            [
+                {
+                    top: "-418px",
+                    rotate: "-50deg"
+                }, {
+                    top: "-418px",
+                    rotate: "-50deg",
+                    offset: 0.2
+                }, {
+                    top: "468px",
+                    rotate: "-80deg",
+                    offset: 0.4
+                }, {
+                    top: "468px",
+                    rotate: "-80deg",
+                    offset: 0.9
+                }, {
+                    top: "418px",
+                    rotate: "0deg"
+                }
+            ],
+            {
+                duration: 10000
+            }
+        );
+    }
+
     platziere_bei_Wegpunkt(Wegpunkt) {
         let Koordinaten = {
             links: Wegpunkt.Eigenschaften.links - 0.5 * Wegpunkt.Eigenschaften.vorne,

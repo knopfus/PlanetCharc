@@ -163,14 +163,16 @@ class Ein_Spiel {
 
         this.Ort = null;
         this.gehe_zu_Ort(this.Orte[Spielaufbau.Spieler.in]);
+        this.Spieler.fallen();
 
         let self = this;
         this.Spieluhr = window.setInterval(function() { self.Spieluhr_tickt(); }, 10);
 
-        // Musik abspielen beim ersten Klick
-        document.onclick = function() {
-            document.getElementById("musik").play();
+        if (!document.fullscreenElement) {
+            document.documentElement.requestFullscreen();
         }
+
+        document.getElementById("musik").play();
     }
 
     gehe_zu_Ort(Ort) {
