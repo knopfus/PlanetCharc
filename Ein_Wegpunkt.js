@@ -9,6 +9,7 @@ class Ein_Wegpunkt {
         let Wegpunkt_Vorlage = document.getElementById("Wegpunkt_Vorlage");
         let Wegpunkt_div = Wegpunkt_Vorlage.cloneNode(true);
         let Wegpunkt_vorne_div = Wegpunkt_div.getElementsByClassName("Wegpunkt-vorne")[0];
+        let Wegpunkt_Nummer_div = Wegpunkt_div.getElementsByClassName("Wegpunkt-Nummer")[0];
 
         Wegpunkt_div.setAttribute("id", "Wegpunkt_" + Weg.Ort.Name + "_" + Pfad_Nummer + "_" + Nummer);
 
@@ -22,31 +23,37 @@ class Ein_Wegpunkt {
         let Ort_div = document.getElementById("Ort");
         Ort_div.appendChild(Wegpunkt_div);
 
+        Wegpunkt_Nummer_div.innerText = this.Pfad_Nummer + "." + this.Nummer;
+
         this.Wegpunkt_div = Wegpunkt_div;
         this.Wegpunkt_vorne_div = Wegpunkt_vorne_div;
+        this.Wegpunkt_Nummer_div = Wegpunkt_Nummer_div;
 
         this.verstecken();
     }
 
     anzeigen() {
         this.Wegpunkt_div.style.left = this.Eigenschaften.links - this.Eigenschaften.Radius + "px";
-        this.Wegpunkt_div.style.top = this.Eigenschaften.oben - this.Eigenschaften.Radius + "px";
+        this.Wegpunkt_div.style.top = this.Eigenschaften.oben - this.Eigenschaften.Radius * 2 + "px";
         this.Wegpunkt_div.style.width = 2 * this.Eigenschaften.Radius + "px";
         this.Wegpunkt_div.style.height = 2 * this.Eigenschaften.Radius + "px";
         this.Wegpunkt_div.style.visibility = "visible";
 
-        this.Wegpunkt_vorne_div.style.left = this.Eigenschaften.Radius - this.Eigenschaften.vorne + "px";
-        this.Wegpunkt_vorne_div.style.top = this.Eigenschaften.Radius - this.Eigenschaften.vorne + "px";
-        this.Wegpunkt_vorne_div.style.width = 2 * this.Eigenschaften.vorne + "px";
-        this.Wegpunkt_vorne_div.style.height = 2 * this.Eigenschaften.vorne + "px";
+        this.Wegpunkt_vorne_div.style.left = this.Eigenschaften.Radius - this.Eigenschaften.vorne / 2 + "px";
+        this.Wegpunkt_vorne_div.style.top = this.Eigenschaften.Radius * 2 - this.Eigenschaften.vorne + "px";
+        this.Wegpunkt_vorne_div.style.width = 2 * this.Eigenschaften.vorne / 2 + "px";
+        this.Wegpunkt_vorne_div.style.height = 2 * this.Eigenschaften.vorne / 2 + "px";
 
         this.Wegpunkt_div.style.display = "";
+
+        // Im Entwicklermodus sollen blaue und rote Kreise angezeigt werden, damit man die Wegpunkte
+        // sieht und auch ihren Radius und ihr "vorne" erkennen kann. Dies wird alles über eine
+        // CSS Klasse gesteuert, die wir hir nur hinzufügen oder entfernen müssen. Der Rest ist im CSS
+        // zu finden.
         if (this.Spiel.Entwickler_Modus) {
-            this.Wegpunkt_div.style.border = "1px solid red";
-            this.Wegpunkt_vorne_div.style.display = "";
+            this.Wegpunkt_div.classList.add("Entwicklermodus");
         } else {
-            this.Wegpunkt_div.style.border = "0px";
-            this.Wegpunkt_vorne_div.style.display = "none";
+            this.Wegpunkt_div.classList.remove("Entwicklermodus");
         }
 
         if (this.Eigenschaften.Entwurf) {
