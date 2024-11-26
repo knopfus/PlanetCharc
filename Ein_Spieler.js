@@ -15,6 +15,7 @@ class Ein_Spieler {
     }
 
     fallen() {
+        spiele_Sound_Effect("Fallender_Spieler");
         this.Spieler_div.style.display = "";
         this.Spieler_div.animate(
             [
@@ -24,7 +25,7 @@ class Ein_Spieler {
                 }, {
                     top: "-418px",
                     rotate: "-50deg",
-                    offset: 0.2
+                    offset: 0.3
                 }, {
                     top: "468px",
                     rotate: "-80deg",

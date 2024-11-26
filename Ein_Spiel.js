@@ -172,7 +172,9 @@ class Ein_Spiel {
             document.documentElement.requestFullscreen();
         }
 
-        document.getElementById("musik").play();
+        window.setTimeout(function() {
+            document.getElementById("musik").play();
+        }, 5000);
     }
 
     gehe_zu_Ort(Ort) {
