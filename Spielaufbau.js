@@ -290,21 +290,21 @@ var Spielaufbau = {
             Kürzel: "l",
             Pfade: [
                 [
-                    {"links":4,"oben":405,"vorne":77,"Radius":70,Portal: "Berge_der_Angst"},
+                    {"links":4,"oben":405,"vorne":77,"Radius":70,"Portal":"Berge_der_Angst"},
                     {"links":98,"oben":420,"vorne":75,"Radius":70},
-                    {"links":158,"oben":416,"vorne":75,"Radius":5, Portal: "Lavawelt_Mechanik"},
+                    {"links":158,"oben":416,"vorne":75,"Radius":5,"Portal":"Lavawelt_Mechanik"},
                     {"links":288,"oben":467,"vorne":101,"Radius":6},
                     {"links":431,"oben":431,"vorne":94,"Radius":117}
                 ],[
-                    {"links":616,"oben":299,"vorne":45,"Radius":98, Portal: "Reich_des_Giganten"},
-                    {"links":697,"oben":384,"vorne":67,"Radius":8},
+                    {"links":627,"oben":339,"vorne":37,"Radius":118,"Portal":"Reich_des_Giganten"},
+                    {"links":700,"oben":320,"vorne":61,"Radius":8},
                     {"links":889,"oben":421,"vorne":63,"Radius":6},
                     {"links":929,"oben":443,"vorne":68,"Radius":6},
                     {"links":967,"oben":434,"vorne":71,"Radius":7},
                     {"links":1058,"oben":420,"vorne":82,"Radius":7},
                     {"links":1200,"oben":490,"vorne":108,"Radius":6},
                     {"links":1294,"oben":455,"vorne":109,"Radius":6},
-                    {"links":1425,"oben":426,"vorne":113,"Radius":149, Portal: "Quelle_des_Lichts"}
+                    {"links":1425,"oben":426,"vorne":113,"Radius":149,"Portal":"Quelle_des_Lichts"}
                 ]
             ]
         },
@@ -396,7 +396,8 @@ var Spielaufbau = {
                 Spiel.Spieler.feststellen("So kuschlig!")
 
 
-            }
+            },
+            nehmbar: true
         },
 
         "Holz": {
@@ -416,6 +417,18 @@ var Spielaufbau = {
             feststellen_im_Besitz: "Diese Schrift wurde früher auf meinem Planeten benutzt, ich kann sie ungefähr entziffern:\n\nDie Bäume saugen dem Wasser die Seele, \nwelches das Feuer erstickt. \nDas Feuer vertreibt die Luft und den Wind, \nder Wind wird die Bäume ausreissen.",
             links: 535, oben: 380, breit: 50, hoch: 85, gedreht: 40,
             nehmbar: true
+        },
+
+        "Axt": {
+            in: "Höhle_Yeti",
+            feststellen: "Eine etwas notdürftige Axt.",
+            feststellen_im_Besitz: "Das ist eine Axt, die höchstwahrscheinlich bentutz wurde, um Holz zu hacken.",
+            links: 555, oben: 400, breit: 50, hoch: 85, gedreht: 40,
+            nehmbar: true,
+            Kraft: 3,
+            anwenden: function() {
+                return false;
+            }
         },
 
         "Eingefrorenes_Tagebuch": {
@@ -678,7 +691,19 @@ var Spielaufbau = {
             links: 500, oben: 320, breit: 300, hoch: 500, gedreht: 0,
 
             Lebenspunkte: 80,
-            Belohnung: "Holz"
+            Belohnung: "Holz",
+            anderen_Gegenstand_auf_diesen_anwenden: function(Gegenstand, anderer_Gegenstand, Spiel) {
+                if (anderer_Gegenstand.Name == "Axt") {
+                    spiele_Sound_Effect("hack");
+                    Gegenstand.Eigenschaften.Lebenspunkte = Gegenstand.Eigenschaften.Lebenspunkte - anderer_Gegenstand.Eigenschaften.Kraft;
+                    if (Gegenstand.Eigenschaften.Lebenspunkte < 0) {
+                        Spiel.Gegenstände[Gegenstand.Eigenschaften.Belohnung].platziere_in(Gegenstand.Ort);
+                        Gegenstand.entferne_aus(Gegenstand.Ort);
+                        return true;
+                    }
+                    return false;
+                }
+            }
         }
 
     },
@@ -843,14 +868,6 @@ var Spielaufbau = {
                 Monster.bekämpfen(Spiel.Spieler.Kraft);
                 if (Monster.tot()) {
                     return true; // Aktion deaktivieren
-                }
-            },
-            auf_Gegenstand: function(Gegenstand, Spiel) {
-                Gegenstand.Eigenschaften.Lebenspunkte = Gegenstand.Eigenschaften.Lebenspunkte - Spiel.Spieler.Kraft;
-                if (Gegenstand.Eigenschaften.Lebenspunkte < 0) {
-                    Spiel.Gegenstände[Gegenstand.Eigenschaften.Belohnung].platziere_in(Gegenstand.Ort);
-                    Gegenstand.entferne_aus(Gegenstand.Ort);
-                    return true;
                 }
             }
         },

@@ -202,12 +202,13 @@ h1 {
 #Besitz {
     box-sizing: border-box;
     width: 100%; 
-    padding: 10px;
+    padding: 8px;
 }
 
 .Gegenstand_im_Besitz {
     display: inline-block;
-    height: 75px;
+    height: 60px;
+    box-sizing: border-box;
 }
 .Gegenstand_im_Besitz img {
     max-width: 100%;
