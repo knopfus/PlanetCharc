@@ -153,7 +153,6 @@ h1 {
     position: absolute;
     border: 0px solid black;
     visibility: hidden;
-    z-index: 1030;
 }
 .Gegenstand > img {
     max-width: 100%;
@@ -162,7 +161,6 @@ h1 {
 
 .Monster {
     position: absolute;
-    z-index: 1040;
 }
 .Monster > img {
     max-width: 100%;
