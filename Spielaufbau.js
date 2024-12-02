@@ -433,10 +433,58 @@ var Spielaufbau = {
             }
         },
 
+        "Stock": {
+            Kürzel: "2",
+            in: "Unerreichbarer_Ort",
+            feststellen: "Der Stock ist alles, was von meiner Axt übrig geblieben ist.",
+            feststellen_im_Besitz: "Den Stock werde ich bestimmt noch zu was gebrauchen können.",
+            links: 667, oben: 504, breit: 90, hoch: 90, gedreht: 20,
+            nehmbar: true,
+            anwenden: function() {
+                return false;
+            }
+        },
+
+        "Fackel": {
+            Kürzel: "3",
+            in: "Unerreichbarer_Ort",
+            anwenden: function() {
+                // Noch nichts zu tun, der Gegenstand soll auf etwas angewendet werden können, daher Aktion
+                // nicht deaktivieren
+                return false;
+            }
+        },
+
+        "Lava": {
+            in: "Lavawelt",
+            feststellen: "Glühend heisse Lava. Diese würde sofort alles in Brand setzen, was sie berührt.",
+            links: 429, oben: 210, breit: 94, hoch: 190,
+            anderen_Gegenstand_auf_diesen_anwenden: function(Gegenstand, anderer_Gegenstand, Spiel) {
+                if (anderer_Gegenstand.Name == "Stock") {
+                    anderer_Gegenstand.aus_Besitz_entfernen();
+                    Spiel.Gegenstände.Fackel.nehmen();
+                    Spiel.Spieler.feststellen("Der Stock brennt. Eine Fackel dabei zu haben, kann sicher nicht schaden.");
+                }
+            }
+        },
+
         "Eingefrorenes_Tagebuch": {
             in: "Höhle_Yeti",
             feststellen: "Da ist irgendetwas im Eis eingefroren.",
-            links: 376, oben: 309, breit: 89, hoch: 88
+            links: 376, oben: 309, breit: 89, hoch: 88,
+            anderen_Gegenstand_auf_diesen_anwenden: function(Gegenstand, anderer_Gegenstand, Spiel) {
+                if (anderer_Gegenstand.Name == "Fackel") {
+                    Gegenstand.entferne_aus(Spiel.Orte.Höhle_Yeti);
+                    Spiel.Gegenstände.Tagebuch.platziere_in(Spiel.Orte.Höhle_Yeti);
+                }
+            }
+        },
+
+        "Tagebuch": {
+            in: "Unerreichbarer_Ort",
+            feststellen: "Das ist ein altes Buch! Hier hat wohl jemand gelebt.",
+            links: 401, oben: 340, breit: 52, hoch: 54,
+            nehmbar: true
         },
 
         "Staubsterne": {
@@ -701,6 +749,11 @@ var Spielaufbau = {
                     if (Gegenstand.Eigenschaften.Lebenspunkte < 0) {
                         Spiel.Gegenstände[Gegenstand.Eigenschaften.Belohnung].platziere_in(Gegenstand.Ort);
                         Gegenstand.entferne_aus(Gegenstand.Ort);
+
+                        Spiel.Gegenstände.Stock.platziere_in(Gegenstand.Ort);
+                        anderer_Gegenstand.aus_Besitz_entfernen();
+                        Spiel.Spieler.feststellen("Just mit dem letzten Schlag ist meine Axt zerfallen.");
+
                         return true;
                     }
                     return false;
