@@ -420,6 +420,7 @@ var Spielaufbau = {
         },
 
         "Axt": {
+            Kürzel: "1",
             in: "Höhle_Yeti",
             feststellen: "Eine etwas notdürftige Axt.",
             feststellen_im_Besitz: "Das ist eine Axt, die höchstwahrscheinlich bentutz wurde, um Holz zu hacken.",

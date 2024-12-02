@@ -32,6 +32,7 @@ class Ein_Spiel {
         this.Sprechblase = new Eine_Sprechblase();
 
         this.Gegenstände = {};
+        this.Gegenstände_Kürzel = {};
         for (let Gegenstand_Name in Spielaufbau.Gegenstände) {
             let Eigenschaften = Spielaufbau.Gegenstände[Gegenstand_Name];
 
@@ -46,12 +47,18 @@ class Ein_Spiel {
                         Gegenstand.platziere_in(this.Orte[Eigenschaften_Stück.in]);
                     }    
                 }
+                if (Eigenschaften.Kürzel) {
+                    this.Gegenstände_Kürzel[Eigenschaften.Kürzel] = this.Gegenstände[Gegenstand_Name + 0];
+                }
             } else {
                 let Gegenstand = new Ein_Gegenstand(Gegenstand_Name, Eigenschaften, this);
                 this.Gegenstände[Gegenstand_Name] = Gegenstand;
                 
                 if ( Eigenschaften.in ) {
                     Gegenstand.platziere_in(this.Orte[Eigenschaften.in]);
+                }    
+                if (Eigenschaften.Kürzel) {
+                    this.Gegenstände_Kürzel[Eigenschaften.Kürzel] = Gegenstand;
                 }    
             }
         }
@@ -108,44 +115,8 @@ class Ein_Spiel {
                 self.Spieler.Kraft = self.Spieler.Kraft + 1000;
             }
 
-            if (event.key == "1" && self.Entwickler_Modus) {
-                self.Gegenstände.Mondblume0.nehmen();
-            }
-
-            if (event.key == "2" && self.Entwickler_Modus) {
-                self.Gegenstände.Holz.nehmen();
-            }
-
-            if (event.key == "3" && self.Entwickler_Modus) {
-                self.Gegenstände.Klauenspringer_Zahn.nehmen();
-            }
-
-            if (event.key == "4" && self.Entwickler_Modus) {
-                self.Gegenstände.Lichtkristall.nehmen();
-            }
-
-            if (event.key == "5" && self.Entwickler_Modus) {
-                self.Gegenstände.Miau.nehmen();
-            }
-
-            if (event.key == "6" && self.Entwickler_Modus) {
-                self.Gegenstände.Dokument.nehmen();
-            }
-            
-            if (event.key == "7" && self.Entwickler_Modus) {
-                self.Gegenstände.Zerbrochene_Vase.nehmen();
-            }
-
-            if (event.key == "8" && self.Entwickler_Modus) {
-                self.Gegenstände.Reparierte_Vase.nehmen();
-            }
-            
-            if (event.key == "9" && self.Entwickler_Modus) {
-                self.Gegenstände.Gefüllte_Vase.nehmen();
-            }
-
-            if (event.key == "0" && self.Entwickler_Modus) {
-                self.Gegenstände.Gefüllte_Vase_mit_Licht.nehmen();
+            if (event.key in self.Gegenstände_Kürzel && self.Entwickler_Modus) {
+                self.Gegenstände_Kürzel[event.key].nehmen();
             }
 
             if (event.key in self.Orte_Kürzel && self.Entwickler_Modus) {
