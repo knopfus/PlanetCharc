@@ -173,7 +173,7 @@ class Ein_Spiel {
         }
 
         window.setTimeout(function() {
-            document.getElementById("musik").play();
+            spiele_Musik("Planet_Charc_Theme");
         }, 5000);
     }
 

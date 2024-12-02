@@ -12,7 +12,7 @@ Array.prototype.ist_gleich = function( array ) {
 }
 
 async function spiele_Sound_Effect(Sound_Name) {
-    let player = document.getElementById("Sound_Effects");
+    let player = document.createElement("audio");
     player.src = "./Sound_Effects/" + Sound_Name + ".wav";
 
     try {
@@ -24,8 +24,23 @@ async function spiele_Sound_Effect(Sound_Name) {
         } else {
             console.error(error);
         }
+    }    
+}
+
+async function spiele_Musik(Musik_Name) {
+    let player = document.getElementById("musik");
+    player.src = "./Musik/" + Musik_Name + ".wav";
+
+    try {
+        await player.play();
     }
-    
+    catch (error) {
+        if (error.message.includes("no supported source")) {
+            console.log("Musik '" + Musik_Name + "' fehlt (noch).");
+        } else {
+            console.error(error);
+        }
+    }    
 }
 
 function sind_näher_als(Koordinaten_1, Koordinaten_2, Abstand) {
