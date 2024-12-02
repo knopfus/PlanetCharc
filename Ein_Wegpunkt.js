@@ -46,16 +46,6 @@ class Ein_Wegpunkt {
 
         this.Wegpunkt_div.style.display = "";
 
-        // Im Entwicklermodus sollen blaue und rote Kreise angezeigt werden, damit man die Wegpunkte
-        // sieht und auch ihren Radius und ihr "vorne" erkennen kann. Dies wird alles über eine
-        // CSS Klasse gesteuert, die wir hir nur hinzufügen oder entfernen müssen. Der Rest ist im CSS
-        // zu finden.
-        if (this.Spiel.Entwickler_Modus) {
-            this.Wegpunkt_div.classList.add("Entwicklermodus");
-        } else {
-            this.Wegpunkt_div.classList.remove("Entwicklermodus");
-        }
-
         if (this.Eigenschaften.Entwurf) {
             this.Wegpunkt_div.style["pointer-events"] = "none";
         } else {

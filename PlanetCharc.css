@@ -103,6 +103,9 @@ h1 {
 #Wegpunkt_Vorlage {
     display: none;
 }
+.Wegpunkt {
+    pointer-events: none; /* pointer-events nur akzeptieren, wenn gehe_zu aktiv (s. Regel weiter unten) */
+}
 .Wegpunkt-Nummer {
     display: none;
     position: absolute;
@@ -122,13 +125,19 @@ h1 {
     pointer-events: none;
 }
 
-.Wegpunkt.Entwicklermodus {
+.gehe_zu .Wegpunkt {
+    /* Wenn gehe_zu aktiv ist, wird <div id="Spiel"> die Klasse "gehe_zu" hinzugefügt, und somit
+     * greift automatisch diese Regel */
+    pointer-events: auto; /* pointer-events akzeptieren, d.h. man kann Wegpunkte anklicken */
+}
+
+.Entwicklermodus .Wegpunkt {
     border: 1px solid red;
 }
-.Wegpunkt.Entwicklermodus:hover {
+.Entwicklermodus .Wegpunkt:hover {
     background-color: #ff0000af;
 }
-.Wegpunkt.Entwicklermodus .Wegpunkt-Nummer, .Wegpunkt.Entwicklermodus .Wegpunkt-vorne {
+.Entwicklermodus .Wegpunkt-Nummer, .Entwicklermodus .Wegpunkt-vorne {
     display: block;
 } 
 

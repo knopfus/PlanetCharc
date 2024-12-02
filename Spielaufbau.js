@@ -797,13 +797,11 @@ var Spielaufbau = {
             },
 
             beim_Aktivieren: function(Spiel) {
-                Spiel.Ort.Weg.anzeigen();
+                Spiel.Spiel_div.classList.add("gehe_zu");
             },
 
             beim_Deaktivieren: function(Spiel) {
-                if (!Spiel.Entwickler_Modus) {
-                    Spiel.Ort.Weg.verstecken();
-                }
+                Spiel.Spiel_div.classList.remove("gehe_zu");
                 return true;
             }
         },

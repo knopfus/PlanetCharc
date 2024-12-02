@@ -1,5 +1,7 @@
 class Ein_Spiel {
     constructor(Spielaufbau) {
+        this.Spiel_div = document.getElementById("Spiel");
+
         this.Portale = {};
         for (let Portal_Name of Spielaufbau.Portale) {
             let Portal = new Ein_Portal(Portal_Name, this);
@@ -220,6 +222,11 @@ class Ein_Spiel {
 
         self.Entwickler_Modus = !self.Entwickler_Modus;
         document.getElementById("Status").style.zIndex = self.Entwickler_Modus ? "100000" : "-1";
+        if (self.Entwickler_Modus) {
+            this.Spiel_div.classList.add("Entwicklermodus");
+        } else {
+            this.Spiel_div.classList.remove("Entwicklermodus");
+        }
 
         self.Ort.Weg.anzeigen();
         for (let Portal_Name in self.Portale) {

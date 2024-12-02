@@ -42,9 +42,7 @@ class Ein_Ort {
             Gegenstand.anzeigen();
         }
 
-        if (this.Spiel.aktive_Aktion && this.Spiel.aktive_Aktion.Name == "gehe_zu") {
-            this.Weg.anzeigen();
-        }
+        this.Weg.anzeigen();
 
         for (let Portal_Name in this.Spiel.Portale) {
             let Portal = this.Spiel.Portale[Portal_Name];
