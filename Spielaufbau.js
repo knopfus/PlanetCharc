@@ -125,19 +125,20 @@ var Spielaufbau = {
         },
         Ewiges_Eis: {
             Kürzel: "e",
+            Bilder_vorne: [ 140, 190 ],
             Pfade: [
                 [
-                    {"links":50,"oben":626,"Radius":125.2,"vorne":125.2},
-                    {"links":187,"oben":664,"Radius":132.8,"vorne":132.8},
-                    {"links":400,"oben":705,"Radius":141,"vorne":141},
-                    {"links":653,"oben":677,"Radius":80,"vorne":135.4},
-                    {"links":873,"oben":665,"Radius":80,"vorne":133,"Kreuzung":true},
-                    {"links":1062,"oben":671,"Radius":80,"vorne":134.2},
-                    {"links":1197,"oben":710,"Radius":142,"vorne":142},
-                    {"links":1386,"oben":709,"Radius":141.8,"vorne":141.8, Portal: "Grosse_Wiese"}
+                    {"links":50,"oben":640,"Radius":141,"vorne":141},
+                    {"links":187,"oben":674,"Radius":8,"vorne":143},
+                    {"links":389,"oben":710,"Radius":177,"vorne":173},
+                    {"links":604,"oben":687,"Radius":8,"vorne":145},
+                    {"links":905,"oben":671,"Radius":7,"vorne":134,"Kreuzung":true},
+                    {"links":1137,"oben":691,"Radius":5,"vorne":148},
+                    {"links":1012,"oben":719,"Radius":3,"vorne":155},
+                    {"links":1371,"oben":792,"Radius":229,"vorne":201,"Portal":"Grosse_Wiese"}
                 ],[
-                    {"links":763,"oben":625,"Radius":117,"vorne":117,"Kreuzung":true},
-                    {"links":603,"oben":605,"Radius":109,"vorne":109, Portal: "Höhle_Yeti"}
+                    {"links":762,"oben":659,"Radius":7,"vorne":139,"Kreuzung":true},
+                    {"links":539,"oben":643,"Radius":283,"vorne":135,"Portal":"Höhle_Yeti"}
                 ]
             ]
         },
@@ -145,14 +146,14 @@ var Spielaufbau = {
             Kürzel: "y",
             Pfade: [
                 [
-                    {"links":1422,"oben":703,"Radius":140.6,"vorne":140.6, Portal: "Ewiges_Eis" },
-                    {"links":1137,"oben":704,"Radius":140.8,"vorne":140.8},
-                    {"links":614,"oben":653,"Radius":130.6,"vorne":130.6},
-                    {"links":530,"oben":551,"Radius":110.2,"vorne":110.2},
-                    {"links":805,"oben":542,"Radius":108.4,"vorne":108.4},
-                    {"links":956,"oben":477,"Radius":95.4,"vorne":95.4},
-                    {"links":595,"oben":421,"Radius":84.2,"vorne":84.2},
-                    {"links":467,"oben":372,"Radius":74.4,"vorne":74.4}
+                    {"links":1440,"oben":799,"Radius":224,"vorne":302,"Portal":"Ewiges_Eis"},
+                    {"links":1268,"oben":669,"Radius":94,"vorne":226},
+                    {"links":1076,"oben":538,"Radius":7,"vorne":171},
+                    {"links":856,"oben":482,"Radius":120,"vorne":150},
+                    {"links":663,"oben":439,"Radius":130,"vorne":124},
+                    {"links":515,"oben":447,"Radius":115,"vorne":153},
+                    {"links":309,"oben":477,"Radius":7,"vorne":158},
+                    {"links":50,"oben":487,"Radius":183,"vorne":157}
                 ]
             ]
         },
