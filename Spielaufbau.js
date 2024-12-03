@@ -737,7 +737,7 @@ var Spielaufbau = {
 
         "Baum": {
             in: "Dschungel_1",
-            links: 500, oben: 320, breit: 300, hoch: 500, gedreht: 0,
+            links: 500, oben: 320, breit: 300, hoch: 500, vorne: 145, gedreht: 0,
 
             Lebenspunkte: 80,
             Belohnung: "Holz",

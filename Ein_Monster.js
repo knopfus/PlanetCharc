@@ -91,8 +91,10 @@ class Ein_Monster {
     }
 
     verschwinde() {
-        this.Monster_div.style.display = "none";
-        if (this.Musik) { stoppe_Musik(); };
+        if (this.Monster_div.style.display == "") {
+            this.Monster_div.style.display = "none";
+            if (this.Musik) { stoppe_Musik(); };
+        }
     }
 
     bekämpfen(Spieler_Kraft) {
