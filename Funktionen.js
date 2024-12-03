@@ -27,9 +27,10 @@ async function spiele_Sound_Effect(Sound_Name) {
     }    
 }
 
-async function spiele_Musik(Musik_Name) {
+async function spiele_Musik(Musik_Name, wiederholen) {
     let player = document.getElementById("musik");
     player.src = "./Musik/" + Musik_Name + ".wav";
+    player.loop = !!wiederholen;
 
     try {
         await player.play();
@@ -41,6 +42,12 @@ async function spiele_Musik(Musik_Name) {
             console.error(error);
         }
     }    
+}
+
+async function stoppe_Musik() {
+    let player = document.getElementById("musik");
+    player.pause();
+    player.currentTime = 0;
 }
 
 function sind_näher_als(Koordinaten_1, Koordinaten_2, Abstand) {

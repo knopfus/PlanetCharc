@@ -4,6 +4,7 @@ class Ein_Monster {
         this.Spiel = Spiel;
         this.Lebenspunkte = Eigenschaften.Lebenspunkte;
         this.Kraft = Eigenschaften.Kraft;
+        this.Musik = Eigenschaften.Musik;
 
         // Die HTML Elemente für das Monster vorbereiten
         let Monster_Vorlage = document.getElementById("Monster_Vorlage");
@@ -86,10 +87,12 @@ class Ein_Monster {
 
         this.Monster_div.style.display = "";
         spiele_Sound_Effect(this.Name);
+        if (this.Musik) { spiele_Musik(this.Musik, true) };
     }
 
     verschwinde() {
         this.Monster_div.style.display = "none";
+        if (this.Musik) { stoppe_Musik(); };
     }
 
     bekämpfen(Spieler_Kraft) {

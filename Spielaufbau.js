@@ -808,7 +808,8 @@ var Spielaufbau = {
             ],
     
             Lebenspunkte: 300,
-            Kraft: 15
+            Kraft: 15,
+            Musik: "Der_Gigant"
         },
         "Miau": {
             Orte: [
