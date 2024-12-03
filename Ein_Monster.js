@@ -41,7 +41,8 @@ class Ein_Monster {
                 oben: Ort_Eigenschaften.oben,
                 breit: Ort_Eigenschaften.breit,
                 hoch: Ort_Eigenschaften.hoch,
-                gedreht: Ort_Eigenschaften.gedreht
+                gedreht: Ort_Eigenschaften.gedreht,
+                vorne: Ort_Eigenschaften.vorne
             });
         }
 
@@ -67,6 +68,7 @@ class Ein_Monster {
         if (Eigenschaften.oben)     { this.Monster_div.style.top          = Eigenschaften.oben + "px"; }
         if (Eigenschaften.breit)    { this.Monster_div.style.width        = Eigenschaften.breit + "px"; }
         if (Eigenschaften.hoch)     { this.Monster_div.style.height       = Eigenschaften.hoch + "px"; }
+        if (Eigenschaften.vorne)    { this.Monster_div.style.zIndex       = Eigenschaften.vorne; }
         if (Eigenschaften.gedreht)  { this.Monster_div.style.transform    = "rotate(" + Eigenschaften.gedreht + "deg)"; }
 
         if (this.Spiel.Ort == this.Ort) {

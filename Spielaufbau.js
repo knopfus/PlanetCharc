@@ -40,23 +40,21 @@ var Spielaufbau = {
             ]
         },
         Dschungel_1: {   
-            Bilder_vorne: [ 1010 ],          
+            Bilder_vorne: [ 200 ],          
             Pfade: [
                 [
                     {"links":49,"oben":473,"vorne":156,"Radius":216, Portal: "Grosse_Wiese"},
-                    {"links":383,"oben":527,"vorne":149,"Radius":5, Kreuzung: true},
+                    {"links":383,"oben":527,"vorne":149,"Radius":5},
                     {"links":811,"oben":529,"vorne":144,"Radius":168},
                     {"links":1031,"oben":457,"vorne":123,"Radius":4},
                     {"links":1203,"oben":509,"vorne":146,"Radius":3},
                     {"links":1415,"oben":584,"vorne":191,"Radius":191, Portal: "Silberne_Lichtung"}
-                ],[
-                    {"links":495,"oben":424,"vorne":68,"Radius":2, Kreuzung: true},
-                    {"links":520,"oben":347,"vorne":27,"Radius":116}
                 ]
             ]
         },
         Berge_der_Angst: {
             Kürzel: "b",
+            Bilder_vorne: [26, 37],
             Pfade: [
                 [
                     {"links":8,"oben":694,"vorne":147,"Radius":208,Portal:"Grosse_Wiese"},
@@ -65,22 +63,23 @@ var Spielaufbau = {
                     {"links":1230,"oben":776,"vorne":156,"Radius":4},
                     {"links":1435,"oben":797,"vorne":189,"Radius":254,Portal: "Lavawelt"}
                 ],[
-                    {"links":925,"oben":715,"vorne":36,"Radius":2, Kreuzung: true},
-                    {"links":850,"oben":683,"vorne":21,"Radius":3},
+                    {"links":932,"oben":722,"vorne":35,"Radius":39,"Kreuzung":true},
+                    {"links":812,"oben":685,"vorne":25,"Radius":4},
                     {"links":1060,"oben":610,"vorne":14,"Radius":142, Portal: "Gipfel"}
                 ]
             ]
         },
         Gipfel: { 
             Kürzel: "g",
+            Bilder_vorne: [17, 38, 141],
             Pfade: [
                 [
-                    {"links":5,"oben":565,"vorne":140,"Radius":175, Portal: "Berge_der_Angst"},
-                    {"links":185,"oben":534,"vorne":109,"Radius":3},
-                    {"links":429,"oben":531,"vorne":91,"Radius":5},
-                    {"links":657,"oben":533,"vorne":74,"Radius":5},
-                    {"links":941,"oben":489,"vorne":49,"Radius":6},
-                    {"links":952,"oben":465,"vorne":39,"Radius":5, Kreuzung: true},
+                    {"links":5,"oben":565,"vorne":140,"Radius":175,"Portal":"Berge_der_Angst"},
+                    {"links":208,"oben":569,"vorne":128,"Radius":78},
+                    {"links":328,"oben":525,"vorne":89,"Radius":6},
+                    {"links":666,"oben":533,"vorne":77,"Radius":71},
+                    {"links":941,"oben":491,"vorne":46,"Radius":75},
+                    {"links":952,"oben":465,"vorne":39,"Radius":5,"Kreuzung":true},
                     {"links":882,"oben":448,"vorne":37,"Radius":5},
                     {"links":757,"oben":421,"vorne":31,"Radius":5},
                     {"links":605,"oben":327,"vorne":17,"Radius":2},
@@ -88,11 +87,11 @@ var Spielaufbau = {
                     {"links":643,"oben":304,"vorne":11,"Radius":2},
                     {"links":631,"oben":290,"vorne":12,"Radius":1},
                     {"links":651,"oben":257,"vorne":10,"Radius":1},
-                    {"links":663,"oben":232,"vorne":10,"Radius":71, Portal: "Nichts"}
+                    {"links":663,"oben":232,"vorne":10,"Radius":71,"Portal":"Nichts"}
                 ],[
-                    {"links":1007,"oben":432,"vorne":18,"Radius":4, Kreuzung: true},
-                    {"links":985,"oben":422,"vorne":17,"Radius":3},
-                    {"links":1047,"oben":410,"vorne":15,"Radius":60}
+                    {"links":1007,"oben":432,"vorne":18,"Radius":4,"Kreuzung":true},
+                    {"links":960,"oben":422,"vorne":15,"Radius":3},
+                    {"links":1049,"oben":406,"vorne":15,"Radius":89}
                 ]
             ]
         },
@@ -322,21 +321,21 @@ var Spielaufbau = {
         Reich_des_Giganten: { 
             Pfade: [
                 [
-                    {"links":65,"oben":369,"Radius":73.8,"vorne":73.8, Portal: "Lavawelt"},
-                    {"links":145,"oben":399,"Radius":79.8,"vorne":79.8},
-                    {"links":225,"oben":448,"Radius":89.6,"vorne":89.6},
-                    {"links":325,"oben":488,"Radius":97.6,"vorne":97.6},
-                    {"links":437,"oben":496,"Radius":99.2,"vorne":99.2},
-                    {"links":561,"oben":482,"Radius":96.4,"vorne":96.4,"Kreuzung":true},
-                    {"links":680,"oben":491,"Radius":98.2,"vorne":98.2},
-                    {"links":808,"oben":506,"Radius":101.2,"vorne":101.2},
-                    {"links":924,"oben":550,"Radius":110,"vorne":110},
-                    {"links":1066,"oben":568,"Radius":113.6,"vorne":113.6},
-                    {"links":1205,"oben":582,"Radius":116.4,"vorne":116.4},
-                    {"links":1379,"oben":550,"Radius":110,"vorne":110},
-                    {"links":1324,"oben":425,"Radius":85,"vorne":85},
-                    {"links":1250,"oben":369,"Radius":73.8,"vorne":73.8},
-                    {"links":1334,"oben":307,"Radius":61.4,"vorne":61.4}
+                    {"links":0,"oben":412,"Radius":195,"vorne":76,"Portal":"Lavawelt"},
+                    {"links":101,"oben":438,"Radius":8,"vorne":89},
+                    {"links":215,"oben":438,"Radius":89,"vorne":92},
+                    {"links":243,"oben":484,"Radius":6,"vorne":97},
+                    {"links":355,"oben":512,"Radius":101,"vorne":103},
+                    {"links":496,"oben":487,"Radius":7,"vorne":93},
+                    {"links":680,"oben":491,"Radius":85,"vorne":101},
+                    {"links":808,"oben":506,"Radius":10,"vorne":108},
+                    {"links":924,"oben":550,"Radius":10,"vorne":120},
+                    {"links":1066,"oben":568,"Radius":90,"vorne":134},
+                    {"links":1205,"oben":582,"Radius":7,"vorne":143},
+                    {"links":1379,"oben":550,"Radius":8,"vorne":135},
+                    {"links":1384,"oben":480,"Radius":9,"vorne":114},
+                    {"links":1303,"oben":440,"Radius":8,"vorne":110},
+                    {"links":1229,"oben":427,"Radius":178,"vorne":97}
                 ]
             ],
             
@@ -425,7 +424,7 @@ var Spielaufbau = {
             in: "Höhle_Yeti",
             feststellen: "Eine etwas notdürftige Axt.",
             feststellen_im_Besitz: "Das ist eine Axt, die höchstwahrscheinlich bentutz wurde, um Holz zu hacken.",
-            links: 555, oben: 400, breit: 50, hoch: 85, gedreht: 40,
+            links: 555, oben: 420, breit: 50, hoch: 85, vorne: 155, gedreht: 40,
             nehmbar: true,
             Kraft: 3,
             anwenden: function() {
@@ -542,7 +541,7 @@ var Spielaufbau = {
         "Seltsame_Konstruktion": {
             in: "Silberne_Lichtung",
             feststellen: "Eine seltsame Konstruktion...",
-            links: 760, oben: 480, breit: 135, hoch: 90,
+            links: 760, oben: 480, breit: 135, hoch: 90, vorne: 90,
             anderen_Gegenstand_auf_diesen_anwenden: function(Gegenstand, anderer_Gegenstand, Spiel) {
                 if (anderer_Gegenstand.Name == "Gefüllte_Vase_mit_Licht") {
                     anderer_Gegenstand.aus_Besitz_entfernen();
@@ -559,7 +558,7 @@ var Spielaufbau = {
         "Befüllte_Konstruktion": {
             in: "Unerreichbarer_Ort",
             feststellen: "Es scheint zu leuchten, aber etwas scheint zu fehlen...",
-            links: 760, oben: 480, breit: 135, hoch: 90,
+            links: 760, oben: 480, breit: 135, hoch: 90, vorne: 90,
             anderen_Gegenstand_auf_diesen_anwenden: function(Gegenstand, anderer_Gegenstand, Spiel) {
                 if (anderer_Gegenstand.Name == "Staubsterne") {
                     anderer_Gegenstand.aus_Besitz_entfernen();
@@ -574,14 +573,14 @@ var Spielaufbau = {
         "Aktivierte_Konstruktion": {
             in: "Unerreichbarer_Ort",
             feststellen: "Eine seltsame Konstruktion...",
-            links: 760, oben: -117, breit: 135, hoch: 687,
+            links: 760, oben: -117, breit: 135, hoch: 687, vorne: 90,
         },
 
         "Zerbrochene_Vase": {
             in: "Silberne_Lichtung",
             feststellen: "Sieht nach einer zerstörten Vase aus. Sehr merkwürdig. Wie kommt die auf einen einsamen Planeten?",
             feststellen_im_Besitz: "So zerbrochen ist die Vase leider ziemlich unbrauchbar.",
-            links: 970, oben: 530, breit: 50, hoch: 60,
+            links: 970, oben: 530, breit: 50, hoch: 60, vorne: 90,
             nehmbar: true, 
             anderen_Gegenstand_auf_diesen_anwenden: function(Gegenstand, anderer_Gegenstand, Spiel) {
                 if (anderer_Gegenstand.Name == "Holz") {
@@ -639,7 +638,7 @@ var Spielaufbau = {
         "Lavawelt_Mechanik": {
             in: "Lavawelt",
             feststellen: "Ist das eine Kritzelei?",
-            links: 109, oben: 310, breit: 144, hoch: 82, vorne: 900,
+            links: 109, oben: 310, breit: 144, hoch: 82, vorne: 73,
 
             gehe_zu: function(Gegenstand) {
                 Gegenstand.Ort.Weg.Eintritte.Lavawelt_Mechanik.gehe_zu();
@@ -679,12 +678,12 @@ var Spielaufbau = {
 
         "Mondblume": {
             mehrere: [
-                { in: "Silberne_Lichtung", links: 930, oben: 545, breit: 37, hoch: 37 / 685 * 845, gedreht: 0, feststellen: "Seltsam, es wachsen nirgens solche Blumen als genau hier neben diesem zerbrochenen Gefäss.", feststellen_im_Besitz: "Diese Blumen leuchten magisch und duften herrlich. Ob sie wohl essbar sind?" },
-                { in: "Silberne_Lichtung", links: 1010, oben: 525, breit: 25, hoch: 29 / 685 * 845, gedreht: 10, feststellen: "Seltsam, es wachsen nirgens solche Blumen als genau hier neben diesem zerbrochenen Gefäss.", feststellen_im_Besitz: "Diese Blumen leuchten magisch und duften herrlich. Ob sie wohl essbar sind?" },
-                { in: "Silberne_Lichtung", links: 901, oben: 535, breit: 32, hoch: 31 / 685 * 845, gedreht: -10, feststellen: "Seltsam, es wachsen nirgens solche Blumen als genau hier neben diesem zerbrochenen Gefäss.", feststellen_im_Besitz: "Diese Blumen leuchten magisch und duften herrlich. Ob sie wohl essbar sind?" },
-                { in: "aktivierte_Quelle_des_Lichts", links: 840, oben: 575, breit: 40, hoch: 40 / 685 * 845, gedreht: 0, feststellen: "Jetzt wachsen hier plötzlich dieselben Blumen wie bei der zerbrochenen Vase.", feststellen_im_Besitz: "Diese Blumen leuchten magisch und duften herrlich. Ob sie wohl essbar sind?" },
-                { in: "aktivierte_Quelle_des_Lichts", links: 1040, oben: 515, breit: 28, hoch: 32 / 685 * 845, gedreht: 10, feststellen: "Jetzt wachsen hier plötzlich dieselben Blumen wie bei der zerbrochenen Vase.", feststellen_im_Besitz: "Diese Blumen leuchten magisch und duften herrlich. Ob sie wohl essbar sind?" },
-                { in: "aktivierte_Quelle_des_Lichts", links: 1011, oben: 515, breit: 35, hoch: 35 / 685 * 845, gedreht: -10, feststellen: "Jetzt wachsen hier plötzlich dieselben Blumen wie bei der zerbrochenen Vase.", feststellen_im_Besitz: "Diese Blumen leuchten magisch und duften herrlich. Ob sie wohl essbar sind?" }
+                { in: "Silberne_Lichtung", links: 930, oben: 545, breit: 37, hoch: 37 / 685 * 845, gedreht: 0, vorne: 93, feststellen: "Seltsam, es wachsen nirgens solche Blumen als genau hier neben diesem zerbrochenen Gefäss.", feststellen_im_Besitz: "Diese Blumen leuchten magisch und duften herrlich. Ob sie wohl essbar sind?" },
+                { in: "Silberne_Lichtung", links: 1010, oben: 525, breit: 25, hoch: 29 / 685 * 845, gedreht: 10, vorne: 93, feststellen: "Seltsam, es wachsen nirgens solche Blumen als genau hier neben diesem zerbrochenen Gefäss.", feststellen_im_Besitz: "Diese Blumen leuchten magisch und duften herrlich. Ob sie wohl essbar sind?" },
+                { in: "Silberne_Lichtung", links: 901, oben: 535, breit: 32, hoch: 31 / 685 * 845, gedreht: -10, vorne: 93, feststellen: "Seltsam, es wachsen nirgens solche Blumen als genau hier neben diesem zerbrochenen Gefäss.", feststellen_im_Besitz: "Diese Blumen leuchten magisch und duften herrlich. Ob sie wohl essbar sind?" },
+                { in: "aktivierte_Quelle_des_Lichts", links: 840, oben: 575, breit: 40, hoch: 40 / 685 * 845, gedreht: 0, vorne: 93, feststellen: "Jetzt wachsen hier plötzlich dieselben Blumen wie bei der zerbrochenen Vase.", feststellen_im_Besitz: "Diese Blumen leuchten magisch und duften herrlich. Ob sie wohl essbar sind?" },
+                { in: "aktivierte_Quelle_des_Lichts", links: 1040, oben: 515, breit: 28, hoch: 32 / 685 * 845, gedreht: 10, vorne: 93, feststellen: "Jetzt wachsen hier plötzlich dieselben Blumen wie bei der zerbrochenen Vase.", feststellen_im_Besitz: "Diese Blumen leuchten magisch und duften herrlich. Ob sie wohl essbar sind?" },
+                { in: "aktivierte_Quelle_des_Lichts", links: 1011, oben: 515, breit: 35, hoch: 35 / 685 * 845, gedreht: -10, vorne: 93, feststellen: "Jetzt wachsen hier plötzlich dieselben Blumen wie bei der zerbrochenen Vase.", feststellen_im_Besitz: "Diese Blumen leuchten magisch und duften herrlich. Ob sie wohl essbar sind?" }
             ],
             nehmbar: true,
             anwenden: function(Gegenstand, Spiel) {
@@ -726,8 +725,8 @@ var Spielaufbau = {
             }
         },
         "Lichtkristall": {
-            in: "Unerreichbarer_Ort",
-            links: 470, oben: 305, breit: 50, hoch: 85, gedreht: 0,
+            in: "Reich_des_Giganten",
+            links: 1301, oben: 350, breit: 50, hoch: 85, vorne: 95, gedreht: 0,
             nehmbar: true,
             anwenden: function() {
                 // Noch nichts zu tun, der Gegenstand soll auf etwas angewendet werden können, daher Aktion
@@ -796,7 +795,7 @@ var Spielaufbau = {
         },
         "Zwerggreif": {
             Orte: [
-                { in: "Dschungel_1", links: 1023, oben: 176, breit: 108, hoch: 108, gedreht: 10 },
+                { in: "Dschungel_1", links: 1023, oben: 176, breit: 108, hoch: 108, vorne: 201, gedreht: 10 },
                 { in: "Unerreichbarer_Ort" }
             ],
     
@@ -809,8 +808,7 @@ var Spielaufbau = {
             ],
     
             Lebenspunkte: 300,
-            Kraft: 15,
-            Belohnung: "Lichtkristall"
+            Kraft: 15
         },
         "Miau": {
             Orte: [

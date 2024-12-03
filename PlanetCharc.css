@@ -133,6 +133,7 @@ h1 {
 
 .Entwicklermodus .Wegpunkt {
     border: 1px solid red;
+    pointer-events: auto; /* pointer-events akzeptieren, d.h. man kann Wegpunkte anklicken */
 }
 .Entwicklermodus .Wegpunkt:hover {
     background-color: #ff0000af;
